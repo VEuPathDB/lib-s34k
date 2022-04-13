@@ -6,8 +6,6 @@ import java.util.ServiceLoader
 /**
  * S3 API Client Provider
  *
- * Specific S3 libraries can be swapped out here.
- *
  * @author Elizabeth Paige Harper [https://github.com/Foxcapades]
  *
  * @since v0.1.0
