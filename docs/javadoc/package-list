@@ -1,0 +1,7 @@
+$dokka.format:javadoc-v1
+$dokka.linkExtension:html
+
+org.veupathdb.lib.s3.s34k
+org.veupathdb.lib.s3.s34k.errors
+org.veupathdb.lib.s3.s34k.params
+
