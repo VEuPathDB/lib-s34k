@@ -14,7 +14,7 @@ data class S3Config(
   /**
    * Default region to use if not specified in operation specific params.
    */
-  val region: String = "",
+  val region: String?,
 ) {
   override fun toString(): String {
     return "S3Config {url: $url, accessKey: ***, secretKey: ***, region = $region}"

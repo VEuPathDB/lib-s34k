@@ -12,7 +12,7 @@ import org.veupathdb.lib.s3.s34k.S3Tag
  *
  * @since v0.1.0
  */
-sealed class BucketPutRequestParams : BucketRequestParams() {
+sealed class BucketPutRequestParams : SealedBucketReqParams() {
 
   private val Log = LoggerFactory.getLogger(this::class.java)
 
@@ -74,11 +74,13 @@ sealed class BucketPutRequestParams : BucketRequestParams() {
   }
 
   override fun toString(sb: StringBuilder) {
-    sb.append("  tags = {\n")
-    tags.forEach { (hk, hv) ->
-      sb.append("    ").append(hk).append(" = ").append(hv).append(",\n")
+    if (tags.isNotEmpty()) {
+      sb.append("  tags = {\n")
+      tags.forEach { (hk, hv) ->
+        sb.append("    ").append(hk).append(" = ").append(hv).append(",\n")
+      }
+      sb.append("  },\n")
     }
-    sb.append("  },\n")
 
     super.toString(sb)
   }

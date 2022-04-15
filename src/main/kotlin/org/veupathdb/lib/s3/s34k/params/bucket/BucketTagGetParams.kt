@@ -22,7 +22,7 @@ class BucketTagGetParams(val callback: ((tags: S3TagSet) -> Unit)? = null)
     val out = StringBuilder(2048)
 
     out.append("BucketTagGetParams {")
-    out.append("  callback = ").append(callback).append(",\n")
+    callback.also { out.append("  callback = ").append(it).append(",\n") }
 
     super.toString(out)
 

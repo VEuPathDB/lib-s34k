@@ -33,7 +33,7 @@ interface S3Bucket {
   /**
    * Region of this bucket.
    */
-  val region: String
+  val region: String?
 
   // region Object Exists
 
@@ -255,24 +255,6 @@ interface S3Bucket {
   // region: Put Object
 
   /**
-   * Puts an object of an unknown size into this bucket at the given [path] and
-   * copies the contents of the given [InputStream] into that object.
-   *
-   * @param path Path to the object to create.
-   *
-   * @param stream [InputStream] over the contents to copy into the newly
-   * created object.
-   *
-   * @throws BucketNotFoundException If the bucket has been deleted since this
-   * [S3Bucket] instance was created.
-   *
-   * @throws S34kException If an implementation specific exception is thrown.
-   * The implementation specific exception will be set to the thrown exception's
-   * 'cause' value.
-   */
-  fun putObject(path: String, stream: InputStream)
-
-  /**
    * Puts an object of a known size into this bucket at the given [path] and
    * copies at most [size] bytes of the contents of the given [stream] into the
    * newly created object.
@@ -291,7 +273,7 @@ interface S3Bucket {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun putObject(path: String, stream: InputStream, size: Long): S3Object
+  fun putObject(path: String, stream: InputStream, size: Long = -1): S3Object
 
   // TODO: Document me
   fun putObject(params: ObjectPutParams): S3Object

@@ -49,7 +49,7 @@ class ObjectFilePutParams(val callback: ((S3Object) -> Unit)? = null) :
 
     out.append("ObjectFilePutParams {\n")
 
-    out.append("  callback = ").append(callback).append(",\n")
+    callback.also { out.append("  callback = ").append(it).append(",\n") }
     out.append("  localFile = ").append(localFile).append(",\n")
     out.append("  length = ").append(length).append(",\n")
     out.append("  partSize = ").append(partSize).append(",\n")

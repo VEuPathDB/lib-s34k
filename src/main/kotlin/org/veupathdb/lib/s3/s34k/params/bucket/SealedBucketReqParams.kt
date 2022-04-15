@@ -12,7 +12,7 @@ import org.veupathdb.lib.s3.s34k.params.AbstractRequestParams
  *
  * @since v0.1.0
  */
-sealed class BucketRequestParams : AbstractRequestParams() {
+sealed class SealedBucketReqParams : AbstractRequestParams() {
 
   /**
    * Name of the target S3 bucket.
@@ -23,9 +23,9 @@ sealed class BucketRequestParams : AbstractRequestParams() {
    * @throws IllegalArgumentException If the value set is not between `3` and
    * `63` characters in length.
    */
-  var bucket: String = ""
+  var bucket: String? = null
     set(value) {
-      if (value.length !in 3 .. 63)
+      if (value == null || value.length !in 3 .. 63)
         throw IllegalArgumentException("Bucket name must be between 3 and 64 characters in length.  Given value: $value")
       field = value
     }

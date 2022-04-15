@@ -42,11 +42,13 @@ sealed class ObjectPutRequestParams : TagSenderParams, SealedObjReqParams() {
   }
 
   override fun toString(sb: StringBuilder) {
-    sb.append("  tags = {\n")
-    tags.forEach { (hk, hv) ->
-      sb.append("    ").append(hk).append(" = ").append(hv).append(",\n")
+    if (tags.isNotEmpty()) {
+      sb.append("  tags = {\n")
+      tags.forEach { (hk, hv) ->
+        sb.append("    ").append(hk).append(" = ").append(hv).append(",\n")
+      }
+      sb.append("  },\n")
     }
-    sb.append("  },\n")
 
     super.toString(sb)
   }

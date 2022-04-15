@@ -25,13 +25,13 @@ class ObjectDownloadParams(val callback: ((S3FileObject) -> Unit)? = null)
    * This value must be set or an [InvalidRequestConfigException] will be thrown
    * when the request is attempted.
    */
-  var localFile: File = File("")
+  var localFile: File? = null
 
   override fun toString(): String {
     val out = StringBuilder(2048)
 
     out.append("ObjectDownloadParams {")
-    out.append("  callback = ").append(callback).append(",\n")
+    callback.also { out.append("  callback = ").append(it).append(",\n") }
     out.append("  localFile = ").append(localFile).append(",\n")
 
     super.toString(out)

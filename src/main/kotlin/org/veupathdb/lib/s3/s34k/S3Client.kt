@@ -42,6 +42,8 @@ interface S3Client {
    *
    * @param bucketName Name of the bucket to test for.
    *
+   * @param region Optional region for the bucket.
+   *
    * @return `true` if the target bucket exists, otherwise `false`.
    *
    * @throws S34kException If an implementation specific exception is thrown.
@@ -51,10 +53,7 @@ interface S3Client {
    * @throws IllegalArgumentException If the given bucket name is not between
    * `3` and `63` characters in length.
    */
-  fun bucketExists(bucketName: String): Boolean
-
-  // TODO: Document me
-  fun bucketExists(bucketName: String, region: String): Boolean
+  fun bucketExists(bucketName: String, region: String? = null): Boolean
 
   /**
    * Tests for the existence of a bucket with the operation configured by the
@@ -97,32 +96,7 @@ interface S3Client {
    *
    * @param bucketName Name of the bucket to create.
    *
-   * @return A new [S3Bucket] instance wrapping the newly created bucket.
-   *
-   * @throws BucketAlreadyExistsException If a bucket already exists in the S3
-   * store with the given name.
-   *
-   * @throws S34kException If an implementation specific exception is thrown.
-   * The implementation specific exception will be set to the thrown exception's
-   * 'cause' value.
-   *
-   * @throws IllegalArgumentException If the given bucket name is not between
-   * `3` and `63` characters in length.
-   *
-   * @see bucketExists
-   * @see createBucketIfNotExists
-   */
-  fun createBucket(bucketName: String): S3Bucket
-
-  /**
-   * Attempts to create a bucket with the given name.
-   *
-   * **Warning** This may not be allowed based on the security policy/
-   * permissions granted on the target S3 instance.
-   *
-   * @param bucketName Name of the bucket to create.
-   *
-   * @param region Region where the bucket should reside.
+   * @param region Optional region where the bucket should reside.
    *
    * @return A new [S3Bucket] instance wrapping the newly created bucket.
    *
@@ -139,7 +113,7 @@ interface S3Client {
    * @see bucketExists
    * @see createBucketIfNotExists
    */
-  fun createBucket(bucketName: String, region: String): S3Bucket
+  fun createBucket(bucketName: String, region: String? = null): S3Bucket
 
   /**
    * Attempts to create a bucket with the given name with the operation
@@ -201,6 +175,8 @@ interface S3Client {
    *
    * @param bucketName Name of the bucket to create.
    *
+   * @param region Optional region where the bucket should reside.
+   *
    * @return A new [S3Bucket] instance wrapping either the newly created bucket
    * or the pre-existing bucket.
    *
@@ -210,10 +186,7 @@ interface S3Client {
    * @see bucketExists
    * @see createBucket
    */
-  fun createBucketIfNotExists(bucketName: String): S3Bucket
-
-  // TODO: Document me
-  fun createBucketIfNotExists(bucketName: String, region: String): S3Bucket
+  fun createBucketIfNotExists(bucketName: String, region: String? = null): S3Bucket
 
   // TODO: Document me
   fun createBucketIfNotExists(params: BucketPutParams): S3Bucket
@@ -231,6 +204,8 @@ interface S3Client {
    *
    * @param bucketName Name of the bucket to wrap.
    *
+   * @param region Optional region for the bucket.
+   *
    * @return A new [S3Bucket] instance wrapping the target bucket.
    *
    * @throws BucketNotFoundException If the target bucket does not exist.
@@ -241,10 +216,7 @@ interface S3Client {
    * @see bucketExists
    * @see createBucketIfNotExists
    */
-  fun getBucket(bucketName: String): S3Bucket
-
-  // TODO: Document me
-  fun getBucket(bucketName: String, region: String): S3Bucket
+  fun getBucket(bucketName: String, region: String? = null): S3Bucket
 
   // TODO: Document me
   fun getBucket(params: BucketGetParams): S3Bucket

@@ -6,7 +6,7 @@ import java.time.OffsetDateTime
 interface S3ObjectMeta : S3ObjectResponse {
 
   // TODO: Document me
-  val eTag: String
+  val eTag: String?
 
   // TODO: Document me
   val size: Long
@@ -18,8 +18,8 @@ interface S3ObjectMeta : S3ObjectResponse {
   val contentType: String
 
   // TODO: Document me
-  val retentionMode: S3RetentionMode
+  val retentionMode: S3RetentionMode?
 
   // TODO: Document me
-  val legalHold: S3LegalHold
+  val legalHold: S3LegalHold?
 }

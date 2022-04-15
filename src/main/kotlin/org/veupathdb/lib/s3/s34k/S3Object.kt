@@ -1,7 +1,7 @@
 package org.veupathdb.lib.s3.s34k
 
-import org.veupathdb.lib.s3.s34k.params.TagPutParams
 import org.veupathdb.lib.s3.s34k.params.`object`.ObjectTagGetParams
+import org.veupathdb.lib.s3.s34k.params.`object`.ObjectTagPutParams
 
 // TODO: Document me
 interface S3Object : S3ObjectResponse {
@@ -28,8 +28,8 @@ interface S3Object : S3ObjectResponse {
   fun setTags(vararg tags: S3Tag)
 
   // TODO: Document me
-  fun setTags(params: TagPutParams)
+  fun setTags(action: ObjectTagPutParams.() -> Unit)
 
   // TODO: Document me
-  fun setTags(action: TagPutParams.() -> Unit)
+  fun setTags(params: ObjectTagPutParams)
 }

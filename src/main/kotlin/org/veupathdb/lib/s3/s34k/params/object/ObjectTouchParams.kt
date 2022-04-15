@@ -21,7 +21,7 @@ class ObjectTouchParams(val callback: ((S3Object) -> Unit)? = null)
     val out = StringBuilder(2048)
 
     out.append("ObjectTouchParams {")
-    out.append("  callback = ").append(callback).append(",\n")
+    callback.also { out.append("  callback = ").append(it).append(",\n") }
 
     super.toString(out)
 

@@ -289,23 +289,28 @@ abstract class AbstractRequestParams {
   }
 
   protected open fun toString(sb: StringBuilder) {
-    sb.append("  headers = {\n")
-    headers.forEach { (hk, hv) ->
-      sb.append("    ").append(hk).append(" = [\n")
-      hv.forEach {
-        sb.append("      ").append(it).append(",\n")
+    if (headers.isNotEmpty()) {
+      sb.append("  headers = {\n")
+      headers.forEach { (hk, hv) ->
+        sb.append("    ").append(hk).append(" = [\n")
+        hv.forEach {
+          sb.append("      ").append(it).append(",\n")
+        }
+        sb.append("    ],\n")
       }
-      sb.append("    ],\n")
+      sb.append("  },\n")
     }
-    sb.append("  },\n")
-    sb.append("  queryParams = {\n")
-    queryParams.forEach { (hk, hv) ->
-      sb.append("    ").append(hk).append(" = [\n")
-      hv.forEach {
-        sb.append("      ").append(it).append(",\n")
+
+    if (queryParams.isNotEmpty()) {
+      sb.append("  queryParams = {\n")
+      queryParams.forEach { (hk, hv) ->
+        sb.append("    ").append(hk).append(" = [\n")
+        hv.forEach {
+          sb.append("      ").append(it).append(",\n")
+        }
+        sb.append("    ],\n")
       }
-      sb.append("    ],\n")
+      sb.append("  },\n")
     }
-    sb.append("  },\n")
   }
 }

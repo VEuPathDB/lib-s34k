@@ -19,7 +19,7 @@ class ObjectExistsParams(val callback: ((Boolean) -> Unit)? = null)
     val out = StringBuilder(2048)
 
     out.append("ObjectExistsParams {")
-    out.append("  callback = ").append(callback).append(",\n")
+    callback.also { out.append("  callback = ").append(it).append(",\n") }
 
     super.toString(out)
 
