@@ -17,6 +17,11 @@ data class S3Config(
   val region: String?,
 ) {
   override fun toString(): String {
-    return "S3Config {url: $url, accessKey: ***, secretKey: ***, region = $region}"
+    return "S3Config {\n" +
+      "  url = $url,\n" +
+      "  accessKey = ***,\n" +
+      "  secretKey = ***,\n" +
+      "  region = $region\n" +
+      "}"
   }
 }

@@ -15,7 +15,7 @@ import java.io.InputStream
  *
  * @since v0.1.0
  */
-class ObjectPutParams(val callback: ((S3Object) -> Unit)? = null) :
+class ObjectPutParams(var callback: ((S3Object) -> Unit)? = null) :
   ObjectPutRequestParams()
 {
 
@@ -51,7 +51,7 @@ class ObjectPutParams(val callback: ((S3Object) -> Unit)? = null) :
 
     out.append("ObjectPutParams {\n")
 
-    callback.also { out.append("  callback = ").append(it).append(",\n") }
+    callback?.also { out.append("  callback = ").append(it).append(",\n") }
     out.append("  stream = ...,\n")
     out.append("  length = ").append(length).append(",\n")
     out.append("  partSize = ").append(partSize).append(",\n")

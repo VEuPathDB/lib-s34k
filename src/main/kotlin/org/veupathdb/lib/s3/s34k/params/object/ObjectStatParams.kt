@@ -14,14 +14,14 @@ import org.veupathdb.lib.s3.s34k.S3ObjectMeta
  *
  * @since v0.1.0
  */
-class ObjectStatParams(val callback: ((S3ObjectMeta) -> Unit)? = null)
+class ObjectStatParams(var callback: ((S3ObjectMeta) -> Unit)? = null)
   : SealedObjReqParams()
 {
   override fun toString(): String {
     val out = StringBuilder(2048)
 
     out.append("ObjectStatParams {")
-    callback.also { out.append("  callback = ").append(it).append(",\n") }
+    callback?.also { out.append("  callback = ").append(it).append(",\n") }
 
     super.toString(out)
 

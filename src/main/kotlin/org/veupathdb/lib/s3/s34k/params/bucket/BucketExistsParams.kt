@@ -12,14 +12,14 @@ package org.veupathdb.lib.s3.s34k.params.bucket
  *
  * @since v0.1.0
  */
-class BucketExistsParams(val callback: ((exists: Boolean) -> Unit)? = null)
+class BucketExistsParams(var callback: ((exists: Boolean) -> Unit)? = null)
   : SealedBucketReqParams()
 {
   override fun toString(): String {
     val out = StringBuilder(2048)
 
     out.append("BucketExistsParams {")
-    callback.also { out.append("  callback = ").append(it).append(",\n") }
+    callback?.also { out.append("  callback = ").append(it).append(",\n") }
 
     super.toString(out)
 

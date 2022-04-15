@@ -15,14 +15,14 @@ import org.veupathdb.lib.s3.s34k.params.AbstractRequestParams
  *
  * @since v0.1.0
  */
-class BucketTagGetParams(val callback: ((tags: S3TagSet) -> Unit)? = null)
+class BucketTagGetParams(var callback: ((tags: S3TagSet) -> Unit)? = null)
   : AbstractRequestParams()
 {
   override fun toString(): String {
     val out = StringBuilder(2048)
 
     out.append("BucketTagGetParams {")
-    callback.also { out.append("  callback = ").append(it).append(",\n") }
+    callback?.also { out.append("  callback = ").append(it).append(",\n") }
 
     super.toString(out)
 

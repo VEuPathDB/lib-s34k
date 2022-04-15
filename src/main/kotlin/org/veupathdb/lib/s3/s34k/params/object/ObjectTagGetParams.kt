@@ -14,14 +14,14 @@ import org.veupathdb.lib.s3.s34k.S3TagSet
  *
  * @since v0.1.0
  */
-class ObjectTagGetParams(val callback: ((tags: S3TagSet) -> Unit)? = null)
+class ObjectTagGetParams(var callback: ((tags: S3TagSet) -> Unit)? = null)
   : SealedObjReqParams()
 {
   override fun toString(): String {
     val out = StringBuilder(2048)
 
     out.append("ObjectTagGetParams {")
-    callback.also { out.append("  callback = ").append(it).append(",\n") }
+    callback?.also { out.append("  callback = ").append(it).append(",\n") }
 
     super.toString(out)
 

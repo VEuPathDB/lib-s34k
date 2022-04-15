@@ -12,14 +12,14 @@ package org.veupathdb.lib.s3.s34k.params.`object`
  *
  * @since v0.1.0
  */
-class ObjectExistsParams(val callback: ((Boolean) -> Unit)? = null)
+class ObjectExistsParams(var callback: ((Boolean) -> Unit)? = null)
   : SealedObjReqParams()
 {
   override fun toString(): String {
     val out = StringBuilder(2048)
 
     out.append("ObjectExistsParams {")
-    callback.also { out.append("  callback = ").append(it).append(",\n") }
+    callback?.also { out.append("  callback = ").append(it).append(",\n") }
 
     super.toString(out)
 

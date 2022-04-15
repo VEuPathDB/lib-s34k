@@ -16,7 +16,7 @@ import java.io.File
  *
  * @since v0.1.0
  */
-class ObjectFilePutParams(val callback: ((S3Object) -> Unit)? = null) :
+class ObjectFilePutParams(var callback: ((S3Object) -> Unit)? = null) :
   ObjectPutRequestParams()
 {
 
@@ -49,7 +49,7 @@ class ObjectFilePutParams(val callback: ((S3Object) -> Unit)? = null) :
 
     out.append("ObjectFilePutParams {\n")
 
-    callback.also { out.append("  callback = ").append(it).append(",\n") }
+    callback?.also { out.append("  callback = ").append(it).append(",\n") }
     out.append("  localFile = ").append(localFile).append(",\n")
     out.append("  length = ").append(length).append(",\n")
     out.append("  partSize = ").append(partSize).append(",\n")

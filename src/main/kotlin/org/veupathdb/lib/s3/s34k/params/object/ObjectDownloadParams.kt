@@ -16,7 +16,7 @@ import java.io.File
  *
  * @since v0.1.0
  */
-class ObjectDownloadParams(val callback: ((S3FileObject) -> Unit)? = null)
+class ObjectDownloadParams(var callback: ((S3FileObject) -> Unit)? = null)
   : SealedObjReqParams()
 {
   /**
@@ -31,7 +31,7 @@ class ObjectDownloadParams(val callback: ((S3FileObject) -> Unit)? = null)
     val out = StringBuilder(2048)
 
     out.append("ObjectDownloadParams {")
-    callback.also { out.append("  callback = ").append(it).append(",\n") }
+    callback?.also { out.append("  callback = ").append(it).append(",\n") }
     out.append("  localFile = ").append(localFile).append(",\n")
 
     super.toString(out)

@@ -14,14 +14,14 @@ import org.veupathdb.lib.s3.s34k.S3Bucket
  *
  * @since v0.1.0
  */
-class BucketGetParams(val callback: ((bucket: S3Bucket) -> Unit)? = null)
+class BucketGetParams(var callback: ((bucket: S3Bucket) -> Unit)? = null)
   : SealedBucketReqParams()
 {
   override fun toString(): String {
     val out = StringBuilder(2048)
 
     out.append("BucketGetParams {")
-    callback.also { out.append("  callback = ").append(it).append(",\n") }
+    callback?.also { out.append("  callback = ").append(it).append(",\n") }
 
     super.toString(out)
 
