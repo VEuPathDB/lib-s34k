@@ -4,6 +4,7 @@ import org.veupathdb.lib.s3.s34k.errors.BucketNotFoundException
 import org.veupathdb.lib.s3.s34k.errors.ObjectNotFoundException
 import org.veupathdb.lib.s3.s34k.errors.S34kException
 import org.veupathdb.lib.s3.s34k.params.bucket.BucketTagGetParams
+import org.veupathdb.lib.s3.s34k.params.bucket.BucketTagPutParams
 import org.veupathdb.lib.s3.s34k.params.`object`.*
 import java.io.File
 import java.io.InputStream
@@ -146,7 +147,7 @@ interface S3Bucket {
 
   // endregion
 
-  // region: Bucket Tags
+  // region: Get Bucket Tags
 
   // TODO: Document me
   fun getBucketTags(): S3TagSet
@@ -156,6 +157,20 @@ interface S3Bucket {
 
   // TODO: Document me
   fun getBucketTags(action: BucketTagGetParams.() -> Unit): S3TagSet
+
+  // endregion
+
+
+  // region: Put Bucket Tags
+
+  // TODO: Document me
+  fun putBucketTags(cb: (() -> Unit)? = null)
+
+  // TODO: Document me
+  fun putBucketTags(action: BucketTagPutParams.() -> Unit)
+
+  // TODO: Document me
+  fun putBucketTags(params: BucketTagPutParams)
 
   // endregion
 

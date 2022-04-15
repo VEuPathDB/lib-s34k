@@ -2,6 +2,8 @@ package org.veupathdb.lib.s3.s34k.params
 
 import org.slf4j.LoggerFactory
 import org.veupathdb.lib.s3.s34k.S3Tag
+import org.veupathdb.lib.s3.s34k.params.bucket.BucketTagPutParams
+import org.veupathdb.lib.s3.s34k.params.`object`.ObjectTagPutParams
 
 /**
  * Generic Tag Put Operation Parameters
@@ -37,6 +39,27 @@ class TagPutParams()
   override fun addTag(key: String, value: String) {
     Log.trace("addTag(key = {}, value = {})", key, value)
     (this.tags as MutableSet).add(S3Tag(key, value))
+  }
+
+  fun toObjectTagPutParams(path: String, cb: (() -> Unit)? = null): ObjectTagPutParams {
+    Log.trace("toObjectTagPutParams(path = {}, cb = {})", path, cb)
+
+    return ObjectTagPutParams(cb).also {
+      it.path = path
+      (it.tags as MutableSet).addAll(tags)
+      headers.forEach { (k, v) -> it.addHeaders(k, *v) }
+      queryParams.forEach { (k, v) -> it.addQueryParams(k, *v) }
+    }
+  }
+
+  fun toBucketTagPutParams(cb: (() -> Unit)? = null): BucketTagPutParams {
+    Log.trace("toBucketTagPutParams(cb = {})", cb)
+
+    return BucketTagPutParams(cb).also {
+      (it.tags as MutableSet).addAll(tags)
+      headers.forEach { (k, v) -> it.addHeaders(k, *v) }
+      queryParams.forEach { (k, v) -> it.addQueryParams(k, *v) }
+    }
   }
 
   override fun toString(): String {
