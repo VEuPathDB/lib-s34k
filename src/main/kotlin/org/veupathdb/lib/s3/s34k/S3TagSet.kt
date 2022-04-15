@@ -8,7 +8,7 @@ package org.veupathdb.lib.s3.s34k
  *
  * @since v0.1.0
  */
-interface S3TagSet : Iterator<S3Tag> {
+interface S3TagSet : Iterable<S3Tag> {
 
   /**
    * Number of tags in this tag set.
@@ -35,8 +35,7 @@ interface S3TagSet : Iterator<S3Tag> {
   /**
    * Gets the contents of this tag set as an immutable list.
    *
-   * This method copies the contents of the tag set into the returned list on
-   * each call.
+   * The elements in this list are guaranteed to be unique.
    *
    * @return An immutable list with the contents of this tag [S3TagSet].
    */
@@ -44,9 +43,6 @@ interface S3TagSet : Iterator<S3Tag> {
 
   /**
    * Gets the contents of this tag set as an immutable map of keys to values.
-   *
-   * This method copies the contents of the tag set into the returned map on
-   * each call.
    *
    * @return An immutable map with the contents of this tag [S3TagSet].
    */
