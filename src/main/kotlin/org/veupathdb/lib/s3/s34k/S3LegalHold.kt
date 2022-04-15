@@ -7,6 +7,12 @@ enum class S3LegalHold {
 
   val asBool get() = this == On
 
+  override fun toString(): String =
+    when(this) {
+      On  -> "ON"
+      Off -> "OFF"
+    }
+
   companion object {
     @JvmStatic
     // TODO: Document me

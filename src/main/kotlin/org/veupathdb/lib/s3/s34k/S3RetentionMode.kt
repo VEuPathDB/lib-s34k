@@ -5,8 +5,13 @@ enum class S3RetentionMode {
   Compliance,
   Governance;
 
-  companion object {
+  override fun toString() =
+    when(this) {
+      Compliance -> "COMPLIANCE"
+      Governance -> "GOVERNANCE"
+    }
 
+  companion object {
     // TODO: Document me
     @JvmStatic
     fun fromString(value: String) =
