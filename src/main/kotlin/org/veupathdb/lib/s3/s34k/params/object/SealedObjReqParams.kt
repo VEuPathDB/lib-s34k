@@ -20,7 +20,7 @@ sealed class SealedObjReqParams : AbstractRequestParams() {
    * This value must be set or an [InvalidRequestConfigException] will be thrown
    * when the request is attempted.
    */
-  var path = ""
+  var path: String? = null
 
   override fun toString(sb: StringBuilder) {
     sb.append("  path = ").append(path).append(",\n")
