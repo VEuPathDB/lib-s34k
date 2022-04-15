@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "org.veupathdb.lib.s3"
-version = "0.1.0"
+version = "0.1.0-SNAPSHOT"
 
 java {
   sourceCompatibility = JavaVersion.VERSION_1_8
@@ -49,4 +49,43 @@ tasks.test {
 
 tasks.withType<KotlinCompile> {
   kotlinOptions.jvmTarget = "1.8"
+}
+
+
+publishing {
+  repositories {
+    maven {
+      name = "GitHub"
+      url = uri("https://maven.pkg.github.com/VEuPathDB/lib-s34k")
+      credentials {
+        username = project.findProperty("gpr.user") as String? ?: System.getenv("USERNAME")
+        password = project.findProperty("gpr.key") as String? ?: System.getenv("TOKEN")
+      }
+    }
+  }
+
+  publications {
+    create<MavenPublication>("gpr") {
+      from(components["java"])
+      pom {
+        name.set("Generalized S3 API")
+        description.set("Provides a standard API for S3 operations which may be backed by varying implementations.")
+        url.set("https://github.com/VEuPathDB/lib-s34k")
+        developers {
+          developer {
+            id.set("epharper")
+            name.set("Elizabeth Paige Harper")
+            email.set("epharper@upenn.edu")
+            url.set("https://github.com/foxcapades")
+            organization.set("VEuPathDB")
+          }
+        }
+        scm {
+          connection.set("scm:git:git://github.com/VEuPathDB/lib-s34k.git")
+          developerConnection.set("scm:git:ssh://github.com/VEuPathDB/lib-s34k.git")
+          url.set("https://github.com/VEuPathDB/lib-s34k")
+        }
+      }
+    }
+  }
 }

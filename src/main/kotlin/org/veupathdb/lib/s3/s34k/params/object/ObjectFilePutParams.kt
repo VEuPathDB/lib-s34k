@@ -1,12 +1,13 @@
-package org.veupathdb.lib.s3.s34k.params
+package org.veupathdb.lib.s3.s34k.params.`object`
 
 import org.veupathdb.lib.s3.s34k.S3Object
-import java.io.InputStream
+import org.veupathdb.lib.s3.s34k.errors.InvalidRequestConfigException
+import java.io.File
 
 /**
- * Object Put Operation Parameters.
+ * File Put Operation Parameters.
  *
- * @constructor Constructs a new [ObjectPutParams] instance.
+ * @constructor Constructs a new [ObjectFilePutParams] instance.
  *
  * @param callback Optional callback that will be called upon request
  * completion.
@@ -15,20 +16,17 @@ import java.io.InputStream
  *
  * @since v0.1.0
  */
-class ObjectPutParams(val callback: ((S3Object) -> Unit)? = null) :
+class ObjectFilePutParams(val callback: ((S3Object) -> Unit)? = null) :
   ObjectPutRequestParams()
 {
 
   /**
-   * Stream containing the data that will be written to the object in the S3
-   * store.
+   * Path to the local file that will be put into the S3 store.
    *
-   * Whether this stream will be closed on completion of the put operation is
-   * implementation specific.
-   *
-   * Defaults to an empty stream.
+   * This value must be set or an [InvalidRequestConfigException] will be thrown
+   * when the request is attempted.
    */
-  var stream: InputStream = ByteArray(0).inputStream()
+  var localFile = File("")
 
   /**
    * Size of the object being written to the S3 store.
@@ -49,10 +47,10 @@ class ObjectPutParams(val callback: ((S3Object) -> Unit)? = null) :
   override fun toString(): String {
     val out = StringBuilder(2048)
 
-    out.append("ObjectPutParams {\n")
+    out.append("ObjectFilePutParams {\n")
 
     out.append("  callback = ").append(callback).append(",\n")
-    out.append("  stream = ...,\n")
+    out.append("  localFile = ").append(localFile).append(",\n")
     out.append("  length = ").append(length).append(",\n")
     out.append("  partSize = ").append(partSize).append(",\n")
 

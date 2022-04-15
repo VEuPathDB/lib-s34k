@@ -1,4 +1,4 @@
-package org.veupathdb.lib.s3.s34k.params
+package org.veupathdb.lib.s3.s34k.params.bucket
 
 import org.veupathdb.lib.s3.s34k.S3Bucket
 

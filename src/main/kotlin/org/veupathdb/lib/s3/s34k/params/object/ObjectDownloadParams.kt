@@ -1,4 +1,4 @@
-package org.veupathdb.lib.s3.s34k.params
+package org.veupathdb.lib.s3.s34k.params.`object`
 
 import org.veupathdb.lib.s3.s34k.S3FileObject
 import org.veupathdb.lib.s3.s34k.errors.InvalidRequestConfigException
@@ -17,7 +17,7 @@ import java.io.File
  * @since v0.1.0
  */
 class ObjectDownloadParams(val callback: ((S3FileObject) -> Unit)? = null)
-  : ObjectRequestParams()
+  : SealedObjReqParams()
 {
   /**
    * Path to the local file into which the remote object will be downloaded.

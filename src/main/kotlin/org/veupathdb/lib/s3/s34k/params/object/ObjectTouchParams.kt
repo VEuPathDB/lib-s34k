@@ -1,11 +1,11 @@
-package org.veupathdb.lib.s3.s34k.params
+package org.veupathdb.lib.s3.s34k.params.`object`
 
-import org.veupathdb.lib.s3.s34k.S3Bucket
+import org.veupathdb.lib.s3.s34k.S3Object
 
 /**
- * Put Bucket Operation Parameters
+ * Empty Object Put Operation Parameters
  *
- * @constructor Constructs a new [BucketPutParams] instance.
+ * @constructor Constructs a new [ObjectTouchParams] instance.
  *
  * @param callback Optional callback that will be called upon request
  * completion.
@@ -14,13 +14,13 @@ import org.veupathdb.lib.s3.s34k.S3Bucket
  *
  * @since v0.1.0
  */
-class BucketPutParams(val callback: ((bucket: S3Bucket) -> Unit)? = null)
-  : BucketRequestParams()
+class ObjectTouchParams(val callback: ((S3Object) -> Unit)? = null)
+  : ObjectPutRequestParams()
 {
   override fun toString(): String {
     val out = StringBuilder(2048)
 
-    out.append("BucketPutParams {")
+    out.append("ObjectTouchParams {")
     out.append("  callback = ").append(callback).append(",\n")
 
     super.toString(out)

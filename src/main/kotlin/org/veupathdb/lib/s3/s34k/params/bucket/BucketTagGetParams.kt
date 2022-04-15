@@ -1,11 +1,12 @@
-package org.veupathdb.lib.s3.s34k.params
+package org.veupathdb.lib.s3.s34k.params.bucket
 
-import org.veupathdb.lib.s3.s34k.S3Object
+import org.veupathdb.lib.s3.s34k.S3TagSet
+import org.veupathdb.lib.s3.s34k.params.AbstractRequestParams
 
 /**
- * Empty Object Put Operation Parameters
+ * Bucket Tag Retrieval Operation Parameters
  *
- * @constructor Constructs a new [ObjectTouchParams] instance.
+ * @constructor Constructs a new [BucketTagGetParams] instance.
  *
  * @param callback Optional callback that will be called upon request
  * completion.
@@ -14,13 +15,13 @@ import org.veupathdb.lib.s3.s34k.S3Object
  *
  * @since v0.1.0
  */
-class ObjectTouchParams(val callback: ((S3Object) -> Unit)? = null)
-  : ObjectPutRequestParams()
+class BucketTagGetParams(val callback: ((tags: S3TagSet) -> Unit)? = null)
+  : AbstractRequestParams()
 {
   override fun toString(): String {
     val out = StringBuilder(2048)
 
-    out.append("ObjectTouchParams {")
+    out.append("BucketTagGetParams {")
     out.append("  callback = ").append(callback).append(",\n")
 
     super.toString(out)

@@ -11,4 +11,8 @@ data class S3Tag(val key: String, val value: String) {
     if (value.length > MaxValLength)
       throw IllegalArgumentException("Tag values must be less than or equal to $MaxValLength unicode characters in length.")
   }
+
+  override fun toString(): String {
+    return "S3Tag {\n  key = $key,\n  value = $value,\n}"
+  }
 }

@@ -4,6 +4,7 @@ import org.veupathdb.lib.s3.s34k.errors.BucketNotFoundException
 import org.veupathdb.lib.s3.s34k.errors.ObjectNotFoundException
 import org.veupathdb.lib.s3.s34k.errors.S34kException
 import org.veupathdb.lib.s3.s34k.params.*
+import org.veupathdb.lib.s3.s34k.params.`object`.ObjectTagPutParams
 import java.io.File
 import java.io.InputStream
 
@@ -17,7 +18,7 @@ import java.io.InputStream
  * @since v0.1.0
  */
 @Suppress("unused")
-sealed interface S3Bucket {
+interface S3Bucket {
 
   /**
    * Reference to the parent client that created this [S3Bucket] instance.
@@ -88,20 +89,28 @@ sealed interface S3Bucket {
 
   // endregion
 
-  // region Get Object
+
+  // region: Stat Object
+
+  fun statObject(path: String)
+
+  // endregion
+
+
+  // region: Get Object
 
   // TODO: Document me
   fun getObject(path: String): S3StreamObject
 
   // TODO: Document me
-  fun getObject(params: ObjectExistsParams): S3StreamObject
+  fun getObject(params: ObjectGetParams): S3StreamObject
 
   // TODO: Document me
   fun getObject(action: ObjectGetParams.() -> Unit): S3StreamObject
 
   // endregion
 
-  // region: Object Tags
+  // region: Get Object Tags
 
   // TODO: Document me
   fun getObjectTags(path: String): S3TagSet
@@ -111,6 +120,22 @@ sealed interface S3Bucket {
 
   // TODO: Document me
   fun getObjectTags(action: ObjectTagGetParams.() -> Unit): S3TagSet
+
+  // endregion
+
+  // region: Put Object Tags
+
+  // TODO: Document me
+  fun putObjectTags(path: String, tags: Collection<S3Tag>): S3TagSet
+
+  // TODO: Document me
+  fun putObjectTags(path: String, tags: Map<String, String>): S3TagSet
+
+  // TODO: Document me
+  fun putObjectTags(params: ObjectTagPutParams): S3TagSet
+
+  // TODO: Document me
+  fun putObjectTags(action: ObjectTagPutParams.() -> Unit): S3TagSet
 
   // endregion
 
@@ -287,13 +312,13 @@ sealed interface S3Bucket {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun putFile(path: String, file: File): S3Object
+  fun uploadFile(path: String, file: File): S3Object
 
   // TODO: Document me
-  fun putFile(params: ObjectFilePutParams): S3Object
+  fun uploadFile(params: ObjectFilePutParams): S3Object
 
   // TODO: Document me
-  fun putFile(action: ObjectFilePutParams.() -> Unit)
+  fun uploadFile(action: ObjectFilePutParams.() -> Unit)
 
   // endregion
 }

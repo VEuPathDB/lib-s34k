@@ -1,11 +1,11 @@
-package org.veupathdb.lib.s3.s34k.params
+package org.veupathdb.lib.s3.s34k.params.`object`
 
-import org.veupathdb.lib.s3.s34k.S3TagSet
+import org.veupathdb.lib.s3.s34k.S3StreamObject
 
 /**
- * Object Tag Retrieval Operation Parameters
+ * Object Retrieval Operation Parameters
  *
- * @constructor Constructs a new [ObjectTagGetParams] instance.
+ * @constructor Constructs a new [ObjectGetParams] instance.
  *
  * @param callback Optional callback that will be called upon request
  * completion.
@@ -14,18 +14,15 @@ import org.veupathdb.lib.s3.s34k.S3TagSet
  *
  * @since v0.1.0
  */
-class ObjectTagGetParams(val callback: ((tags: S3TagSet) -> Unit)? = null)
-  : ObjectRequestParams()
+class ObjectGetParams(val callback: ((S3StreamObject) -> Unit)? = null)
+  : SealedObjReqParams()
 {
   override fun toString(): String {
     val out = StringBuilder(2048)
 
-    out.append("ObjectTagGetParams {")
     out.append("  callback = ").append(callback).append(",\n")
 
     super.toString(out)
-
-    out.append("}")
 
     return out.toString()
   }

@@ -1,10 +1,10 @@
-package org.veupathdb.lib.s3.s34k.params
+package org.veupathdb.lib.s3.s34k.params.bucket
 
 import org.slf4j.LoggerFactory
 import org.veupathdb.lib.s3.s34k.S3Tag
 
 /**
- * Object Put Operation Params
+ * Bucket Put Operation Params
  *
  * Base type for S3 put operation param sets.
  *
@@ -12,7 +12,7 @@ import org.veupathdb.lib.s3.s34k.S3Tag
  *
  * @since v0.1.0
  */
-sealed class ObjectPutRequestParams : ObjectRequestParams() {
+sealed class BucketPutRequestParams : BucketRequestParams() {
 
   private val Log = LoggerFactory.getLogger(this::class.java)
 
@@ -22,7 +22,7 @@ sealed class ObjectPutRequestParams : ObjectRequestParams() {
   val tags: Set<S3Tag> = HashSet()
 
   /**
-   * Adds/overwrites the tags in the existing [ObjectPutRequestParams.tags] [Set] with the
+   * Adds/overwrites the tags in the existing [BucketPutRequestParams.tags] [Set] with the
    * values contained in the given [tags] [Map].
    *
    * Each entry in the input map will be converted into an [S3Tag] instance and
@@ -38,7 +38,7 @@ sealed class ObjectPutRequestParams : ObjectRequestParams() {
   }
 
   /**
-   * Adds/overwrites the tags in the existing [ObjectPutRequestParams.tags] [Set] with the
+   * Adds/overwrites the tags in the existing [BucketPutRequestParams.tags] [Set] with the
    * values contained in the given [tags] array.
    *
    * @param tags Array of tags to set on this request.
@@ -49,7 +49,7 @@ sealed class ObjectPutRequestParams : ObjectRequestParams() {
   }
 
   /**
-   * Adds/overwrites the tags in the existing [ObjectPutRequestParams.tags] [Set] with the
+   * Adds/overwrites the tags in the existing [BucketPutRequestParams.tags] [Set] with the
    * values contained in the given [tags] [Collection].
    *
    * @param tags Collection of tags to set on this request.

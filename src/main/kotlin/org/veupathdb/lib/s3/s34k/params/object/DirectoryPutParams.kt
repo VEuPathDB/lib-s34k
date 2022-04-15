@@ -1,11 +1,11 @@
-package org.veupathdb.lib.s3.s34k.params
+package org.veupathdb.lib.s3.s34k.params.`object`
 
-import org.veupathdb.lib.s3.s34k.S3TagSet
+import org.veupathdb.lib.s3.s34k.S3Object
 
 /**
- * Bucket Tag Retrieval Operation Parameters
+ * Directory Put Operation Parameters
  *
- * @constructor Constructs a new [BucketTagGetParams] instance.
+ * @constructor Constructs a new [DirectoryPutParams] instance.
  *
  * @param callback Optional callback that will be called upon request
  * completion.
@@ -14,13 +14,13 @@ import org.veupathdb.lib.s3.s34k.S3TagSet
  *
  * @since v0.1.0
  */
-class BucketTagGetParams(val callback: ((tags: S3TagSet) -> Unit)? = null)
-  : BucketRequestParams()
+class DirectoryPutParams(val callback: ((directory: S3Object) -> Unit)? = null)
+  : ObjectPutRequestParams()
 {
   override fun toString(): String {
     val out = StringBuilder(2048)
 
-    out.append("BucketTagGetParams {")
+    out.append("DirectoryPutParams {")
     out.append("  callback = ").append(callback).append(",\n")
 
     super.toString(out)

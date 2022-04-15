@@ -1,6 +1,7 @@
-package org.veupathdb.lib.s3.s34k.params
+package org.veupathdb.lib.s3.s34k.params.`object`
 
 import org.veupathdb.lib.s3.s34k.errors.InvalidRequestConfigException
+import org.veupathdb.lib.s3.s34k.params.AbstractRequestParams
 
 /**
  * Object Request Params
@@ -11,7 +12,7 @@ import org.veupathdb.lib.s3.s34k.errors.InvalidRequestConfigException
  *
  * @since v0.1.0
  */
-sealed class ObjectRequestParams : RequestParams() {
+sealed class SealedObjReqParams : AbstractRequestParams() {
 
   /**
    * Path to the object target of this request.
