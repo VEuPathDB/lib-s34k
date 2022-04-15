@@ -3,8 +3,8 @@ package org.veupathdb.lib.s3.s34k
 import org.veupathdb.lib.s3.s34k.errors.BucketNotFoundException
 import org.veupathdb.lib.s3.s34k.errors.ObjectNotFoundException
 import org.veupathdb.lib.s3.s34k.errors.S34kException
-import org.veupathdb.lib.s3.s34k.params.*
-import org.veupathdb.lib.s3.s34k.params.`object`.ObjectTagPutParams
+import org.veupathdb.lib.s3.s34k.params.bucket.BucketTagGetParams
+import org.veupathdb.lib.s3.s34k.params.`object`.*
 import java.io.File
 import java.io.InputStream
 
@@ -92,7 +92,14 @@ interface S3Bucket {
 
   // region: Stat Object
 
-  fun statObject(path: String)
+  // TODO: Document me
+  fun statObject(path: String): S3ObjectMeta
+
+  // TODO: Document me
+  fun statObject(params: ObjectStatParams): S3ObjectMeta
+
+  // TODO: Document me
+  fun statObject(action: ObjectStatParams.() -> Unit): S3ObjectMeta
 
   // endregion
 
