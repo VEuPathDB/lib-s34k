@@ -1,7 +1,9 @@
 package org.veupathdb.lib.s3.s34k
 
 // TODO: Document me
-interface S3Headers {
+interface S3Headers : Iterable<Pair<String, List<String>>> {
+
+  val size: Int
 
   // TODO: Document me
   fun toMap(): Map<String, List<String>>
