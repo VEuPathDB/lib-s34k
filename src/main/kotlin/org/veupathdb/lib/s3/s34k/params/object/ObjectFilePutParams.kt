@@ -26,7 +26,7 @@ class ObjectFilePutParams(val callback: ((S3Object) -> Unit)? = null) :
    * This value must be set or an [InvalidRequestConfigException] will be thrown
    * when the request is attempted.
    */
-  var localFile = File("")
+  var localFile: File? = null
 
   /**
    * Size of the object being written to the S3 store.
