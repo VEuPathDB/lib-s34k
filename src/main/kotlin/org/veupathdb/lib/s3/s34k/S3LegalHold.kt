@@ -5,8 +5,9 @@ enum class S3LegalHold {
   On,
   Off;
 
-  companion object {
+  val asBool get() = this == On
 
+  companion object {
     @JvmStatic
     // TODO: Document me
     fun fromString(value: String) =
