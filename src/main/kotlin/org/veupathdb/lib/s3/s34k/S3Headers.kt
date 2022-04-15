@@ -12,8 +12,8 @@ interface S3Headers : Iterable<Pair<String, List<String>>> {
   fun keys(): Set<String>
 
   // TODO: Document me
-  fun getHeader(key: String): String
+  fun getHeader(key: String): String?
 
   // TODO: Document me
-  fun getHeaders(key: String): List<String>
+  fun getHeaders(key: String): List<String>?
 }
