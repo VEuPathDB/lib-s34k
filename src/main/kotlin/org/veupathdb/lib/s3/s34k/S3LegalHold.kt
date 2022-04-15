@@ -8,6 +8,7 @@ enum class S3LegalHold {
   companion object {
 
     @JvmStatic
+    // TODO: Document me
     fun fromString(value: String) =
       when(value) {
         "ON"  -> On

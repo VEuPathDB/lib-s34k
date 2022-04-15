@@ -7,7 +7,7 @@ package org.veupathdb.lib.s3.s34k
  * This index may not be complete.
  */
 @Suppress("unused")
-object S3RequestParams {
+object S3RequestParam {
 
   /**
    * `If-Match`

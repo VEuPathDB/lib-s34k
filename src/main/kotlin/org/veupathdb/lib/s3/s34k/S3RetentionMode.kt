@@ -7,6 +7,7 @@ enum class S3RetentionMode {
 
   companion object {
 
+    // TODO: Document me
     @JvmStatic
     fun fromString(value: String) =
       when(value) {

@@ -1,11 +1,11 @@
 package org.veupathdb.lib.s3.s34k
 
-import org.veupathdb.lib.s3.s34k.params.BucketExistsParams
-import org.veupathdb.lib.s3.s34k.params.BucketGetParams
-import org.veupathdb.lib.s3.s34k.params.BucketPutParams
 import org.veupathdb.lib.s3.s34k.errors.S34kException
 import org.veupathdb.lib.s3.s34k.errors.BucketAlreadyExistsException
 import org.veupathdb.lib.s3.s34k.errors.BucketNotFoundException
+import org.veupathdb.lib.s3.s34k.params.bucket.BucketExistsParams
+import org.veupathdb.lib.s3.s34k.params.bucket.BucketGetParams
+import org.veupathdb.lib.s3.s34k.params.bucket.BucketPutParams
 
 /**
  * S3 API Wrapper
