@@ -33,11 +33,11 @@ sealed class BucketRequestParams : AbstractRequestParams() {
   /**
    * Optional region value.
    */
-  var region: String = ""
+  var region: String? = null
 
   override fun toString(sb: StringBuilder) {
     sb.append("  bucket = ").append(bucket).append(",\n")
-    sb.append("  region = ").append(region).append(",\n")
+    region?.also { sb.append("  region = ").append(it).append(",\n") }
     super.toString(sb)
   }
 }
