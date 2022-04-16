@@ -31,8 +31,7 @@ class TagGetParams()
   fun toObjectTagGetParams(path: String, cb: ((tags: S3TagSet) -> Unit)? = null): ObjectTagGetParams {
     Log.trace("toObjectTagGetParams(path = {}, cb = {})", path, cb)
 
-    return ObjectTagGetParams(cb).also {
-      it.path = path
+    return ObjectTagGetParams(path, cb).also {
       headers.forEach { (k, v) -> it.addHeaders(k, *v) }
       queryParams.forEach { (k, v) -> it.addQueryParams(k, *v) }
     }

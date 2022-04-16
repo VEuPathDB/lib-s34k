@@ -44,7 +44,7 @@ class TagPutParams()
   fun toObjectTagPutParams(path: String, cb: (() -> Unit)? = null): ObjectTagPutParams {
     Log.trace("toObjectTagPutParams(path = {}, cb = {})", path, cb)
 
-    return ObjectTagPutParams(cb).also {
+    return ObjectTagPutParams(path, cb).also {
       it.path = path
       (it.tags as MutableSet).addAll(tags)
       headers.forEach { (k, v) -> it.addHeaders(k, *v) }
