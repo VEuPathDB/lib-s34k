@@ -8,6 +8,7 @@ import org.veupathdb.lib.s3.s34k.params.bucket.BucketTagPutParams
 import org.veupathdb.lib.s3.s34k.params.`object`.*
 import java.io.File
 import java.io.InputStream
+import java.time.OffsetDateTime
 
 /**
  * S3 Bucket API Wrapper
@@ -35,6 +36,11 @@ interface S3Bucket {
    * Region of this bucket.
    */
   val region: String?
+
+  /**
+   * Date/time this bucket was created.
+   */
+  val creationDate: OffsetDateTime
 
   // region Object Exists
 
