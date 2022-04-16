@@ -43,6 +43,9 @@ interface S3Bucket {
    *
    * @param path Path to the object to test for.
    *
+   * @param cb Optional callback that will be executed on successful response
+   * from the S3 store.
+   *
    * @return `true` if an object exists at the given path, otherwise `false`.
    *
    * @throws BucketNotFoundException If the bucket has been deleted since this
@@ -53,23 +56,6 @@ interface S3Bucket {
    * 'cause' value.
    */
   fun objectExists(path: String): Boolean
-
-  /**
-   * Tests for the existence of an object with the operation configured by the
-   * given [params].
-   *
-   * @param params S3 operation configuration.
-   *
-   * @return `true` if an object exists at the given path, otherwise `false`.
-   *
-   * @throws BucketNotFoundException If the bucket has been deleted since this
-   * [S3Bucket] instance was created.
-   *
-   * @throws S34kException If an implementation specific exception is thrown.
-   * The implementation specific exception will be set to the thrown exception's
-   * 'cause' value.
-   */
-  fun objectExists(params: ObjectExistsParams): Boolean
 
   /**
    * Tests for the existence of an object with the operation configured by the
@@ -88,19 +74,54 @@ interface S3Bucket {
    */
   fun objectExists(action: ObjectExistsParams.() -> Unit): Boolean
 
+  /**
+   * Tests for the existence of an object with the operation configured by the
+   * given [params].
+   *
+   * @param params S3 operation configuration.
+   *
+   * @return `true` if an object exists at the given path, otherwise `false`.
+   *
+   * @throws BucketNotFoundException If the bucket has been deleted since this
+   * [S3Bucket] instance was created.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
+  fun objectExists(params: ObjectExistsParams): Boolean
+
   // endregion
 
 
   // region: Stat Object
 
-  // TODO: Document me
+  /**
+   * Fetches metadata for the object in this bucket at the given [path].
+   *
+   * @param path Path to the object whose metadata should be fetched.
+   *
+   * @param cb Optional callback that will be executed on successful response
+   * from the S3 store.
+   *
+   * @return Metadata about the specified object.
+   *
+   * @throws BucketNotFoundException If the bucket has been deleted since this
+   * [S3Bucket] instance was created.
+   *
+   * @throws ObjectNotFoundException If the target object does not exist.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
   fun statObject(path: String): S3ObjectMeta
 
   // TODO: Document me
-  fun statObject(params: ObjectStatParams): S3ObjectMeta
+  fun statObject(action: ObjectStatParams.() -> Unit): S3ObjectMeta
 
   // TODO: Document me
-  fun statObject(action: ObjectStatParams.() -> Unit): S3ObjectMeta
+  fun statObject(params: ObjectStatParams): S3ObjectMeta
 
   // endregion
 
@@ -140,10 +161,10 @@ interface S3Bucket {
   fun putObjectTags(path: String, tags: Map<String, String>): S3TagSet
 
   // TODO: Document me
-  fun putObjectTags(params: ObjectTagPutParams): S3TagSet
+  fun putObjectTags(action: ObjectTagPutParams.() -> Unit): S3TagSet
 
   // TODO: Document me
-  fun putObjectTags(action: ObjectTagPutParams.() -> Unit): S3TagSet
+  fun putObjectTags(params: ObjectTagPutParams): S3TagSet
 
   // endregion
 
@@ -153,10 +174,10 @@ interface S3Bucket {
   fun getBucketTags(): S3TagSet
 
   // TODO: Document me
-  fun getBucketTags(params: BucketTagGetParams): S3TagSet
+  fun getBucketTags(action: BucketTagGetParams.() -> Unit): S3TagSet
 
   // TODO: Document me
-  fun getBucketTags(action: BucketTagGetParams.() -> Unit): S3TagSet
+  fun getBucketTags(params: BucketTagGetParams): S3TagSet
 
   // endregion
 
@@ -164,7 +185,7 @@ interface S3Bucket {
   // region: Put Bucket Tags
 
   // TODO: Document me
-  fun putBucketTags(cb: (() -> Unit)? = null)
+  fun putBucketTags()
 
   // TODO: Document me
   fun putBucketTags(action: BucketTagPutParams.() -> Unit)
@@ -200,7 +221,6 @@ interface S3Bucket {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  // TODO: Document me
   fun downloadObject(path: String, localFile: File): S3FileObject
 
   // TODO: Document me
@@ -225,14 +245,13 @@ interface S3Bucket {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  // TODO: Document me
   fun touchObject(path: String): S3Object
 
   // TODO: Document me
-  fun touchObject(params: ObjectTouchParams): S3Object
+  fun touchObject(action: ObjectTouchParams.() -> Unit): S3Object
 
   // TODO: Document me
-  fun touchObject(action: ObjectTouchParams.() -> Unit): S3Object
+  fun touchObject(params: ObjectTouchParams): S3Object
 
   // endregion
 
@@ -261,10 +280,10 @@ interface S3Bucket {
   fun putDirectory(path: String): S3Object
 
   // TODO: Document me
-  fun putDirectory(params: DirectoryPutParams): S3Object
+  fun putDirectory(action: DirectoryPutParams.() -> Unit): S3Object
 
   // TODO: Document me
-  fun putDirectory(action: DirectoryPutParams.() -> Unit): S3Object
+  fun putDirectory(params: DirectoryPutParams): S3Object
 
   // endregion
 
