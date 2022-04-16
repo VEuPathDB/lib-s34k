@@ -20,7 +20,7 @@ package org.veupathdb.lib.s3.s34k.params.bucket
 class BucketExistsParams(
   bucket: String? = null,
   var callback: ((exists: Boolean) -> Unit)? = null
-) : SealedBucketReqParams() {
+) : SealedBucketReqParams(bucket) {
   override fun toString(): String {
     val out = StringBuilder(2048)
 

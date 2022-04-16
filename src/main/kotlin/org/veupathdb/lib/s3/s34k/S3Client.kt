@@ -5,6 +5,7 @@ import org.veupathdb.lib.s3.s34k.errors.BucketAlreadyExistsException
 import org.veupathdb.lib.s3.s34k.errors.BucketNotFoundException
 import org.veupathdb.lib.s3.s34k.params.bucket.BucketExistsParams
 import org.veupathdb.lib.s3.s34k.params.bucket.BucketGetParams
+import org.veupathdb.lib.s3.s34k.params.bucket.BucketListParams
 import org.veupathdb.lib.s3.s34k.params.bucket.BucketPutParams
 
 /**
@@ -225,4 +226,16 @@ interface S3Client {
   fun getBucket(action: BucketGetParams.() -> Unit): S3Bucket
 
   // endregion
+
+
+  // region: List Buckets
+
+  // TODO: Document me
+  fun listBuckets()
+
+  // TODO: Document me
+  fun listBuckets(action: BucketListParams.() -> Unit): List<S3Bucket>
+
+  // TODO: Document me
+  fun listBuckets(params: BucketListParams): List<S3Bucket>
 }
