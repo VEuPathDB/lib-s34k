@@ -231,7 +231,7 @@ interface S3Client {
   // region: List Buckets
 
   // TODO: Document me
-  fun listBuckets()
+  fun listBuckets(): List<S3Bucket>
 
   // TODO: Document me
   fun listBuckets(action: BucketListParams.() -> Unit): List<S3Bucket>
