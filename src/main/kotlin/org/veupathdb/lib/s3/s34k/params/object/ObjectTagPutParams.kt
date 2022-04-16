@@ -5,6 +5,8 @@ package org.veupathdb.lib.s3.s34k.params.`object`
  *
  * @constructor Constructs a new [ObjectTagPutParams] instance.
  *
+ * @param path Path to the object target of this request.
+ *
  * @param callback Optional callback that will be called upon request
  * completion.
  *
@@ -12,9 +14,10 @@ package org.veupathdb.lib.s3.s34k.params.`object`
  *
  * @since v0.1.0
  */
-class ObjectTagPutParams(var callback: (() -> Unit)? = null)
-  : ObjectPutRequestParams()
-{
+class ObjectTagPutParams(
+  path: String? = null,
+  var callback: (() -> Unit)? = null
+) : SealedObjPutReqParams() {
   override fun toString(): String {
     val out = StringBuilder(2048)
 

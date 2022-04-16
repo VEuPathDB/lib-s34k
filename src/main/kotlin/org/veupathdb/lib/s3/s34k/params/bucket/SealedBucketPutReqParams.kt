@@ -12,7 +12,7 @@ import org.veupathdb.lib.s3.s34k.S3Tag
  *
  * @since v0.1.0
  */
-sealed class BucketPutRequestParams : SealedBucketReqParams() {
+sealed class SealedBucketPutReqParams(bucket: String? = null) : SealedBucketReqParams(bucket) {
 
   private val Log = LoggerFactory.getLogger(this::class.java)
 
@@ -22,7 +22,7 @@ sealed class BucketPutRequestParams : SealedBucketReqParams() {
   val tags: Set<S3Tag> = HashSet()
 
   /**
-   * Adds/overwrites the tags in the existing [BucketPutRequestParams.tags] [Set] with the
+   * Adds/overwrites the tags in the existing [SealedBucketPutReqParams.tags] [Set] with the
    * values contained in the given [tags] [Map].
    *
    * Each entry in the input map will be converted into an [S3Tag] instance and
@@ -38,7 +38,7 @@ sealed class BucketPutRequestParams : SealedBucketReqParams() {
   }
 
   /**
-   * Adds/overwrites the tags in the existing [BucketPutRequestParams.tags] [Set] with the
+   * Adds/overwrites the tags in the existing [SealedBucketPutReqParams.tags] [Set] with the
    * values contained in the given [tags] array.
    *
    * @param tags Array of tags to set on this request.
@@ -49,7 +49,7 @@ sealed class BucketPutRequestParams : SealedBucketReqParams() {
   }
 
   /**
-   * Adds/overwrites the tags in the existing [BucketPutRequestParams.tags] [Set] with the
+   * Adds/overwrites the tags in the existing [SealedBucketPutReqParams.tags] [Set] with the
    * values contained in the given [tags] [Collection].
    *
    * @param tags Collection of tags to set on this request.

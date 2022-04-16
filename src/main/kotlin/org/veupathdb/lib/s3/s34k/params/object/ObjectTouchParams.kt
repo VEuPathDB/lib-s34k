@@ -7,6 +7,8 @@ import org.veupathdb.lib.s3.s34k.S3Object
  *
  * @constructor Constructs a new [ObjectTouchParams] instance.
  *
+ * @param path Path to the object target of this request.
+ *
  * @param callback Optional callback that will be called upon request
  * completion.
  *
@@ -14,9 +16,10 @@ import org.veupathdb.lib.s3.s34k.S3Object
  *
  * @since v0.1.0
  */
-class ObjectTouchParams(var callback: ((S3Object) -> Unit)? = null)
-  : ObjectPutRequestParams()
-{
+class ObjectTouchParams(
+  path: String? = null,
+  var callback: ((S3Object) -> Unit)? = null
+) : SealedObjPutReqParams(path) {
   override fun toString(): String {
     val out = StringBuilder(2048)
 

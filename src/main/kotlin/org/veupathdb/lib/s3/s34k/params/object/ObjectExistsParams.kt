@@ -12,8 +12,10 @@ package org.veupathdb.lib.s3.s34k.params.`object`
  *
  * @since v0.1.0
  */
-class ObjectExistsParams(var callback: ((Boolean) -> Unit)? = null)
-  : SealedObjReqParams()
+class ObjectExistsParams(
+  path: String? = null,
+  var callback: ((Boolean) -> Unit)? = null)
+  : SealedObjReqParams(path)
 {
   override fun toString(): String {
     val out = StringBuilder(2048)

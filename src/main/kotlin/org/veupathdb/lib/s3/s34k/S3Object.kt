@@ -1,26 +1,40 @@
 package org.veupathdb.lib.s3.s34k
 
 import org.veupathdb.lib.s3.s34k.errors.S34kException
+import org.veupathdb.lib.s3.s34k.params.ExistsParams
+import org.veupathdb.lib.s3.s34k.params.StatParams
 import org.veupathdb.lib.s3.s34k.params.TagGetParams
 import org.veupathdb.lib.s3.s34k.params.TagPutParams
 
 // TODO: Document me
 interface S3Object : S3ObjectResponse {
 
-  /**
-   * Tests that the backing object still exists in the S3 store.
-   *
-   * @param cb Callback that will be executed on the successful response from
-   * the S3 store.
-   *
-   * @return `true` if the object still exists, otherwise `false`.
-   *
-   * @throws S34kException If an implementation specific exception is thrown.
-   * The thrown [S34kException] will wrap the implementation specific exception.
-   */
-  fun exists(cb: ((Boolean) -> Unit)? = null): Boolean
+  // region: Exists
 
-  fun stat(cb: ((S3ObjectMeta) -> Unit)? = null): S3ObjectMeta
+  // TODO: Document me
+  fun exists(): Boolean
+
+  // TODO: Document me
+  fun exists(action: ExistsParams.() -> Unit): Boolean
+
+  // TODO: Document me
+  fun exists(params: ExistsParams): Boolean
+
+  // endregion
+
+
+  // region: Stat
+
+  // TODO: Document me
+  fun stat(): S3ObjectMeta
+
+  // TODO: Document me
+  fun stat(action: StatParams.() -> Unit): S3ObjectMeta
+
+  // TODO: Document me
+  fun stat(params: StatParams): S3ObjectMeta
+
+  // endregion
 
   // TODO: Document me
   fun getTags(cb: ((S3TagSet) -> Unit)? = null): S3TagSet

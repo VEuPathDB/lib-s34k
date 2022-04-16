@@ -8,11 +8,18 @@ import org.veupathdb.lib.s3.s34k.params.AbstractRequestParams
  *
  * Base type for S3 bucket operation param sets.
  *
+ * @constructor Constructs a new [SealedBucketReqParams] instance.
+ *
+ * @param bucket Name of the target S3 bucket.
+ *
+ * @throws IllegalArgumentException If the value set is not between `3` and
+ * `63` characters in length.
+ *
  * @author Elizabeth Paige Harper [https://github.com/Foxcapades]
  *
  * @since v0.1.0
  */
-sealed class SealedBucketReqParams : AbstractRequestParams() {
+sealed class SealedBucketReqParams(bucket: String? = null) : AbstractRequestParams() {
 
   /**
    * Name of the target S3 bucket.
@@ -23,7 +30,7 @@ sealed class SealedBucketReqParams : AbstractRequestParams() {
    * @throws IllegalArgumentException If the value set is not between `3` and
    * `63` characters in length.
    */
-  var bucket: String? = null
+  var bucket: String? = bucket
     set(value) {
       if (value == null || value.length !in 3 .. 63)
         throw IllegalArgumentException("Bucket name must be between 3 and 64 characters in length.  Given value: $value")

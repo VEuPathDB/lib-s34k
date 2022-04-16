@@ -9,11 +9,17 @@ import org.veupathdb.lib.s3.s34k.params.TagSenderParams
  *
  * Base type for S3 put operation param sets.
  *
+ * @constructor Constructs a new [SealedObjPutReqParams] instance.
+ *
+ * @param path Path to the object target of this request.
+ *
  * @author Elizabeth Paige Harper [https://github.com/Foxcapades]
  *
  * @since v0.1.0
  */
-sealed class ObjectPutRequestParams : TagSenderParams, SealedObjReqParams() {
+sealed class SealedObjPutReqParams(path: String? = null)
+  : TagSenderParams, SealedObjReqParams(path)
+{
 
   private val Log = LoggerFactory.getLogger(this::class.java)
 

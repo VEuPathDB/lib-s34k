@@ -7,6 +7,8 @@ import org.veupathdb.lib.s3.s34k.S3TagSet
  *
  * @constructor Constructs a new [ObjectTagGetParams] instance.
  *
+ * @param path Path to the object target of this request.
+ *
  * @param callback Optional callback that will be called upon request
  * completion.
  *
@@ -14,9 +16,10 @@ import org.veupathdb.lib.s3.s34k.S3TagSet
  *
  * @since v0.1.0
  */
-class ObjectTagGetParams(var callback: ((tags: S3TagSet) -> Unit)? = null)
-  : SealedObjReqParams()
-{
+class ObjectTagGetParams(
+  path: String? = null,
+  var callback: ((tags: S3TagSet) -> Unit)? = null
+) : SealedObjReqParams(path) {
   override fun toString(): String {
     val out = StringBuilder(2048)
 
