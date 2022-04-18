@@ -31,7 +31,7 @@ class ExistsParams(var callback: ((Boolean) -> Unit)? = null) : AbstractRequestP
 
   fun toBucketExistsParams(bucket: String): BucketExistsParams {
     Log.trace("toBucketExistsParams(bucket = {})", bucket)
-    return BucketExistsParams(bucket, callback).also {
+    return BucketExistsParams(bucket, null, callback).also {
       (it.headers as MutableMap).putAll(headers)
       (it.queryParams as MutableMap).putAll(queryParams)
     }
