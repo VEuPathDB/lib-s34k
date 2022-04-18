@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <!-- NewPage -->
 <html lang="en"><head>
-    <title>RequestParams 0.1.0 API </title>
+    <title>RequestParams 0.1.0-SNAPSHOT API </title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="dc.created" content="2020-03-25">
     <link rel="stylesheet" type="text/css" href="../../../../../../stylesheet.css" title="Style">
@@ -166,13 +166,13 @@ public class <span class="typeNameLabel"><a href=RequestParams.html>RequestParam
                                         
                                         <tr class="altColor">
                                             <td class="colFirst"><code>private final <a href=https://docs.oracle.com/javase/8/docs/api/java/util/Map.html>Map</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html>Array</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>&gt;&gt;</code></td>
-                                            <th class="colSecond" scope="row"><code><a href=RequestParams.html#headers>headers</a></code></th>
+                                            <th class="colSecond" scope="row"><code><a href=object/SealedObjReqParams.html#headers>headers</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
                                         <tr class="rowColor">
                                             <td class="colFirst"><code>private final <a href=https://docs.oracle.com/javase/8/docs/api/java/util/Map.html>Map</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html>Array</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>&gt;&gt;</code></td>
-                                            <th class="colSecond" scope="row"><code><a href=RequestParams.html#queryParams>queryParams</a></code></th>
+                                            <th class="colSecond" scope="row"><code><a href=object/SealedObjReqParams.html#queryParams>queryParams</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
@@ -199,6 +199,12 @@ public class <span class="typeNameLabel"><a href=RequestParams.html>RequestParam
                                             <th class="colLast" scope="col">Description</th>
                                         </tr>
 
+                                        
+                                            <tr class="altColor">
+                                                <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
+                                                        href="#RequestParams()">RequestParams</a></span>()</code></th>
+                                                <td class="colLast"></td>
+                                            </tr>
                                         
 
                                         </tbody>
@@ -270,7 +276,7 @@ public class <span class="typeNameLabel"><a href=RequestParams.html>RequestParam
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=RequestParams.html#addHeaders(Map)>addHeaders</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/util/Map.html>Map</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>&gt; headers) </code>
                                             </th>
-                                            <td class="colLast">Merges the additional <a href=RequestParams.html#addHeaders(Map)>headers</a> provided into the existing <a href=RequestParams.html#headers>RequestParams.headers</a> map.</td>
+                                            <td class="colLast">Merges the additional <a href=RequestParams.html#addHeaders(Map)>headers</a> provided into the existing <a href=object/SealedObjReqParams.html#headers>RequestParams.headers</a> map.</td>
                                         </tr>
                                         
                                         <tr id="i3" class="rowColor">
@@ -278,7 +284,7 @@ public class <span class="typeNameLabel"><a href=RequestParams.html>RequestParam
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=RequestParams.html#addHeaders(String,Collection)>addHeaders</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> key, <a href=https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html>Collection</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>&gt; values) </code>
                                             </th>
-                                            <td class="colLast">Merges the additional headers provided into the existing <a href=RequestParams.html#headers>headers</a> map.</td>
+                                            <td class="colLast">Merges the additional headers provided into the existing <a href=object/SealedObjReqParams.html#headers>headers</a> map.</td>
                                         </tr>
                                         
                                         <tr id="i4" class="altColor">
@@ -286,7 +292,7 @@ public class <span class="typeNameLabel"><a href=RequestParams.html>RequestParam
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=RequestParams.html#addHeaders(String,String)>addHeaders</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> key, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> values) </code>
                                             </th>
-                                            <td class="colLast">Merges the additional headers provided into the existing <a href=RequestParams.html#headers>headers</a> map.</td>
+                                            <td class="colLast">Merges the additional headers provided into the existing <a href=object/SealedObjReqParams.html#headers>headers</a> map.</td>
                                         </tr>
                                         
                                         <tr id="i5" class="rowColor">
@@ -294,39 +300,55 @@ public class <span class="typeNameLabel"><a href=RequestParams.html>RequestParam
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=RequestParams.html#setHeaders(String,String)>setHeaders</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> key, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> values) </code>
                                             </th>
-                                            <td class="colLast">Overwrites the header values in the <a href=RequestParams.html#headers>headers</a> map with the given array of <a href=RequestParams.html#setHeaders(String,String)>values</a>.</td>
+                                            <td class="colLast">Overwrites the header values in the <a href=object/SealedObjReqParams.html#headers>headers</a> map with the given array of <a href=RequestParams.html#setHeaders(String,String)>values</a>.</td>
                                         </tr>
                                         
                                         <tr id="i6" class="altColor">
                                             <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=RequestParams.html#addQueryParams(Map)>addQueryParams</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/util/Map.html>Map</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>&gt; queryParams) </code>
+                                            <th class="colSecond" scope="row"><code><a href=RequestParams.html#setHeaders(Map)>setHeaders</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/util/Map.html>Map</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html>Array</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>&gt;&gt; headers) </code>
                                             </th>
-                                            <td class="colLast">Merges the additional <a href=RequestParams.html#addQueryParams(Map)>queryParams</a> provided into the existing <a href=RequestParams.html#queryParams>RequestParams.queryParams</a> map.</td>
+                                            <td class="colLast"></td>
                                         </tr>
                                         
                                         <tr id="i7" class="rowColor">
                                             <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=RequestParams.html#addQueryParams(String,Collection)>addQueryParams</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> key, <a href=https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html>Collection</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>&gt; values) </code>
+                                            <th class="colSecond" scope="row"><code><a href=RequestParams.html#addQueryParams(Map)>addQueryParams</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/util/Map.html>Map</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>&gt; queryParams) </code>
                                             </th>
-                                            <td class="colLast">Merges the additional queryParams provided into the existing <a href=RequestParams.html#queryParams>queryParams</a> map.</td>
+                                            <td class="colLast">Merges the additional <a href=RequestParams.html#addQueryParams(Map)>queryParams</a> provided into the existing <a href=object/SealedObjReqParams.html#queryParams>RequestParams.queryParams</a> map.</td>
                                         </tr>
                                         
                                         <tr id="i8" class="altColor">
                                             <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=RequestParams.html#addQueryParams(String,String)>addQueryParams</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> key, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> values) </code>
+                                            <th class="colSecond" scope="row"><code><a href=RequestParams.html#addQueryParams(String,Collection)>addQueryParams</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> key, <a href=https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html>Collection</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>&gt; values) </code>
                                             </th>
-                                            <td class="colLast">Merges the additional headers provided into the existing <a href=RequestParams.html#headers>headers</a> map.</td>
+                                            <td class="colLast">Merges the additional queryParams provided into the existing <a href=object/SealedObjReqParams.html#queryParams>queryParams</a> map.</td>
                                         </tr>
                                         
                                         <tr id="i9" class="rowColor">
                                             <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
                                             </td>
+                                            <th class="colSecond" scope="row"><code><a href=RequestParams.html#addQueryParams(String,String)>addQueryParams</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> key, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> values) </code>
+                                            </th>
+                                            <td class="colLast">Merges the additional headers provided into the existing <a href=object/SealedObjReqParams.html#headers>headers</a> map.</td>
+                                        </tr>
+                                        
+                                        <tr id="i10" class="altColor">
+                                            <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
                                             <th class="colSecond" scope="row"><code><a href=RequestParams.html#setQueryParams(String,String)>setQueryParams</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> key, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> values) </code>
                                             </th>
-                                            <td class="colLast">Overwrites the queryParam values in the <a href=RequestParams.html#queryParams>queryParams</a> map with the given array of <a href=RequestParams.html#setQueryParams(String,String)>values</a>.</td>
+                                            <td class="colLast">Overwrites the queryParam values in the <a href=object/SealedObjReqParams.html#queryParams>queryParams</a> map with the given array of <a href=RequestParams.html#setQueryParams(String,String)>values</a>.</td>
+                                        </tr>
+                                        
+                                        <tr id="i11" class="rowColor">
+                                            <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=RequestParams.html#setQueryParams(Map)>setQueryParams</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/util/Map.html>Map</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html>Array</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>&gt;&gt; params) </code>
+                                            </th>
+                                            <td class="colLast"></td>
                                         </tr>
                                         
                                         </tbody>
@@ -359,6 +381,16 @@ public class <span class="typeNameLabel"><a href=RequestParams.html>RequestParam
                                 <!--   -->
                             </a>
                                 <h3>Constructor Detail</h3>
+                                
+                                <a name="RequestParams()"></a>
+                                <ul class="blockList">
+                                    <li class="blockList">
+                                        <h4>RequestParams</h4>
+                                        <pre>RequestParams()</pre>
+                                        <div class="block"></div>
+                                        
+                                    </li>
+                                </ul>
                                 
                             </li>
                         </ul>
@@ -412,7 +444,7 @@ public class <span class="typeNameLabel"><a href=RequestParams.html>RequestParam
                                     <li class="blockList">
                                         <h4>addHeaders</h4>
                                         <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=RequestParams.html#addHeaders(Map)>addHeaders</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/util/Map.html>Map</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>&gt; headers)</pre>
-                                        <div class="block"><p>Merges the additional <a href=RequestParams.html#addHeaders(Map)>headers</a> provided into the existing <a href=RequestParams.html#headers>RequestParams.headers</a> map.</p><p>If the <a href=RequestParams.html#headers>RequestParams.headers</a> map already contains one or more keys present in the input <a href=RequestParams.html#addHeaders(Map)>headers</a> map, the value at that key will be appended to the array of headers at that key in <a href=RequestParams.html#headers>RequestParams.headers</a>.</p><p>Example:</p><pre><code>input := {
+                                        <div class="block"><p>Merges the additional <a href=RequestParams.html#addHeaders(Map)>headers</a> provided into the existing <a href=object/SealedObjReqParams.html#headers>RequestParams.headers</a> map.</p><p>If the <a href=object/SealedObjReqParams.html#headers>RequestParams.headers</a> map already contains one or more keys present in the input <a href=RequestParams.html#addHeaders(Map)>headers</a> map, the value at that key will be appended to the array of headers at that key in <a href=object/SealedObjReqParams.html#headers>RequestParams.headers</a>.</p><p>Example:</p><pre><code>input := {
   foo  : "bar",
   fizz : "buzz"
 }
@@ -430,7 +462,7 @@ result := {
                                             <dt><span class="paramLabel">Parameters:</span></dt>
                                             
                                             
-                                            <dd><code>headers</code> - Map of headers to merge into the existing <a href=RequestParams.html#headers>RequestParams.headers</a> map.</dd>
+                                            <dd><code>headers</code> - Map of headers to merge into the existing <a href=object/SealedObjReqParams.html#headers>RequestParams.headers</a> map.</dd>
                                             
                                             
                                         </dl>
@@ -448,7 +480,7 @@ result := {
                                     <li class="blockList">
                                         <h4>addHeaders</h4>
                                         <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=RequestParams.html#addHeaders(String,Collection)>addHeaders</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> key, <a href=https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html>Collection</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>&gt; values)</pre>
-                                        <div class="block"><p>Merges the additional headers provided into the existing <a href=RequestParams.html#headers>headers</a> map.</p><p>If the <a href=RequestParams.html#headers>headers</a> map already contains the given key, the <a href=RequestParams.html#addHeaders(String,Collection)>values</a> in the given <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-collection/index.html>Collection</a> will be merged into that array.</p><p>Merge Example:</p><pre><code>inputKey    := "foo"
+                                        <div class="block"><p>Merges the additional headers provided into the existing <a href=object/SealedObjReqParams.html#headers>headers</a> map.</p><p>If the <a href=object/SealedObjReqParams.html#headers>headers</a> map already contains the given key, the <a href=RequestParams.html#addHeaders(String,Collection)>values</a> in the given <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-collection/index.html>Collection</a> will be merged into that array.</p><p>Merge Example:</p><pre><code>inputKey    := "foo"
 inputValues := [ "fizz", "buzz" ]
 
 existing := {
@@ -467,7 +499,7 @@ result := {
                                             
                                             
                                             
-                                            <dd><code>values</code> - Values to append to the <a href=RequestParams.html#headers>headers</a> map.</dd>
+                                            <dd><code>values</code> - Values to append to the <a href=object/SealedObjReqParams.html#headers>headers</a> map.</dd>
                                             
                                             
                                         </dl>
@@ -485,7 +517,7 @@ result := {
                                     <li class="blockList">
                                         <h4>addHeaders</h4>
                                         <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=RequestParams.html#addHeaders(String,String)>addHeaders</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> key, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> values)</pre>
-                                        <div class="block"><p>Merges the additional headers provided into the existing <a href=RequestParams.html#headers>headers</a> map.</p><p>If the <a href=RequestParams.html#headers>headers</a> map already contains the given key, the given <a href=RequestParams.html#addHeaders(String,String)>values</a> will be merged into that array.</p><p>Merge Example:</p><pre><code>inputKey    := "foo"
+                                        <div class="block"><p>Merges the additional headers provided into the existing <a href=object/SealedObjReqParams.html#headers>headers</a> map.</p><p>If the <a href=object/SealedObjReqParams.html#headers>headers</a> map already contains the given key, the given <a href=RequestParams.html#addHeaders(String,String)>values</a> will be merged into that array.</p><p>Merge Example:</p><pre><code>inputKey    := "foo"
 inputValues := [ "fizz", "buzz" ]
 
 existing := {
@@ -504,7 +536,7 @@ result := {
                                             
                                             
                                             
-                                            <dd><code>values</code> - Values to append to the <a href=RequestParams.html#headers>headers</a> map.</dd>
+                                            <dd><code>values</code> - Values to append to the <a href=object/SealedObjReqParams.html#headers>headers</a> map.</dd>
                                             
                                             
                                         </dl>
@@ -522,7 +554,7 @@ result := {
                                     <li class="blockList">
                                         <h4>setHeaders</h4>
                                         <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=RequestParams.html#setHeaders(String,String)>setHeaders</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> key, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> values)</pre>
-                                        <div class="block"><p>Overwrites the header values in the <a href=RequestParams.html#headers>headers</a> map with the given array of <a href=RequestParams.html#setHeaders(String,String)>values</a>.</p><p>Overwrite Example:</p><pre><code>inputKey    := "foo"
+                                        <div class="block"><p>Overwrites the header values in the <a href=object/SealedObjReqParams.html#headers>headers</a> map with the given array of <a href=RequestParams.html#setHeaders(String,String)>values</a>.</p><p>Overwrite Example:</p><pre><code>inputKey    := "foo"
 inputValues := [ "fizz", "buzz" ]
 
 existing := {
@@ -541,10 +573,25 @@ result := {
                                             
                                             
                                             
-                                            <dd><code>values</code> - Values to set in the <a href=RequestParams.html#headers>headers</a> map.</dd>
+                                            <dd><code>values</code> - Values to set in the <a href=object/SealedObjReqParams.html#headers>headers</a> map.</dd>
                                             
                                             
                                         </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="setHeaders(Map)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>setHeaders</h4>
+                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=RequestParams.html#setHeaders(Map)>setHeaders</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/util/Map.html>Map</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html>Array</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>&gt;&gt; headers)</pre>
+                                        <div class="block"></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -559,7 +606,7 @@ result := {
                                     <li class="blockList">
                                         <h4>addQueryParams</h4>
                                         <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=RequestParams.html#addQueryParams(Map)>addQueryParams</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/util/Map.html>Map</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>&gt; queryParams)</pre>
-                                        <div class="block"><p>Merges the additional <a href=RequestParams.html#addQueryParams(Map)>queryParams</a> provided into the existing <a href=RequestParams.html#queryParams>RequestParams.queryParams</a> map.</p><p>If the <a href=RequestParams.html#queryParams>RequestParams.queryParams</a> map already contains one or more keys present in the input <a href=RequestParams.html#addQueryParams(Map)>queryParams</a> map, the value at that key will be appended to the array of queryParams at that key in <a href=RequestParams.html#queryParams>RequestParams.queryParams</a>.</p><p>Example:</p><pre><code>input := {
+                                        <div class="block"><p>Merges the additional <a href=RequestParams.html#addQueryParams(Map)>queryParams</a> provided into the existing <a href=object/SealedObjReqParams.html#queryParams>RequestParams.queryParams</a> map.</p><p>If the <a href=object/SealedObjReqParams.html#queryParams>RequestParams.queryParams</a> map already contains one or more keys present in the input <a href=RequestParams.html#addQueryParams(Map)>queryParams</a> map, the value at that key will be appended to the array of queryParams at that key in <a href=object/SealedObjReqParams.html#queryParams>RequestParams.queryParams</a>.</p><p>Example:</p><pre><code>input := {
   foo  : "bar",
   fizz : "buzz"
 }
@@ -577,7 +624,7 @@ result := {
                                             <dt><span class="paramLabel">Parameters:</span></dt>
                                             
                                             
-                                            <dd><code>queryParams</code> - Map of queryParams to merge into the existing <a href=RequestParams.html#queryParams>RequestParams.queryParams</a> map.</dd>
+                                            <dd><code>queryParams</code> - Map of queryParams to merge into the existing <a href=object/SealedObjReqParams.html#queryParams>RequestParams.queryParams</a> map.</dd>
                                             
                                             
                                         </dl>
@@ -595,7 +642,7 @@ result := {
                                     <li class="blockList">
                                         <h4>addQueryParams</h4>
                                         <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=RequestParams.html#addQueryParams(String,Collection)>addQueryParams</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> key, <a href=https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html>Collection</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>&gt; values)</pre>
-                                        <div class="block"><p>Merges the additional queryParams provided into the existing <a href=RequestParams.html#queryParams>queryParams</a> map.</p><p>If the <a href=RequestParams.html#queryParams>queryParams</a> map already contains the given key, the <a href=RequestParams.html#addQueryParams(String,Collection)>values</a> in the given <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-collection/index.html>Collection</a> will be merged into that array.</p><p>Merge Example:</p><pre><code>inputKey    := "foo"
+                                        <div class="block"><p>Merges the additional queryParams provided into the existing <a href=object/SealedObjReqParams.html#queryParams>queryParams</a> map.</p><p>If the <a href=object/SealedObjReqParams.html#queryParams>queryParams</a> map already contains the given key, the <a href=RequestParams.html#addQueryParams(String,Collection)>values</a> in the given <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-collection/index.html>Collection</a> will be merged into that array.</p><p>Merge Example:</p><pre><code>inputKey    := "foo"
 inputValues := [ "fizz", "buzz" ]
 
 existing := {
@@ -614,7 +661,7 @@ result := {
                                             
                                             
                                             
-                                            <dd><code>values</code> - Values to append to the <a href=RequestParams.html#queryParams>queryParams</a> map.</dd>
+                                            <dd><code>values</code> - Values to append to the <a href=object/SealedObjReqParams.html#queryParams>queryParams</a> map.</dd>
                                             
                                             
                                         </dl>
@@ -632,7 +679,7 @@ result := {
                                     <li class="blockList">
                                         <h4>addQueryParams</h4>
                                         <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=RequestParams.html#addQueryParams(String,String)>addQueryParams</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> key, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> values)</pre>
-                                        <div class="block"><p>Merges the additional headers provided into the existing <a href=RequestParams.html#headers>headers</a> map.</p><p>If the <a href=RequestParams.html#headers>headers</a> map already contains the given key, the given <a href=RequestParams.html#addQueryParams(String,String)>values</a> will be merged into that array.</p><p>Merge Example:</p><pre><code>inputKey    := "foo"
+                                        <div class="block"><p>Merges the additional headers provided into the existing <a href=object/SealedObjReqParams.html#headers>headers</a> map.</p><p>If the <a href=object/SealedObjReqParams.html#headers>headers</a> map already contains the given key, the given <a href=RequestParams.html#addQueryParams(String,String)>values</a> will be merged into that array.</p><p>Merge Example:</p><pre><code>inputKey    := "foo"
 inputValues := [ "fizz", "buzz" ]
 
 existing := {
@@ -651,7 +698,7 @@ result := {
                                             
                                             
                                             
-                                            <dd><code>values</code> - Values to append to the <a href=RequestParams.html#headers>headers</a> map.</dd>
+                                            <dd><code>values</code> - Values to append to the <a href=object/SealedObjReqParams.html#headers>headers</a> map.</dd>
                                             
                                             
                                         </dl>
@@ -664,12 +711,12 @@ result := {
                                     <!--   -->
                                 </a>
                                 <ul class=
-                                              "blockListLast"
+                                              "blockList"
                                           >
                                     <li class="blockList">
                                         <h4>setQueryParams</h4>
                                         <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=RequestParams.html#setQueryParams(String,String)>setQueryParams</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> key, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> values)</pre>
-                                        <div class="block"><p>Overwrites the queryParam values in the <a href=RequestParams.html#queryParams>queryParams</a> map with the given array of <a href=RequestParams.html#setQueryParams(String,String)>values</a>.</p><p>Overwrite Example:</p><pre><code>inputKey    := "foo"
+                                        <div class="block"><p>Overwrites the queryParam values in the <a href=object/SealedObjReqParams.html#queryParams>queryParams</a> map with the given array of <a href=RequestParams.html#setQueryParams(String,String)>values</a>.</p><p>Overwrite Example:</p><pre><code>inputKey    := "foo"
 inputValues := [ "fizz", "buzz" ]
 
 existing := {
@@ -688,10 +735,25 @@ result := {
                                             
                                             
                                             
-                                            <dd><code>values</code> - Values to set in the <a href=RequestParams.html#queryParams>queryParams</a> map.</dd>
+                                            <dd><code>values</code> - Values to set in the <a href=object/SealedObjReqParams.html#queryParams>queryParams</a> map.</dd>
                                             
                                             
                                         </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="setQueryParams(Map)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockListLast"
+                                          >
+                                    <li class="blockList">
+                                        <h4>setQueryParams</h4>
+                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=RequestParams.html#setQueryParams(Map)>setQueryParams</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/util/Map.html>Map</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html>Array</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>&gt;&gt; params)</pre>
+                                        <div class="block"></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>

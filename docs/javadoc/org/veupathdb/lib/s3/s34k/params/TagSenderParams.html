@@ -117,7 +117,7 @@ var pathtoroot = "../../../../../../";
 public interface <span class="typeNameLabel"><a href=TagSenderParams.html>TagSenderParams</a></span>
 
                     </pre>
-                    <div class="block"></div>
+                    <div class="block"><p>Base interface for S3 operation configurations that can send tags to the S3 server along with the put operation.</p></div>
                 </li>
             </ul>
         </div>
@@ -270,6 +270,14 @@ public interface <span class="typeNameLabel"><a href=TagSenderParams.html>TagSen
                                         </tr>
                                         
                                         <tr id="i4" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/util/Map.html>Map</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>&gt;</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=TagSenderParams.html#getTagsMap()>getTagsMap</a>() </code>
+                                            </th>
+                                            <td class="colLast">Returns the tag collection for this object as a <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html>Map</a> of key to value.</td>
+                                        </tr>
+                                        
+                                        <tr id="i5" class="rowColor">
                                             <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/util/Set.html>Set</a>&lt;<a href=../S3Tag.html>S3Tag</a>&gt;</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=TagSenderParams.html#getTags()>getTags</a>() </code>
@@ -416,6 +424,21 @@ public interface <span class="typeNameLabel"><a href=TagSenderParams.html>TagSen
                                             
                                             
                                         </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="getTagsMap()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getTagsMap</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/util/Map.html>Map</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>&gt; <a href=TagSenderParams.html#getTagsMap()>getTagsMap</a>()</pre>
+                                        <div class="block"><p>Returns the tag collection for this object as a <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html>Map</a> of key to value.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
