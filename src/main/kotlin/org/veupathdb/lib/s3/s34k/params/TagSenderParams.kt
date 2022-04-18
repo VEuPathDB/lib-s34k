@@ -2,7 +2,14 @@ package org.veupathdb.lib.s3.s34k.params
 
 import org.veupathdb.lib.s3.s34k.S3Tag
 
-// TODO: Document me
+/**
+ * Base interface for S3 operation configurations that can send tags to the S3
+ * server along with the put operation.
+ *
+ * @author Elizabeth Paige Harper [https://github.com/Foxcapades]
+ *
+ * @since v0.1.0
+ */
 interface TagSenderParams {
 
   /**
@@ -47,4 +54,11 @@ interface TagSenderParams {
    * @param value Value of the tag to set.
    */
   fun addTag(key: String, value: String)
+
+  /**
+   * Returns the tag collection for this object as a [Map] of key to value.
+   *
+   * @return The tag collection for this object as a map.
+   */
+  fun toMap(): Map<String, String>
 }
