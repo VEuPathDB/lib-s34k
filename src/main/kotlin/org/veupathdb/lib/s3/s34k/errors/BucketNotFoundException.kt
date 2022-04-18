@@ -1,13 +1,15 @@
 package org.veupathdb.lib.s3.s34k.errors
 
+import org.veupathdb.lib.s3.s34k.params.bucket.BucketName
+
 
 class BucketNotFoundException : BucketOperationException {
 
-  constructor(bucket: String, cause: Throwable) : super(
+  constructor(bucket: BucketName, cause: Throwable) : super(
     bucket,
     "Bucket $bucket already exists.",
     cause
   )
 
-  constructor(bucket: String) : super(bucket, "Bucket $bucket does not exist.")
+  constructor(bucket: BucketName) : super(bucket, "Bucket $bucket does not exist.")
 }
