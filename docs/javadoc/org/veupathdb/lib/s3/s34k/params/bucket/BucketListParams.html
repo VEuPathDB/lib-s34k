@@ -171,7 +171,7 @@ extends <a href=SealedBucketReqParams.html>SealedBucketReqParams</a>
                                         </tr>
                                         
                                         <tr class="rowColor">
-                                            <td class="colFirst"><code>private  <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a></code></td>
+                                            <td class="colFirst"><code>private  <a href=BucketName.html>BucketName</a></code></td>
                                             <th class="colSecond" scope="row"><code><a href=SealedBucketReqParams.html#bucket>bucket</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
@@ -290,7 +290,7 @@ extends <a href=SealedBucketReqParams.html>SealedBucketReqParams</a>
                                         </tr>
                                         
                                         <tr id="i2" class="altColor">
-                                            <td class="colFirst"><code>final <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a></code>
+                                            <td class="colFirst"><code>final <a href=BucketName.html>BucketName</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=BucketListParams.html#getBucket()>getBucket</a>() </code>
                                             </th>
@@ -300,9 +300,9 @@ extends <a href=SealedBucketReqParams.html>SealedBucketReqParams</a>
                                         <tr id="i3" class="rowColor">
                                             <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=BucketListParams.html#setBucket(String)>setBucket</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> bucket) </code>
+                                            <th class="colSecond" scope="row"><code><a href=BucketListParams.html#setBucket(BucketName)>setBucket</a>(<a href=BucketName.html>BucketName</a> bucket) </code>
                                             </th>
-                                            <td class="colLast"></td>
+                                            <td class="colLast">Name of the target S3 bucket.</td>
                                         </tr>
                                         
                                         <tr id="i4" class="altColor">
@@ -350,6 +350,12 @@ extends <a href=SealedBucketReqParams.html>SealedBucketReqParams</a>
                                 </div>
                                 <ul class="blockList">
                                 
+                                    <li class="blockList"><a id="methods.inherited.from.class.org.veupathdb.lib.s3.s34k.params.bucket.BucketListParams">
+                                            <!--   -->
+                                        </a>
+                                            <h3>Methods inherited from class&nbsp;org.veupathdb.lib.s3.s34k.params.bucket.BucketListParams</h3>
+                                            <code>setBucketName</code></li>
+                                 
                                     <li class="blockList"><a id="methods.inherited.from.class.org.veupathdb.lib.s3.s34k.params.bucket.SealedBucketReqParams">
                                             <!--   -->
                                         </a>
@@ -443,14 +449,14 @@ extends <a href=SealedBucketReqParams.html>SealedBucketReqParams</a>
                                           >
                                     <li class="blockList">
                                         <h4>getBucket</h4>
-                                        <pre class="methodSignature"> final <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> <a href=BucketListParams.html#getBucket()>getBucket</a>()</pre>
+                                        <pre class="methodSignature"> final <a href=BucketName.html>BucketName</a> <a href=BucketListParams.html#getBucket()>getBucket</a>()</pre>
                                         <div class="block"><p>Name of the target S3 bucket.</p><p>This value must be set or an <a href=../../errors/InvalidRequestConfigException.html>InvalidRequestConfigException</a> will be thrown when the request is attempted.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
                                 </ul>
                                 
-                                <a id="setBucket(String)">
+                                <a id="setBucket(BucketName)">
                                     <!--   -->
                                 </a>
                                 <ul class=
@@ -458,8 +464,8 @@ extends <a href=SealedBucketReqParams.html>SealedBucketReqParams</a>
                                           >
                                     <li class="blockList">
                                         <h4>setBucket</h4>
-                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=BucketListParams.html#setBucket(String)>setBucket</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> bucket)</pre>
-                                        <div class="block"></div>
+                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=BucketListParams.html#setBucket(BucketName)>setBucket</a>(<a href=BucketName.html>BucketName</a> bucket)</pre>
+                                        <div class="block"><p>Name of the target S3 bucket.</p><p>This value must be set or an <a href=../../errors/InvalidRequestConfigException.html>InvalidRequestConfigException</a> will be thrown when the request is attempted.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>

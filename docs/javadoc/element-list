@@ -1,5 +1,6 @@
 $dokka.format:javadoc-v1
 $dokka.linkExtension:html
+$dokka.location:org.veupathdb.lib.s3.s34k.params.bucket/BucketName.Companion///PointingToDeclaration/org/veupathdb/lib/s3/s34k/params/bucket/BucketName.Companion.html
 $dokka.location:org.veupathdb.lib.s3.s34k/S3LegalHold.Companion///PointingToDeclaration/org/veupathdb/lib/s3/s34k/S3LegalHold.Companion.html
 $dokka.location:org.veupathdb.lib.s3.s34k/S3RetentionMode.Companion///PointingToDeclaration/org/veupathdb/lib/s3/s34k/S3RetentionMode.Companion.html
 org.veupathdb.lib.s3.s34k

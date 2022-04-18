@@ -37,6 +37,12 @@ $dokka.location:org.veupathdb.lib.s3.s34k.params.bucket/BucketListParams///Point
 $dokka.location:org.veupathdb.lib.s3.s34k.params.bucket/BucketListParams/BucketListParams/#kotlin.String?#kotlin.String?#kotlin.Function1[kotlin.collections.List[org.veupathdb.lib.s3.s34k.S3Bucket],kotlin.Unit]?/PointingToDeclaration/s34k/org.veupathdb.lib.s3.s34k.params.bucket/-bucket-list-params/-bucket-list-params.html
 $dokka.location:org.veupathdb.lib.s3.s34k.params.bucket/BucketListParams/callback/#/PointingToDeclaration/s34k/org.veupathdb.lib.s3.s34k.params.bucket/-bucket-list-params/callback.html
 $dokka.location:org.veupathdb.lib.s3.s34k.params.bucket/BucketListParams/toString/#/PointingToDeclaration/s34k/org.veupathdb.lib.s3.s34k.params.bucket/-bucket-list-params/to-string.html
+$dokka.location:org.veupathdb.lib.s3.s34k.params.bucket/BucketName.Companion///PointingToDeclaration/s34k/org.veupathdb.lib.s3.s34k.params.bucket/-bucket-name/-companion/index.html
+$dokka.location:org.veupathdb.lib.s3.s34k.params.bucket/BucketName.Companion/of/#kotlin.String?/PointingToDeclaration/s34k/org.veupathdb.lib.s3.s34k.params.bucket/-bucket-name/-companion/of.html
+$dokka.location:org.veupathdb.lib.s3.s34k.params.bucket/BucketName///PointingToDeclaration/s34k/org.veupathdb.lib.s3.s34k.params.bucket/-bucket-name/index.html
+$dokka.location:org.veupathdb.lib.s3.s34k.params.bucket/BucketName/BucketName/#kotlin.String/PointingToDeclaration/s34k/org.veupathdb.lib.s3.s34k.params.bucket/-bucket-name/-bucket-name.html
+$dokka.location:org.veupathdb.lib.s3.s34k.params.bucket/BucketName/name/#/PointingToDeclaration/s34k/org.veupathdb.lib.s3.s34k.params.bucket/-bucket-name/name.html
+$dokka.location:org.veupathdb.lib.s3.s34k.params.bucket/BucketName/toString/#/PointingToDeclaration/s34k/org.veupathdb.lib.s3.s34k.params.bucket/-bucket-name/to-string.html
 $dokka.location:org.veupathdb.lib.s3.s34k.params.bucket/BucketPutParams///PointingToDeclaration/s34k/org.veupathdb.lib.s3.s34k.params.bucket/-bucket-put-params/index.html
 $dokka.location:org.veupathdb.lib.s3.s34k.params.bucket/BucketPutParams/BucketPutParams/#kotlin.String?#kotlin.String?#kotlin.Function1[org.veupathdb.lib.s3.s34k.S3Bucket,kotlin.Unit]?/PointingToDeclaration/s34k/org.veupathdb.lib.s3.s34k.params.bucket/-bucket-put-params/-bucket-put-params.html
 $dokka.location:org.veupathdb.lib.s3.s34k.params.bucket/BucketPutParams/callback/#/PointingToDeclaration/s34k/org.veupathdb.lib.s3.s34k.params.bucket/-bucket-put-params/callback.html
@@ -65,6 +71,7 @@ $dokka.location:org.veupathdb.lib.s3.s34k.params.bucket/SealedBucketPutReqParams
 $dokka.location:org.veupathdb.lib.s3.s34k.params.bucket/SealedBucketReqParams///PointingToDeclaration/s34k/org.veupathdb.lib.s3.s34k.params.bucket/-sealed-bucket-req-params/index.html
 $dokka.location:org.veupathdb.lib.s3.s34k.params.bucket/SealedBucketReqParams/bucket/#/PointingToDeclaration/s34k/org.veupathdb.lib.s3.s34k.params.bucket/-sealed-bucket-req-params/bucket.html
 $dokka.location:org.veupathdb.lib.s3.s34k.params.bucket/SealedBucketReqParams/region/#/PointingToDeclaration/s34k/org.veupathdb.lib.s3.s34k.params.bucket/-sealed-bucket-req-params/region.html
+$dokka.location:org.veupathdb.lib.s3.s34k.params.bucket/SealedBucketReqParams/setBucketName/#kotlin.String/PointingToDeclaration/s34k/org.veupathdb.lib.s3.s34k.params.bucket/-sealed-bucket-req-params/set-bucket-name.html
 $dokka.location:org.veupathdb.lib.s3.s34k.params.object////PointingToDeclaration/s34k/org.veupathdb.lib.s3.s34k.params.object/index.html
 $dokka.location:org.veupathdb.lib.s3.s34k.params.object/DirectoryPutParams///PointingToDeclaration/s34k/org.veupathdb.lib.s3.s34k.params.object/-directory-put-params/index.html
 $dokka.location:org.veupathdb.lib.s3.s34k.params.object/DirectoryPutParams/DirectoryPutParams/#kotlin.String?#kotlin.Function1[org.veupathdb.lib.s3.s34k.S3Object,kotlin.Unit]?/PointingToDeclaration/s34k/org.veupathdb.lib.s3.s34k.params.object/-directory-put-params/-directory-put-params.html
