@@ -60,5 +60,5 @@ interface TagSenderParams {
    *
    * @return The tag collection for this object as a map.
    */
-  fun toMap(): Map<String, String>
+  fun getTagsMap(): Map<String, String>
 }

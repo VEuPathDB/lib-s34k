@@ -77,7 +77,7 @@ sealed class SealedBucketPutReqParams(
     (this.tags as MutableSet).add(S3Tag(key, value))
   }
 
-  override fun toMap(): Map<String, String> {
+  override fun getTagsMap(): Map<String, String> {
     Log.trace("toMap()")
 
     if (tags.isEmpty())

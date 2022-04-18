@@ -34,7 +34,7 @@ class BucketTagPutParams(var callback: (() -> Unit)? = null)
   }
 
 
-  override fun toMap(): Map<String, String> {
+  override fun getTagsMap(): Map<String, String> {
     Log.trace("toMap()")
 
     if (tags.isEmpty())
