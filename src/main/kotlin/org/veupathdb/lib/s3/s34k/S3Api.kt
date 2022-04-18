@@ -14,7 +14,7 @@ object S3Api {
 
   private val Log = LoggerFactory.getLogger(this::class.java)
 
-  private var type: Class<out S3Client>? = null
+  private var factory: S3ClientProvider? = null
 
   /**
    * Gets a new [S3Client] instance configured with the given [S3Config] value.
@@ -35,8 +35,8 @@ object S3Api {
 
     // If we have already located an implementation, use that rather than
     // searching for one.
-    if (type != null) {
-      val out = type!!.getConstructor().newInstance()
+    if (factory != null) {
+      val out = factory!!.new(config)
       out.initialize(config)
       return out
     }
@@ -44,7 +44,7 @@ object S3Api {
     // We haven't loaded an implementation class yet, try to load one now.
 
     Log.debug("Searching for S3Client implementation.")
-    val it = ServiceLoader.load(S3Client::class.java).iterator()
+    val it = ServiceLoader.load(S3ClientProvider::class.java).iterator()
 
     // If no implementation was found, we can't proceed.
     if (!it.hasNext())
@@ -53,11 +53,10 @@ object S3Api {
     val out = it.next()
 
     Log.debug("Implementation found: {}", it::class.java)
-    out.initialize(config)
 
     // Cache the located class, so we don't have to search in the future.
-    type = out::class.java
+    factory = out
 
-    return out
+    return out.new(config)
   }
 }
