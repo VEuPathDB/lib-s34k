@@ -22,20 +22,6 @@ import org.veupathdb.lib.s3.s34k.params.bucket.BucketPutParams
  */
 interface S3Client {
 
-  /**
-   * Initializes this client with the given configuration.
-   *
-   * This method is called automatically on loading a specific [S3Client] and
-   * **must not be called** outside that context.
-   *
-   * This method only exists due to the limitations of the Java `ServiceLoader`
-   * class' `load` methods.
-   *
-   * @param config S3 connection configuration.
-   */
-  fun initialize(config: S3Config)
-
-
   // region: Bucket Exists
 
   /**
