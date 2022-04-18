@@ -18,7 +18,7 @@ import org.veupathdb.lib.s3.s34k.S3TagSet
  */
 class ObjectTagPutParams(
   path: String? = null,
-  var callback: ((S3TagSet) -> Unit)? = null
+  var callback: (() -> Unit)? = null
 ) : SealedObjPutReqParams(path) {
   override fun toString(): String {
     val out = StringBuilder(2048)

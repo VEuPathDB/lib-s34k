@@ -56,7 +56,7 @@ class TagPutParams()
     return out
   }
 
-  fun toObjectTagPutParams(path: String, cb: ((S3TagSet) -> Unit)? = null): ObjectTagPutParams {
+  fun toObjectTagPutParams(path: String, cb: (() -> Unit)? = null): ObjectTagPutParams {
     Log.trace("toObjectTagPutParams(path = {}, cb = {})", path, cb)
 
     return ObjectTagPutParams(path, cb).also {
@@ -67,7 +67,7 @@ class TagPutParams()
     }
   }
 
-  fun toBucketTagPutParams(cb: ((S3TagSet) -> Unit)? = null): BucketTagPutParams {
+  fun toBucketTagPutParams(cb: (() -> Unit)? = null): BucketTagPutParams {
     Log.trace("toBucketTagPutParams(cb = {})", cb)
 
     return BucketTagPutParams(cb).also {

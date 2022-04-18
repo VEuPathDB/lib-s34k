@@ -85,7 +85,7 @@ abstract class AbstractRequestParams {
   @Suppress("UNCHECKED_CAST")
   fun addHeaders(key: String, values: Collection<String>) {
     Log.trace("addHeaders(key = {}, values = {})", key, values)
-    mergeArrays(queryParams, key, values.toTypedArray())
+    mergeArrays(headers, key, values.toTypedArray())
   }
 
   /**
@@ -115,7 +115,7 @@ abstract class AbstractRequestParams {
   @Suppress("UNCHECKED_CAST")
   fun addHeaders(key: String, vararg values: String) {
     Log.trace("addHeaders(key = {}, values = {})", key, values)
-    mergeArrays(queryParams, key, (values as Array<String>))
+    mergeArrays(headers, key, (values as Array<String>))
   }
 
   /**

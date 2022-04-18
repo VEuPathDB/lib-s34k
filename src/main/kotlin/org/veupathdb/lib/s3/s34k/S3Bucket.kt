@@ -97,7 +97,7 @@ interface S3Bucket {
   // endregion
 
 
-  // region: Stat Object
+  // region Stat Object
 
   /**
    * Fetches metadata for the object in this bucket at the given [path].
@@ -182,20 +182,20 @@ interface S3Bucket {
   // region: Put Object Tags
 
   // TODO: Document me
-  fun putObjectTags(path: String, tags: Collection<S3Tag>): S3TagSet
+  fun putObjectTags(path: String, tags: Collection<S3Tag>)
 
   // TODO: Document me
-  fun putObjectTags(path: String, tags: Map<String, String>): S3TagSet
+  fun putObjectTags(path: String, tags: Map<String, String>)
 
   // TODO: Document me
-  fun putObjectTags(action: ObjectTagPutParams.() -> Unit): S3TagSet
+  fun putObjectTags(action: ObjectTagPutParams.() -> Unit)
 
   // TODO: Document me
-  fun putObjectTags(params: ObjectTagPutParams): S3TagSet
+  fun putObjectTags(params: ObjectTagPutParams)
 
   // endregion
 
-  // region: Get Bucket Tags
+  // region Get Bucket Tags
 
   /**
    * Fetches the tags attached to this bucket.
@@ -245,15 +245,64 @@ interface S3Bucket {
   // endregion
 
 
-  // region: Put Bucket Tags
+  // region Put Bucket Tags
 
-  // TODO: Document me
-  fun putBucketTags()
+  /**
+   * Attaches the given tags to this S3 bucket.
+   *
+   * If the given map of tags is empty, this method does nothing.
+   *
+   * @param tags Tags to attach to this bucket.
+   *
+   * @throws BucketNotFoundException If this bucket no longer exists.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
+  fun putBucketTags(tags: Map<String, String>)
 
-  // TODO: Document me
+  /**
+   * Attaches the given tags to this S3 bucket.
+   *
+   * If the given collection of tags is empty, this method does nothing.
+   *
+   * @param tags Tags to attach to this bucket.
+   *
+   * @throws BucketNotFoundException If this bucket no longer exists.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
+  fun putBucketTags(tags: Collection<S3Tag>)
+
+  /**
+   * Attaches the tags from the given operation parameters to this bucket.
+   *
+   * @param action Action used to configure the S3 operation parameters.
+   *
+   * @throws BucketNotFoundException If this bucket no longer exists.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
   fun putBucketTags(action: BucketTagPutParams.() -> Unit)
 
-  // TODO: Document me
+  /**
+   * Attaches the tags from the given operation parameters to this bucket.
+   *
+   * If the given collection of tags is empty, this method does nothing.
+   *
+   * @param params Parameters for the S3 operation.
+   *
+   * @throws BucketNotFoundException If this bucket no longer exists.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
   fun putBucketTags(params: BucketTagPutParams)
 
   // endregion
@@ -381,7 +430,7 @@ interface S3Bucket {
   // endregion
 
 
-  // region: Put File
+  // region Put File
 
   /**
    * Puts an object into this bucket at the given [path] and copies the contents
