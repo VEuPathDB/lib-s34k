@@ -376,11 +376,35 @@ interface S3Bucket {
    */
   fun uploadFile(path: String, file: File): S3Object
 
-  // TODO: Document me
-  fun uploadFile(params: ObjectFilePutParams): S3Object
-
-  // TODO: Document me
+  /**
+   * Puts an object into this bucket at the configured path and copies the
+   * contents of the given configured file into the newly created object.
+   *
+   * The parameters must be configured by the [action] given to this method.
+   *
+   * @param action Action used to configure the S3 operation parameters.
+   *
+   * @throws BucketNotFoundException If this bucket no longer exists.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
   fun uploadFile(action: ObjectFilePutParams.() -> Unit)
+
+  /**
+   * Puts an object into this bucket at the configured path and copies the
+   * contents of the given configured file into the newly created object.
+   *
+   * @param params S3 operation parameters.
+   *
+   * @throws BucketNotFoundException If this bucket no longer exists.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
+  fun uploadFile(params: ObjectFilePutParams): S3Object
 
   // endregion
 }
