@@ -25,4 +25,28 @@ class BucketTagPutParams(var callback: (() -> Unit)? = null)
   override fun addTag(key: String, value: String) {
     (this.tags as MutableSet).add(S3Tag(key, value))
   }
+
+  override fun toMap(): Map<String, String> {
+    TODO("Not yet implemented")
+  }
+
+  override fun toString(): String {
+    val out = StringBuilder(2048)
+
+    out.append("BucketTagPutParams {\n")
+
+    super.toString(out)
+
+    if (tags.isNotEmpty()) {
+      out.append("  tags = {\n")
+
+      tags.forEach { out.append("    ").append(it.key).append(" = ").append(it.value).append(",\n") }
+
+      out.append("  },\n")
+    }
+
+    out.append("}")
+
+    return out.toString()
+  }
 }

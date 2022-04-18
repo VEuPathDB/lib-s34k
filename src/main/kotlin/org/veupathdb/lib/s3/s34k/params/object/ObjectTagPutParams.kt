@@ -17,7 +17,7 @@ package org.veupathdb.lib.s3.s34k.params.`object`
 class ObjectTagPutParams(
   path: String? = null,
   var callback: (() -> Unit)? = null
-) : SealedObjPutReqParams() {
+) : SealedObjPutReqParams(path) {
   override fun toString(): String {
     val out = StringBuilder(2048)
 
