@@ -12,6 +12,8 @@ import org.veupathdb.lib.s3.s34k.params.AbstractRequestParams
  *
  * @param bucket Name of the target S3 bucket.
  *
+ * @param region Optional region value.
+ *
  * @throws IllegalArgumentException If the value set is not between `3` and
  * `63` characters in length.
  *
@@ -19,7 +21,7 @@ import org.veupathdb.lib.s3.s34k.params.AbstractRequestParams
  *
  * @since v0.1.0
  */
-sealed class SealedBucketReqParams(bucket: String? = null) : AbstractRequestParams() {
+sealed class SealedBucketReqParams(bucket: String? = null, var region: String? = null) : AbstractRequestParams() {
 
   /**
    * Name of the target S3 bucket.
@@ -36,11 +38,6 @@ sealed class SealedBucketReqParams(bucket: String? = null) : AbstractRequestPara
         throw IllegalArgumentException("Bucket name must be between 3 and 64 characters in length.  Given value: $value")
       field = value
     }
-
-  /**
-   * Optional region value.
-   */
-  var region: String? = null
 
   override fun toString(sb: StringBuilder) {
     sb.append("  bucket = ").append(bucket).append(",\n")

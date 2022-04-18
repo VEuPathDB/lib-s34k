@@ -21,8 +21,9 @@ import org.veupathdb.lib.s3.s34k.S3Bucket
  */
 class BucketGetParams(
   bucket: String? = null,
+  region: String? = null,
   var callback: ((bucket: S3Bucket) -> Unit)? = null)
-  : SealedBucketReqParams(bucket)
+  : SealedBucketReqParams(bucket, region)
 {
   override fun toString(): String {
     val out = StringBuilder(2048)

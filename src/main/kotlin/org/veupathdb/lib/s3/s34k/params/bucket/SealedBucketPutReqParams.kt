@@ -12,7 +12,10 @@ import org.veupathdb.lib.s3.s34k.S3Tag
  *
  * @since v0.1.0
  */
-sealed class SealedBucketPutReqParams(bucket: String? = null) : SealedBucketReqParams(bucket) {
+sealed class SealedBucketPutReqParams(
+  bucket: String? = null,
+  region: String? = null,
+) : SealedBucketReqParams(bucket, region) {
 
   private val Log = LoggerFactory.getLogger(this::class.java)
 
