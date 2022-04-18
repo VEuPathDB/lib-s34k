@@ -11,8 +11,8 @@ interface TagSenderParams {
   val tags: Set<S3Tag>
 
   /**
-   * Adds/overwrites the tags in the existing [ObjectPutRequestParams.tags] [Set] with the
-   * values contained in the given [tags] [Map].
+   * Adds/overwrites the tags in the existing [TagSenderParams.tags] [Set] with
+   * the values contained in the given [tags] [Map].
    *
    * Each entry in the input map will be converted into an [S3Tag] instance and
    * put into the [Set] of tags attached to this request.
@@ -22,16 +22,16 @@ interface TagSenderParams {
   fun addTags(tags: Map<String, String>)
 
   /**
-   * Adds/overwrites the tags in the existing [ObjectPutRequestParams.tags] [Set] with the
-   * values contained in the given [tags] array.
+   * Adds/overwrites the tags in the existing [TagSenderParams.tags] [Set] with
+   * the values contained in the given [tags] array.
    *
    * @param tags Array of tags to set on this request.
    */
   fun addTags(vararg tags: S3Tag)
 
   /**
-   * Adds/overwrites the tags in the existing [ObjectPutRequestParams.tags] [Set] with the
-   * values contained in the given [tags] [Collection].
+   * Adds/overwrites the tags in the existing [TagSenderParams.tags] [Set] with
+   * the values contained in the given [tags] [Collection].
    *
    * @param tags Collection of tags to set on this request.
    */
