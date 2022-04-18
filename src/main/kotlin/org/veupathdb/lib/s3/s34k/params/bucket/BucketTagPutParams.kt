@@ -26,8 +26,18 @@ class BucketTagPutParams(var callback: (() -> Unit)? = null)
     (this.tags as MutableSet).add(S3Tag(key, value))
   }
 
+
   override fun toMap(): Map<String, String> {
-    TODO("Not yet implemented")
+    Log.trace("toMap()")
+
+    if (tags.isEmpty())
+      return emptyMap()
+
+    val out = HashMap<String, String>(tags.size)
+
+    tags.forEach { out[it.key] = it.value }
+
+    return out
   }
 
   override fun toString(): String {

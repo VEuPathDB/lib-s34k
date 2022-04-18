@@ -55,7 +55,7 @@ sealed class SealedObjPutReqParams(path: String? = null)
 
     val out = HashMap<String, String>(tags.size)
 
-    tags.forEach { out.put(it.key, it.value) }
+    tags.forEach { out[it.key] = it.value }
 
     return out
   }

@@ -41,6 +41,20 @@ class TagPutParams()
     (this.tags as MutableSet).add(S3Tag(key, value))
   }
 
+
+  override fun toMap(): Map<String, String> {
+    Log.trace("toMap()")
+
+    if (tags.isEmpty())
+      return emptyMap()
+
+    val out = HashMap<String, String>(tags.size)
+
+    tags.forEach { out[it.key] = it.value }
+
+    return out
+  }
+
   fun toObjectTagPutParams(path: String, cb: (() -> Unit)? = null): ObjectTagPutParams {
     Log.trace("toObjectTagPutParams(path = {}, cb = {})", path, cb)
 
