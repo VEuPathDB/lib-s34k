@@ -2,7 +2,6 @@ package org.veupathdb.lib.s3.s34k.params
 
 import org.slf4j.LoggerFactory
 import org.veupathdb.lib.s3.s34k.S3Tag
-import org.veupathdb.lib.s3.s34k.S3TagSet
 import org.veupathdb.lib.s3.s34k.params.bucket.BucketTagPutParams
 import org.veupathdb.lib.s3.s34k.params.`object`.ObjectTagPutParams
 
@@ -14,7 +13,7 @@ import org.veupathdb.lib.s3.s34k.params.`object`.ObjectTagPutParams
  * @since v0.1.0
  */
 class TagPutParams()
-  : TagSenderParams, AbstractRequestParams()
+  : TagSenderParams, RequestParams()
 {
   private val Log = LoggerFactory.getLogger(this::class.java)
 

@@ -13,7 +13,7 @@ import org.veupathdb.lib.s3.s34k.params.`object`.ObjectTagGetParams
  * @since v0.1.0
  */
 class TagGetParams()
-  : AbstractRequestParams()
+  : RequestParams()
 {
   private val Log = LoggerFactory.getLogger(this::class.java)
 

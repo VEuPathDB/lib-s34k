@@ -2,12 +2,12 @@ package org.veupathdb.lib.s3.s34k.params.bucket
 
 import org.slf4j.LoggerFactory
 import org.veupathdb.lib.s3.s34k.S3Tag
-import org.veupathdb.lib.s3.s34k.params.AbstractRequestParams
+import org.veupathdb.lib.s3.s34k.params.RequestParams
 import org.veupathdb.lib.s3.s34k.params.TagSenderParams
 
 // TODO: Document me
 class BucketTagPutParams(var callback: (() -> Unit)? = null)
-  : TagSenderParams, AbstractRequestParams()
+  : TagSenderParams, RequestParams()
 {
   private val Log = LoggerFactory.getLogger(this::class.java)
 

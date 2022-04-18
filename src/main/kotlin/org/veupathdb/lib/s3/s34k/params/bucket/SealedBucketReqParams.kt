@@ -1,7 +1,7 @@
 package org.veupathdb.lib.s3.s34k.params.bucket
 
 import org.veupathdb.lib.s3.s34k.errors.InvalidRequestConfigException
-import org.veupathdb.lib.s3.s34k.params.AbstractRequestParams
+import org.veupathdb.lib.s3.s34k.params.RequestParams
 
 /**
  * Bucket Request Params
@@ -21,7 +21,7 @@ import org.veupathdb.lib.s3.s34k.params.AbstractRequestParams
  *
  * @since v0.1.0
  */
-sealed class SealedBucketReqParams(bucket: String? = null, var region: String? = null) : AbstractRequestParams() {
+sealed class SealedBucketReqParams(bucket: String? = null, var region: String? = null) : RequestParams() {
 
   /**
    * Name of the target S3 bucket.

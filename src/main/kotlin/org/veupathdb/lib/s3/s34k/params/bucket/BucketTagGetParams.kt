@@ -1,7 +1,7 @@
 package org.veupathdb.lib.s3.s34k.params.bucket
 
 import org.veupathdb.lib.s3.s34k.S3TagSet
-import org.veupathdb.lib.s3.s34k.params.AbstractRequestParams
+import org.veupathdb.lib.s3.s34k.params.RequestParams
 
 /**
  * Bucket Tag Retrieval Operation Parameters
@@ -16,7 +16,7 @@ import org.veupathdb.lib.s3.s34k.params.AbstractRequestParams
  * @since v0.1.0
  */
 class BucketTagGetParams(var callback: ((tags: S3TagSet) -> Unit)? = null)
-  : AbstractRequestParams()
+  : RequestParams()
 {
   override fun toString(): String {
     val out = StringBuilder(2048)

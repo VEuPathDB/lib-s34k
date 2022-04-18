@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory
  *
  * @since v0.1.0
  */
-abstract class AbstractRequestParams {
+open class RequestParams {
 
   private val Log = LoggerFactory.getLogger(this::class.java)
 
@@ -27,11 +27,11 @@ abstract class AbstractRequestParams {
 
   /**
    * Merges the additional [headers] provided into the existing
-   * [AbstractRequestParams.headers] map.
+   * [RequestParams.headers] map.
    *
-   * If the [AbstractRequestParams.headers] map already contains one or more keys
+   * If the [RequestParams.headers] map already contains one or more keys
    * present in the input [headers] map, the value at that key will be appended
-   * to the array of headers at that key in [AbstractRequestParams.headers].
+   * to the array of headers at that key in [RequestParams.headers].
    *
    * Example:
    * ```
@@ -51,7 +51,7 @@ abstract class AbstractRequestParams {
    * ```
    *
    * @param headers Map of headers to merge into the existing
-   * [AbstractRequestParams.headers] map.
+   * [RequestParams.headers] map.
    */
   fun addHeaders(headers: Map<String, String>) {
     Log.trace("addHeaders(headers = {})", headers)
@@ -154,12 +154,12 @@ abstract class AbstractRequestParams {
 
   /**
    * Merges the additional [queryParams] provided into the existing
-   * [AbstractRequestParams.queryParams] map.
+   * [RequestParams.queryParams] map.
    *
-   * If the [AbstractRequestParams.queryParams] map already contains one or more keys
+   * If the [RequestParams.queryParams] map already contains one or more keys
    * present in the input [queryParams] map, the value at that key will be
    * appended to the array of queryParams at that key in
-   * [AbstractRequestParams.queryParams].
+   * [RequestParams.queryParams].
    *
    * Example:
    * ```
@@ -179,7 +179,7 @@ abstract class AbstractRequestParams {
    * ```
    *
    * @param queryParams Map of queryParams to merge into the existing
-   * [AbstractRequestParams.queryParams] map.
+   * [RequestParams.queryParams] map.
    */
   fun addQueryParams(queryParams: Map<String, String>) {
     Log.trace("addQueryParams(headers = {})", queryParams)

@@ -16,7 +16,7 @@ import org.veupathdb.lib.s3.s34k.params.`object`.ObjectStatParams
  *
  * @since v0.1.0
  */
-class StatParams(var callback: ((S3ObjectMeta) -> Unit)? = null) : AbstractRequestParams() {
+class StatParams(var callback: ((S3ObjectMeta) -> Unit)? = null) : RequestParams() {
 
   private val Log = LoggerFactory.getLogger(this::class.java)
 

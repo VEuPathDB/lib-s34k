@@ -1,7 +1,7 @@
 package org.veupathdb.lib.s3.s34k.params.`object`
 
 import org.veupathdb.lib.s3.s34k.errors.InvalidRequestConfigException
-import org.veupathdb.lib.s3.s34k.params.AbstractRequestParams
+import org.veupathdb.lib.s3.s34k.params.RequestParams
 
 /**
  * Object Request Params
@@ -19,7 +19,7 @@ import org.veupathdb.lib.s3.s34k.params.AbstractRequestParams
  *
  * @since v0.1.0
  */
-sealed class SealedObjReqParams(var path: String? = null) : AbstractRequestParams() {
+sealed class SealedObjReqParams(var path: String? = null) : RequestParams() {
 
   override fun toString(sb: StringBuilder) {
     sb.append("  path = ").append(path).append(",\n")

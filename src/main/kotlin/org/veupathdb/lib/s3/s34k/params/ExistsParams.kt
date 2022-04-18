@@ -16,7 +16,7 @@ import org.veupathdb.lib.s3.s34k.params.`object`.ObjectExistsParams
  *
  * @since v0.1.0
  */
-class ExistsParams(var callback: ((Boolean) -> Unit)? = null) : AbstractRequestParams() {
+class ExistsParams(var callback: ((Boolean) -> Unit)? = null) : RequestParams() {
 
   private val Log = LoggerFactory.getLogger(this::class.java)
 

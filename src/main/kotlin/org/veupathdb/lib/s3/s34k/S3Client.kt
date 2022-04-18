@@ -14,15 +14,13 @@ import org.veupathdb.lib.s3.s34k.params.bucket.BucketPutParams
  * Wraps a specific S3 API implementation with a general wrapper so as not to
  * tie the code in this library to any one implementation.
  *
- * Due to the limitations of the Java `ServiceLoader`, implementations of this
- * type must have a no-argument constructor.
- *
  * @author Elizabeth Paige Harper [https://github.com/Foxcapades]
+ *
  * @since  v0.1.0
  */
 interface S3Client {
 
-  // region: Bucket Exists
+  // region Bucket Exists
 
   /**
    * Tests for the existence of a bucket with the given name.
@@ -72,8 +70,7 @@ interface S3Client {
 
   // endregion
 
-
-  // region: Create Bucket
+  // region Create Bucket
 
   /**
    * Attempts to create a bucket with the given name.
@@ -150,8 +147,7 @@ interface S3Client {
 
   // endregion
 
-
-  // region: Create Bucket if Not Exists
+  // region Create Bucket if Not Exists
 
   /**
    * Attempts to create a bucket with the given name if it does not already
@@ -175,16 +171,51 @@ interface S3Client {
    */
   fun createBucketIfNotExists(bucketName: String, region: String? = null): S3Bucket
 
-  // TODO: Document me
-  fun createBucketIfNotExists(params: BucketPutParams): S3Bucket
-
-  // TODO: Document me
+  /**
+   * Attempts to create a bucket with the given name if it does not already
+   * exist in the S3 instance.
+   *
+   * **Warning** This may not be allowed based on the security policy/
+   * permissions granted on the target S3 instance.
+   *
+   * @param action Action used to configure the S3 operation parameters.
+   *
+   * @return A new [S3Bucket] instance wrapping either the newly created bucket
+   * or the pre-existing bucket.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   *
+   * @see bucketExists
+   * @see createBucket
+   */
   fun createBucketIfNotExists(action: BucketPutParams.() -> Unit): S3Bucket
+
+  /**
+   * Attempts to create a bucket with the given name if it does not already
+   * exist in the S3 instance.
+   *
+   * **Warning** This may not be allowed based on the security policy/
+   * permissions granted on the target S3 instance.
+   *
+   * @param params S3 operation parameters.
+   *
+   * @return A new [S3Bucket] instance wrapping either the newly created bucket
+   * or the pre-existing bucket.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   *
+   * @see bucketExists
+   * @see createBucket
+   */
+  fun createBucketIfNotExists(params: BucketPutParams): S3Bucket
 
   // endregion
 
-
-  // region: Get Bucket
+  // region Get Bucket
 
   /**
    * Creates a new [S3Bucket] instance wrapping the target S3 bucket.
@@ -200,28 +231,95 @@ interface S3Client {
    * @throws IllegalArgumentException If the given bucket name is not between
    * `3` and `63` characters in length.
    *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   *
    * @see bucketExists
    * @see createBucketIfNotExists
    */
   fun getBucket(bucketName: String, region: String? = null): S3Bucket
 
-  // TODO: Document me
-  fun getBucket(params: BucketGetParams): S3Bucket
-
-  // TODO: Document me
+  /**
+   * Creates a new [S3Bucket] instance wrapping the target S3 bucket.
+   *
+   * @param action Action used to configure the S3 operation parameters.
+   *
+   * @return A new [S3Bucket] instance wrapping the target bucket.
+   *
+   * @throws BucketNotFoundException If the target bucket does not exist.
+   *
+   * @throws IllegalArgumentException If the given bucket name is not between
+   * `3` and `63` characters in length.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   *
+   * @see bucketExists
+   * @see createBucketIfNotExists
+   */
   fun getBucket(action: BucketGetParams.() -> Unit): S3Bucket
+
+  /**
+   * Creates a new [S3Bucket] instance wrapping the target S3 bucket.
+   *
+   * @param params S3 operation parameters.
+   *
+   * @return A new [S3Bucket] instance wrapping the target bucket.
+   *
+   * @throws BucketNotFoundException If the target bucket does not exist.
+   *
+   * @throws IllegalArgumentException If the given bucket name is not between
+   * `3` and `63` characters in length.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   *
+   * @see bucketExists
+   * @see createBucketIfNotExists
+   */
+  fun getBucket(params: BucketGetParams): S3Bucket
 
   // endregion
 
-
   // region: List Buckets
 
-  // TODO: Document me
+  /**
+   * Fetches a list of all buckets available on the target S3 instance.
+   *
+   * @return A list of S3 bucket wrappers.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
   fun listBuckets(): List<S3Bucket>
 
-  // TODO: Document me
+  /**
+   * Fetches a list of all buckets available on the target S3 instance.
+   *
+   * @param action Action used to configure the S3 operation parameters.
+   *
+   * @return A list of S3 bucket wrappers.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
   fun listBuckets(action: BucketListParams.() -> Unit): List<S3Bucket>
 
-  // TODO: Document me
+  /**
+   * Fetches a list of all buckets available on the target S3 instance.
+   *
+   * @param params S3 operation parameters.
+   *
+   * @return A list of S3 bucket wrappers.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
   fun listBuckets(params: BucketListParams): List<S3Bucket>
 }
