@@ -14,8 +14,9 @@ import org.veupathdb.lib.s3.s34k.params.RequestParams
  *
  * @param region Optional region value.
  *
- * @throws IllegalArgumentException If the value set is not between `3` and
- * `63` characters in length.
+ * @throws IllegalArgumentException If the bucket parameter is not `null` and
+ * violates any of the rules outlined in the [BucketName] constructor
+ * documentation.
  *
  * @author Elizabeth Paige Harper [https://github.com/Foxcapades]
  *
@@ -28,16 +29,21 @@ sealed class SealedBucketReqParams(bucket: String? = null, var region: String? =
    *
    * This value must be set or an [InvalidRequestConfigException] will be thrown
    * when the request is attempted.
-   *
-   * @throws IllegalArgumentException If the value set is not between `3` and
-   * `63` characters in length.
    */
-  var bucket: String? = bucket
-    set(value) {
-      if (value == null || value.length !in 3 .. 63)
-        throw IllegalArgumentException("Bucket name must be between 3 and 64 characters in length.  Given value: $value")
-      field = value
-    }
+  var bucket: BucketName? = bucket?.let(::BucketName)
+
+  /**
+   * Converts the given string into a [BucketName] instance and sets it to the
+   * [bucket] property.
+   *
+   * @param name Bucket name.
+   *
+   * @throws IllegalArgumentException If the given name violates any of the
+   * rules outlined in the [BucketName] constructor documentation.
+   */
+  fun setBucketName(name: String) {
+    bucket = BucketName(name)
+  }
 
   override fun toString(sb: StringBuilder) {
     sb.append("  bucket = ").append(bucket).append(",\n")
