@@ -42,6 +42,7 @@ interface S3Bucket {
    */
   val creationDate: OffsetDateTime
 
+
   // region Object Exists
 
   /**
@@ -49,19 +50,16 @@ interface S3Bucket {
    *
    * @param path Path to the object to test for.
    *
-   * @param cb Optional callback that will be executed on successful response
-   * from the S3 store.
-   *
    * @return `true` if an object exists at the given path, otherwise `false`.
    *
-   * @throws BucketNotFoundException If the bucket has been deleted since this
-   * [S3Bucket] instance was created.
+   * @throws BucketNotFoundException If this bucket no longer exists.
    *
    * @throws S34kException If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
   fun objectExists(path: String): Boolean
+
 
   /**
    * Tests for the existence of an object with the operation configured by the
@@ -71,14 +69,14 @@ interface S3Bucket {
    *
    * @return `true` if an object exists at the given path, otherwise `false`.
    *
-   * @throws BucketNotFoundException If the bucket has been deleted since this
-   * [S3Bucket] instance was created.
+   * @throws BucketNotFoundException If this bucket no longer exists.
    *
    * @throws S34kException If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
   fun objectExists(action: ObjectExistsParams.() -> Unit): Boolean
+
 
   /**
    * Tests for the existence of an object with the operation configured by the
@@ -88,8 +86,7 @@ interface S3Bucket {
    *
    * @return `true` if an object exists at the given path, otherwise `false`.
    *
-   * @throws BucketNotFoundException If the bucket has been deleted since this
-   * [S3Bucket] instance was created.
+   * @throws BucketNotFoundException If this bucket no longer exists.
    *
    * @throws S34kException If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
@@ -112,8 +109,7 @@ interface S3Bucket {
    *
    * @return Metadata about the specified object.
    *
-   * @throws BucketNotFoundException If the bucket has been deleted since this
-   * [S3Bucket] instance was created.
+   * @throws BucketNotFoundException If this bucket no longer exists.
    *
    * @throws ObjectNotFoundException If the target object does not exist.
    *
@@ -176,13 +172,50 @@ interface S3Bucket {
 
   // region: Get Bucket Tags
 
-  // TODO: Document me
+  /**
+   * Fetches the tags attached to this bucket.
+   *
+   * @return A set of the tags associated with this bucket.
+   *
+   * @throws BucketNotFoundException If this bucket no longer exists.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
   fun getBucketTags(): S3TagSet
 
-  // TODO: Document me
-  fun getBucketTags(action: BucketTagGetParams.() -> Unit): S3TagSet
 
   // TODO: Document me
+  /**
+   * Fetches the tags attached to this bucket.
+   *
+   * @param action Function used to configure the S3 operation parameters.
+   *
+   * @return A set of the tags associated with this bucket.
+   *
+   * @throws BucketNotFoundException If this bucket no longer exists.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
+  fun getBucketTags(action: BucketTagGetParams.() -> Unit): S3TagSet
+
+
+  /**
+   * Fetches the tags attached to this bucket.
+   *
+   * @param params S3 operation parameters.
+   *
+   * @return A set of the tags associated with this bucket.
+   *
+   * @throws BucketNotFoundException If this bucket no longer exists.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
   fun getBucketTags(params: BucketTagGetParams): S3TagSet
 
   // endregion
@@ -220,8 +253,7 @@ interface S3Bucket {
    * @throws ObjectNotFoundException If the object at the given path does not
    * exist.
    *
-   * @throws BucketNotFoundException If the bucket has been deleted since this
-   * [S3Bucket] instance was created.
+   * @throws BucketNotFoundException If this bucket no longer exists.
    *
    * @throws S34kException If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
@@ -237,6 +269,7 @@ interface S3Bucket {
 
   // endregion
 
+
   // region: Touch Object
 
   /**
@@ -244,8 +277,7 @@ interface S3Bucket {
    *
    * @param path Path to the empty object to create.
    *
-   * @throws BucketNotFoundException If the bucket has been deleted since this
-   * [S3Bucket] instance was created.
+   * @throws BucketNotFoundException If this bucket no longer exists.
    *
    * @throws S34kException If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
@@ -260,6 +292,7 @@ interface S3Bucket {
   fun touchObject(params: ObjectTouchParams): S3Object
 
   // endregion
+
 
   // region: Put Directory
 
@@ -276,8 +309,7 @@ interface S3Bucket {
    *
    * @param path Path to the object to create.
    *
-   * @throws BucketNotFoundException If the bucket has been deleted since this
-   * [S3Bucket] instance was created.
+   * @throws BucketNotFoundException If this bucket no longer exists.
    *
    * @throws S34kException If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
@@ -293,6 +325,7 @@ interface S3Bucket {
 
   // endregion
 
+
   // region: Put Object
 
   /**
@@ -307,8 +340,7 @@ interface S3Bucket {
    *
    * @param size Number of bytes to copy into the newly created object.
    *
-   * @throws BucketNotFoundException If the bucket has been deleted since this
-   * [S3Bucket] instance was created.
+   * @throws BucketNotFoundException If this bucket no longer exists.
    *
    * @throws S34kException If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
@@ -324,6 +356,7 @@ interface S3Bucket {
 
   // endregion
 
+
   // region: Put File
 
   /**
@@ -335,8 +368,7 @@ interface S3Bucket {
    * @param file File whose contents will be copied into the newly created
    * object.
    *
-   * @throws BucketNotFoundException If the bucket has been deleted since this
-   * [S3Bucket] instance was created.
+   * @throws BucketNotFoundException If this bucket no longer exists.
    *
    * @throws S34kException If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
