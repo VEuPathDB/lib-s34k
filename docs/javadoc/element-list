@@ -1,7 +1,10 @@
 $dokka.format:javadoc-v1
 $dokka.linkExtension:html
-
+$dokka.location:org.veupathdb.lib.s3.s34k/S3LegalHold.Companion///PointingToDeclaration/org/veupathdb/lib/s3/s34k/S3LegalHold.Companion.html
+$dokka.location:org.veupathdb.lib.s3.s34k/S3RetentionMode.Companion///PointingToDeclaration/org/veupathdb/lib/s3/s34k/S3RetentionMode.Companion.html
 org.veupathdb.lib.s3.s34k
 org.veupathdb.lib.s3.s34k.errors
 org.veupathdb.lib.s3.s34k.params
+org.veupathdb.lib.s3.s34k.params.bucket
+org.veupathdb.lib.s3.s34k.params.object
 
