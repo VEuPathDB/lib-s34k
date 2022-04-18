@@ -47,6 +47,19 @@ sealed class SealedObjPutReqParams(path: String? = null)
     (this.tags as MutableSet).add(S3Tag(key, value))
   }
 
+  override fun toMap(): Map<String, String> {
+    Log.trace("toMap()")
+
+    if (tags.isEmpty())
+      return emptyMap()
+
+    val out = HashMap<String, String>(tags.size)
+
+    tags.forEach { out.put(it.key, it.value) }
+
+    return out
+  }
+
   override fun toString(sb: StringBuilder) {
     if (tags.isNotEmpty()) {
       sb.append("  tags = {\n")

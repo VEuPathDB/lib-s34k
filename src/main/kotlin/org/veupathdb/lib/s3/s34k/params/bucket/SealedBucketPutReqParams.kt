@@ -2,6 +2,7 @@ package org.veupathdb.lib.s3.s34k.params.bucket
 
 import org.slf4j.LoggerFactory
 import org.veupathdb.lib.s3.s34k.S3Tag
+import org.veupathdb.lib.s3.s34k.params.TagSenderParams
 
 /**
  * Bucket Put Operation Params
@@ -15,14 +16,14 @@ import org.veupathdb.lib.s3.s34k.S3Tag
 sealed class SealedBucketPutReqParams(
   bucket: String? = null,
   region: String? = null,
-) : SealedBucketReqParams(bucket, region) {
+) : TagSenderParams, SealedBucketReqParams(bucket, region) {
 
   private val Log = LoggerFactory.getLogger(this::class.java)
 
   /**
    * Tags that will be attached to the object being put into the S3 store.
    */
-  val tags: Set<S3Tag> = HashSet()
+  override val tags: Set<S3Tag> = HashSet()
 
   /**
    * Adds/overwrites the tags in the existing [SealedBucketPutReqParams.tags] [Set] with the
@@ -33,7 +34,7 @@ sealed class SealedBucketPutReqParams(
    *
    * @param tags Map of tags to set on this request.
    */
-  fun addTags(tags: Map<String, String>) {
+  override fun addTags(tags: Map<String, String>) {
     Log.trace("addTags(tags = {})", tags)
 
     val list = (this.tags as MutableSet)
@@ -46,7 +47,7 @@ sealed class SealedBucketPutReqParams(
    *
    * @param tags Array of tags to set on this request.
    */
-  fun addTags(vararg tags: S3Tag) {
+  override fun addTags(vararg tags: S3Tag) {
     Log.trace("addTags(tags = {})", tags)
     (this.tags as MutableSet).addAll(tags)
   }
@@ -57,7 +58,7 @@ sealed class SealedBucketPutReqParams(
    *
    * @param tags Collection of tags to set on this request.
    */
-  fun addTags(tags: Collection<S3Tag>) {
+  override fun addTags(tags: Collection<S3Tag>) {
     Log.trace("addTags(tags = {})", tags)
     (this.tags as MutableSet).addAll(tags)
   }
@@ -71,9 +72,22 @@ sealed class SealedBucketPutReqParams(
    *
    * @param value Value of the tag to set.
    */
-  fun addTag(key: String, value: String) {
+  override fun addTag(key: String, value: String) {
     Log.trace("addTag(key = {}, value = {})", key, value)
     (this.tags as MutableSet).add(S3Tag(key, value))
+  }
+
+  override fun toMap(): Map<String, String> {
+    Log.trace("toMap()")
+
+    if (tags.isEmpty())
+      return emptyMap()
+
+    val out = HashMap<String, String>(tags.size)
+
+    tags.forEach { out.put(it.key, it.value) }
+
+    return out
   }
 
   override fun toString(sb: StringBuilder) {
