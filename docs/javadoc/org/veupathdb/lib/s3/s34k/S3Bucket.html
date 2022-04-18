@@ -370,7 +370,7 @@ public interface <span class="typeNameLabel"><a href=S3Bucket.html>S3Bucket</a><
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=S3Bucket.html#getBucketTags()>getBucketTags</a>() </code>
                                             </th>
-                                            <td class="colLast"></td>
+                                            <td class="colLast">Fetches the tags attached to this bucket.</td>
                                         </tr>
                                         
                                         <tr id="i17" class="rowColor">
@@ -378,7 +378,7 @@ public interface <span class="typeNameLabel"><a href=S3Bucket.html>S3Bucket</a><
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=S3Bucket.html#getBucketTags(Function1)>getBucketTags</a>(Function1&lt;<a href=params/bucket/BucketTagGetParams.html>BucketTagGetParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action) </code>
                                             </th>
-                                            <td class="colLast"></td>
+                                            <td class="colLast">Fetches the tags attached to this bucket.</td>
                                         </tr>
                                         
                                         <tr id="i18" class="altColor">
@@ -386,7 +386,7 @@ public interface <span class="typeNameLabel"><a href=S3Bucket.html>S3Bucket</a><
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=S3Bucket.html#getBucketTags(BucketTagGetParams)>getBucketTags</a>(<a href=params/bucket/BucketTagGetParams.html>BucketTagGetParams</a> params) </code>
                                             </th>
-                                            <td class="colLast"></td>
+                                            <td class="colLast">Fetches the tags attached to this bucket.</td>
                                         </tr>
                                         
                                         <tr id="i19" class="rowColor">
@@ -518,19 +518,19 @@ public interface <span class="typeNameLabel"><a href=S3Bucket.html>S3Bucket</a><
                                         </tr>
                                         
                                         <tr id="i35" class="rowColor">
-                                            <td class="colFirst"><code>abstract <a href=S3Object.html>S3Object</a></code>
-                                            </td>
-                                            <th class="colSecond" scope="row"><code><a href=S3Bucket.html#uploadFile(ObjectFilePutParams)>uploadFile</a>(<a href=params/object/ObjectFilePutParams.html>ObjectFilePutParams</a> params) </code>
-                                            </th>
-                                            <td class="colLast"></td>
-                                        </tr>
-                                        
-                                        <tr id="i36" class="altColor">
                                             <td class="colFirst"><code>abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=S3Bucket.html#uploadFile(Function1)>uploadFile</a>(Function1&lt;<a href=params/object/ObjectFilePutParams.html>ObjectFilePutParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action) </code>
                                             </th>
-                                            <td class="colLast"></td>
+                                            <td class="colLast">Puts an object into this bucket at the configured path and copies the contents of the given configured file into the newly created object.</td>
+                                        </tr>
+                                        
+                                        <tr id="i36" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=S3Object.html>S3Object</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=S3Bucket.html#uploadFile(ObjectFilePutParams)>uploadFile</a>(<a href=params/object/ObjectFilePutParams.html>ObjectFilePutParams</a> params) </code>
+                                            </th>
+                                            <td class="colLast">Puts an object into this bucket at the configured path and copies the contents of the given configured file into the newly created object.</td>
                                         </tr>
                                         
                                         <tr id="i37" class="rowColor">
@@ -894,7 +894,7 @@ public interface <span class="typeNameLabel"><a href=S3Bucket.html>S3Bucket</a><
                                     <li class="blockList">
                                         <h4>getBucketTags</h4>
                                         <pre class="methodSignature"> abstract <a href=S3TagSet.html>S3TagSet</a> <a href=S3Bucket.html#getBucketTags()>getBucketTags</a>()</pre>
-                                        <div class="block"></div>
+                                        <div class="block"><p>Fetches the tags attached to this bucket.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -909,7 +909,16 @@ public interface <span class="typeNameLabel"><a href=S3Bucket.html>S3Bucket</a><
                                     <li class="blockList">
                                         <h4>getBucketTags</h4>
                                         <pre class="methodSignature"> abstract <a href=S3TagSet.html>S3TagSet</a> <a href=S3Bucket.html#getBucketTags(Function1)>getBucketTags</a>(Function1&lt;<a href=params/bucket/BucketTagGetParams.html>BucketTagGetParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action)</pre>
-                                        <div class="block"></div>
+                                        <div class="block"><p>Fetches the tags attached to this bucket.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>action</code> - Function used to configure the S3 operation parameters.</dd>
+                                            
+                                            
+                                        </dl>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -924,7 +933,16 @@ public interface <span class="typeNameLabel"><a href=S3Bucket.html>S3Bucket</a><
                                     <li class="blockList">
                                         <h4>getBucketTags</h4>
                                         <pre class="methodSignature"> abstract <a href=S3TagSet.html>S3TagSet</a> <a href=S3Bucket.html#getBucketTags(BucketTagGetParams)>getBucketTags</a>(<a href=params/bucket/BucketTagGetParams.html>BucketTagGetParams</a> params)</pre>
-                                        <div class="block"></div>
+                                        <div class="block"><p>Fetches the tags attached to this bucket.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>params</code> - S3 operation parameters.</dd>
+                                            
+                                            
+                                        </dl>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -1231,21 +1249,6 @@ public interface <span class="typeNameLabel"><a href=S3Bucket.html>S3Bucket</a><
                                     </li>
                                 </ul>
                                 
-                                <a id="uploadFile(ObjectFilePutParams)">
-                                    <!--   -->
-                                </a>
-                                <ul class=
-                                              "blockList"
-                                          >
-                                    <li class="blockList">
-                                        <h4>uploadFile</h4>
-                                        <pre class="methodSignature"> abstract <a href=S3Object.html>S3Object</a> <a href=S3Bucket.html#uploadFile(ObjectFilePutParams)>uploadFile</a>(<a href=params/object/ObjectFilePutParams.html>ObjectFilePutParams</a> params)</pre>
-                                        <div class="block"></div>
-                                        
-                                        <!-- TODO missing return annotation -->
-                                    </li>
-                                </ul>
-                                
                                 <a id="uploadFile(Function1)">
                                     <!--   -->
                                 </a>
@@ -1255,7 +1258,40 @@ public interface <span class="typeNameLabel"><a href=S3Bucket.html>S3Bucket</a><
                                     <li class="blockList">
                                         <h4>uploadFile</h4>
                                         <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=S3Bucket.html#uploadFile(Function1)>uploadFile</a>(Function1&lt;<a href=params/object/ObjectFilePutParams.html>ObjectFilePutParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action)</pre>
-                                        <div class="block"></div>
+                                        <div class="block"><p>Puts an object into this bucket at the configured path and copies the contents of the given configured file into the newly created object.</p><p>The parameters must be configured by the <a href=S3Bucket.html#uploadFile(Function1)>action</a> given to this method.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>action</code> - Action used to configure the S3 operation parameters.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="uploadFile(ObjectFilePutParams)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>uploadFile</h4>
+                                        <pre class="methodSignature"> abstract <a href=S3Object.html>S3Object</a> <a href=S3Bucket.html#uploadFile(ObjectFilePutParams)>uploadFile</a>(<a href=params/object/ObjectFilePutParams.html>ObjectFilePutParams</a> params)</pre>
+                                        <div class="block"><p>Puts an object into this bucket at the configured path and copies the contents of the given configured file into the newly created object.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>params</code> - S3 operation parameters.</dd>
+                                            
+                                            
+                                        </dl>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
