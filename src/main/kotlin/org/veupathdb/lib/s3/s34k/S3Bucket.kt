@@ -3,6 +3,7 @@ package org.veupathdb.lib.s3.s34k
 import org.veupathdb.lib.s3.s34k.errors.BucketNotFoundException
 import org.veupathdb.lib.s3.s34k.errors.ObjectNotFoundException
 import org.veupathdb.lib.s3.s34k.errors.S34kException
+import org.veupathdb.lib.s3.s34k.params.bucket.BucketName
 import org.veupathdb.lib.s3.s34k.params.bucket.BucketTagGetParams
 import org.veupathdb.lib.s3.s34k.params.bucket.BucketTagPutParams
 import org.veupathdb.lib.s3.s34k.params.`object`.*
@@ -30,7 +31,7 @@ interface S3Bucket {
   /**
    * Name of this bucket.
    */
-  val name: String
+  val name: BucketName
 
   /**
    * Region of this bucket.
