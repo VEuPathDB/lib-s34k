@@ -2,6 +2,7 @@ package org.veupathdb.lib.s3.s34k.params
 
 import org.slf4j.LoggerFactory
 import org.veupathdb.lib.s3.s34k.S3Tag
+import org.veupathdb.lib.s3.s34k.S3TagSet
 import org.veupathdb.lib.s3.s34k.params.bucket.BucketTagPutParams
 import org.veupathdb.lib.s3.s34k.params.`object`.ObjectTagPutParams
 
@@ -55,7 +56,7 @@ class TagPutParams()
     return out
   }
 
-  fun toObjectTagPutParams(path: String, cb: (() -> Unit)? = null): ObjectTagPutParams {
+  fun toObjectTagPutParams(path: String, cb: ((S3TagSet) -> Unit)? = null): ObjectTagPutParams {
     Log.trace("toObjectTagPutParams(path = {}, cb = {})", path, cb)
 
     return ObjectTagPutParams(path, cb).also {
@@ -66,7 +67,7 @@ class TagPutParams()
     }
   }
 
-  fun toBucketTagPutParams(cb: (() -> Unit)? = null): BucketTagPutParams {
+  fun toBucketTagPutParams(cb: ((S3TagSet) -> Unit)? = null): BucketTagPutParams {
     Log.trace("toBucketTagPutParams(cb = {})", cb)
 
     return BucketTagPutParams(cb).also {
