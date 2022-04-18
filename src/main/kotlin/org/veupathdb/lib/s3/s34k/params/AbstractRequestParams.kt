@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory
  */
 abstract class AbstractRequestParams {
 
-  private val Log = LoggerFactory.getLogger(AbstractRequestParams::class.java)
+  private val Log = LoggerFactory.getLogger(this::class.java)
 
   /**
    * Additional headers that will be sent with the S3 operation.
@@ -146,6 +146,12 @@ abstract class AbstractRequestParams {
     (headers as MutableMap)[key] = (values as Array<String>)
   }
 
+  // TODO: Document me
+  fun setHeaders(headers: Map<String, Array<String>>) {
+    Log.trace("setHeaders(headers = {})", headers)
+    headers.forEach { (k, v) -> (this.headers as MutableMap)[k] = v.copyOf() }
+  }
+
   /**
    * Merges the additional [queryParams] provided into the existing
    * [AbstractRequestParams.queryParams] map.
@@ -268,6 +274,12 @@ abstract class AbstractRequestParams {
   fun setQueryParams(key: String, vararg values: String) {
     Log.trace("setQueryParams(key = {}, values = {})", key, values)
     (queryParams as MutableMap)[key] = (values as Array<String>)
+  }
+
+  // TODO: Document me
+  fun setQueryParams(params: Map<String, Array<String>>) {
+    Log.trace("setQueryParams(params = {})", params)
+    params.forEach { (k, v) -> (queryParams as MutableMap)[k] = v.copyOf() }
   }
 
   @Suppress("UNCHECKED_CAST", "NOTHING_TO_INLINE")

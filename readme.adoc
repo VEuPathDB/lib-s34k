@@ -3,3 +3,10 @@
 image:https://img.shields.io/badge/jvm-1.8-blue[title="Compatible with JVM 1.8"]
 image:https://img.shields.io/badge/docs-javadoc-brightgreen[link="https://veupathdb.github.io/lib-s34k/javadoc"]
 image:https://img.shields.io/badge/docs-dokka-brightgreen[link="https://veupathdb.github.io/lib-s34k/dokka"]
+
+
+TODO
+
+*Notes*
+
+* Trace level logging may print sensitive information.
