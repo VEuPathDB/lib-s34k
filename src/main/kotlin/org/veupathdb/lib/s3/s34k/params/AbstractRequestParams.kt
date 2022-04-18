@@ -294,9 +294,9 @@ abstract class AbstractRequestParams {
       val newArray = arrayOfNulls<String>(tmp.size + values.size)
       System.arraycopy(tmp, 0, newArray, 0, tmp.size)
       System.arraycopy(values, 0, newArray, tmp.size, values.size)
-      (queryParams as MutableMap)[key] = (newArray as Array<String>)
+      (map as MutableMap)[key] = (newArray as Array<String>)
     } else {
-      (queryParams as MutableMap)[key] = values
+      (map as MutableMap)[key] = values
     }
   }
 
