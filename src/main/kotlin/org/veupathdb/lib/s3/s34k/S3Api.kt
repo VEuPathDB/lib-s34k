@@ -36,9 +36,7 @@ object S3Api {
     // If we have already located an implementation, use that rather than
     // searching for one.
     if (factory != null) {
-      val out = factory!!.new(config)
-      out.initialize(config)
-      return out
+      return factory!!.new(config)
     }
 
     // We haven't loaded an implementation class yet, try to load one now.
