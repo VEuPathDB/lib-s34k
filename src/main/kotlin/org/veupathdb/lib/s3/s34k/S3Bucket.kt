@@ -104,9 +104,6 @@ interface S3Bucket {
    *
    * @param path Path to the object whose metadata should be fetched.
    *
-   * @param cb Optional callback that will be executed on successful response
-   * from the S3 store.
-   *
    * @return Metadata about the specified object.
    *
    * @throws BucketNotFoundException If this bucket no longer exists.
@@ -119,10 +116,38 @@ interface S3Bucket {
    */
   fun statObject(path: String): S3ObjectMeta
 
-  // TODO: Document me
+  /**
+   * Fetches metadata for the object in this bucket at the given [path].
+   *
+   * @param action Action used to configure the S3 operation parameters.
+   *
+   * @return Metadata about the specified object.
+   *
+   * @throws BucketNotFoundException If this bucket no longer exists.
+   *
+   * @throws ObjectNotFoundException If the target object does not exist.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
   fun statObject(action: ObjectStatParams.() -> Unit): S3ObjectMeta
 
-  // TODO: Document me
+  /**
+   * Fetches metadata for the object in this bucket at the given [path].
+   *
+   * @param params S3 operation parameters.
+   *
+   * @return Metadata about the specified object.
+   *
+   * @throws BucketNotFoundException If this bucket no longer exists.
+   *
+   * @throws ObjectNotFoundException If the target object does not exist.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
   fun statObject(params: ObjectStatParams): S3ObjectMeta
 
   // endregion
@@ -186,7 +211,6 @@ interface S3Bucket {
   fun getBucketTags(): S3TagSet
 
 
-  // TODO: Document me
   /**
    * Fetches the tags attached to this bucket.
    *
@@ -390,7 +414,7 @@ interface S3Bucket {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun uploadFile(action: ObjectFilePutParams.() -> Unit)
+  fun uploadFile(action: ObjectFilePutParams.() -> Unit): S3Object
 
   /**
    * Puts an object into this bucket at the configured path and copies the
