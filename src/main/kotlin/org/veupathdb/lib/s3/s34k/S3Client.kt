@@ -1,8 +1,6 @@
 package org.veupathdb.lib.s3.s34k
 
-import org.veupathdb.lib.s3.s34k.errors.S34kException
-import org.veupathdb.lib.s3.s34k.errors.BucketAlreadyExistsException
-import org.veupathdb.lib.s3.s34k.errors.BucketNotFoundException
+import org.veupathdb.lib.s3.s34k.errors.*
 import org.veupathdb.lib.s3.s34k.params.bucket.*
 
 /**
@@ -324,13 +322,52 @@ interface S3Client {
 
   // region Delete Bucket
 
-  // TODO: Document me
+  /**
+   * Deletes the target bucket from the S3 instance.
+   *
+   * @param name Name of the bucket to delete.
+   *
+   * @param region Optional region value for the S3 operation.
+   *
+   * @throws BucketNotFoundException If the target bucket does not exist.
+   *
+   * @throws BucketNotEmptyException If the target bucket is not empty.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
   fun deleteBucket(name: String, region: String? = null)
 
-  // TODO: Document me
+
+  /**
+   * Deletes the target bucket from the S3 instance.
+   *
+   * @param action Action used to configure the S3 operation parameters.
+   *
+   * @throws BucketNotFoundException If the target bucket does not exist.
+   *
+   * @throws BucketNotEmptyException If the target bucket is not empty.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
   fun deleteBucket(action: BucketDeleteParams.() -> Unit)
 
-  // TODO: Document me
+  /**
+   * Deletes the target bucket from the S3 instance.
+   *
+   * @param params S3 operation parameters.
+   *
+   * @throws BucketNotFoundException If the target bucket does not exist.
+   *
+   * @throws BucketNotEmptyException If the target bucket is not empty.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
   fun deleteBucket(params: BucketDeleteParams)
 
   // endregion
