@@ -76,6 +76,10 @@ interface S3Client {
    *
    * @return A new [S3Bucket] instance wrapping the newly created bucket.
    *
+   * @throws BucketAlreadyOwnedByYouException If a bucket already exists in the
+   * S3 store with the given name, and it was created by a user with the given
+   * access credentials.
+   *
    * @throws BucketAlreadyExistsException If a bucket already exists in the S3
    * store with the given name.
    *
@@ -99,6 +103,10 @@ interface S3Client {
    *
    * @return A new [S3Bucket] instance wrapping the newly created bucket.
    *
+   * @throws BucketAlreadyOwnedByYouException If a bucket already exists in the
+   * S3 store with the given name, and it was created by a user with the given
+   * access credentials.
+   *
    * @throws BucketAlreadyExistsException If a bucket already exists in the S3
    * store with the given name.
    *
@@ -121,6 +129,10 @@ interface S3Client {
    * @param action Action to configure the S3 operation.
    *
    * @return A new [S3Bucket] instance wrapping the newly created bucket.
+   *
+   * @throws BucketAlreadyOwnedByYouException If a bucket already exists in the
+   * S3 store with the given name, and it was created by a user with the given
+   * access credentials.
    *
    * @throws BucketAlreadyExistsException If a bucket already exists in the S3
    * store with the given name.
