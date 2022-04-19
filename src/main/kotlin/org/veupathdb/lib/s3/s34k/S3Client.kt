@@ -3,10 +3,7 @@ package org.veupathdb.lib.s3.s34k
 import org.veupathdb.lib.s3.s34k.errors.S34kException
 import org.veupathdb.lib.s3.s34k.errors.BucketAlreadyExistsException
 import org.veupathdb.lib.s3.s34k.errors.BucketNotFoundException
-import org.veupathdb.lib.s3.s34k.params.bucket.BucketExistsParams
-import org.veupathdb.lib.s3.s34k.params.bucket.BucketGetParams
-import org.veupathdb.lib.s3.s34k.params.bucket.BucketListParams
-import org.veupathdb.lib.s3.s34k.params.bucket.BucketPutParams
+import org.veupathdb.lib.s3.s34k.params.bucket.*
 
 /**
  * S3 API Wrapper
@@ -284,7 +281,7 @@ interface S3Client {
 
   // endregion
 
-  // region: List Buckets
+  // region List Buckets
 
   /**
    * Fetches a list of all buckets available on the target S3 instance.
@@ -322,4 +319,19 @@ interface S3Client {
    * 'cause' value.
    */
   fun listBuckets(params: BucketListParams): List<S3Bucket>
+
+  // endregion
+
+  // region Delete Bucket
+
+  // TODO: Document me
+  fun deleteBucket(name: String, region: String? = null)
+
+  // TODO: Document me
+  fun deleteBucket(action: BucketDeleteParams.() -> Unit)
+
+  // TODO: Document me
+  fun deleteBucket(params: BucketDeleteParams)
+
+  // endregion
 }

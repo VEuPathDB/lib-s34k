@@ -3,6 +3,7 @@ package org.veupathdb.lib.s3.s34k
 import org.veupathdb.lib.s3.s34k.errors.BucketNotFoundException
 import org.veupathdb.lib.s3.s34k.errors.ObjectNotFoundException
 import org.veupathdb.lib.s3.s34k.errors.S34kException
+import org.veupathdb.lib.s3.s34k.params.DeleteParams
 import org.veupathdb.lib.s3.s34k.params.bucket.BucketName
 import org.veupathdb.lib.s3.s34k.params.bucket.BucketTagGetParams
 import org.veupathdb.lib.s3.s34k.params.bucket.BucketTagPutParams
@@ -43,6 +44,19 @@ interface S3Bucket {
    */
   val creationDate: OffsetDateTime
 
+
+  // region Delete
+
+  // TODO: Document me
+  fun delete()
+
+  // TODO: Document me
+  fun delete(action: DeleteParams.() -> Unit)
+
+  // TODO: Document me
+  fun delete(params: DeleteParams)
+
+  //
 
   // region Object Exists
 
