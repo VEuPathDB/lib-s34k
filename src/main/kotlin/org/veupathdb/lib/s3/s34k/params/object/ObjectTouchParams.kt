@@ -23,7 +23,7 @@ class ObjectTouchParams(
   override fun toString(): String {
     val out = StringBuilder(2048)
 
-    out.append("ObjectTouchParams {")
+    out.append("ObjectTouchParams {\n")
     callback?.also { out.append("  callback = ").append(it).append(",\n") }
 
     super.toString(out)

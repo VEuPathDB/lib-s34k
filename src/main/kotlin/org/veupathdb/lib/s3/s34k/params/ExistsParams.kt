@@ -40,7 +40,7 @@ class ExistsParams(var callback: ((Boolean) -> Unit)? = null) : RequestParams() 
   override fun toString(): String {
     val out = StringBuilder(2048)
 
-    out.append("ExistsParams {")
+    out.append("ExistsParams {\n")
     callback?.also { out.append("  callback = ").append(callback).append(",\n") }
     super.toString(out)
     out.append("}")

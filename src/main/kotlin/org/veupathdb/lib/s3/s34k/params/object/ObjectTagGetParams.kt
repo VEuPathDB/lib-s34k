@@ -23,7 +23,7 @@ class ObjectTagGetParams(
   override fun toString(): String {
     val out = StringBuilder(2048)
 
-    out.append("ObjectTagGetParams {")
+    out.append("ObjectTagGetParams {\n")
     callback?.also { out.append("  callback = ").append(it).append(",\n") }
 
     super.toString(out)

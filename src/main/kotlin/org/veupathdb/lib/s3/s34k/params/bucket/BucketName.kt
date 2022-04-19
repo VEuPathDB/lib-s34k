@@ -38,14 +38,14 @@ value class BucketName(val name: String) {
      * letters, numbers, dot characters or hyphen characters.
      */
     @JvmStatic
-    internal val nameRegex = Regex("^(?:[a-z\\d][-.a-z\\d]+[a-z\\d]){3,63}$")
+    internal val nameRegex = Regex("^[a-z\\d][-.a-z\\d]+[a-z\\d]$")
 
     /**
      * Bucket name check regex that tests whether the bucket name appears to be
      * an IP address.
      */
     @JvmStatic
-    internal val ipRegex = Regex("^\\d+\\.\\d+\\.\\d+\\.\\d+")
+    internal val ipRegex = Regex("^\\d+\\.\\d+\\.\\d+\\.\\d+$")
 
     /**
      * Constructs a new [BucketName] instance from the given name if it is not

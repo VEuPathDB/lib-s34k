@@ -12,9 +12,7 @@ import org.veupathdb.lib.s3.s34k.params.`object`.ObjectTagGetParams
  *
  * @since v0.1.0
  */
-class TagGetParams()
-  : RequestParams()
-{
+class TagGetParams : RequestParams() {
   private val Log = LoggerFactory.getLogger(this::class.java)
 
   /**
@@ -58,7 +56,7 @@ class TagGetParams()
   override fun toString(): String {
     val out = StringBuilder(2048)
 
-    out.append("TagGetParams {")
+    out.append("TagGetParams {\n")
     super.toString(out)
     out.append("}")
 

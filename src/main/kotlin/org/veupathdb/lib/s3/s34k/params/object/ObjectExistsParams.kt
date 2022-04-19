@@ -20,7 +20,7 @@ class ObjectExistsParams(
   override fun toString(): String {
     val out = StringBuilder(2048)
 
-    out.append("ObjectExistsParams {")
+    out.append("ObjectExistsParams {\n")
     callback?.also { out.append("  callback = ").append(it).append(",\n") }
 
     super.toString(out)

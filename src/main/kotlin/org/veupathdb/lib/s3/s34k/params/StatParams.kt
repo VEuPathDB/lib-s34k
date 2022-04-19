@@ -24,4 +24,13 @@ class StatParams(var callback: ((S3ObjectMeta) -> Unit)? = null) : RequestParams
     Log.trace("toObjectStatParams(path = {})", path)
     return ObjectStatParams(path, callback)
   }
+
+  override fun toString(): String {
+    val out = StringBuilder(2048)
+    out.append("StatParams {\n")
+    callback?.let { out.append("  callback = ").append(callback).append(",\n") }
+    super.toString(out)
+    out.append('}')
+    return out.toString()
+  }
 }
