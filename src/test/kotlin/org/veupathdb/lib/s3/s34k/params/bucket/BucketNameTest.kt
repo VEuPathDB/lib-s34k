@@ -145,7 +145,7 @@ internal class BucketNameTest {
       fun t4() {
         assertThrows<IllegalArgumentException> {
           BucketName.of(".hello")
-        }z
+        }
       }
 
       @Test
