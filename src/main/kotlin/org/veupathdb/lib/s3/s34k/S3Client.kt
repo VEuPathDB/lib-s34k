@@ -20,7 +20,7 @@ interface S3Client {
   /**
    * Tests for the existence of a bucket with the given name.
    *
-   * @param bucketName Name of the bucket to test for.
+   * @param name Name of the bucket to test for.
    *
    * @param region Optional region for the bucket.
    *
@@ -29,11 +29,8 @@ interface S3Client {
    * @throws S34kException If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
-   *
-   * @throws IllegalArgumentException If the given bucket name is not between
-   * `3` and `63` characters in length.
    */
-  fun bucketExists(bucketName: String, region: String? = null): Boolean
+  fun bucketExists(name: BucketName, region: String? = null): Boolean
 
   /**
    * Tests for the existence of a bucket with the operation configured by the
@@ -73,7 +70,7 @@ interface S3Client {
    * **Warning** This may not be allowed based on the security policy/
    * permissions granted on the target S3 instance.
    *
-   * @param bucketName Name of the bucket to create.
+   * @param name Name of the bucket to create.
    *
    * @param region Optional region where the bucket should reside.
    *
@@ -86,13 +83,10 @@ interface S3Client {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    *
-   * @throws IllegalArgumentException If the given bucket name is not between
-   * `3` and `63` characters in length.
-   *
    * @see bucketExists
    * @see createBucketIfNotExists
    */
-  fun createBucket(bucketName: String, region: String? = null): S3Bucket
+  fun createBucket(name: BucketName, region: String? = null): S3Bucket
 
   /**
    * Attempts to create a bucket with the given name with the operation
@@ -151,20 +145,17 @@ interface S3Client {
    * **Warning** This may not be allowed based on the security policy/
    * permissions granted on the target S3 instance.
    *
-   * @param bucketName Name of the bucket to create.
+   * @param name Name of the bucket to create.
    *
    * @param region Optional region where the bucket should reside.
    *
    * @return A new [S3Bucket] instance wrapping either the newly created bucket
    * or the pre-existing bucket.
    *
-   * @throws IllegalArgumentException If the given bucket name is not between
-   * `3` and `63` characters in length.
-   *
    * @see bucketExists
    * @see createBucket
    */
-  fun createBucketIfNotExists(bucketName: String, region: String? = null): S3Bucket
+  fun createBucketIfNotExists(name: BucketName, region: String? = null): S3Bucket
 
   /**
    * Attempts to create a bucket with the given name if it does not already
@@ -215,16 +206,13 @@ interface S3Client {
   /**
    * Creates a new [S3Bucket] instance wrapping the target S3 bucket.
    *
-   * @param bucketName Name of the bucket to wrap.
+   * @param name Name of the bucket to wrap.
    *
    * @param region Optional region for the bucket.
    *
    * @return A new [S3Bucket] instance wrapping the target bucket.
    *
    * @throws BucketNotFoundException If the target bucket does not exist.
-   *
-   * @throws IllegalArgumentException If the given bucket name is not between
-   * `3` and `63` characters in length.
    *
    * @throws S34kException If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
@@ -233,7 +221,7 @@ interface S3Client {
    * @see bucketExists
    * @see createBucketIfNotExists
    */
-  fun getBucket(bucketName: String, region: String? = null): S3Bucket
+  fun getBucket(name: BucketName, region: String? = null): S3Bucket
 
   /**
    * Creates a new [S3Bucket] instance wrapping the target S3 bucket.
@@ -243,9 +231,6 @@ interface S3Client {
    * @return A new [S3Bucket] instance wrapping the target bucket.
    *
    * @throws BucketNotFoundException If the target bucket does not exist.
-   *
-   * @throws IllegalArgumentException If the given bucket name is not between
-   * `3` and `63` characters in length.
    *
    * @throws S34kException If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
@@ -264,9 +249,6 @@ interface S3Client {
    * @return A new [S3Bucket] instance wrapping the target bucket.
    *
    * @throws BucketNotFoundException If the target bucket does not exist.
-   *
-   * @throws IllegalArgumentException If the given bucket name is not between
-   * `3` and `63` characters in length.
    *
    * @throws S34kException If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
@@ -337,7 +319,7 @@ interface S3Client {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun deleteBucket(name: String, region: String? = null)
+  fun deleteBucket(name: BucketName, region: String? = null)
 
 
   /**
