@@ -20,20 +20,5 @@ import org.veupathdb.lib.s3.s34k.errors.InvalidRequestConfigException
  *
  * @since v0.1.0
  */
-class DirectoryPutParams(
-  path: String? = null,
-  var callback: ((directory: S3Object) -> Unit)? = null,
-) : SealedObjPutReqParams(path) {
-  override fun toString(): String {
-    val out = StringBuilder(2048)
-
-    out.append("DirectoryPutParams {\n")
-    callback?.also { out.append("  callback = ").append(it).append(",\n") }
-
-    super.toString(out)
-
-    out.append("}")
-
-    return out.toString()
-  }
-}
+class DirectoryPutParams(path: String? = null, var callback: ((directory: S3Object) -> Unit)? = null)
+  : BaseObjectPutRequest(path)

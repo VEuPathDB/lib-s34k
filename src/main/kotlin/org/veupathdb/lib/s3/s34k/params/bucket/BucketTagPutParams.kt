@@ -2,12 +2,12 @@ package org.veupathdb.lib.s3.s34k.params.bucket
 
 import org.slf4j.LoggerFactory
 import org.veupathdb.lib.s3.s34k.S3Tag
-import org.veupathdb.lib.s3.s34k.params.RequestParams
-import org.veupathdb.lib.s3.s34k.params.TagSenderParams
+import org.veupathdb.lib.s3.s34k.params.BaseRequest
+import org.veupathdb.lib.s3.s34k.params.TagSender
 
 // TODO: Document me
 class BucketTagPutParams(var callback: (() -> Unit)? = null)
-  : TagSenderParams, RequestParams()
+  : TagSender, BaseRequest()
 {
   private val Log = LoggerFactory.getLogger(this::class.java)
 
@@ -45,25 +45,5 @@ class BucketTagPutParams(var callback: (() -> Unit)? = null)
     tags.forEach { out[it.key] = it.value }
 
     return out
-  }
-
-  override fun toString(): String {
-    val out = StringBuilder(2048)
-
-    out.append("BucketTagPutParams {\n")
-
-    super.toString(out)
-
-    if (tags.isNotEmpty()) {
-      out.append("  tags = {\n")
-
-      tags.forEach { out.append("    ").append(it.key).append(" = ").append(it.value).append(",\n") }
-
-      out.append("  },\n")
-    }
-
-    out.append("}")
-
-    return out.toString()
   }
 }

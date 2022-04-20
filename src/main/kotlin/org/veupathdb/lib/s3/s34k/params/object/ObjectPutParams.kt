@@ -37,24 +37,9 @@ import java.io.InputStream
  */
 class ObjectPutParams(
   path: String? = null,
-  var stream: InputStream? = null,
-  var length: Long = -1,
-  var partSize: Long = 10_485_760,
-  var callback: ((S3Object) -> Unit)? = null
-) : SealedObjPutReqParams(path) {
-  override fun toString(): String {
-    val out = StringBuilder(2048)
-
-    out.append("ObjectPutParams {\n")
-
-    callback?.also { out.append("  callback = ").append(it).append(",\n") }
-    out.append("  stream = ...,\n")
-    out.append("  length = ").append(length).append(",\n")
-    out.append("  partSize = ").append(partSize).append(",\n")
-
-    super.toString(out)
-    out.append('}')
-
-    return out.toString()
-  }
-}
+  var stream:      InputStream?          = null,
+  var length:      Long                  = -1,
+  var partSize:    Long                  = 10_485_760,
+  var contentType: String?               = null,
+  var callback:    ((S3Object) -> Unit)? = null
+) : BaseObjectPutRequest(path)

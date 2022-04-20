@@ -2,28 +2,36 @@ package org.veupathdb.lib.s3.s34k.params.`object`
 
 import org.slf4j.LoggerFactory
 import org.veupathdb.lib.s3.s34k.S3Tag
-import org.veupathdb.lib.s3.s34k.params.TagSenderParams
+import org.veupathdb.lib.s3.s34k.params.TagSender
+import java.util.Collections
 
 /**
  * Object Put Operation Params
  *
  * Base type for S3 put operation param sets.
  *
- * @constructor Constructs a new [SealedObjPutReqParams] instance.
- *
- * @param path Path to the object target of this request.
- *
  * @author Elizabeth Paige Harper [https://github.com/Foxcapades]
  *
  * @since v0.1.0
  */
-sealed class SealedObjPutReqParams(path: String? = null)
-  : TagSenderParams, SealedObjReqParams(path)
+open class BaseObjectPutRequest
+  : TagSender, BaseObjectRequest
 {
+  private val rawTags = HashSet<S3Tag>()
 
   private val Log = LoggerFactory.getLogger(this::class.java)
 
-  override val tags: Set<S3Tag> = HashSet()
+  override val tags: Set<S3Tag>
+    get() = Collections.unmodifiableSet(rawTags)
+
+  constructor(path: String? = null) : super(path)
+
+  internal constructor(
+    path: String?,
+    region: String?,
+    rawHeaders: MutableMap<String, Array<String>>,
+    rawQueryParams: MutableMap<String, Array<String>>,
+  ) : super(path, region, rawHeaders, rawQueryParams)
 
   override fun addTags(tags: Map<String, String>) {
     Log.trace("addTags(tags = {})", tags)
@@ -58,17 +66,5 @@ sealed class SealedObjPutReqParams(path: String? = null)
     tags.forEach { out[it.key] = it.value }
 
     return out
-  }
-
-  override fun toString(sb: StringBuilder) {
-    if (tags.isNotEmpty()) {
-      sb.append("  tags = {\n")
-      tags.forEach { (hk, hv) ->
-        sb.append("    ").append(hk).append(" = ").append(hv).append(",\n")
-      }
-      sb.append("  },\n")
-    }
-
-    super.toString(sb)
   }
 }

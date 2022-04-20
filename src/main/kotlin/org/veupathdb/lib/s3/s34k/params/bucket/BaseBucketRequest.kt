@@ -1,14 +1,14 @@
 package org.veupathdb.lib.s3.s34k.params.bucket
 
 import org.veupathdb.lib.s3.s34k.errors.InvalidRequestConfigException
-import org.veupathdb.lib.s3.s34k.params.RequestParams
+import org.veupathdb.lib.s3.s34k.params.BaseRequest
 
 /**
  * Bucket Request Params
  *
  * Base type for S3 bucket operation param sets.
  *
- * @constructor Constructs a new [SealedBucketReqParams] instance.
+ * @constructor Constructs a new [BaseBucketRequest] instance.
  *
  * @param bucket Name of the target S3 bucket.
  *
@@ -22,7 +22,7 @@ import org.veupathdb.lib.s3.s34k.params.RequestParams
  *
  * @since v0.1.0
  */
-sealed class SealedBucketReqParams(bucket: String? = null, var region: String? = null) : RequestParams() {
+open class BaseBucketRequest : BaseRequest {
 
   /**
    * Name of the target S3 bucket.
@@ -30,7 +30,20 @@ sealed class SealedBucketReqParams(bucket: String? = null, var region: String? =
    * This value must be set or an [InvalidRequestConfigException] will be thrown
    * when the request is attempted.
    */
-  var bucket: BucketName? = bucket?.let(::BucketName)
+  var bucket: BucketName?
+
+  constructor(bucket: String? = null, region: String? = null) : super(region) {
+    this.bucket = bucket?.let(::BucketName)
+  }
+
+  internal constructor(
+    bucket: BucketName,
+    region: String?,
+    headers: MutableMap<String, Array<String>>,
+    queryParams: MutableMap<String, Array<String>>,
+  ) : super(region, headers, queryParams) {
+    this.bucket = bucket
+  }
 
   /**
    * Converts the given string into a [BucketName] instance and sets it to the
@@ -43,11 +56,5 @@ sealed class SealedBucketReqParams(bucket: String? = null, var region: String? =
    */
   fun setBucketName(name: String) {
     bucket = BucketName(name)
-  }
-
-  override fun toString(sb: StringBuilder) {
-    sb.append("  bucket = ").append(bucket).append(",\n")
-    region?.also { sb.append("  region = ").append(it).append(",\n") }
-    super.toString(sb)
   }
 }

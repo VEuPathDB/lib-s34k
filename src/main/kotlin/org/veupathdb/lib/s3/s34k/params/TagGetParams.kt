@@ -2,6 +2,7 @@ package org.veupathdb.lib.s3.s34k.params
 
 import org.slf4j.LoggerFactory
 import org.veupathdb.lib.s3.s34k.S3TagSet
+import org.veupathdb.lib.s3.s34k.params.bucket.BucketName
 import org.veupathdb.lib.s3.s34k.params.bucket.BucketTagGetParams
 import org.veupathdb.lib.s3.s34k.params.`object`.ObjectTagGetParams
 
@@ -12,7 +13,7 @@ import org.veupathdb.lib.s3.s34k.params.`object`.ObjectTagGetParams
  *
  * @since v0.1.0
  */
-class TagGetParams : RequestParams() {
+class TagGetParams : BaseRequest() {
   private val Log = LoggerFactory.getLogger(this::class.java)
 
   /**
@@ -30,8 +31,8 @@ class TagGetParams : RequestParams() {
     Log.trace("toObjectTagGetParams(path = {}, cb = {})", path, cb)
 
     return ObjectTagGetParams(path, cb).also {
-      headers.forEach { (k, v) -> it.addHeaders(k, *v) }
-      queryParams.forEach { (k, v) -> it.addQueryParams(k, *v) }
+      it.rawHeaders.putAll(headers)
+      it.rawQueryParams.putAll(queryParams)
     }
   }
 
@@ -44,22 +45,30 @@ class TagGetParams : RequestParams() {
    *
    * @return Converted [BucketTagGetParams] instance.
    */
-  fun toBucketTagGetParams(cb: ((tags: S3TagSet) -> Unit)? = null): BucketTagGetParams {
+  fun toBucketTagGetParams(
+    bucket: String? = null,
+    region: String? = null,
+    cb: ((tags: S3TagSet) -> Unit)? = null,
+  ): BucketTagGetParams {
     Log.trace("toBucketTagGetParams(cb = {})", cb)
 
-    return BucketTagGetParams(cb).also {
-      headers.forEach { (k, v) -> it.addHeaders(k, *v) }
-      queryParams.forEach { (k, v) -> it.addQueryParams(k, *v) }
+    return BucketTagGetParams(bucket, region, cb).also {
+      it.rawHeaders.putAll(headers)
+      it.rawQueryParams.putAll(queryParams)
     }
   }
 
-  override fun toString(): String {
-    val out = StringBuilder(2048)
+  fun toBucketTagGetParams(
+    bucket: BucketName,
+    region: String? = null,
+    cb: ((tags: S3TagSet) -> Unit)? = null,
+  ): BucketTagGetParams {
+    Log.trace("toBucketTagGetParams(cb = {})", cb)
 
-    out.append("TagGetParams {\n")
-    super.toString(out)
-    out.append("}")
-
-    return out.toString()
+    return BucketTagGetParams(null, region, cb).also {
+      it.bucket = bucket
+      it.rawHeaders.putAll(headers)
+      it.rawQueryParams.putAll(queryParams)
+    }
   }
 }

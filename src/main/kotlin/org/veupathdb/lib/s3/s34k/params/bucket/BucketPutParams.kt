@@ -23,17 +23,4 @@ class BucketPutParams(
   bucket: String? = null,
   region: String? = null,
   var callback: ((bucket: S3Bucket) -> Unit)? = null
-) : SealedBucketReqParams(bucket, region) {
-  override fun toString(): String {
-    val out = StringBuilder(2048)
-
-    out.append("BucketPutParams {\n")
-    callback?.also { out.append("  callback = ").append(it).append(",\n") }
-
-    super.toString(out)
-
-    out.append("}")
-
-    return out.toString()
-  }
-}
+) : BaseBucketRequest(bucket, region)

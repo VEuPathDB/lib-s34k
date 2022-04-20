@@ -1,19 +1,30 @@
 package org.veupathdb.lib.s3.s34k.params.bucket
 
-class BucketDeleteParams(
-  bucket: String? = null,
-  region: String? = null,
-  val callback: (() -> Unit)? = null
-) : SealedBucketReqParams(bucket, region) {
+import org.veupathdb.lib.s3.s34k.S3TagSet
 
-  override fun toString(): String {
-    val out = StringBuilder(2048)
+class BucketDeleteParams : BaseBucketRequest {
 
-    out.append("BucketDeleteParams {\n")
-    super.toString(out)
-    callback?.let { out.append("  callback = ").append(callback).append(",\n") }
-    out.append('}')
+  var callback: (() -> Unit)?
 
-    return out.toString()
+  constructor(bucket: String?) : super(bucket) {
+    this.callback = null
+  }
+
+  constructor(
+    bucket: String? = null,
+    region: String? = null,
+    callback: (() -> Unit)? = null
+  ) : super(bucket, region) {
+    this.callback = callback
+  }
+
+  internal constructor(
+    bucket: BucketName,
+    region: String?,
+    callback: (() -> Unit)?,
+    headers: MutableMap<String, Array<String>>,
+    queryParams: MutableMap<String, Array<String>>,
+  ) : super(bucket, region, headers, queryParams) {
+    this.callback = callback
   }
 }

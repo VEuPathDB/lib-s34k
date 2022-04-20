@@ -23,16 +23,4 @@ import org.veupathdb.lib.s3.s34k.errors.InvalidRequestConfigException
 class ObjectGetParams(
   path: String? = null,
   var callback: ((S3StreamObject) -> Unit)? = null
-) : SealedObjReqParams(path) {
-  override fun toString(): String {
-    val out = StringBuilder(2048)
-
-    out.append("ObjectGetParams {\n")
-    callback?.also { out.append("  callback = ").append(it).append(",\n") }
-    out.append("}")
-
-    super.toString(out)
-
-    return out.toString()
-  }
-}
+) : BaseObjectRequest(path)

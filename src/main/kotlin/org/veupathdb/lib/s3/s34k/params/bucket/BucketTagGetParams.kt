@@ -1,7 +1,6 @@
 package org.veupathdb.lib.s3.s34k.params.bucket
 
 import org.veupathdb.lib.s3.s34k.S3TagSet
-import org.veupathdb.lib.s3.s34k.params.RequestParams
 
 /**
  * Bucket Tag Retrieval Operation Parameters
@@ -15,19 +14,8 @@ import org.veupathdb.lib.s3.s34k.params.RequestParams
  *
  * @since v0.1.0
  */
-class BucketTagGetParams(var callback: ((tags: S3TagSet) -> Unit)? = null)
-  : RequestParams()
-{
-  override fun toString(): String {
-    val out = StringBuilder(2048)
-
-    out.append("BucketTagGetParams {\n")
-    callback?.also { out.append("  callback = ").append(it).append(",\n") }
-
-    super.toString(out)
-
-    out.append("}")
-
-    return out.toString()
-  }
-}
+class BucketTagGetParams(
+  bucket: String? = null,
+  region: String? = null,
+  var callback: ((tags: S3TagSet) -> Unit)? = null,
+) : BaseBucketRequest(bucket, region)

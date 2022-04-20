@@ -16,21 +16,12 @@ import org.veupathdb.lib.s3.s34k.params.`object`.ObjectStatParams
  *
  * @since v0.1.0
  */
-class StatParams(var callback: ((S3ObjectMeta) -> Unit)? = null) : RequestParams() {
+class StatParams(var callback: ((S3ObjectMeta) -> Unit)? = null) : BaseRequest() {
 
   private val Log = LoggerFactory.getLogger(this::class.java)
 
   fun toObjectStatParams(path: String): ObjectStatParams {
     Log.trace("toObjectStatParams(path = {})", path)
     return ObjectStatParams(path, callback)
-  }
-
-  override fun toString(): String {
-    val out = StringBuilder(2048)
-    out.append("StatParams {\n")
-    callback?.let { out.append("  callback = ").append(callback).append(",\n") }
-    super.toString(out)
-    out.append('}')
-    return out.toString()
   }
 }

@@ -10,7 +10,7 @@ import org.veupathdb.lib.s3.s34k.S3Tag
  *
  * @since v0.1.0
  */
-interface TagSenderParams {
+interface TagSender {
 
   /**
    * Tags that will be attached to the object being put into the S3 store.
@@ -18,7 +18,7 @@ interface TagSenderParams {
   val tags: Set<S3Tag>
 
   /**
-   * Adds/overwrites the tags in the existing [TagSenderParams.tags] [Set] with
+   * Adds/overwrites the tags in the existing [TagSender.tags] [Set] with
    * the values contained in the given [tags] [Map].
    *
    * Each entry in the input map will be converted into an [S3Tag] instance and
@@ -29,7 +29,7 @@ interface TagSenderParams {
   fun addTags(tags: Map<String, String>)
 
   /**
-   * Adds/overwrites the tags in the existing [TagSenderParams.tags] [Set] with
+   * Adds/overwrites the tags in the existing [TagSender.tags] [Set] with
    * the values contained in the given [tags] array.
    *
    * @param tags Array of tags to set on this request.
@@ -37,7 +37,7 @@ interface TagSenderParams {
   fun addTags(vararg tags: S3Tag)
 
   /**
-   * Adds/overwrites the tags in the existing [TagSenderParams.tags] [Set] with
+   * Adds/overwrites the tags in the existing [TagSender.tags] [Set] with
    * the values contained in the given [tags] [Collection].
    *
    * @param tags Collection of tags to set on this request.

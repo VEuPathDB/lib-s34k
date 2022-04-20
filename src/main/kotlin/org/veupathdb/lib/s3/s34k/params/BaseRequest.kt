@@ -1,6 +1,7 @@
 package org.veupathdb.lib.s3.s34k.params
 
 import org.slf4j.LoggerFactory
+import java.util.Collections
 
 /**
  * Request Params
@@ -11,27 +12,50 @@ import org.slf4j.LoggerFactory
  *
  * @since v0.1.0
  */
-open class RequestParams {
+open class BaseRequest {
+
+  internal val rawHeaders: MutableMap<String, Array<String>>
+  internal val rawQueryParams: MutableMap<String, Array<String>>
 
   private val Log = LoggerFactory.getLogger(this::class.java)
+
+  var region: String? = null
 
   /**
    * Additional headers that will be sent with the S3 operation.
    */
-  val headers: Map<String, Array<String>> = HashMap()
+  val headers: Map<String, Array<String>>
+    get() = Collections.unmodifiableMap(rawHeaders)
 
   /**
    * Additional query parameters that will be sent with the S3 operation.
    */
-  val queryParams: Map<String, Array<String>> = HashMap()
+  val queryParams: Map<String, Array<String>>
+    get() = Collections.unmodifiableMap(rawQueryParams)
+
+  internal constructor(
+    region: String?,
+    rawHeaders: MutableMap<String, Array<String>>,
+    rawQueryParams: MutableMap<String, Array<String>>
+  ) {
+    this.region = region
+    this.rawHeaders = rawHeaders
+    this.rawQueryParams = rawQueryParams
+  }
+
+  constructor() : this(null, HashMap(), HashMap())
+
+  constructor(region: String?) : this(region, HashMap(), HashMap()) {
+    this.region = region
+  }
 
   /**
    * Merges the additional [headers] provided into the existing
-   * [RequestParams.headers] map.
+   * [BaseRequest.headers] map.
    *
-   * If the [RequestParams.headers] map already contains one or more keys
+   * If the [BaseRequest.headers] map already contains one or more keys
    * present in the input [headers] map, the value at that key will be appended
-   * to the array of headers at that key in [RequestParams.headers].
+   * to the array of headers at that key in [BaseRequest.headers].
    *
    * Example:
    * ```
@@ -51,11 +75,11 @@ open class RequestParams {
    * ```
    *
    * @param headers Map of headers to merge into the existing
-   * [RequestParams.headers] map.
+   * [BaseRequest.headers] map.
    */
   fun addHeaders(headers: Map<String, String>) {
     Log.trace("addHeaders(headers = {})", headers)
-    headers.forEach { (t, u) -> mergeArrays(this.headers, t, arrayOf(u)) }
+    headers.forEach { (t, u) -> mergeArrays(this.rawHeaders, t, arrayOf(u)) }
   }
 
   /**
@@ -85,7 +109,7 @@ open class RequestParams {
   @Suppress("UNCHECKED_CAST")
   fun addHeaders(key: String, values: Collection<String>) {
     Log.trace("addHeaders(key = {}, values = {})", key, values)
-    mergeArrays(headers, key, values.toTypedArray())
+    mergeArrays(rawHeaders, key, values.toTypedArray())
   }
 
   /**
@@ -115,7 +139,7 @@ open class RequestParams {
   @Suppress("UNCHECKED_CAST")
   fun addHeaders(key: String, vararg values: String) {
     Log.trace("addHeaders(key = {}, values = {})", key, values)
-    mergeArrays(headers, key, (values as Array<String>))
+    mergeArrays(rawHeaders, key, (values as Array<String>))
   }
 
   /**
@@ -143,7 +167,7 @@ open class RequestParams {
   @Suppress("UNCHECKED_CAST")
   fun setHeaders(key: String, vararg values: String) {
     Log.trace("setHeaders(key = {}, values = {})", key, values)
-    (headers as MutableMap)[key] = (values as Array<String>)
+    rawHeaders[key] = (values as Array<String>)
   }
 
   // TODO: Document me
@@ -154,12 +178,12 @@ open class RequestParams {
 
   /**
    * Merges the additional [queryParams] provided into the existing
-   * [RequestParams.queryParams] map.
+   * [BaseRequest.queryParams] map.
    *
-   * If the [RequestParams.queryParams] map already contains one or more keys
+   * If the [BaseRequest.queryParams] map already contains one or more keys
    * present in the input [queryParams] map, the value at that key will be
    * appended to the array of queryParams at that key in
-   * [RequestParams.queryParams].
+   * [BaseRequest.queryParams].
    *
    * Example:
    * ```
@@ -179,11 +203,11 @@ open class RequestParams {
    * ```
    *
    * @param queryParams Map of queryParams to merge into the existing
-   * [RequestParams.queryParams] map.
+   * [BaseRequest.queryParams] map.
    */
   fun addQueryParams(queryParams: Map<String, String>) {
     Log.trace("addQueryParams(headers = {})", queryParams)
-    queryParams.forEach { (t, u) -> mergeArrays(this.queryParams, t, arrayOf(u)) }
+    queryParams.forEach { (t, u) -> mergeArrays(this.rawQueryParams, t, arrayOf(u)) }
   }
 
   /**
@@ -214,7 +238,7 @@ open class RequestParams {
   @Suppress("UNCHECKED_CAST")
   fun addQueryParams(key: String, values: Collection<String>) {
     Log.trace("addQueryParams(key = {}, values = {})", key, values)
-    mergeArrays(queryParams, key, values.toTypedArray())
+    mergeArrays(rawQueryParams, key, values.toTypedArray())
   }
 
   /**
@@ -244,7 +268,7 @@ open class RequestParams {
   @Suppress("UNCHECKED_CAST")
   fun addQueryParams(key: String, vararg values: String) {
     Log.trace("addQueryParams(key = {}, values = {})", key, values)
-    mergeArrays(queryParams, key, (values as Array<String>))
+    mergeArrays(rawQueryParams, key, (values as Array<String>))
   }
 
 
@@ -273,7 +297,7 @@ open class RequestParams {
   @Suppress("UNCHECKED_CAST")
   fun setQueryParams(key: String, vararg values: String) {
     Log.trace("setQueryParams(key = {}, values = {})", key, values)
-    (queryParams as MutableMap)[key] = (values as Array<String>)
+    rawQueryParams[key] = (values as Array<String>)
   }
 
   // TODO: Document me
@@ -284,7 +308,7 @@ open class RequestParams {
 
   @Suppress("UNCHECKED_CAST", "NOTHING_TO_INLINE")
   private inline fun mergeArrays(
-    map: Map<String, Array<String>>,
+    map: MutableMap<String, Array<String>>,
     key: String,
     values: Array<String>,
   ) {
@@ -294,35 +318,9 @@ open class RequestParams {
       val newArray = arrayOfNulls<String>(tmp.size + values.size)
       System.arraycopy(tmp, 0, newArray, 0, tmp.size)
       System.arraycopy(values, 0, newArray, tmp.size, values.size)
-      (map as MutableMap)[key] = (newArray as Array<String>)
+      map[key] = (newArray as Array<String>)
     } else {
-      (map as MutableMap)[key] = values
-    }
-  }
-
-  protected open fun toString(sb: StringBuilder) {
-    if (headers.isNotEmpty()) {
-      sb.append("  headers = {\n")
-      headers.forEach { (hk, hv) ->
-        sb.append("    ").append(hk).append(" = [\n")
-        hv.forEach {
-          sb.append("      ").append(it).append(",\n")
-        }
-        sb.append("    ],\n")
-      }
-      sb.append("  },\n")
-    }
-
-    if (queryParams.isNotEmpty()) {
-      sb.append("  queryParams = {\n")
-      queryParams.forEach { (hk, hv) ->
-        sb.append("    ").append(hk).append(" = [\n")
-        hv.forEach {
-          sb.append("      ").append(it).append(",\n")
-        }
-        sb.append("    ],\n")
-      }
-      sb.append("  },\n")
+      map[key] = values
     }
   }
 }

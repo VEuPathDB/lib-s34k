@@ -1,7 +1,5 @@
 package org.veupathdb.lib.s3.s34k.params.`object`
 
-import org.veupathdb.lib.s3.s34k.S3TagSet
-
 /**
  * Empty Object Put Operation Parameters
  *
@@ -19,17 +17,4 @@ import org.veupathdb.lib.s3.s34k.S3TagSet
 class ObjectTagPutParams(
   path: String? = null,
   var callback: (() -> Unit)? = null
-) : SealedObjPutReqParams(path) {
-  override fun toString(): String {
-    val out = StringBuilder(2048)
-
-    out.append("ObjectTagPutParams {\n")
-    callback?.also { out.append("  callback = ").append(it).append(",\n") }
-
-    super.toString(out)
-
-    out.append("}")
-
-    return out.toString()
-  }
-}
+) : BaseObjectPutRequest(path)

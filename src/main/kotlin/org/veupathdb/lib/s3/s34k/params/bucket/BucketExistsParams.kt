@@ -21,17 +21,4 @@ class BucketExistsParams(
   bucket: String? = null,
   region: String? = null,
   var callback: ((exists: Boolean) -> Unit)? = null
-) : SealedBucketReqParams(bucket, region) {
-  override fun toString(): String {
-    val out = StringBuilder(2048)
-
-    out.append("BucketExistsParams {\n")
-    callback?.also { out.append("  callback = ").append(it).append(",\n") }
-
-    super.toString(out)
-
-    out.append("}")
-
-    return out.toString()
-  }
-}
+) : BaseBucketRequest(bucket, region)

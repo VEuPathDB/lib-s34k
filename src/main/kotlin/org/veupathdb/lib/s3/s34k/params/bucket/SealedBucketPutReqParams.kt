@@ -2,7 +2,7 @@ package org.veupathdb.lib.s3.s34k.params.bucket
 
 import org.slf4j.LoggerFactory
 import org.veupathdb.lib.s3.s34k.S3Tag
-import org.veupathdb.lib.s3.s34k.params.TagSenderParams
+import org.veupathdb.lib.s3.s34k.params.TagSender
 
 /**
  * Bucket Put Operation Params
@@ -16,7 +16,7 @@ import org.veupathdb.lib.s3.s34k.params.TagSenderParams
 sealed class SealedBucketPutReqParams(
   bucket: String? = null,
   region: String? = null,
-) : TagSenderParams, SealedBucketReqParams(bucket, region) {
+) : TagSender, BaseBucketRequest(bucket, region) {
 
   private val Log = LoggerFactory.getLogger(this::class.java)
 
@@ -88,17 +88,5 @@ sealed class SealedBucketPutReqParams(
     tags.forEach { out[it.key] = it.value }
 
     return out
-  }
-
-  override fun toString(sb: StringBuilder) {
-    if (tags.isNotEmpty()) {
-      sb.append("  tags = {\n")
-      tags.forEach { (hk, hv) ->
-        sb.append("    ").append(hk).append(" = ").append(hv).append(",\n")
-      }
-      sb.append("  },\n")
-    }
-
-    super.toString(sb)
   }
 }

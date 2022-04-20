@@ -12,7 +12,7 @@ import org.veupathdb.lib.s3.s34k.params.`object`.ObjectTagPutParams
  *
  * @since v0.1.0
  */
-class TagPutParams : TagSenderParams, RequestParams() {
+class TagPutParams : TagSender, BaseRequest() {
   private val Log = LoggerFactory.getLogger(this::class.java)
 
   override val tags: Set<S3Tag> = HashSet()
@@ -72,25 +72,5 @@ class TagPutParams : TagSenderParams, RequestParams() {
       headers.forEach { (k, v) -> it.addHeaders(k, *v) }
       queryParams.forEach { (k, v) -> it.addQueryParams(k, *v) }
     }
-  }
-
-  override fun toString(): String {
-    val out = StringBuilder(2048)
-
-    out.append("ObjectTagPutParams {\n")
-
-    super.toString(out)
-
-    if (tags.isNotEmpty()) {
-      out.append("  tags = {\n")
-      tags.forEach { (hk, hv) ->
-        out.append("    ").append(hk).append(" = ").append(hv).append(",\n")
-      }
-      out.append("  },\n")
-    }
-
-    out.append("}")
-
-    return out.toString()
   }
 }

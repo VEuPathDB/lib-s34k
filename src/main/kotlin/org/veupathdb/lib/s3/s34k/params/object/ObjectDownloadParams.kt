@@ -30,18 +30,4 @@ class ObjectDownloadParams(
   path: String? = null,
   var localFile: File? = null,
   var callback: ((S3FileObject) -> Unit)? = null,
-) : SealedObjReqParams(path) {
-  override fun toString(): String {
-    val out = StringBuilder(2048)
-
-    out.append("ObjectDownloadParams {\n")
-    callback?.also { out.append("  callback = ").append(it).append(",\n") }
-    out.append("  localFile = ").append(localFile).append(",\n")
-
-    super.toString(out)
-
-    out.append("}")
-
-    return out.toString()
-  }
-}
+) : BaseObjectRequest(path)
