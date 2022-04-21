@@ -238,7 +238,7 @@ public interface <span class="typeNameLabel"><a href=S3Client.html>S3Client</a><
                                         </tr>
                                         
                                         <tr id="i0" class="altColor">
-                                            <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a></code>
+                                            <td class="colFirst"><code><a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=S3Client.html#bucketExists(BucketName,String)>bucketExists</a>(<a href=fields/BucketName.html>BucketName</a> name, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> region) </code>
                                             </th>
@@ -246,23 +246,23 @@ public interface <span class="typeNameLabel"><a href=S3Client.html>S3Client</a><
                                         </tr>
                                         
                                         <tr id="i1" class="rowColor">
-                                            <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a></code>
+                                            <td class="colFirst"><code><a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=S3Client.html#bucketExists(BucketExistsParams)>bucketExists</a>(<a href=bucket/request/BucketExistsParams.html>BucketExistsParams</a> params) </code>
+                                            <th class="colSecond" scope="row"><code><a href=S3Client.html#bucketExists(Function1)>bucketExists</a>(Function1&lt;<a href=request/bucket/BucketExistsParams.html>BucketExistsParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action) </code>
                                             </th>
-                                            <td class="colLast">Tests for the existence of a bucket with the operation configured by the given <a href=S3Client.html#bucketExists(BucketExistsParams)>params</a>.</td>
+                                            <td class="colLast">Tests for the existence of a bucket with the operation configured by the given <a href=S3Client.html#bucketExists(Function1)>action</a>.</td>
                                         </tr>
                                         
                                         <tr id="i2" class="altColor">
                                             <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=S3Client.html#bucketExists(Function1)>bucketExists</a>(Function1&lt;<a href=bucket/request/BucketExistsParams.html>BucketExistsParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action) </code>
+                                            <th class="colSecond" scope="row"><code><a href=S3Client.html#bucketExists(BucketExistsParams)>bucketExists</a>(<a href=request/bucket/BucketExistsParams.html>BucketExistsParams</a> params) </code>
                                             </th>
-                                            <td class="colLast">Tests for the existence of a bucket with the operation configured by the given <a href=S3Client.html#bucketExists(Function1)>action</a>.</td>
+                                            <td class="colLast">Tests for the existence of a bucket with the operation configured by the given <a href=S3Client.html#bucketExists(BucketExistsParams)>params</a>.</td>
                                         </tr>
                                         
                                         <tr id="i3" class="rowColor">
-                                            <td class="colFirst"><code>abstract <a href=S3Bucket.html>S3Bucket</a></code>
+                                            <td class="colFirst"><code><a href=S3Bucket.html>S3Bucket</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=S3Client.html#createBucket(BucketName,String)>createBucket</a>(<a href=fields/BucketName.html>BucketName</a> name, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> region) </code>
                                             </th>
@@ -270,6 +270,14 @@ public interface <span class="typeNameLabel"><a href=S3Client.html>S3Client</a><
                                         </tr>
                                         
                                         <tr id="i4" class="altColor">
+                                            <td class="colFirst"><code><a href=S3Bucket.html>S3Bucket</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=S3Client.html#createBucket(Function1)>createBucket</a>(Function1&lt;<a href=client/BucketPutParams.html>BucketPutParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action) </code>
+                                            </th>
+                                            <td class="colLast">Attempts to create a bucket with the given name with the operation configured by the given <a href=S3Client.html#createBucket(Function1)>action</a>.</td>
+                                        </tr>
+                                        
+                                        <tr id="i5" class="rowColor">
                                             <td class="colFirst"><code>abstract <a href=S3Bucket.html>S3Bucket</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=S3Client.html#createBucket(BucketPutParams)>createBucket</a>(<a href=client/BucketPutParams.html>BucketPutParams</a> params) </code>
@@ -277,16 +285,8 @@ public interface <span class="typeNameLabel"><a href=S3Client.html>S3Client</a><
                                             <td class="colLast">Attempts to create a bucket with the given name with the operation configured by the given <a href=S3Client.html#createBucket(BucketPutParams)>params</a>.</td>
                                         </tr>
                                         
-                                        <tr id="i5" class="rowColor">
-                                            <td class="colFirst"><code>abstract <a href=S3Bucket.html>S3Bucket</a></code>
-                                            </td>
-                                            <th class="colSecond" scope="row"><code><a href=S3Client.html#createBucket(Function1)>createBucket</a>(Function1&lt;<a href=client/BucketPutParams.html>BucketPutParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action) </code>
-                                            </th>
-                                            <td class="colLast">Attempts to create a bucket with the given name with the operation configured by the given <a href=S3Client.html#createBucket(Function1)>action</a>.</td>
-                                        </tr>
-                                        
                                         <tr id="i6" class="altColor">
-                                            <td class="colFirst"><code>abstract <a href=S3Bucket.html>S3Bucket</a></code>
+                                            <td class="colFirst"><code><a href=S3Bucket.html>S3Bucket</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=S3Client.html#createBucketIfNotExists(BucketName,String)>createBucketIfNotExists</a>(<a href=fields/BucketName.html>BucketName</a> name, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> region) </code>
                                             </th>
@@ -294,7 +294,7 @@ public interface <span class="typeNameLabel"><a href=S3Client.html>S3Client</a><
                                         </tr>
                                         
                                         <tr id="i7" class="rowColor">
-                                            <td class="colFirst"><code>abstract <a href=S3Bucket.html>S3Bucket</a></code>
+                                            <td class="colFirst"><code><a href=S3Bucket.html>S3Bucket</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=S3Client.html#createBucketIfNotExists(Function1)>createBucketIfNotExists</a>(Function1&lt;<a href=client/BucketPutParams.html>BucketPutParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action) </code>
                                             </th>
@@ -310,7 +310,7 @@ public interface <span class="typeNameLabel"><a href=S3Client.html>S3Client</a><
                                         </tr>
                                         
                                         <tr id="i9" class="rowColor">
-                                            <td class="colFirst"><code>abstract <a href=S3Bucket.html>S3Bucket</a></code>
+                                            <td class="colFirst"><code><a href=S3Bucket.html>S3Bucket</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=S3Client.html#getBucket(BucketName,String)>getBucket</a>(<a href=fields/BucketName.html>BucketName</a> name, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> region) </code>
                                             </th>
@@ -318,7 +318,7 @@ public interface <span class="typeNameLabel"><a href=S3Client.html>S3Client</a><
                                         </tr>
                                         
                                         <tr id="i10" class="altColor">
-                                            <td class="colFirst"><code>abstract <a href=S3Bucket.html>S3Bucket</a></code>
+                                            <td class="colFirst"><code><a href=S3Bucket.html>S3Bucket</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=S3Client.html#getBucket(Function1)>getBucket</a>(Function1&lt;<a href=client/BucketGetParams.html>BucketGetParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action) </code>
                                             </th>
@@ -334,7 +334,7 @@ public interface <span class="typeNameLabel"><a href=S3Client.html>S3Client</a><
                                         </tr>
                                         
                                         <tr id="i12" class="altColor">
-                                            <td class="colFirst"><code>abstract <a href=S3BucketList.html>S3BucketList</a></code>
+                                            <td class="colFirst"><code><a href=S3BucketList.html>S3BucketList</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=S3Client.html#listBuckets()>listBuckets</a>() </code>
                                             </th>
@@ -342,7 +342,7 @@ public interface <span class="typeNameLabel"><a href=S3Client.html>S3Client</a><
                                         </tr>
                                         
                                         <tr id="i13" class="rowColor">
-                                            <td class="colFirst"><code>abstract <a href=S3BucketList.html>S3BucketList</a></code>
+                                            <td class="colFirst"><code><a href=S3BucketList.html>S3BucketList</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=S3Client.html#listBuckets(Function1)>listBuckets</a>(Function1&lt;<a href=client/BucketListParams.html>BucketListParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action) </code>
                                             </th>
@@ -358,7 +358,7 @@ public interface <span class="typeNameLabel"><a href=S3Client.html>S3Client</a><
                                         </tr>
                                         
                                         <tr id="i15" class="rowColor">
-                                            <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a></code>
+                                            <td class="colFirst"><code><a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=S3Client.html#deleteBucket(BucketName,String)>deleteBucket</a>(<a href=fields/BucketName.html>BucketName</a> name, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> region) </code>
                                             </th>
@@ -366,7 +366,7 @@ public interface <span class="typeNameLabel"><a href=S3Client.html>S3Client</a><
                                         </tr>
                                         
                                         <tr id="i16" class="altColor">
-                                            <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a></code>
+                                            <td class="colFirst"><code><a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=S3Client.html#deleteBucket(Function1)>deleteBucket</a>(Function1&lt;<a href=client/BucketDeleteParams.html>BucketDeleteParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action) </code>
                                             </th>
@@ -382,7 +382,7 @@ public interface <span class="typeNameLabel"><a href=S3Client.html>S3Client</a><
                                         </tr>
                                         
                                         <tr id="i18" class="altColor">
-                                            <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a></code>
+                                            <td class="colFirst"><code><a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=S3Client.html#deleteBucketRecursive(BucketName,String)>deleteBucketRecursive</a>(<a href=fields/BucketName.html>BucketName</a> name, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> region) </code>
                                             </th>
@@ -390,7 +390,7 @@ public interface <span class="typeNameLabel"><a href=S3Client.html>S3Client</a><
                                         </tr>
                                         
                                         <tr id="i19" class="rowColor">
-                                            <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a></code>
+                                            <td class="colFirst"><code><a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=S3Client.html#deleteBucketRecursive(Function1)>deleteBucketRecursive</a>(Function1&lt;<a href=client/BucketDeleteParams.html>BucketDeleteParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action) </code>
                                             </th>
@@ -401,6 +401,14 @@ public interface <span class="typeNameLabel"><a href=S3Client.html>S3Client</a><
                                             <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=S3Client.html#deleteBucketRecursive(BucketDeleteParams)>deleteBucketRecursive</a>(<a href=client/BucketDeleteParams.html>BucketDeleteParams</a> params) </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i21" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=S3Client.html#getDefaultRegion()>getDefaultRegion</a>() </code>
                                             </th>
                                             <td class="colLast"></td>
                                         </tr>
@@ -457,7 +465,7 @@ public interface <span class="typeNameLabel"><a href=S3Client.html>S3Client</a><
                                           >
                                     <li class="blockList">
                                         <h4>bucketExists</h4>
-                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a> <a href=S3Client.html#bucketExists(BucketName,String)>bucketExists</a>(<a href=fields/BucketName.html>BucketName</a> name, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> region)</pre>
+                                        <pre class="methodSignature"> <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a> <a href=S3Client.html#bucketExists(BucketName,String)>bucketExists</a>(<a href=fields/BucketName.html>BucketName</a> name, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> region)</pre>
                                         <div class="block"><p>Tests for the existence of a bucket with the given name.</p></div>
                                         
                                         <dl>
@@ -477,30 +485,6 @@ public interface <span class="typeNameLabel"><a href=S3Client.html>S3Client</a><
                                     </li>
                                 </ul>
                                 
-                                <a id="bucketExists(BucketExistsParams)">
-                                    <!--   -->
-                                </a>
-                                <ul class=
-                                              "blockList"
-                                          >
-                                    <li class="blockList">
-                                        <h4>bucketExists</h4>
-                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a> <a href=S3Client.html#bucketExists(BucketExistsParams)>bucketExists</a>(<a href=bucket/request/BucketExistsParams.html>BucketExistsParams</a> params)</pre>
-                                        <div class="block"><p>Tests for the existence of a bucket with the operation configured by the given <a href=S3Client.html#bucketExists(BucketExistsParams)>params</a>.</p></div>
-                                        
-                                        <dl>
-                                            <dt><span class="paramLabel">Parameters:</span></dt>
-                                            
-                                            
-                                            <dd><code>params</code> - S3 operation parameters.</dd>
-                                            
-                                            
-                                        </dl>
-                                        
-                                        <!-- TODO missing return annotation -->
-                                    </li>
-                                </ul>
-                                
                                 <a id="bucketExists(Function1)">
                                     <!--   -->
                                 </a>
@@ -509,7 +493,7 @@ public interface <span class="typeNameLabel"><a href=S3Client.html>S3Client</a><
                                           >
                                     <li class="blockList">
                                         <h4>bucketExists</h4>
-                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a> <a href=S3Client.html#bucketExists(Function1)>bucketExists</a>(Function1&lt;<a href=bucket/request/BucketExistsParams.html>BucketExistsParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action)</pre>
+                                        <pre class="methodSignature"> <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a> <a href=S3Client.html#bucketExists(Function1)>bucketExists</a>(Function1&lt;<a href=request/bucket/BucketExistsParams.html>BucketExistsParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action)</pre>
                                         <div class="block"><p>Tests for the existence of a bucket with the operation configured by the given <a href=S3Client.html#bucketExists(Function1)>action</a>.</p></div>
                                         
                                         <dl>
@@ -517,6 +501,30 @@ public interface <span class="typeNameLabel"><a href=S3Client.html>S3Client</a><
                                             
                                             
                                             <dd><code>action</code> - Action to configure the S3 operation.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="bucketExists(BucketExistsParams)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>bucketExists</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a> <a href=S3Client.html#bucketExists(BucketExistsParams)>bucketExists</a>(<a href=request/bucket/BucketExistsParams.html>BucketExistsParams</a> params)</pre>
+                                        <div class="block"><p>Tests for the existence of a bucket with the operation configured by the given <a href=S3Client.html#bucketExists(BucketExistsParams)>params</a>.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>params</code> - S3 operation parameters.</dd>
                                             
                                             
                                         </dl>
@@ -533,7 +541,7 @@ public interface <span class="typeNameLabel"><a href=S3Client.html>S3Client</a><
                                           >
                                     <li class="blockList">
                                         <h4>createBucket</h4>
-                                        <pre class="methodSignature"> abstract <a href=S3Bucket.html>S3Bucket</a> <a href=S3Client.html#createBucket(BucketName,String)>createBucket</a>(<a href=fields/BucketName.html>BucketName</a> name, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> region)</pre>
+                                        <pre class="methodSignature"> <a href=S3Bucket.html>S3Bucket</a> <a href=S3Client.html#createBucket(BucketName,String)>createBucket</a>(<a href=fields/BucketName.html>BucketName</a> name, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> region)</pre>
                                         <div class="block"><p>Attempts to create a bucket with the given name.</p><p>Warning This may not be allowed based on the security policy/ permissions granted on the target S3 instance.</p></div>
                                         
                                         <dl>
@@ -545,6 +553,30 @@ public interface <span class="typeNameLabel"><a href=S3Client.html>S3Client</a><
                                             
                                             
                                             <dd><code>region</code> - Optional region where the bucket should reside.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="createBucket(Function1)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>createBucket</h4>
+                                        <pre class="methodSignature"> <a href=S3Bucket.html>S3Bucket</a> <a href=S3Client.html#createBucket(Function1)>createBucket</a>(Function1&lt;<a href=client/BucketPutParams.html>BucketPutParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action)</pre>
+                                        <div class="block"><p>Attempts to create a bucket with the given name with the operation configured by the given <a href=S3Client.html#createBucket(Function1)>action</a>.</p><p>Warning This may not be allowed based on the security policy/ permissions granted on the target S3 instance.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>action</code> - Action to configure the S3 operation.</dd>
                                             
                                             
                                         </dl>
@@ -577,30 +609,6 @@ public interface <span class="typeNameLabel"><a href=S3Client.html>S3Client</a><
                                     </li>
                                 </ul>
                                 
-                                <a id="createBucket(Function1)">
-                                    <!--   -->
-                                </a>
-                                <ul class=
-                                              "blockList"
-                                          >
-                                    <li class="blockList">
-                                        <h4>createBucket</h4>
-                                        <pre class="methodSignature"> abstract <a href=S3Bucket.html>S3Bucket</a> <a href=S3Client.html#createBucket(Function1)>createBucket</a>(Function1&lt;<a href=client/BucketPutParams.html>BucketPutParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action)</pre>
-                                        <div class="block"><p>Attempts to create a bucket with the given name with the operation configured by the given <a href=S3Client.html#createBucket(Function1)>action</a>.</p><p>Warning This may not be allowed based on the security policy/ permissions granted on the target S3 instance.</p></div>
-                                        
-                                        <dl>
-                                            <dt><span class="paramLabel">Parameters:</span></dt>
-                                            
-                                            
-                                            <dd><code>action</code> - Action to configure the S3 operation.</dd>
-                                            
-                                            
-                                        </dl>
-                                        
-                                        <!-- TODO missing return annotation -->
-                                    </li>
-                                </ul>
-                                
                                 <a id="createBucketIfNotExists(BucketName,String)">
                                     <!--   -->
                                 </a>
@@ -609,7 +617,7 @@ public interface <span class="typeNameLabel"><a href=S3Client.html>S3Client</a><
                                           >
                                     <li class="blockList">
                                         <h4>createBucketIfNotExists</h4>
-                                        <pre class="methodSignature"> abstract <a href=S3Bucket.html>S3Bucket</a> <a href=S3Client.html#createBucketIfNotExists(BucketName,String)>createBucketIfNotExists</a>(<a href=fields/BucketName.html>BucketName</a> name, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> region)</pre>
+                                        <pre class="methodSignature"> <a href=S3Bucket.html>S3Bucket</a> <a href=S3Client.html#createBucketIfNotExists(BucketName,String)>createBucketIfNotExists</a>(<a href=fields/BucketName.html>BucketName</a> name, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> region)</pre>
                                         <div class="block"><p>Attempts to create a bucket with the given name if it does not already exist in the S3 instance.</p><p>Warning This may not be allowed based on the security policy/ permissions granted on the target S3 instance.</p></div>
                                         
                                         <dl>
@@ -637,7 +645,7 @@ public interface <span class="typeNameLabel"><a href=S3Client.html>S3Client</a><
                                           >
                                     <li class="blockList">
                                         <h4>createBucketIfNotExists</h4>
-                                        <pre class="methodSignature"> abstract <a href=S3Bucket.html>S3Bucket</a> <a href=S3Client.html#createBucketIfNotExists(Function1)>createBucketIfNotExists</a>(Function1&lt;<a href=client/BucketPutParams.html>BucketPutParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action)</pre>
+                                        <pre class="methodSignature"> <a href=S3Bucket.html>S3Bucket</a> <a href=S3Client.html#createBucketIfNotExists(Function1)>createBucketIfNotExists</a>(Function1&lt;<a href=client/BucketPutParams.html>BucketPutParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action)</pre>
                                         <div class="block"><p>Attempts to create a bucket with the given name if it does not already exist in the S3 instance.</p><p>Warning This may not be allowed based on the security policy/ permissions granted on the target S3 instance.</p></div>
                                         
                                         <dl>
@@ -685,7 +693,7 @@ public interface <span class="typeNameLabel"><a href=S3Client.html>S3Client</a><
                                           >
                                     <li class="blockList">
                                         <h4>getBucket</h4>
-                                        <pre class="methodSignature"> abstract <a href=S3Bucket.html>S3Bucket</a> <a href=S3Client.html#getBucket(BucketName,String)>getBucket</a>(<a href=fields/BucketName.html>BucketName</a> name, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> region)</pre>
+                                        <pre class="methodSignature"> <a href=S3Bucket.html>S3Bucket</a> <a href=S3Client.html#getBucket(BucketName,String)>getBucket</a>(<a href=fields/BucketName.html>BucketName</a> name, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> region)</pre>
                                         <div class="block"><p>Creates a new <a href=S3Bucket.html>S3Bucket</a> instance wrapping the target S3 bucket.</p></div>
                                         
                                         <dl>
@@ -713,7 +721,7 @@ public interface <span class="typeNameLabel"><a href=S3Client.html>S3Client</a><
                                           >
                                     <li class="blockList">
                                         <h4>getBucket</h4>
-                                        <pre class="methodSignature"> abstract <a href=S3Bucket.html>S3Bucket</a> <a href=S3Client.html#getBucket(Function1)>getBucket</a>(Function1&lt;<a href=client/BucketGetParams.html>BucketGetParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action)</pre>
+                                        <pre class="methodSignature"> <a href=S3Bucket.html>S3Bucket</a> <a href=S3Client.html#getBucket(Function1)>getBucket</a>(Function1&lt;<a href=client/BucketGetParams.html>BucketGetParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action)</pre>
                                         <div class="block"><p>Creates a new <a href=S3Bucket.html>S3Bucket</a> instance wrapping the target S3 bucket.</p></div>
                                         
                                         <dl>
@@ -761,7 +769,7 @@ public interface <span class="typeNameLabel"><a href=S3Client.html>S3Client</a><
                                           >
                                     <li class="blockList">
                                         <h4>listBuckets</h4>
-                                        <pre class="methodSignature"> abstract <a href=S3BucketList.html>S3BucketList</a> <a href=S3Client.html#listBuckets()>listBuckets</a>()</pre>
+                                        <pre class="methodSignature"> <a href=S3BucketList.html>S3BucketList</a> <a href=S3Client.html#listBuckets()>listBuckets</a>()</pre>
                                         <div class="block"><p>Fetches a list of all buckets available on the target S3 instance.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
@@ -776,7 +784,7 @@ public interface <span class="typeNameLabel"><a href=S3Client.html>S3Client</a><
                                           >
                                     <li class="blockList">
                                         <h4>listBuckets</h4>
-                                        <pre class="methodSignature"> abstract <a href=S3BucketList.html>S3BucketList</a> <a href=S3Client.html#listBuckets(Function1)>listBuckets</a>(Function1&lt;<a href=client/BucketListParams.html>BucketListParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action)</pre>
+                                        <pre class="methodSignature"> <a href=S3BucketList.html>S3BucketList</a> <a href=S3Client.html#listBuckets(Function1)>listBuckets</a>(Function1&lt;<a href=client/BucketListParams.html>BucketListParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action)</pre>
                                         <div class="block"><p>Fetches a list of all buckets available on the target S3 instance.</p></div>
                                         
                                         <dl>
@@ -824,7 +832,7 @@ public interface <span class="typeNameLabel"><a href=S3Client.html>S3Client</a><
                                           >
                                     <li class="blockList">
                                         <h4>deleteBucket</h4>
-                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a> <a href=S3Client.html#deleteBucket(BucketName,String)>deleteBucket</a>(<a href=fields/BucketName.html>BucketName</a> name, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> region)</pre>
+                                        <pre class="methodSignature"> <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a> <a href=S3Client.html#deleteBucket(BucketName,String)>deleteBucket</a>(<a href=fields/BucketName.html>BucketName</a> name, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> region)</pre>
                                         <div class="block"><p>Deletes the target bucket from the S3 instance.</p></div>
                                         
                                         <dl>
@@ -852,7 +860,7 @@ public interface <span class="typeNameLabel"><a href=S3Client.html>S3Client</a><
                                           >
                                     <li class="blockList">
                                         <h4>deleteBucket</h4>
-                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a> <a href=S3Client.html#deleteBucket(Function1)>deleteBucket</a>(Function1&lt;<a href=client/BucketDeleteParams.html>BucketDeleteParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action)</pre>
+                                        <pre class="methodSignature"> <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a> <a href=S3Client.html#deleteBucket(Function1)>deleteBucket</a>(Function1&lt;<a href=client/BucketDeleteParams.html>BucketDeleteParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action)</pre>
                                         <div class="block"><p>Deletes the target bucket from the S3 instance.</p></div>
                                         
                                         <dl>
@@ -900,7 +908,7 @@ public interface <span class="typeNameLabel"><a href=S3Client.html>S3Client</a><
                                           >
                                     <li class="blockList">
                                         <h4>deleteBucketRecursive</h4>
-                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a> <a href=S3Client.html#deleteBucketRecursive(BucketName,String)>deleteBucketRecursive</a>(<a href=fields/BucketName.html>BucketName</a> name, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> region)</pre>
+                                        <pre class="methodSignature"> <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a> <a href=S3Client.html#deleteBucketRecursive(BucketName,String)>deleteBucketRecursive</a>(<a href=fields/BucketName.html>BucketName</a> name, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> region)</pre>
                                         <div class="block"></div>
                                         
                                         <!-- TODO missing return annotation -->
@@ -915,7 +923,7 @@ public interface <span class="typeNameLabel"><a href=S3Client.html>S3Client</a><
                                           >
                                     <li class="blockList">
                                         <h4>deleteBucketRecursive</h4>
-                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a> <a href=S3Client.html#deleteBucketRecursive(Function1)>deleteBucketRecursive</a>(Function1&lt;<a href=client/BucketDeleteParams.html>BucketDeleteParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action)</pre>
+                                        <pre class="methodSignature"> <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a> <a href=S3Client.html#deleteBucketRecursive(Function1)>deleteBucketRecursive</a>(Function1&lt;<a href=client/BucketDeleteParams.html>BucketDeleteParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action)</pre>
                                         <div class="block"></div>
                                         
                                         <!-- TODO missing return annotation -->
@@ -926,11 +934,26 @@ public interface <span class="typeNameLabel"><a href=S3Client.html>S3Client</a><
                                     <!--   -->
                                 </a>
                                 <ul class=
-                                              "blockListLast"
+                                              "blockList"
                                           >
                                     <li class="blockList">
                                         <h4>deleteBucketRecursive</h4>
                                         <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a> <a href=S3Client.html#deleteBucketRecursive(BucketDeleteParams)>deleteBucketRecursive</a>(<a href=client/BucketDeleteParams.html>BucketDeleteParams</a> params)</pre>
+                                        <div class="block"></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="getDefaultRegion()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockListLast"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getDefaultRegion</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> <a href=S3Client.html#getDefaultRegion()>getDefaultRegion</a>()</pre>
                                         <div class="block"></div>
                                         
                                         <!-- TODO missing return annotation -->

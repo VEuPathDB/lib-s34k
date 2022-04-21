@@ -3,8 +3,8 @@ package org.veupathdb.lib.s3.s34k.params
 import org.veupathdb.lib.s3.s34k.S3TagSet
 import org.veupathdb.lib.s3.s34k.fields.tags.TagSet
 import org.veupathdb.lib.s3.s34k.fields.tags.TagSetImpl
-import org.veupathdb.lib.s3.s34k.bucket.request.BucketTagDeleteParams
-import org.veupathdb.lib.s3.s34k.`object`.request.ObjectTagDeleteParams
+import org.veupathdb.lib.s3.s34k.request.bucket.BucketTagDeleteParams
+import org.veupathdb.lib.s3.s34k.request.`object`.ObjectTagDeleteParams
 
 class TagDeleteParams(var callback: ((S3TagSet) -> Unit)? = null)
   : TagDeleteRequest

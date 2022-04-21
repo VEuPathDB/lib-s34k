@@ -1,6 +1,7 @@
 package org.veupathdb.lib.s3.s34k
 
 import org.veupathdb.lib.s3.s34k.fields.BucketName
+import java.util.stream.Stream
 
 interface S3BucketList : Iterable<S3Bucket> {
 
@@ -17,4 +18,6 @@ interface S3BucketList : Iterable<S3Bucket> {
   fun toMap(): Map<BucketName, S3Bucket>
 
   fun toList(): List<S3Bucket>
+
+  fun stream(): Stream<S3Bucket>
 }

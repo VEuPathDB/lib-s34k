@@ -2,7 +2,7 @@ package org.veupathdb.lib.s3.s34k.params
 
 import org.veupathdb.lib.s3.s34k.fields.BucketName
 import org.veupathdb.lib.s3.s34k.client.BucketDeleteParams
-import org.veupathdb.lib.s3.s34k.`object`.request.ObjectDeleteParams
+import org.veupathdb.lib.s3.s34k.request.`object`.ObjectDeleteParams
 
 /**
  * Generalized delete operation parameters.

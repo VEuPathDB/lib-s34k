@@ -4,14 +4,15 @@ $dokka.location:org.veupathdb.lib.s3.s34k.fields/BucketName.Companion///Pointing
 $dokka.location:org.veupathdb.lib.s3.s34k/S3LegalHold.Companion///PointingToDeclaration/org/veupathdb/lib/s3/s34k/S3LegalHold.Companion.html
 $dokka.location:org.veupathdb.lib.s3.s34k/S3RetentionMode.Companion///PointingToDeclaration/org/veupathdb/lib/s3/s34k/S3RetentionMode.Companion.html
 org.veupathdb.lib.s3.s34k
-org.veupathdb.lib.s3.s34k.bucket.request
 org.veupathdb.lib.s3.s34k.client
 org.veupathdb.lib.s3.s34k.errors
 org.veupathdb.lib.s3.s34k.fields
 org.veupathdb.lib.s3.s34k.fields.headers
 org.veupathdb.lib.s3.s34k.fields.query_params
 org.veupathdb.lib.s3.s34k.fields.tags
-org.veupathdb.lib.s3.s34k.object.request
-org.veupathdb.lib.s3.s34k.object.response
 org.veupathdb.lib.s3.s34k.params
+org.veupathdb.lib.s3.s34k.request.bucket
+org.veupathdb.lib.s3.s34k.request.object
+org.veupathdb.lib.s3.s34k.response
+org.veupathdb.lib.s3.s34k.response.object
 

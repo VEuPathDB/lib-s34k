@@ -30,6 +30,9 @@ sealed interface TagMap : Iterable<S3Tag> {
   fun addTag(key: String, value: String)
 
   // TODO: Document me
+  fun addTag(tag: S3Tag)
+
+  // TODO: Document me
   fun addTags(vararg tags: S3Tag)
 
   // TODO: Document me

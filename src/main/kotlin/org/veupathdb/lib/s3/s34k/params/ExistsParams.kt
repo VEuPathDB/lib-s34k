@@ -1,8 +1,8 @@
 package org.veupathdb.lib.s3.s34k.params
 
 import org.veupathdb.lib.s3.s34k.fields.BucketName
-import org.veupathdb.lib.s3.s34k.params.bucket.BucketExistsParams
-import org.veupathdb.lib.s3.s34k.`object`.request.ObjectExistsParams
+import org.veupathdb.lib.s3.s34k.request.bucket.BucketExistsParams
+import org.veupathdb.lib.s3.s34k.request.`object`.ObjectExistsParams
 
 /**
  * Exists Check Operation Parameters

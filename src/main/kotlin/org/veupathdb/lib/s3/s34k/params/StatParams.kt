@@ -1,7 +1,7 @@
 package org.veupathdb.lib.s3.s34k.params
 
-import org.veupathdb.lib.s3.s34k.S3ObjectMeta
-import org.veupathdb.lib.s3.s34k.`object`.request.ObjectStatParams
+import org.veupathdb.lib.s3.s34k.request.`object`.ObjectStatParams
+import org.veupathdb.lib.s3.s34k.response.`object`.S3ObjectMeta
 
 /**
  * Generic Stat Operation Parameters

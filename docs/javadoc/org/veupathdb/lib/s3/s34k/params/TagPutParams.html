@@ -181,19 +181,19 @@ extends <a href=RegionRequest.html>RegionRequest</a> implements <a href=TagSendi
                                         
                                         <tr class="altColor">
                                             <td class="colFirst"><code>private  <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a></code></td>
-                                            <th class="colSecond" scope="row"><code><a href=TagPutParams.html#region>region</a></code></th>
+                                            <th class="colSecond" scope="row"><code><a href=../request/object/TaggedObjectRequest.html#region>region</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
                                         <tr class="rowColor">
                                             <td class="colFirst"><code>private final <a href=../fields/headers/S3HeadersMutable.html>S3HeadersMutable</a></code></td>
-                                            <th class="colSecond" scope="row"><code><a href=TagPutParams.html#headers>headers</a></code></th>
+                                            <th class="colSecond" scope="row"><code><a href=../request/object/TaggedObjectRequest.html#headers>headers</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
                                         <tr class="altColor">
                                             <td class="colFirst"><code>private final <a href=../fields/query_params/S3QueryParamsMutable.html>S3QueryParamsMutable</a></code></td>
-                                            <th class="colSecond" scope="row"><code><a href=TagPutParams.html#queryParams>queryParams</a></code></th>
+                                            <th class="colSecond" scope="row"><code><a href=../request/object/TaggedObjectRequest.html#queryParams>queryParams</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
@@ -223,7 +223,7 @@ extends <a href=RegionRequest.html>RegionRequest</a> implements <a href=TagSendi
                                         
                                             <tr class="altColor">
                                                 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
-                                                        href="#TagPutParams(Function0)">TagPutParams</a></span>(Function0&lt;<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; callback)</code></th>
+                                                        href="#TagPutParams(String,Function0)">TagPutParams</a></span>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> region, Function0&lt;<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; callback)</code></th>
                                                 <td class="colLast"></td>
                                             </tr>
                                         
@@ -333,7 +333,7 @@ extends <a href=RegionRequest.html>RegionRequest</a> implements <a href=TagSendi
                                         </tr>
                                         
                                         <tr id="i7" class="rowColor">
-                                            <td class="colFirst"><code>final <a href=../object/request/ObjectTagPutParams.html>ObjectTagPutParams</a></code>
+                                            <td class="colFirst"><code>final <a href=../request/object/ObjectTagPutParams.html>ObjectTagPutParams</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=TagPutParams.html#toObjectTagPutParams(String)>toObjectTagPutParams</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path) </code>
                                             </th>
@@ -341,7 +341,7 @@ extends <a href=RegionRequest.html>RegionRequest</a> implements <a href=TagSendi
                                         </tr>
                                         
                                         <tr id="i8" class="altColor">
-                                            <td class="colFirst"><code>final &lt;ERROR CLASS&gt;</code>
+                                            <td class="colFirst"><code>final <a href=../request/bucket/BucketTagPutParams.html>BucketTagPutParams</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=TagPutParams.html#toBucketTagPutParams()>toBucketTagPutParams</a>() </code>
                                             </th>
@@ -379,11 +379,11 @@ extends <a href=RegionRequest.html>RegionRequest</a> implements <a href=TagSendi
                             </a>
                                 <h3>Constructor Detail</h3>
                                 
-                                <a name="TagPutParams(Function0)"></a>
+                                <a name="TagPutParams(String,Function0)"></a>
                                 <ul class="blockList">
                                     <li class="blockList">
                                         <h4>TagPutParams</h4>
-                                        <pre>TagPutParams(Function0&lt;<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; callback)</pre>
+                                        <pre>TagPutParams(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> region, Function0&lt;<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; callback)</pre>
                                         <div class="block"></div>
                                         
                                     </li>
@@ -515,7 +515,7 @@ extends <a href=RegionRequest.html>RegionRequest</a> implements <a href=TagSendi
                                           >
                                     <li class="blockList">
                                         <h4>toObjectTagPutParams</h4>
-                                        <pre class="methodSignature"> final <a href=../object/request/ObjectTagPutParams.html>ObjectTagPutParams</a> <a href=TagPutParams.html#toObjectTagPutParams(String)>toObjectTagPutParams</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path)</pre>
+                                        <pre class="methodSignature"> final <a href=../request/object/ObjectTagPutParams.html>ObjectTagPutParams</a> <a href=TagPutParams.html#toObjectTagPutParams(String)>toObjectTagPutParams</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path)</pre>
                                         <div class="block"></div>
                                         
                                         <!-- TODO missing return annotation -->
@@ -530,7 +530,7 @@ extends <a href=RegionRequest.html>RegionRequest</a> implements <a href=TagSendi
                                           >
                                     <li class="blockList">
                                         <h4>toBucketTagPutParams</h4>
-                                        <pre class="methodSignature"> final &lt;ERROR CLASS&gt; <a href=TagPutParams.html#toBucketTagPutParams()>toBucketTagPutParams</a>()</pre>
+                                        <pre class="methodSignature"> final <a href=../request/bucket/BucketTagPutParams.html>BucketTagPutParams</a> <a href=TagPutParams.html#toBucketTagPutParams()>toBucketTagPutParams</a>()</pre>
                                         <div class="block"></div>
                                         
                                         <!-- TODO missing return annotation -->

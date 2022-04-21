@@ -1,9 +1,9 @@
 package org.veupathdb.lib.s3.s34k.params
 
+import org.veupathdb.lib.s3.s34k.request.bucket.BucketTagPutParams
 import org.veupathdb.lib.s3.s34k.fields.tags.TagMap
 import org.veupathdb.lib.s3.s34k.fields.tags.TagMapImpl
-import org.veupathdb.lib.s3.s34k.params.bucket.BucketTagPutParams
-import org.veupathdb.lib.s3.s34k.`object`.request.ObjectTagPutParams
+import org.veupathdb.lib.s3.s34k.request.`object`.ObjectTagPutParams
 
 /**
  * Generic Tag Put Operation Parameters
@@ -12,7 +12,10 @@ import org.veupathdb.lib.s3.s34k.`object`.request.ObjectTagPutParams
  *
  * @since v0.1.0
  */
-class TagPutParams(var callback: (() -> Unit)? = null) : TagSendingRequest, RegionRequest() {
+class TagPutParams(
+  region: String? = null,
+  var callback: (() -> Unit)? = null
+) : TagSendingRequest, RegionRequest(region) {
 
   override val tags: TagMap = TagMapImpl()
 

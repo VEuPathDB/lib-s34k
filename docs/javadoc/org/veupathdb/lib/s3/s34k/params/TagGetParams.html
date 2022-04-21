@@ -115,7 +115,7 @@ var pathtoroot = "../../../../../../";
                     <pre class="wrap-overflow">
 
 public final class <span class="typeNameLabel"><a href=TagGetParams.html>TagGetParams</a></span>
-extends <a href=BaseRequest.html>BaseRequest</a>
+extends <a href=RegionRequest.html>RegionRequest</a>
                     </pre>
                     <div class="block"><p>Generic Tag Get Operation Parameters</p></div>
                 </li>
@@ -171,14 +171,20 @@ extends <a href=BaseRequest.html>BaseRequest</a>
                                         </tr>
                                         
                                         <tr class="rowColor">
-                                            <td class="colFirst"><code>private final <a href=../fields/headers/S3HeadersMutable.html>S3HeadersMutable</a></code></td>
-                                            <th class="colSecond" scope="row"><code><a href=TagPutParams.html#headers>headers</a></code></th>
+                                            <td class="colFirst"><code>private  <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=../request/object/TaggedObjectRequest.html#region>region</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
                                         <tr class="altColor">
+                                            <td class="colFirst"><code>private final <a href=../fields/headers/S3HeadersMutable.html>S3HeadersMutable</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=../request/object/TaggedObjectRequest.html#headers>headers</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="rowColor">
                                             <td class="colFirst"><code>private final <a href=../fields/query_params/S3QueryParamsMutable.html>S3QueryParamsMutable</a></code></td>
-                                            <th class="colSecond" scope="row"><code><a href=TagPutParams.html#queryParams>queryParams</a></code></th>
+                                            <th class="colSecond" scope="row"><code><a href=../request/object/TaggedObjectRequest.html#queryParams>queryParams</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
@@ -208,7 +214,7 @@ extends <a href=BaseRequest.html>BaseRequest</a>
                                         
                                             <tr class="altColor">
                                                 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
-                                                        href="#TagGetParams(Function1)">TagGetParams</a></span>(Function1&lt;<a href=../S3TagSet.html>S3TagSet</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; callback)</code></th>
+                                                        href="#TagGetParams(String,Function1)">TagGetParams</a></span>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> region, Function1&lt;<a href=../S3TagSet.html>S3TagSet</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; callback)</code></th>
                                                 <td class="colLast"></td>
                                             </tr>
                                         
@@ -278,6 +284,22 @@ extends <a href=BaseRequest.html>BaseRequest</a>
                                         </tr>
                                         
                                         <tr id="i2" class="altColor">
+                                            <td class="colFirst"><code>final <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=TagGetParams.html#getRegion()>getRegion</a>() </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i3" class="rowColor">
+                                            <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=TagGetParams.html#setRegion(String)>setRegion</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> region) </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i4" class="altColor">
                                             <td class="colFirst"><code>final <a href=../fields/headers/S3HeadersMutable.html>S3HeadersMutable</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=TagGetParams.html#getHeaders()>getHeaders</a>() </code>
@@ -285,7 +307,7 @@ extends <a href=BaseRequest.html>BaseRequest</a>
                                             <td class="colLast">Additional headers that will be sent with the S3 operation.</td>
                                         </tr>
                                         
-                                        <tr id="i3" class="rowColor">
+                                        <tr id="i5" class="rowColor">
                                             <td class="colFirst"><code>final <a href=../fields/query_params/S3QueryParamsMutable.html>S3QueryParamsMutable</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=TagGetParams.html#getQueryParams()>getQueryParams</a>() </code>
@@ -293,18 +315,18 @@ extends <a href=BaseRequest.html>BaseRequest</a>
                                             <td class="colLast">Additional query parameters that will be sent with the S3 operation.</td>
                                         </tr>
                                         
-                                        <tr id="i4" class="altColor">
-                                            <td class="colFirst"><code>final <a href=../object/request/ObjectTagGetParams.html>ObjectTagGetParams</a></code>
+                                        <tr id="i6" class="altColor">
+                                            <td class="colFirst"><code>final <a href=../request/object/ObjectTagGetParams.html>ObjectTagGetParams</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=TagGetParams.html#toObjectTagGetParams(String,String)>toObjectTagGetParams</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> region) </code>
+                                            <th class="colSecond" scope="row"><code><a href=TagGetParams.html#toObjectTagGetParams(String)>toObjectTagGetParams</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path) </code>
                                             </th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
-                                        <tr id="i5" class="rowColor">
-                                            <td class="colFirst"><code>final &lt;ERROR CLASS&gt;</code>
+                                        <tr id="i7" class="rowColor">
+                                            <td class="colFirst"><code>final <a href=../request/bucket/BucketTagGetParams.html>BucketTagGetParams</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=TagGetParams.html#toBucketTagGetParams(BucketName,String)>toBucketTagGetParams</a>(<a href=../fields/BucketName.html>BucketName</a> bucket, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> region) </code>
+                                            <th class="colSecond" scope="row"><code><a href=TagGetParams.html#toBucketTagGetParams(BucketName)>toBucketTagGetParams</a>(<a href=../fields/BucketName.html>BucketName</a> bucket) </code>
                                             </th>
                                             <td class="colLast"></td>
                                         </tr>
@@ -340,11 +362,11 @@ extends <a href=BaseRequest.html>BaseRequest</a>
                             </a>
                                 <h3>Constructor Detail</h3>
                                 
-                                <a name="TagGetParams(Function1)"></a>
+                                <a name="TagGetParams(String,Function1)"></a>
                                 <ul class="blockList">
                                     <li class="blockList">
                                         <h4>TagGetParams</h4>
-                                        <pre>TagGetParams(Function1&lt;<a href=../S3TagSet.html>S3TagSet</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; callback)</pre>
+                                        <pre>TagGetParams(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> region, Function1&lt;<a href=../S3TagSet.html>S3TagSet</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; callback)</pre>
                                         <div class="block"></div>
                                         
                                     </li>
@@ -393,6 +415,36 @@ extends <a href=BaseRequest.html>BaseRequest</a>
                                     </li>
                                 </ul>
                                 
+                                <a id="getRegion()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getRegion</h4>
+                                        <pre class="methodSignature"> final <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> <a href=TagGetParams.html#getRegion()>getRegion</a>()</pre>
+                                        <div class="block"></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="setRegion(String)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>setRegion</h4>
+                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=TagGetParams.html#setRegion(String)>setRegion</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> region)</pre>
+                                        <div class="block"></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
                                 <a id="getHeaders()">
                                     <!--   -->
                                 </a>
@@ -423,7 +475,7 @@ extends <a href=BaseRequest.html>BaseRequest</a>
                                     </li>
                                 </ul>
                                 
-                                <a id="toObjectTagGetParams(String,String)">
+                                <a id="toObjectTagGetParams(String)">
                                     <!--   -->
                                 </a>
                                 <ul class=
@@ -431,14 +483,14 @@ extends <a href=BaseRequest.html>BaseRequest</a>
                                           >
                                     <li class="blockList">
                                         <h4>toObjectTagGetParams</h4>
-                                        <pre class="methodSignature"> final <a href=../object/request/ObjectTagGetParams.html>ObjectTagGetParams</a> <a href=TagGetParams.html#toObjectTagGetParams(String,String)>toObjectTagGetParams</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> region)</pre>
+                                        <pre class="methodSignature"> final <a href=../request/object/ObjectTagGetParams.html>ObjectTagGetParams</a> <a href=TagGetParams.html#toObjectTagGetParams(String)>toObjectTagGetParams</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path)</pre>
                                         <div class="block"></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
                                 </ul>
                                 
-                                <a id="toBucketTagGetParams(BucketName,String)">
+                                <a id="toBucketTagGetParams(BucketName)">
                                     <!--   -->
                                 </a>
                                 <ul class=
@@ -446,7 +498,7 @@ extends <a href=BaseRequest.html>BaseRequest</a>
                                           >
                                     <li class="blockList">
                                         <h4>toBucketTagGetParams</h4>
-                                        <pre class="methodSignature"> final &lt;ERROR CLASS&gt; <a href=TagGetParams.html#toBucketTagGetParams(BucketName,String)>toBucketTagGetParams</a>(<a href=../fields/BucketName.html>BucketName</a> bucket, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> region)</pre>
+                                        <pre class="methodSignature"> final <a href=../request/bucket/BucketTagGetParams.html>BucketTagGetParams</a> <a href=TagGetParams.html#toBucketTagGetParams(BucketName)>toBucketTagGetParams</a>(<a href=../fields/BucketName.html>BucketName</a> bucket)</pre>
                                         <div class="block"></div>
                                         
                                         <!-- TODO missing return annotation -->

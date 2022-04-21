@@ -27,6 +27,10 @@ internal class TagMapImpl : TagMap {
     raw.add(S3Tag(key, value))
   }
 
+  override fun addTag(tag: S3Tag) {
+    raw.add(tag)
+  }
+
   override fun addTags(vararg tags: S3Tag) {
     raw.addAll(tags)
   }

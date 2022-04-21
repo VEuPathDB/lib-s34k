@@ -267,7 +267,7 @@ public interface <span class="typeNameLabel"><a href=TagMap.html>TagMap</a></spa
                                         <tr id="i3" class="rowColor">
                                             <td class="colFirst"><code>abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=TagMap.html#addTags(S3Tag)>addTags</a>(<a href=../../S3Tag.html>S3Tag</a> tags) </code>
+                                            <th class="colSecond" scope="row"><code><a href=TagMap.html#addTag(S3Tag)>addTag</a>(<a href=../../S3Tag.html>S3Tag</a> tag) </code>
                                             </th>
                                             <td class="colLast"></td>
                                         </tr>
@@ -275,7 +275,7 @@ public interface <span class="typeNameLabel"><a href=TagMap.html>TagMap</a></spa
                                         <tr id="i4" class="altColor">
                                             <td class="colFirst"><code>abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=TagMap.html#addTags(Iterable)>addTags</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html>Iterable</a>&lt;<a href=../../S3Tag.html>S3Tag</a>&gt; tags) </code>
+                                            <th class="colSecond" scope="row"><code><a href=TagMap.html#addTags(S3Tag)>addTags</a>(<a href=../../S3Tag.html>S3Tag</a> tags) </code>
                                             </th>
                                             <td class="colLast"></td>
                                         </tr>
@@ -283,7 +283,7 @@ public interface <span class="typeNameLabel"><a href=TagMap.html>TagMap</a></spa
                                         <tr id="i5" class="rowColor">
                                             <td class="colFirst"><code>abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=TagMap.html#addTags(Map)>addTags</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/util/Map.html>Map</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>&gt; tags) </code>
+                                            <th class="colSecond" scope="row"><code><a href=TagMap.html#addTags(Iterable)>addTags</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html>Iterable</a>&lt;<a href=../../S3Tag.html>S3Tag</a>&gt; tags) </code>
                                             </th>
                                             <td class="colLast"></td>
                                         </tr>
@@ -291,12 +291,20 @@ public interface <span class="typeNameLabel"><a href=TagMap.html>TagMap</a></spa
                                         <tr id="i6" class="altColor">
                                             <td class="colFirst"><code>abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=TagMap.html#addTags(Pair)>addTags</a>(<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-pair/index.html>Pair</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>&gt; tags) </code>
+                                            <th class="colSecond" scope="row"><code><a href=TagMap.html#addTags(Map)>addTags</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/util/Map.html>Map</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>&gt; tags) </code>
                                             </th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
                                         <tr id="i7" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=TagMap.html#addTags(Pair)>addTags</a>(<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-pair/index.html>Pair</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>&gt; tags) </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i8" class="altColor">
                                             <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=TagMap.html#getSize()>getSize</a>() </code>
@@ -304,7 +312,7 @@ public interface <span class="typeNameLabel"><a href=TagMap.html>TagMap</a></spa
                                             <td class="colLast">Number of tag pairs currently in this <a href=TagMap.html>TagMap</a></td>
                                         </tr>
                                         
-                                        <tr id="i8" class="altColor">
+                                        <tr id="i9" class="rowColor">
                                             <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=TagMap.html#getIsEmpty()>getIsEmpty</a>() </code>
@@ -312,7 +320,7 @@ public interface <span class="typeNameLabel"><a href=TagMap.html>TagMap</a></spa
                                             <td class="colLast">Whether this <a href=TagMap.html>TagMap</a> is empty.</td>
                                         </tr>
                                         
-                                        <tr id="i9" class="rowColor">
+                                        <tr id="i10" class="altColor">
                                             <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=TagMap.html#getIsNotEmpty()>getIsNotEmpty</a>() </code>
@@ -409,6 +417,21 @@ public interface <span class="typeNameLabel"><a href=TagMap.html>TagMap</a></spa
                                     <li class="blockList">
                                         <h4>addTag</h4>
                                         <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=TagMap.html#addTag(String,String)>addTag</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> key, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> value)</pre>
+                                        <div class="block"></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="addTag(S3Tag)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>addTag</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=TagMap.html#addTag(S3Tag)>addTag</a>(<a href=../../S3Tag.html>S3Tag</a> tag)</pre>
                                         <div class="block"></div>
                                         
                                         <!-- TODO missing return annotation -->

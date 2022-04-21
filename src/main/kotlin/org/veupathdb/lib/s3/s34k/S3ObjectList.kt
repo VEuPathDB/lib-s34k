@@ -1,5 +1,8 @@
 package org.veupathdb.lib.s3.s34k
 
+import org.veupathdb.lib.s3.s34k.response.`object`.S3Object
+import java.util.stream.Stream
+
 interface S3ObjectList : Iterable<S3Object> {
 
   val size: Int
@@ -15,4 +18,6 @@ interface S3ObjectList : Iterable<S3Object> {
   fun toMap(): Map<String, S3Object>
 
   fun toList(): List<S3Object>
+
+  fun stream(): Stream<S3Object>
 }
