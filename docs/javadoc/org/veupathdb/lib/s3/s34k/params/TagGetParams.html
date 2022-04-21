@@ -115,7 +115,7 @@ var pathtoroot = "../../../../../../";
                     <pre class="wrap-overflow">
 
 public final class <span class="typeNameLabel"><a href=TagGetParams.html>TagGetParams</a></span>
-extends <a href=RequestParams.html>RequestParams</a>
+extends <a href=BaseRequest.html>BaseRequest</a>
                     </pre>
                     <div class="block"><p>Generic Tag Get Operation Parameters</p></div>
                 </li>
@@ -165,14 +165,20 @@ extends <a href=RequestParams.html>RequestParams</a>
                                         </tr>
                                         
                                         <tr class="altColor">
-                                            <td class="colFirst"><code>private final <a href=https://docs.oracle.com/javase/8/docs/api/java/util/Map.html>Map</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html>Array</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>&gt;&gt;</code></td>
-                                            <th class="colSecond" scope="row"><code><a href=object/SealedObjReqParams.html#headers>headers</a></code></th>
+                                            <td class="colFirst"><code>private  Function1&lt;<a href=../S3TagSet.html>S3TagSet</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt;</code></td>
+                                            <th class="colSecond" scope="row"><code><a href=TagGetParams.html#callback>callback</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
                                         <tr class="rowColor">
-                                            <td class="colFirst"><code>private final <a href=https://docs.oracle.com/javase/8/docs/api/java/util/Map.html>Map</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html>Array</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>&gt;&gt;</code></td>
-                                            <th class="colSecond" scope="row"><code><a href=object/SealedObjReqParams.html#queryParams>queryParams</a></code></th>
+                                            <td class="colFirst"><code>private final <a href=../fields/headers/S3HeadersMutable.html>S3HeadersMutable</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=TagPutParams.html#headers>headers</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="altColor">
+                                            <td class="colFirst"><code>private final <a href=../fields/query_params/S3QueryParamsMutable.html>S3QueryParamsMutable</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=TagPutParams.html#queryParams>queryParams</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
@@ -202,7 +208,7 @@ extends <a href=RequestParams.html>RequestParams</a>
                                         
                                             <tr class="altColor">
                                                 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
-                                                        href="#TagGetParams()">TagGetParams</a></span>()</code></th>
+                                                        href="#TagGetParams(Function1)">TagGetParams</a></span>(Function1&lt;<a href=../S3TagSet.html>S3TagSet</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; callback)</code></th>
                                                 <td class="colLast"></td>
                                             </tr>
                                         
@@ -256,41 +262,49 @@ extends <a href=RequestParams.html>RequestParams</a>
                                         </tr>
                                         
                                         <tr id="i0" class="altColor">
-                                            <td class="colFirst"><code>final <a href=https://docs.oracle.com/javase/8/docs/api/java/util/Map.html>Map</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html>Array</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>&gt;&gt;</code>
+                                            <td class="colFirst"><code>final Function1&lt;<a href=../S3TagSet.html>S3TagSet</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt;</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=TagGetParams.html#getCallback()>getCallback</a>() </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i1" class="rowColor">
+                                            <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=TagGetParams.html#setCallback(Function1)>setCallback</a>(Function1&lt;<a href=../S3TagSet.html>S3TagSet</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; callback) </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i2" class="altColor">
+                                            <td class="colFirst"><code>final <a href=../fields/headers/S3HeadersMutable.html>S3HeadersMutable</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=TagGetParams.html#getHeaders()>getHeaders</a>() </code>
                                             </th>
                                             <td class="colLast">Additional headers that will be sent with the S3 operation.</td>
                                         </tr>
                                         
-                                        <tr id="i1" class="rowColor">
-                                            <td class="colFirst"><code>final <a href=https://docs.oracle.com/javase/8/docs/api/java/util/Map.html>Map</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html>Array</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>&gt;&gt;</code>
+                                        <tr id="i3" class="rowColor">
+                                            <td class="colFirst"><code>final <a href=../fields/query_params/S3QueryParamsMutable.html>S3QueryParamsMutable</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=TagGetParams.html#getQueryParams()>getQueryParams</a>() </code>
                                             </th>
                                             <td class="colLast">Additional query parameters that will be sent with the S3 operation.</td>
                                         </tr>
                                         
-                                        <tr id="i2" class="altColor">
-                                            <td class="colFirst"><code>final <a href=object/ObjectTagGetParams.html>ObjectTagGetParams</a></code>
-                                            </td>
-                                            <th class="colSecond" scope="row"><code><a href=TagGetParams.html#toObjectTagGetParams(String,Function1)>toObjectTagGetParams</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, Function1&lt;<a href=../S3TagSet.html>S3TagSet</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; cb) </code>
-                                            </th>
-                                            <td class="colLast">Converts this generic <a href=TagGetParams.html>TagGetParams</a> into params specifically for getting tags for an S3 object.</td>
-                                        </tr>
-                                        
-                                        <tr id="i3" class="rowColor">
-                                            <td class="colFirst"><code>final <a href=bucket/BucketTagGetParams.html>BucketTagGetParams</a></code>
-                                            </td>
-                                            <th class="colSecond" scope="row"><code><a href=TagGetParams.html#toBucketTagGetParams(Function1)>toBucketTagGetParams</a>(Function1&lt;<a href=../S3TagSet.html>S3TagSet</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; cb) </code>
-                                            </th>
-                                            <td class="colLast">Converts this generic <a href=TagGetParams.html>TagGetParams</a> into params specifically for getting tags for an S3 bucket.</td>
-                                        </tr>
-                                        
                                         <tr id="i4" class="altColor">
-                                            <td class="colFirst"><code><a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a></code>
+                                            <td class="colFirst"><code>final <a href=../object/request/ObjectTagGetParams.html>ObjectTagGetParams</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=TagGetParams.html#toString()>toString</a>() </code>
+                                            <th class="colSecond" scope="row"><code><a href=TagGetParams.html#toObjectTagGetParams(String,String)>toObjectTagGetParams</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> region) </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i5" class="rowColor">
+                                            <td class="colFirst"><code>final &lt;ERROR CLASS&gt;</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=TagGetParams.html#toBucketTagGetParams(BucketName,String)>toBucketTagGetParams</a>(<a href=../fields/BucketName.html>BucketName</a> bucket, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> region) </code>
                                             </th>
                                             <td class="colLast"></td>
                                         </tr>
@@ -300,12 +314,6 @@ extends <a href=RequestParams.html>RequestParams</a>
                                 </div>
                                 <ul class="blockList">
                                 
-                                    <li class="blockList"><a id="methods.inherited.from.class.org.veupathdb.lib.s3.s34k.params.TagGetParams">
-                                            <!--   -->
-                                        </a>
-                                            <h3>Methods inherited from class&nbsp;org.veupathdb.lib.s3.s34k.params.TagGetParams</h3>
-                                            <code>addHeaders, addHeaders, addHeaders, addQueryParams, addQueryParams, addQueryParams, setHeaders, setHeaders, setQueryParams, setQueryParams</code></li>
-                                 
                                     <li class="blockList"><a id="methods.inherited.from.class.java.lang.Object">
                                         <!--   -->
                                     </a>
@@ -332,11 +340,11 @@ extends <a href=RequestParams.html>RequestParams</a>
                             </a>
                                 <h3>Constructor Detail</h3>
                                 
-                                <a name="TagGetParams()"></a>
+                                <a name="TagGetParams(Function1)"></a>
                                 <ul class="blockList">
                                     <li class="blockList">
                                         <h4>TagGetParams</h4>
-                                        <pre>TagGetParams()</pre>
+                                        <pre>TagGetParams(Function1&lt;<a href=../S3TagSet.html>S3TagSet</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; callback)</pre>
                                         <div class="block"></div>
                                         
                                     </li>
@@ -355,6 +363,36 @@ extends <a href=RequestParams.html>RequestParams</a>
                             </a>
                                 <h3>Method Detail</h3>
                                 
+                                <a id="getCallback()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getCallback</h4>
+                                        <pre class="methodSignature"> final Function1&lt;<a href=../S3TagSet.html>S3TagSet</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; <a href=TagGetParams.html#getCallback()>getCallback</a>()</pre>
+                                        <div class="block"></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="setCallback(Function1)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>setCallback</h4>
+                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=TagGetParams.html#setCallback(Function1)>setCallback</a>(Function1&lt;<a href=../S3TagSet.html>S3TagSet</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; callback)</pre>
+                                        <div class="block"></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
                                 <a id="getHeaders()">
                                     <!--   -->
                                 </a>
@@ -363,7 +401,7 @@ extends <a href=RequestParams.html>RequestParams</a>
                                           >
                                     <li class="blockList">
                                         <h4>getHeaders</h4>
-                                        <pre class="methodSignature"> final <a href=https://docs.oracle.com/javase/8/docs/api/java/util/Map.html>Map</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html>Array</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>&gt;&gt; <a href=TagGetParams.html#getHeaders()>getHeaders</a>()</pre>
+                                        <pre class="methodSignature"> final <a href=../fields/headers/S3HeadersMutable.html>S3HeadersMutable</a> <a href=TagGetParams.html#getHeaders()>getHeaders</a>()</pre>
                                         <div class="block"><p>Additional headers that will be sent with the S3 operation.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
@@ -378,14 +416,14 @@ extends <a href=RequestParams.html>RequestParams</a>
                                           >
                                     <li class="blockList">
                                         <h4>getQueryParams</h4>
-                                        <pre class="methodSignature"> final <a href=https://docs.oracle.com/javase/8/docs/api/java/util/Map.html>Map</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html>Array</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>&gt;&gt; <a href=TagGetParams.html#getQueryParams()>getQueryParams</a>()</pre>
+                                        <pre class="methodSignature"> final <a href=../fields/query_params/S3QueryParamsMutable.html>S3QueryParamsMutable</a> <a href=TagGetParams.html#getQueryParams()>getQueryParams</a>()</pre>
                                         <div class="block"><p>Additional query parameters that will be sent with the S3 operation.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
                                 </ul>
                                 
-                                <a id="toObjectTagGetParams(String,Function1)">
+                                <a id="toObjectTagGetParams(String,String)">
                                     <!--   -->
                                 </a>
                                 <ul class=
@@ -393,59 +431,22 @@ extends <a href=RequestParams.html>RequestParams</a>
                                           >
                                     <li class="blockList">
                                         <h4>toObjectTagGetParams</h4>
-                                        <pre class="methodSignature"> final <a href=object/ObjectTagGetParams.html>ObjectTagGetParams</a> <a href=TagGetParams.html#toObjectTagGetParams(String,Function1)>toObjectTagGetParams</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, Function1&lt;<a href=../S3TagSet.html>S3TagSet</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; cb)</pre>
-                                        <div class="block"><p>Converts this generic <a href=TagGetParams.html>TagGetParams</a> into params specifically for getting tags for an S3 object.</p></div>
-                                        
-                                        <dl>
-                                            <dt><span class="paramLabel">Parameters:</span></dt>
-                                            
-                                            
-                                            <dd><code>path</code> - Path to the S3 object whose tags should be fetched.</dd>
-                                            
-                                            
-                                            
-                                            <dd><code>cb</code> - Optional callback that will be executed on successfully completing the request to the S3 server.</dd>
-                                            
-                                            
-                                        </dl>
+                                        <pre class="methodSignature"> final <a href=../object/request/ObjectTagGetParams.html>ObjectTagGetParams</a> <a href=TagGetParams.html#toObjectTagGetParams(String,String)>toObjectTagGetParams</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> region)</pre>
+                                        <div class="block"></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
                                 </ul>
                                 
-                                <a id="toBucketTagGetParams(Function1)">
-                                    <!--   -->
-                                </a>
-                                <ul class=
-                                              "blockList"
-                                          >
-                                    <li class="blockList">
-                                        <h4>toBucketTagGetParams</h4>
-                                        <pre class="methodSignature"> final <a href=bucket/BucketTagGetParams.html>BucketTagGetParams</a> <a href=TagGetParams.html#toBucketTagGetParams(Function1)>toBucketTagGetParams</a>(Function1&lt;<a href=../S3TagSet.html>S3TagSet</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; cb)</pre>
-                                        <div class="block"><p>Converts this generic <a href=TagGetParams.html>TagGetParams</a> into params specifically for getting tags for an S3 bucket.</p></div>
-                                        
-                                        <dl>
-                                            <dt><span class="paramLabel">Parameters:</span></dt>
-                                            
-                                            
-                                            <dd><code>cb</code> - Optional callback that will be executed on successfully completing the request to the S3 server.</dd>
-                                            
-                                            
-                                        </dl>
-                                        
-                                        <!-- TODO missing return annotation -->
-                                    </li>
-                                </ul>
-                                
-                                <a id="toString()">
+                                <a id="toBucketTagGetParams(BucketName,String)">
                                     <!--   -->
                                 </a>
                                 <ul class=
                                               "blockListLast"
                                           >
                                     <li class="blockList">
-                                        <h4>toString</h4>
-                                        <pre class="methodSignature"> <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> <a href=TagGetParams.html#toString()>toString</a>()</pre>
+                                        <h4>toBucketTagGetParams</h4>
+                                        <pre class="methodSignature"> final &lt;ERROR CLASS&gt; <a href=TagGetParams.html#toBucketTagGetParams(BucketName,String)>toBucketTagGetParams</a>(<a href=../fields/BucketName.html>BucketName</a> bucket, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> region)</pre>
                                         <div class="block"></div>
                                         
                                         <!-- TODO missing return annotation -->

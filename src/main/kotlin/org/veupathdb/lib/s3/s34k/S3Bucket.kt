@@ -3,12 +3,12 @@ package org.veupathdb.lib.s3.s34k
 import org.veupathdb.lib.s3.s34k.errors.BucketNotFoundException
 import org.veupathdb.lib.s3.s34k.errors.ObjectNotFoundException
 import org.veupathdb.lib.s3.s34k.errors.S34kException
+import org.veupathdb.lib.s3.s34k.fields.BucketName
 import org.veupathdb.lib.s3.s34k.params.DeleteParams
-import org.veupathdb.lib.s3.s34k.params.bucket.BucketName
-import org.veupathdb.lib.s3.s34k.params.bucket.BucketTagDeleteParams
-import org.veupathdb.lib.s3.s34k.params.bucket.BucketTagGetParams
-import org.veupathdb.lib.s3.s34k.params.bucket.BucketTagPutParams
-import org.veupathdb.lib.s3.s34k.params.`object`.*
+import org.veupathdb.lib.s3.s34k.bucket.request.BucketTagDeleteParams
+import org.veupathdb.lib.s3.s34k.errors.BucketNotEmptyException
+import org.veupathdb.lib.s3.s34k.`object`.*
+import org.veupathdb.lib.s3.s34k.`object`.request.*
 import java.io.File
 import java.io.InputStream
 import java.time.OffsetDateTime
@@ -55,16 +55,82 @@ interface S3Bucket {
 
   // region Delete
 
-  // TODO: Document me
-  fun delete()
+  /**
+   * Deletes this bucket.
+   *
+   * @return Whether the bucket was deleted.  `true` if the bucket previously
+   * existed and has been deleted, `false` if the bucket did not exist.
+   *
+   * @throws BucketNotEmptyException If this bucket is not empty and must be
+   * cleared before deletion.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   *
+   * @see deleteRecursive
+   */
+  @Throws(BucketNotEmptyException::class, S34kException::class)
+  fun delete(): Boolean =
+    delete(DeleteParams(region))
 
-  // TODO: Document me
-  fun delete(action: DeleteParams.() -> Unit)
+  /**
+   * Deletes this bucket with the operation configured by the given action.
+   *
+   * @param action Action used to configure the S3 operation.
+   *
+   * @return Whether the bucket was deleted.  `true` if the bucket previously
+   * existed and has been deleted, `false` if the bucket did not exist.
+   *
+   * @throws BucketNotEmptyException If this bucket is not empty and must be
+   * cleared before deletion.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   *
+   * @see deleteRecursive
+   */
+  @Throws(BucketNotEmptyException::class, S34kException::class)
+  fun delete(action: DeleteParams.() -> Unit): Boolean =
+    delete(DeleteParams(region).also(action))
 
-  // TODO: Document me
-  fun delete(params: DeleteParams)
+  /**
+   * Deletes this bucket with the operation configured by the given params.
+   *
+   * @param params S3 operation parameters.
+   *
+   * @return Whether the bucket was deleted.  `true` if the bucket previously
+   * existed and has been deleted, `false` if the bucket did not exist.
+   *
+   * @throws BucketNotEmptyException If this bucket is not empty and must be
+   * cleared before deletion.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   *
+   * @see deleteRecursive
+   */
+  @Throws(BucketNotEmptyException::class, S34kException::class)
+  fun delete(params: DeleteParams): Boolean
 
   // endregion Delete
+
+  // region Delete Recursive
+
+  // TODO: Document me
+  fun deleteRecursive(): Boolean =
+    deleteRecursive(DeleteParams())
+
+  // TODO: Document me
+  fun deleteRecursive(action: DeleteParams.() -> Unit): Boolean =
+    deleteRecursive(DeleteParams().also(action))
+
+  // TODO: Document me
+  fun deleteRecursive(params: DeleteParams): Boolean
+
+  // endregion
 
   // region Delete Bucket Tags
 
@@ -79,7 +145,8 @@ interface S3Bucket {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun deleteBucketTags(): S3TagSet
+  fun deleteBucketTags(): S3TagSet =
+    deleteBucketTags(BucketTagDeleteParams(region))
 
   /**
    * Deletes the listed tags from this bucket.
@@ -94,7 +161,8 @@ interface S3Bucket {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun deleteBucketTags(vararg tags: String): S3TagSet
+  fun deleteBucketTags(vararg tags: String): S3TagSet =
+    deleteBucketTags(BucketTagDeleteParams(region))
 
   /**
    * Deletes the listed tags from this bucket.
@@ -222,7 +290,7 @@ interface S3Bucket {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun putBucketTags(tags: Collection<S3Tag>)
+  fun putBucketTags(tags: Iterable<S3Tag>)
 
   /**
    * Attaches the tags from the given operation parameters to this bucket.
@@ -240,7 +308,7 @@ interface S3Bucket {
   /**
    * Attaches the tags from the given operation parameters to this bucket.
    *
-   * If the given collection of tags is empty, this method does nothing.
+   * If the configured collection of tags is empty, this method does nothing.
    *
    * @param params Parameters for the S3 operation.
    *
@@ -350,7 +418,7 @@ interface S3Bucket {
   fun statObject(path: String): S3ObjectMeta
 
   /**
-   * Fetches metadata for the object in this bucket at the given [path].
+   * Fetches metadata for the object in this bucket at the configured path.
    *
    * @param action Action used to configure the S3 operation parameters.
    *
@@ -367,7 +435,7 @@ interface S3Bucket {
   fun statObject(action: ObjectStatParams.() -> Unit): S3ObjectMeta
 
   /**
-   * Fetches metadata for the object in this bucket at the given [path].
+   * Fetches metadata for the object in this bucket at the configured path.
    *
    * @param params S3 operation parameters.
    *
@@ -414,7 +482,7 @@ interface S3Bucket {
   // region Put Object Tags
 
   // TODO: Document me
-  fun putObjectTags(path: String, tags: Collection<S3Tag>)
+  fun putObjectTags(path: String, tags: Iterable<S3Tag>)
 
   // TODO: Document me
   fun putObjectTags(path: String, tags: Map<String, String>)
@@ -595,6 +663,48 @@ interface S3Bucket {
   fun uploadFile(params: ObjectFilePutParams): S3Object
 
   // endregion
+
+  // region Delete Object
+
+  // TODO: Document me
+  fun deleteObject(path: String): Boolean
+
+  // TODO: Document me
+  fun deleteObject(action: ObjectDeleteParams.() -> Unit): Boolean
+
+  // TODO: Document me
+  fun deleteObject(params: ObjectDeleteParams): Boolean
+
+  // endregion Delete Object
+
+  // region Delete Objects
+
+  // TODO: Document me
+  fun deleteObjects(vararg paths: String)
+
+  // TODO: Document me
+  fun deleteObjects(paths: Iterable<String>)
+
+  // TODO: Document me
+  fun deleteObjects(action: ObjectDeleteMultiParams.() -> Unit)
+
+  // TODO: Document me
+  fun deleteObjects(params: ObjectDeleteMultiParams)
+
+  // endregion Delete Objects
+
+  // region List Objects
+
+  // TODO: Document me
+  fun listObjects(): S3ObjectList
+
+  // TODO: Document me
+  fun listObjects(action: ObjectListParams.() -> Unit): S3ObjectList
+
+  // TODO: Document me
+  fun listObject(params: ObjectListParams): S3ObjectList
+
+  // endregion List Objects
 
   // endregion Object Actions
 }

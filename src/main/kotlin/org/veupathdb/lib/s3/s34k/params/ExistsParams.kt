@@ -1,8 +1,8 @@
 package org.veupathdb.lib.s3.s34k.params
 
-import org.slf4j.LoggerFactory
+import org.veupathdb.lib.s3.s34k.fields.BucketName
 import org.veupathdb.lib.s3.s34k.params.bucket.BucketExistsParams
-import org.veupathdb.lib.s3.s34k.params.`object`.ObjectExistsParams
+import org.veupathdb.lib.s3.s34k.`object`.request.ObjectExistsParams
 
 /**
  * Exists Check Operation Parameters
@@ -18,22 +18,10 @@ import org.veupathdb.lib.s3.s34k.params.`object`.ObjectExistsParams
  */
 class ExistsParams(var callback: ((Boolean) -> Unit)? = null) : BaseRequest() {
 
-  private val Log = LoggerFactory.getLogger(this::class.java)
-
   // TODO: Document me
-  fun toObjectExistsParams(path: String): ObjectExistsParams {
-    Log.trace("toObjectExistsParams(path = {})", path)
-    return ObjectExistsParams(path, callback).also {
-      (it.rawHeaders).putAll(headers)
-      (it.rawQueryParams).putAll(queryParams)
-    }
-  }
+  fun toObjectExistsParams(path: String, region: String? = null) =
+    ObjectExistsParams(path, region, callback, headers, queryParams)
 
-  fun toBucketExistsParams(bucket: String): BucketExistsParams {
-    Log.trace("toBucketExistsParams(bucket = {})", bucket)
-    return BucketExistsParams(bucket, null, callback).also {
-      (it.rawHeaders).putAll(headers)
-      (it.rawQueryParams).putAll(queryParams)
-    }
-  }
+  fun toBucketExistsParams(bucket: BucketName, region: String? = null) =
+    BucketExistsParams(bucket, region, callback, headers, queryParams)
 }

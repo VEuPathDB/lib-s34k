@@ -118,7 +118,7 @@ var pathtoroot = "../../../../../../";
                     <pre class="wrap-overflow">
 
 public final class <span class="typeNameLabel"><a href=BucketNotEmptyException.html>BucketNotEmptyException</a></span>
-extends <a href=S34kException.html>S34kException</a>
+extends <a href=AbstractBucketOperationException.html>AbstractBucketOperationException</a>
                     </pre>
                     <div class="block"><p>Bucket is not empty exception.</p><p>Thrown when attempting to delete a bucket that still has object contents.</p></div>
                 </li>
@@ -168,18 +168,24 @@ extends <a href=S34kException.html>S34kException</a>
                                         </tr>
                                         
                                         <tr class="altColor">
-                                            <td class="colFirst"><code>private final <a href=../params/bucket/BucketName.html>BucketName</a></code></td>
-                                            <th class="colSecond" scope="row"><code><a href=BucketNotEmptyException.html#bucket>bucket</a></code></th>
+                                            <td class="colFirst"><code>private final <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=BucketNotEmptyException.html#code>code</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
                                         <tr class="rowColor">
+                                            <td class="colFirst"><code>private final <a href=../fields/BucketName.html>BucketName</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=BucketNotFoundException.html#bucket>bucket</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="altColor">
                                             <td class="colFirst"><code>private final <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Throwable.html>Throwable</a></code></td>
                                             <th class="colSecond" scope="row"><code><a href=S34kException.html#cause>cause</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
-                                        <tr class="altColor">
+                                        <tr class="rowColor">
                                             <td class="colFirst"><code>private final <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a></code></td>
                                             <th class="colSecond" scope="row"><code><a href=S34kException.html#message>message</a></code></th>
                                             <td class="colLast"></td>
@@ -211,13 +217,25 @@ extends <a href=S34kException.html>S34kException</a>
                                         
                                             <tr class="altColor">
                                                 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
-                                                        href="#BucketNotEmptyException(BucketName,Throwable)">BucketNotEmptyException</a></span>(<a href=../params/bucket/BucketName.html>BucketName</a> bucket, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Throwable.html>Throwable</a> cause)</code></th>
+                                                        href="#BucketNotEmptyException(BucketName,String)">BucketNotEmptyException</a></span>(<a href=../fields/BucketName.html>BucketName</a> bucket, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> msg)</code></th>
                                                 <td class="colLast"></td>
                                             </tr>
                                         
                                             <tr class="rowColor">
                                                 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
-                                                        href="#BucketNotEmptyException(BucketName)">BucketNotEmptyException</a></span>(<a href=../params/bucket/BucketName.html>BucketName</a> bucket)</code></th>
+                                                        href="#BucketNotEmptyException(BucketName,String,Throwable)">BucketNotEmptyException</a></span>(<a href=../fields/BucketName.html>BucketName</a> bucket, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> msg, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Throwable.html>Throwable</a> cause)</code></th>
+                                                <td class="colLast"></td>
+                                            </tr>
+                                        
+                                            <tr class="altColor">
+                                                <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
+                                                        href="#BucketNotEmptyException(BucketName,Throwable)">BucketNotEmptyException</a></span>(<a href=../fields/BucketName.html>BucketName</a> bucket, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Throwable.html>Throwable</a> cause)</code></th>
+                                                <td class="colLast"></td>
+                                            </tr>
+                                        
+                                            <tr class="rowColor">
+                                                <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
+                                                        href="#BucketNotEmptyException(BucketName)">BucketNotEmptyException</a></span>(<a href=../fields/BucketName.html>BucketName</a> bucket)</code></th>
                                                 <td class="colLast"></td>
                                             </tr>
                                         
@@ -271,14 +289,22 @@ extends <a href=S34kException.html>S34kException</a>
                                         </tr>
                                         
                                         <tr id="i0" class="altColor">
-                                            <td class="colFirst"><code>final <a href=../params/bucket/BucketName.html>BucketName</a></code>
+                                            <td class="colFirst"><code><a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=BucketNotEmptyException.html#getCode()>getCode</a>() </code>
+                                            </th>
+                                            <td class="colLast">S3 Error Code</td>
+                                        </tr>
+                                        
+                                        <tr id="i1" class="rowColor">
+                                            <td class="colFirst"><code>final <a href=../fields/BucketName.html>BucketName</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=BucketNotEmptyException.html#getBucket()>getBucket</a>() </code>
                                             </th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
-                                        <tr id="i1" class="rowColor">
+                                        <tr id="i2" class="altColor">
                                             <td class="colFirst"><code><a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Throwable.html>Throwable</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=BucketNotEmptyException.html#getCause()>getCause</a>() </code>
@@ -286,7 +312,7 @@ extends <a href=S34kException.html>S34kException</a>
                                             <td class="colLast"></td>
                                         </tr>
                                         
-                                        <tr id="i2" class="altColor">
+                                        <tr id="i3" class="rowColor">
                                             <td class="colFirst"><code><a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=BucketNotEmptyException.html#getMessage()>getMessage</a>() </code>
@@ -331,11 +357,31 @@ extends <a href=S34kException.html>S34kException</a>
                             </a>
                                 <h3>Constructor Detail</h3>
                                 
+                                <a name="BucketNotEmptyException(BucketName,String)"></a>
+                                <ul class="blockList">
+                                    <li class="blockList">
+                                        <h4>BucketNotEmptyException</h4>
+                                        <pre>BucketNotEmptyException(<a href=../fields/BucketName.html>BucketName</a> bucket, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> msg)</pre>
+                                        <div class="block"></div>
+                                        
+                                    </li>
+                                </ul>
+                                
+                                <a name="BucketNotEmptyException(BucketName,String,Throwable)"></a>
+                                <ul class="blockList">
+                                    <li class="blockList">
+                                        <h4>BucketNotEmptyException</h4>
+                                        <pre>BucketNotEmptyException(<a href=../fields/BucketName.html>BucketName</a> bucket, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> msg, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Throwable.html>Throwable</a> cause)</pre>
+                                        <div class="block"></div>
+                                        
+                                    </li>
+                                </ul>
+                                
                                 <a name="BucketNotEmptyException(BucketName,Throwable)"></a>
                                 <ul class="blockList">
                                     <li class="blockList">
                                         <h4>BucketNotEmptyException</h4>
-                                        <pre>BucketNotEmptyException(<a href=../params/bucket/BucketName.html>BucketName</a> bucket, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Throwable.html>Throwable</a> cause)</pre>
+                                        <pre>BucketNotEmptyException(<a href=../fields/BucketName.html>BucketName</a> bucket, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Throwable.html>Throwable</a> cause)</pre>
                                         <div class="block"></div>
                                         
                                     </li>
@@ -345,7 +391,7 @@ extends <a href=S34kException.html>S34kException</a>
                                 <ul class="blockList">
                                     <li class="blockList">
                                         <h4>BucketNotEmptyException</h4>
-                                        <pre>BucketNotEmptyException(<a href=../params/bucket/BucketName.html>BucketName</a> bucket)</pre>
+                                        <pre>BucketNotEmptyException(<a href=../fields/BucketName.html>BucketName</a> bucket)</pre>
                                         <div class="block"></div>
                                         
                                     </li>
@@ -364,6 +410,21 @@ extends <a href=S34kException.html>S34kException</a>
                             </a>
                                 <h3>Method Detail</h3>
                                 
+                                <a id="getCode()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getCode</h4>
+                                        <pre class="methodSignature"> <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> <a href=BucketNotEmptyException.html#getCode()>getCode</a>()</pre>
+                                        <div class="block"><p>S3 Error Code</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
                                 <a id="getBucket()">
                                     <!--   -->
                                 </a>
@@ -372,7 +433,7 @@ extends <a href=S34kException.html>S34kException</a>
                                           >
                                     <li class="blockList">
                                         <h4>getBucket</h4>
-                                        <pre class="methodSignature"> final <a href=../params/bucket/BucketName.html>BucketName</a> <a href=BucketNotEmptyException.html#getBucket()>getBucket</a>()</pre>
+                                        <pre class="methodSignature"> final <a href=../fields/BucketName.html>BucketName</a> <a href=BucketNotEmptyException.html#getBucket()>getBucket</a>()</pre>
                                         <div class="block"></div>
                                         
                                         <!-- TODO missing return annotation -->

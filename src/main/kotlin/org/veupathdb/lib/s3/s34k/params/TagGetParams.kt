@@ -1,10 +1,9 @@
 package org.veupathdb.lib.s3.s34k.params
 
-import org.slf4j.LoggerFactory
 import org.veupathdb.lib.s3.s34k.S3TagSet
-import org.veupathdb.lib.s3.s34k.params.bucket.BucketName
+import org.veupathdb.lib.s3.s34k.fields.BucketName
 import org.veupathdb.lib.s3.s34k.params.bucket.BucketTagGetParams
-import org.veupathdb.lib.s3.s34k.params.`object`.ObjectTagGetParams
+import org.veupathdb.lib.s3.s34k.`object`.request.ObjectTagGetParams
 
 /**
  * Generic Tag Get Operation Parameters
@@ -13,62 +12,11 @@ import org.veupathdb.lib.s3.s34k.params.`object`.ObjectTagGetParams
  *
  * @since v0.1.0
  */
-class TagGetParams : BaseRequest() {
-  private val Log = LoggerFactory.getLogger(this::class.java)
+class TagGetParams(var callback: ((S3TagSet) -> Unit)? = null) : BaseRequest() {
+  // TODO: Document me
+  fun toObjectTagGetParams(path: String, region: String? = null) =
+    ObjectTagGetParams(path, region, callback, headers, queryParams)
 
-  /**
-   * Converts this generic [TagGetParams] into params specifically for getting
-   * tags for an S3 object.
-   *
-   * @param path Path to the S3 object whose tags should be fetched.
-   *
-   * @param cb Optional callback that will be executed on successfully
-   * completing the request to the S3 server.
-   *
-   * @return Converted [ObjectTagGetParams] instance.
-   */
-  fun toObjectTagGetParams(path: String, cb: ((tags: S3TagSet) -> Unit)? = null): ObjectTagGetParams {
-    Log.trace("toObjectTagGetParams(path = {}, cb = {})", path, cb)
-
-    return ObjectTagGetParams(path, cb).also {
-      it.rawHeaders.putAll(headers)
-      it.rawQueryParams.putAll(queryParams)
-    }
-  }
-
-  /**
-   * Converts this generic [TagGetParams] into params specifically for getting
-   * tags for an S3 bucket.
-   *
-   * @param cb Optional callback that will be executed on successfully
-   * completing the request to the S3 server.
-   *
-   * @return Converted [BucketTagGetParams] instance.
-   */
-  fun toBucketTagGetParams(
-    bucket: String? = null,
-    region: String? = null,
-    cb: ((tags: S3TagSet) -> Unit)? = null,
-  ): BucketTagGetParams {
-    Log.trace("toBucketTagGetParams(cb = {})", cb)
-
-    return BucketTagGetParams(bucket, region, cb).also {
-      it.rawHeaders.putAll(headers)
-      it.rawQueryParams.putAll(queryParams)
-    }
-  }
-
-  fun toBucketTagGetParams(
-    bucket: BucketName,
-    region: String? = null,
-    cb: ((tags: S3TagSet) -> Unit)? = null,
-  ): BucketTagGetParams {
-    Log.trace("toBucketTagGetParams(cb = {})", cb)
-
-    return BucketTagGetParams(null, region, cb).also {
-      it.bucket = bucket
-      it.rawHeaders.putAll(headers)
-      it.rawQueryParams.putAll(queryParams)
-    }
-  }
+  fun toBucketTagGetParams(bucket: BucketName, region: String? = null) =
+    BucketTagGetParams(bucket, region, callback, headers, queryParams)
 }

@@ -1,7 +1,12 @@
 package org.veupathdb.lib.s3.s34k
 
+import org.veupathdb.lib.s3.s34k.bucket.request.BucketExistsParams
 import org.veupathdb.lib.s3.s34k.errors.*
-import org.veupathdb.lib.s3.s34k.params.bucket.*
+import org.veupathdb.lib.s3.s34k.fields.BucketName
+import org.veupathdb.lib.s3.s34k.client.BucketDeleteParams
+import org.veupathdb.lib.s3.s34k.client.BucketGetParams
+import org.veupathdb.lib.s3.s34k.client.BucketListParams
+import org.veupathdb.lib.s3.s34k.client.BucketPutParams
 
 /**
  * S3 API Wrapper
@@ -13,6 +18,7 @@ import org.veupathdb.lib.s3.s34k.params.bucket.*
  *
  * @since  v0.1.0
  */
+@Suppress("unused")
 interface S3Client {
 
   // region Bucket Exists
@@ -284,7 +290,7 @@ interface S3Client {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun listBuckets(): List<S3Bucket>
+  fun listBuckets(): S3BucketList
 
   /**
    * Fetches a list of all buckets available on the target S3 instance.
@@ -297,7 +303,7 @@ interface S3Client {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun listBuckets(action: BucketListParams.() -> Unit): List<S3Bucket>
+  fun listBuckets(action: BucketListParams.() -> Unit): S3BucketList
 
   /**
    * Fetches a list of all buckets available on the target S3 instance.
@@ -310,7 +316,7 @@ interface S3Client {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun listBuckets(params: BucketListParams): List<S3Bucket>
+  fun listBuckets(params: BucketListParams): S3BucketList
 
   // endregion
 
@@ -323,7 +329,8 @@ interface S3Client {
    *
    * @param region Optional region value for the S3 operation.
    *
-   * @throws BucketNotFoundException If the target bucket does not exist.
+   * @return Flag indicating whether the target bucket was deleted.  `true` if
+   * the bucket existed and was deleted, `false` if the bucket did not exist.
    *
    * @throws BucketNotEmptyException If the target bucket is not empty.
    *
@@ -331,7 +338,7 @@ interface S3Client {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun deleteBucket(name: BucketName, region: String? = null)
+  fun deleteBucket(name: BucketName, region: String? = null): Boolean
 
 
   /**
@@ -339,7 +346,8 @@ interface S3Client {
    *
    * @param action Action used to configure the S3 operation parameters.
    *
-   * @throws BucketNotFoundException If the target bucket does not exist.
+   * @return Flag indicating whether the target bucket was deleted.  `true` if
+   * the bucket existed and was deleted, `false` if the bucket did not exist.
    *
    * @throws BucketNotEmptyException If the target bucket is not empty.
    *
@@ -347,14 +355,15 @@ interface S3Client {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun deleteBucket(action: BucketDeleteParams.() -> Unit)
+  fun deleteBucket(action: BucketDeleteParams.() -> Unit): Boolean
 
   /**
    * Deletes the target bucket from the S3 instance.
    *
    * @param params S3 operation parameters.
    *
-   * @throws BucketNotFoundException If the target bucket does not exist.
+   * @return Flag indicating whether the target bucket was deleted.  `true` if
+   * the bucket existed and was deleted, `false` if the bucket did not exist.
    *
    * @throws BucketNotEmptyException If the target bucket is not empty.
    *
@@ -362,7 +371,20 @@ interface S3Client {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun deleteBucket(params: BucketDeleteParams)
+  fun deleteBucket(params: BucketDeleteParams): Boolean
 
   // endregion
+
+  // region Delete Bucket Recursive
+
+  // TODO: Document me
+  fun deleteBucketRecursive(name: BucketName, region: String? = null): Boolean
+
+  // TODO: Document me
+  fun deleteBucketRecursive(action: BucketDeleteParams.() -> Unit): Boolean
+
+  // TODO: Document me
+  fun deleteBucketRecursive(params: BucketDeleteParams) : Boolean
+
+  // endregion Delete Bucket Recursive
 }

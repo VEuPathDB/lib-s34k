@@ -1,7 +1,10 @@
 package org.veupathdb.lib.s3.s34k.params
 
 import org.slf4j.LoggerFactory
-import java.util.Collections
+import org.veupathdb.lib.s3.s34k.fields.headers.S3HeadersMutable
+import org.veupathdb.lib.s3.s34k.fields.headers.MutableHeaderMapImpl
+import org.veupathdb.lib.s3.s34k.fields.query_params.S3QueryParamsMutable
+import org.veupathdb.lib.s3.s34k.fields.query_params.MutableQueryParamMapImpl
 
 /**
  * Request Params
@@ -14,313 +17,25 @@ import java.util.Collections
  */
 open class BaseRequest {
 
-  internal val rawHeaders: MutableMap<String, Array<String>>
-  internal val rawQueryParams: MutableMap<String, Array<String>>
-
   private val Log = LoggerFactory.getLogger(this::class.java)
-
-  var region: String? = null
 
   /**
    * Additional headers that will be sent with the S3 operation.
    */
-  val headers: Map<String, Array<String>>
-    get() = Collections.unmodifiableMap(rawHeaders)
+  val headers: S3HeadersMutable
 
   /**
    * Additional query parameters that will be sent with the S3 operation.
    */
-  val queryParams: Map<String, Array<String>>
-    get() = Collections.unmodifiableMap(rawQueryParams)
+  val queryParams: S3QueryParamsMutable
+
+  constructor() : this(MutableHeaderMapImpl(), MutableQueryParamMapImpl())
 
   internal constructor(
-    region: String?,
-    rawHeaders: MutableMap<String, Array<String>>,
-    rawQueryParams: MutableMap<String, Array<String>>
+    headers: S3HeadersMutable,
+    queryParams: S3QueryParamsMutable,
   ) {
-    this.region = region
-    this.rawHeaders = rawHeaders
-    this.rawQueryParams = rawQueryParams
-  }
-
-  constructor() : this(null, HashMap(), HashMap())
-
-  constructor(region: String?) : this(region, HashMap(), HashMap()) {
-    this.region = region
-  }
-
-  /**
-   * Merges the additional [headers] provided into the existing
-   * [BaseRequest.headers] map.
-   *
-   * If the [BaseRequest.headers] map already contains one or more keys
-   * present in the input [headers] map, the value at that key will be appended
-   * to the array of headers at that key in [BaseRequest.headers].
-   *
-   * Example:
-   * ```
-   * input := {
-   *   foo  : "bar",
-   *   fizz : "buzz"
-   * }
-   *
-   * existing := {
-   *   foo : [ faz ]
-   * }
-   *
-   * result := {
-   *   foo  : [ "faz", "bar" ]
-   *   fizz : [ "buzz" ]
-   * }
-   * ```
-   *
-   * @param headers Map of headers to merge into the existing
-   * [BaseRequest.headers] map.
-   */
-  fun addHeaders(headers: Map<String, String>) {
-    Log.trace("addHeaders(headers = {})", headers)
-    headers.forEach { (t, u) -> mergeArrays(this.rawHeaders, t, arrayOf(u)) }
-  }
-
-  /**
-   * Merges the additional headers provided into the existing [headers] map.
-   *
-   * If the [headers] map already contains the given key, the [values] in the
-   * given [Collection] will be merged into that array.
-   *
-   * Merge Example:
-   * ```
-   * inputKey    := "foo"
-   * inputValues := [ "fizz", "buzz" ]
-   *
-   * existing := {
-   *   foo : [ "bar" ]
-   * }
-   *
-   * result := {
-   *   foo : [ "bar", "fizz", "buzz" ]
-   * }
-   * ```
-   *
-   * @param key Key under which the new headers will be added.
-   *
-   * @param values Values to append to the [headers] map.
-   */
-  @Suppress("UNCHECKED_CAST")
-  fun addHeaders(key: String, values: Collection<String>) {
-    Log.trace("addHeaders(key = {}, values = {})", key, values)
-    mergeArrays(rawHeaders, key, values.toTypedArray())
-  }
-
-  /**
-   * Merges the additional headers provided into the existing [headers] map.
-   *
-   * If the [headers] map already contains the given key, the given [values]
-   * will be merged into that array.
-   *
-   * Merge Example:
-   * ```
-   * inputKey    := "foo"
-   * inputValues := [ "fizz", "buzz" ]
-   *
-   * existing := {
-   *   foo : [ "bar" ]
-   * }
-   *
-   * result := {
-   *   foo : [ "bar", "fizz", "buzz" ]
-   * }
-   * ```
-   *
-   * @param key Key under which the new headers will be added.
-   *
-   * @param values Values to append to the [headers] map.
-   */
-  @Suppress("UNCHECKED_CAST")
-  fun addHeaders(key: String, vararg values: String) {
-    Log.trace("addHeaders(key = {}, values = {})", key, values)
-    mergeArrays(rawHeaders, key, (values as Array<String>))
-  }
-
-  /**
-   * Overwrites the header values in the [headers] map with the given array of
-   * [values].
-   *
-   * Overwrite Example:
-   * ```
-   * inputKey    := "foo"
-   * inputValues := [ "fizz", "buzz" ]
-   *
-   * existing := {
-   *   foo : [ "bar" ]
-   * }
-   *
-   * result := {
-   *   foo : [ "fizz", "buzz" ]
-   * }
-   * ```
-   *
-   * @param key Key under which the new headers will be set.
-   *
-   * @param values Values to set in the [headers] map.
-   */
-  @Suppress("UNCHECKED_CAST")
-  fun setHeaders(key: String, vararg values: String) {
-    Log.trace("setHeaders(key = {}, values = {})", key, values)
-    rawHeaders[key] = (values as Array<String>)
-  }
-
-  // TODO: Document me
-  fun setHeaders(headers: Map<String, Array<String>>) {
-    Log.trace("setHeaders(headers = {})", headers)
-    headers.forEach { (k, v) -> (this.headers as MutableMap)[k] = v.copyOf() }
-  }
-
-  /**
-   * Merges the additional [queryParams] provided into the existing
-   * [BaseRequest.queryParams] map.
-   *
-   * If the [BaseRequest.queryParams] map already contains one or more keys
-   * present in the input [queryParams] map, the value at that key will be
-   * appended to the array of queryParams at that key in
-   * [BaseRequest.queryParams].
-   *
-   * Example:
-   * ```
-   * input := {
-   *   foo  : "bar",
-   *   fizz : "buzz"
-   * }
-   *
-   * existing := {
-   *   foo : [ faz ]
-   * }
-   *
-   * result := {
-   *   foo  : [ faz, bar ]
-   *   fizz : [ buzz ]
-   * }
-   * ```
-   *
-   * @param queryParams Map of queryParams to merge into the existing
-   * [BaseRequest.queryParams] map.
-   */
-  fun addQueryParams(queryParams: Map<String, String>) {
-    Log.trace("addQueryParams(headers = {})", queryParams)
-    queryParams.forEach { (t, u) -> mergeArrays(this.rawQueryParams, t, arrayOf(u)) }
-  }
-
-  /**
-   * Merges the additional queryParams provided into the existing [queryParams]
-   * map.
-   *
-   * If the [queryParams] map already contains the given key, the [values] in
-   * the given [Collection] will be merged into that array.
-   *
-   * Merge Example:
-   * ```
-   * inputKey    := "foo"
-   * inputValues := [ "fizz", "buzz" ]
-   *
-   * existing := {
-   *   foo : [ "bar" ]
-   * }
-   *
-   * result := {
-   *   foo : [ "bar", "fizz", "buzz" ]
-   * }
-   * ```
-   *
-   * @param key Key under which the new queryParams will be added.
-   *
-   * @param values Values to append to the [queryParams] map.
-   */
-  @Suppress("UNCHECKED_CAST")
-  fun addQueryParams(key: String, values: Collection<String>) {
-    Log.trace("addQueryParams(key = {}, values = {})", key, values)
-    mergeArrays(rawQueryParams, key, values.toTypedArray())
-  }
-
-  /**
-   * Merges the additional headers provided into the existing [headers] map.
-   *
-   * If the [headers] map already contains the given key, the given [values]
-   * will be merged into that array.
-   *
-   * Merge Example:
-   * ```
-   * inputKey    := "foo"
-   * inputValues := [ "fizz", "buzz" ]
-   *
-   * existing := {
-   *   foo : [ "bar" ]
-   * }
-   *
-   * result := {
-   *   foo : [ "bar", "fizz", "buzz" ]
-   * }
-   * ```
-   *
-   * @param key Key under which the new headers will be added.
-   *
-   * @param values Values to append to the [headers] map.
-   */
-  @Suppress("UNCHECKED_CAST")
-  fun addQueryParams(key: String, vararg values: String) {
-    Log.trace("addQueryParams(key = {}, values = {})", key, values)
-    mergeArrays(rawQueryParams, key, (values as Array<String>))
-  }
-
-
-  /**
-   * Overwrites the queryParam values in the [queryParams] map with the given
-   * array of [values].
-   *
-   * Overwrite Example:
-   * ```
-   * inputKey    := "foo"
-   * inputValues := [ "fizz", "buzz" ]
-   *
-   * existing := {
-   *   foo : [ "bar" ]
-   * }
-   *
-   * result := {
-   *   foo : [ "fizz", "buzz" ]
-   * }
-   * ```
-   *
-   * @param key Key under which the new queryParams will be set.
-   *
-   * @param values Values to set in the [queryParams] map.
-   */
-  @Suppress("UNCHECKED_CAST")
-  fun setQueryParams(key: String, vararg values: String) {
-    Log.trace("setQueryParams(key = {}, values = {})", key, values)
-    rawQueryParams[key] = (values as Array<String>)
-  }
-
-  // TODO: Document me
-  fun setQueryParams(params: Map<String, Array<String>>) {
-    Log.trace("setQueryParams(params = {})", params)
-    params.forEach { (k, v) -> (queryParams as MutableMap)[k] = v.copyOf() }
-  }
-
-  @Suppress("UNCHECKED_CAST", "NOTHING_TO_INLINE")
-  private inline fun mergeArrays(
-    map: MutableMap<String, Array<String>>,
-    key: String,
-    values: Array<String>,
-  ) {
-    val tmp = map[key]
-
-    if (tmp != null) {
-      val newArray = arrayOfNulls<String>(tmp.size + values.size)
-      System.arraycopy(tmp, 0, newArray, 0, tmp.size)
-      System.arraycopy(values, 0, newArray, tmp.size, values.size)
-      map[key] = (newArray as Array<String>)
-    } else {
-      map[key] = values
-    }
+    this.headers     = headers
+    this.queryParams = queryParams
   }
 }

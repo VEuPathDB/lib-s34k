@@ -1,8 +1,7 @@
 package org.veupathdb.lib.s3.s34k.params
 
-import org.slf4j.LoggerFactory
 import org.veupathdb.lib.s3.s34k.S3ObjectMeta
-import org.veupathdb.lib.s3.s34k.params.`object`.ObjectStatParams
+import org.veupathdb.lib.s3.s34k.`object`.request.ObjectStatParams
 
 /**
  * Generic Stat Operation Parameters
@@ -18,10 +17,6 @@ import org.veupathdb.lib.s3.s34k.params.`object`.ObjectStatParams
  */
 class StatParams(var callback: ((S3ObjectMeta) -> Unit)? = null) : BaseRequest() {
 
-  private val Log = LoggerFactory.getLogger(this::class.java)
-
-  fun toObjectStatParams(path: String): ObjectStatParams {
-    Log.trace("toObjectStatParams(path = {})", path)
-    return ObjectStatParams(path, callback)
-  }
+  fun toObjectStatParams(path: String, region: String? = null) =
+    ObjectStatParams(path, region, callback, headers, queryParams)
 }

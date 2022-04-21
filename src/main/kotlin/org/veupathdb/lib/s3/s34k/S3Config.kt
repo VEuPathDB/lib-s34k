@@ -2,7 +2,10 @@ package org.veupathdb.lib.s3.s34k
 
 // TODO: Document me
 data class S3Config(
-  // TODO: Document me
+
+  /**
+   * URL to the S3 instance including protocol and port if necessary.
+   */
   val url: String,
 
   // TODO: Document me
@@ -17,7 +20,7 @@ data class S3Config(
   /**
    * Default region to use if not specified in operation specific params.
    */
-  val region: String?,
+  val region: String? = null,
 ) {
   override fun toString(): String {
     return "S3Config {\n" +
