@@ -2,11 +2,7 @@ package org.veupathdb.lib.s3.s34k
 
 import org.veupathdb.lib.s3.s34k.errors.*
 import org.veupathdb.lib.s3.s34k.fields.BucketName
-import org.veupathdb.lib.s3.s34k.client.BucketDeleteParams
-import org.veupathdb.lib.s3.s34k.client.BucketGetParams
-import org.veupathdb.lib.s3.s34k.client.BucketListParams
-import org.veupathdb.lib.s3.s34k.client.BucketPutParams
-import org.veupathdb.lib.s3.s34k.request.bucket.BucketExistsParams
+import org.veupathdb.lib.s3.s34k.requests.client.*
 
 /**
  * S3 API Wrapper
@@ -38,8 +34,7 @@ interface S3Client {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun bucketExists(name: BucketName, region: String? = null) =
-    bucketExists(BucketExistsParams(name, region ?: defaultRegion))
+  fun bucketExists(name: BucketName, region: String? = null): Boolean
 
   /**
    * Tests for the existence of a bucket with the operation configured by the
@@ -53,8 +48,7 @@ interface S3Client {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun bucketExists(action: BucketExistsParams.() -> Unit) =
-    bucketExists(BucketExistsParams(null, defaultRegion).also(action))
+  fun bucketExists(action: S3BucketExistsParams.() -> Unit): Boolean
 
   /**
    * Tests for the existence of a bucket with the operation configured by the
@@ -68,7 +62,7 @@ interface S3Client {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun bucketExists(params: BucketExistsParams): Boolean
+  fun bucketExists(params: S3BucketExistsParams): Boolean
 
   // endregion
 
@@ -100,8 +94,7 @@ interface S3Client {
    * @see bucketExists
    * @see createBucketIfNotExists
    */
-  fun createBucket(name: BucketName, region: String? = null) =
-    createBucket(BucketPutParams(name, region ?: defaultRegion))
+  fun createBucket(name: BucketName, region: String? = null): S3Bucket
 
   /**
    * Attempts to create a bucket with the given name with the operation
@@ -128,8 +121,7 @@ interface S3Client {
    * @see bucketExists
    * @see createBucketIfNotExists
    */
-  fun createBucket(action: BucketPutParams.() -> Unit) =
-    createBucket(BucketPutParams(null, defaultRegion).also(action))
+  fun createBucket(action: S3BucketCreateParams.() -> Unit): S3Bucket
 
   /**
    * Attempts to create a bucket with the given name with the operation
@@ -156,7 +148,7 @@ interface S3Client {
    * @see bucketExists
    * @see createBucketIfNotExists
    */
-  fun createBucket(params: BucketPutParams): S3Bucket
+  fun createBucket(params: S3BucketCreateParams): S3Bucket
 
   // endregion
 
@@ -179,8 +171,7 @@ interface S3Client {
    * @see bucketExists
    * @see createBucket
    */
-  fun createBucketIfNotExists(name: BucketName, region: String? = null) =
-    createBucketIfNotExists(BucketPutParams(name, region))
+  fun createBucketIfNotExists(name: BucketName, region: String? = null): S3Bucket
 
   /**
    * Attempts to create a bucket with the given name if it does not already
@@ -201,8 +192,7 @@ interface S3Client {
    * @see bucketExists
    * @see createBucket
    */
-  fun createBucketIfNotExists(action: BucketPutParams.() -> Unit) =
-    createBucketIfNotExists(BucketPutParams(null, defaultRegion).also(action))
+  fun createBucketIfNotExists(action: S3BucketCreateParams.() -> Unit): S3Bucket
 
   /**
    * Attempts to create a bucket with the given name if it does not already
@@ -223,7 +213,7 @@ interface S3Client {
    * @see bucketExists
    * @see createBucket
    */
-  fun createBucketIfNotExists(params: BucketPutParams): S3Bucket
+  fun createBucketIfNotExists(params: S3BucketCreateParams): S3Bucket
 
   // endregion
 
@@ -247,8 +237,7 @@ interface S3Client {
    * @see bucketExists
    * @see createBucketIfNotExists
    */
-  fun getBucket(name: BucketName, region: String? = null) =
-    getBucket(BucketGetParams(name, region ?: defaultRegion))
+  fun getBucket(name: BucketName, region: String? = null): S3Bucket
 
   /**
    * Creates a new [S3Bucket] instance wrapping the target S3 bucket.
@@ -266,8 +255,7 @@ interface S3Client {
    * @see bucketExists
    * @see createBucketIfNotExists
    */
-  fun getBucket(action: BucketGetParams.() -> Unit) =
-    getBucket(BucketGetParams(null, defaultRegion).also(action))
+  fun getBucket(action: S3BucketGetParams.() -> Unit): S3Bucket
 
   /**
    * Creates a new [S3Bucket] instance wrapping the target S3 bucket.
@@ -285,7 +273,7 @@ interface S3Client {
    * @see bucketExists
    * @see createBucketIfNotExists
    */
-  fun getBucket(params: BucketGetParams): S3Bucket
+  fun getBucket(params: S3BucketGetParams): S3Bucket
 
   // endregion
 
@@ -300,8 +288,7 @@ interface S3Client {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun listBuckets() =
-    listBuckets(BucketListParams())
+  fun listBuckets(): S3BucketList
 
   /**
    * Fetches a list of all buckets available on the target S3 instance.
@@ -314,8 +301,7 @@ interface S3Client {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun listBuckets(action: BucketListParams.() -> Unit) =
-    listBuckets(BucketListParams().also(action))
+  fun listBuckets(action: S3BucketListParams.() -> Unit): S3BucketList
 
   /**
    * Fetches a list of all buckets available on the target S3 instance.
@@ -328,7 +314,7 @@ interface S3Client {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun listBuckets(params: BucketListParams): S3BucketList
+  fun listBuckets(params: S3BucketListParams): S3BucketList
 
   // endregion
 
@@ -350,8 +336,7 @@ interface S3Client {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun deleteBucket(name: BucketName, region: String? = null) =
-    deleteBucket(BucketDeleteParams(name, region ?: defaultRegion))
+  fun deleteBucket(name: BucketName, region: String? = null): Boolean
 
 
   /**
@@ -368,8 +353,7 @@ interface S3Client {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun deleteBucket(action: BucketDeleteParams.() -> Unit) =
-    deleteBucket(BucketDeleteParams(null, defaultRegion).also(action))
+  fun deleteBucket(action: S3BucketDeleteParams.() -> Unit): Boolean
 
   /**
    * Deletes the target bucket from the S3 instance.
@@ -385,22 +369,20 @@ interface S3Client {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun deleteBucket(params: BucketDeleteParams): Boolean
+  fun deleteBucket(params: S3BucketDeleteParams): Boolean
 
   // endregion
 
   // region Delete Bucket Recursive
 
   // TODO: Document me
-  fun deleteBucketRecursive(name: BucketName, region: String? = null) =
-    deleteBucketRecursive(BucketDeleteParams(name, region ?: defaultRegion))
+  fun deleteBucketRecursive(name: BucketName, region: String? = null): Boolean
 
   // TODO: Document me
-  fun deleteBucketRecursive(action: BucketDeleteParams.() -> Unit) =
-    deleteBucketRecursive(BucketDeleteParams(null, defaultRegion).also(action))
+  fun deleteBucketRecursive(action: S3BucketDeleteParams.() -> Unit): Boolean
 
   // TODO: Document me
-  fun deleteBucketRecursive(params: BucketDeleteParams) : Boolean
+  fun deleteBucketRecursive(params: S3BucketDeleteParams): Boolean
 
   // endregion Delete Bucket Recursive
 }

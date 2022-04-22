@@ -1,9 +1,9 @@
 package org.veupathdb.lib.s3.s34k.response.`object`
 
 import org.veupathdb.lib.s3.s34k.S3Tag
-import org.veupathdb.lib.s3.s34k.S3TagSet
-import org.veupathdb.lib.s3.s34k.params.*
 import org.veupathdb.lib.s3.s34k.errors.*
+import org.veupathdb.lib.s3.s34k.fields.tags.S3MutableTagSet
+import org.veupathdb.lib.s3.s34k.requests.*
 
 // TODO: Document me
 interface S3Object : S3ObjectResponse {
@@ -14,10 +14,10 @@ interface S3Object : S3ObjectResponse {
   fun exists(): Boolean
 
   // TODO: Document me
-  fun exists(action: ExistsParams.() -> Unit): Boolean
+  fun exists(action: S3BlankExistsParams.() -> Unit): Boolean
 
   // TODO: Document me
-  fun exists(params: ExistsParams): Boolean
+  fun exists(params: S3BlankExistsParams): Boolean
 
   // endregion
 
@@ -41,7 +41,7 @@ interface S3Object : S3ObjectResponse {
    * if the object existed and was deleted, `false` if the
    * object did not exist.
    */
-  fun delete(action: DeleteParams.() -> Unit): Boolean
+  fun delete(action: S3DeleteRequestParams.() -> Unit): Boolean
 
   /**
    * Deletes the current object from the S3 store (if it still exists).
@@ -52,7 +52,7 @@ interface S3Object : S3ObjectResponse {
    * if the object existed and was deleted, `false` if the
    * object did not exist.
    */
-  fun delete(params: DeleteParams): Boolean
+  fun delete(params: S3DeleteRequestParams): Boolean
 
   // endregion
 
@@ -62,23 +62,23 @@ interface S3Object : S3ObjectResponse {
   fun stat(): S3ObjectMeta
 
   // TODO: Document me
-  fun stat(action: StatParams.() -> Unit): S3ObjectMeta
+  fun stat(action: S3BlankStatParams.() -> Unit): S3ObjectMeta
 
   // TODO: Document me
-  fun stat(params: StatParams): S3ObjectMeta
+  fun stat(params: S3BlankStatParams): S3ObjectMeta
 
   // endregion
 
   // region Get Tags
 
   // TODO: Document me
-  fun getTags(): S3TagSet
+  fun getTags(): S3MutableTagSet
 
   // TODO: Document me
-  fun getTags(action: TagGetParams.() -> Unit): S3TagSet
+  fun getTags(action: S3BlankTagGetParams.() -> Unit): S3MutableTagSet
 
   // TODO: Document me
-  fun getTags(params: TagGetParams): S3TagSet
+  fun getTags(params: S3BlankTagGetParams): S3MutableTagSet
 
   // endregion
 
@@ -97,10 +97,10 @@ interface S3Object : S3ObjectResponse {
   fun setTags(vararg tags: S3Tag)
 
   // TODO: Document me
-  fun setTags(action: TagPutParams.() -> Unit)
+  fun setTags(action: S3BlankTagCreateParams.() -> Unit)
 
   // TODO: Document me
-  fun setTags(params: TagPutParams)
+  fun setTags(params: S3BlankTagCreateParams)
 
   // endregion
 
@@ -120,7 +120,7 @@ interface S3Object : S3ObjectResponse {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun deleteTags(): S3TagSet
+  fun deleteTags(): S3MutableTagSet
 
   /**
    * Deletes the specified tags currently attached to this object.
@@ -133,7 +133,7 @@ interface S3Object : S3ObjectResponse {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun deleteTags(vararg tags: String): S3TagSet
+  fun deleteTags(vararg tags: String): S3MutableTagSet
 
   /**
    * Deletes the specified tags currently attached to this object.
@@ -146,13 +146,13 @@ interface S3Object : S3ObjectResponse {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun deleteTags(tags: Iterable<String>): S3TagSet
+  fun deleteTags(tags: Iterable<String>): S3MutableTagSet
 
   // TODO: Document me
-  fun deleteTags(action: TagDeleteParams.() -> Unit): S3TagSet
+  fun deleteTags(action: S3BlankTagDeleteParams.() -> Unit): S3MutableTagSet
 
   // TODO: Document me
-  fun deleteTags(params: TagDeleteParams): S3TagSet
+  fun deleteTags(params: S3BlankTagDeleteParams): S3MutableTagSet
 
   // endregion
 }

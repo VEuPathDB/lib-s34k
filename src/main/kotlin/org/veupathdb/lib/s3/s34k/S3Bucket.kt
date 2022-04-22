@@ -2,19 +2,18 @@ package org.veupathdb.lib.s3.s34k
 
 import org.veupathdb.lib.s3.s34k.errors.*
 import org.veupathdb.lib.s3.s34k.fields.BucketName
-import org.veupathdb.lib.s3.s34k.params.DeleteParams
+import org.veupathdb.lib.s3.s34k.fields.tags.S3MutableTagSet
+import org.veupathdb.lib.s3.s34k.fields.tags.S3TagMap
+import org.veupathdb.lib.s3.s34k.requests.*
 import org.veupathdb.lib.s3.s34k.response.`object`.S3ObjectMeta
-import org.veupathdb.lib.s3.s34k.params.TagGetParams
-import org.veupathdb.lib.s3.s34k.params.TagPutParams
-import org.veupathdb.lib.s3.s34k.request.bucket.BucketTagDeleteParams
-import org.veupathdb.lib.s3.s34k.request.`object`.*
+import org.veupathdb.lib.s3.s34k.requests.bucket.S3BucketTagDeleteParams
+import org.veupathdb.lib.s3.s34k.requests.`object`.*
 import org.veupathdb.lib.s3.s34k.response.`object`.S3FileObject
 import org.veupathdb.lib.s3.s34k.response.`object`.S3Object
 import org.veupathdb.lib.s3.s34k.response.`object`.S3StreamObject
 import java.io.File
 import java.io.InputStream
 import java.time.OffsetDateTime
-import java.util.*
 
 /**
  * S3 Bucket API Wrapper
@@ -36,7 +35,7 @@ interface S3Bucket {
   /**
    * Name of this bucket.
    */
-  val name: BucketName
+  val bucketName: BucketName
 
   /**
    * Region of this bucket.
@@ -47,7 +46,7 @@ interface S3Bucket {
    * If this value is `null` and a set of operation parameters also has a `null`
    * region, no region will be set on the operation.
    */
-  val region: String?
+  val defaultRegion: String?
 
   /**
    * Date/time this bucket was created.
@@ -74,8 +73,7 @@ interface S3Bucket {
    * @see deleteRecursive
    */
   @Throws(BucketNotEmptyException::class, S34kException::class)
-  fun delete(): Boolean =
-    delete(DeleteParams(region))
+  fun delete(): Boolean
 
   /**
    * Deletes this bucket with the operation configured by the given action.
@@ -98,8 +96,7 @@ interface S3Bucket {
    * @see deleteRecursive
    */
   @Throws(InvalidRequestConfigException::class, BucketNotEmptyException::class, S34kException::class)
-  fun delete(action: DeleteParams.() -> Unit): Boolean =
-    delete(DeleteParams(region).also(action))
+  fun delete(action: S3DeleteRequestParams.() -> Unit): Boolean
 
   /**
    * Deletes this bucket with the operation configured by the given params.
@@ -122,7 +119,7 @@ interface S3Bucket {
    * @see deleteRecursive
    */
   @Throws(InvalidRequestConfigException::class, BucketNotEmptyException::class, S34kException::class)
-  fun delete(params: DeleteParams): Boolean
+  fun delete(params: S3DeleteRequestParams): Boolean
 
   // endregion Delete
 
@@ -141,8 +138,7 @@ interface S3Bucket {
    * @see delete
    */
   @Throws(S34kException::class)
-  fun deleteRecursive(): Boolean =
-    deleteRecursive(DeleteParams())
+  fun deleteRecursive(): Boolean
 
   /**
    * Recursively deletes this bucket and all its contents with the operation
@@ -160,8 +156,7 @@ interface S3Bucket {
    * @see delete
    */
   @Throws(S34kException::class)
-  fun deleteRecursive(action: DeleteParams.() -> Unit): Boolean =
-    deleteRecursive(DeleteParams().also(action))
+  fun deleteRecursive(action: S3DeleteRequestParams.() -> Unit): Boolean
 
   /**
    * Recursively deletes this bucket and all its contents with the operation
@@ -179,7 +174,7 @@ interface S3Bucket {
    * @see delete
    */
   @Throws(S34kException::class)
-  fun deleteRecursive(params: DeleteParams): Boolean
+  fun deleteRecursive(params: S3DeleteRequestParams): Boolean
 
   // endregion
 
@@ -197,8 +192,7 @@ interface S3Bucket {
    * 'cause' value.
    */
   @Throws(BucketNotFoundException::class, S34kException::class)
-  fun deleteBucketTags(): S3TagSet =
-    deleteBucketTags(BucketTagDeleteParams(region))
+  fun deleteBucketTags(): S3TagMap
 
   /**
    * Deletes the listed tags from this bucket.
@@ -214,10 +208,7 @@ interface S3Bucket {
    * 'cause' value.
    */
   @Throws(BucketNotFoundException::class, S34kException::class)
-  fun deleteBucketTags(vararg tags: String): S3TagSet =
-    deleteBucketTags(BucketTagDeleteParams(region).also {
-      it.tags.addTags(tags.asList())
-    })
+  fun deleteBucketTags(vararg tags: String): S3TagMap
 
   /**
    * Deletes the listed tags from this bucket.
@@ -233,10 +224,7 @@ interface S3Bucket {
    * 'cause' value.
    */
   @Throws(BucketNotFoundException::class, S34kException::class)
-  fun deleteBucketTags(tags: Iterable<String>): S3TagSet =
-    deleteBucketTags(BucketTagDeleteParams(region).also {
-      it.tags.addTags(tags)
-    })
+  fun deleteBucketTags(tags: Iterable<String>): S3TagMap
 
   /**
    * Deletes the target tags from this bucket.
@@ -252,8 +240,7 @@ interface S3Bucket {
    * 'cause' value.
    */
   @Throws(BucketNotFoundException::class, S34kException::class)
-  fun deleteBucketTags(action: BucketTagDeleteParams.() -> Unit): S3TagSet =
-    deleteBucketTags(BucketTagDeleteParams(region).also(action))
+  fun deleteBucketTags(action: S3BucketTagDeleteParams.() -> Unit): S3TagMap
 
   /**
    * Deletes the target tags from this bucket.
@@ -269,7 +256,7 @@ interface S3Bucket {
    * 'cause' value.
    */
   @Throws(BucketNotFoundException::class, S34kException::class)
-  fun deleteBucketTags(params: BucketTagDeleteParams): S3TagSet
+  fun deleteBucketTags(params: S3BucketTagDeleteParams): S3TagMap
 
   // endregion Delete Bucket Tags
 
@@ -287,9 +274,7 @@ interface S3Bucket {
    * 'cause' value.
    */
   @Throws(BucketNotFoundException::class, S34kException::class)
-  fun getBucketTags(): S3TagSet =
-    getBucketTags(TagGetParams(region))
-
+  fun getBucketTags(): S3TagMap
 
   /**
    * Fetches the tags attached to this bucket.
@@ -305,9 +290,7 @@ interface S3Bucket {
    * 'cause' value.
    */
   @Throws(BucketNotFoundException::class, S34kException::class)
-  fun getBucketTags(action: TagGetParams.() -> Unit): S3TagSet =
-    getBucketTags(TagGetParams(region).also(action))
-
+  fun getBucketTags(action: S3BlankTagGetParams.() -> Unit): S3TagMap
 
   /**
    * Fetches the tags attached to this bucket.
@@ -323,7 +306,7 @@ interface S3Bucket {
    * 'cause' value.
    */
   @Throws(BucketNotFoundException::class, S34kException::class)
-  fun getBucketTags(params: TagGetParams): S3TagSet
+  fun getBucketTags(params: S3BlankTagGetParams): S3TagMap
 
   // endregion
 
@@ -331,17 +314,11 @@ interface S3Bucket {
 
   // TODO: Document me
   @Throws(BucketNotFoundException::class, S34kException::class)
-  fun putBucketTags(vararg tags: Pair<String, String>) =
-    putBucketTags(TagPutParams(region).also {
-      Arrays.stream(tags).forEach { (k, v) -> it.tags.addTag(k, v) }
-    })
+  fun putBucketTags(vararg tags: Pair<String, String>)
 
   // TODO: Document me
   @Throws(BucketNotFoundException::class, S34kException::class)
-  fun putBucketTags(vararg tags: S3Tag) =
-    putBucketTags(TagPutParams(region).also {
-      Arrays.stream(tags).forEach { t -> it.tags.addTag(t) }
-    })
+  fun putBucketTags(vararg tags: S3Tag)
 
   /**
    * Attaches the given tags to this S3 bucket.
@@ -357,8 +334,7 @@ interface S3Bucket {
    * 'cause' value.
    */
   @Throws(BucketNotFoundException::class, S34kException::class)
-  fun putBucketTags(tags: Map<String, String>) =
-    putBucketTags(TagPutParams(region).also { it.tags.addTags(tags) })
+  fun putBucketTags(tags: Map<String, String>)
 
   /**
    * Attaches the given tags to this S3 bucket.
@@ -374,8 +350,7 @@ interface S3Bucket {
    * 'cause' value.
    */
   @Throws(BucketNotFoundException::class, S34kException::class)
-  fun putBucketTags(tags: Iterable<S3Tag>) =
-    putBucketTags(TagPutParams(region).also { it.tags.addTags(tags) })
+  fun putBucketTags(tags: Iterable<S3Tag>)
 
   /**
    * Attaches the tags from the given operation parameters to this bucket.
@@ -389,8 +364,7 @@ interface S3Bucket {
    * 'cause' value.
    */
   @Throws(BucketNotFoundException::class, S34kException::class)
-  fun putBucketTags(action: TagPutParams.() -> Unit) =
-    putBucketTags(TagPutParams(region).also(action))
+  fun putBucketTags(action: S3BlankTagCreateParams.() -> Unit)
 
   /**
    * Attaches the tags from the given operation parameters to this bucket.
@@ -406,7 +380,7 @@ interface S3Bucket {
    * 'cause' value.
    */
   @Throws(BucketNotFoundException::class, S34kException::class)
-  fun putBucketTags(params: TagPutParams)
+  fun putBucketTags(params: S3BlankTagCreateParams)
 
   // endregion
 
@@ -418,31 +392,23 @@ interface S3Bucket {
 
   // TODO: Document me
   @Throws(ObjectNotFoundException::class, BucketNotFoundException::class, S34kException::class)
-  fun deleteObjectTags(path: String) =
-    deleteObjectTags(ObjectTagDeleteParams(path, region))
+  fun deleteObjectTags(path: String): S3MutableTagSet
 
   // TODO: Document me
   @Throws(ObjectNotFoundException::class, BucketNotFoundException::class, S34kException::class)
-  fun deleteObjectTags(path: String, vararg tags: String) =
-    deleteObjectTags(ObjectTagDeleteParams(path, region).also {
-      it.tags.addTags(tags.asList())
-    })
+  fun deleteObjectTags(path: String, vararg tags: String): S3MutableTagSet
 
   // TODO: Document me
   @Throws(ObjectNotFoundException::class, BucketNotFoundException::class, S34kException::class)
-  fun deleteObjectTags(path: String, tags: Iterable<String>) =
-    deleteObjectTags(ObjectTagDeleteParams(path, region).also {
-      it.tags.addTags(tags)
-    })
+  fun deleteObjectTags(path: String, tags: Iterable<String>): S3MutableTagSet
 
   // TODO: Document me
   @Throws(InvalidRequestConfigException::class, ObjectNotFoundException::class, BucketNotFoundException::class, S34kException::class)
-  fun deleteObjectTags(action: ObjectTagDeleteParams.() -> Unit) =
-    deleteObjectTags(ObjectTagDeleteParams(null, region).also(action))
+  fun deleteObjectTags(action: S3ObjectTagDeleteParams.() -> Unit): S3MutableTagSet
 
   // TODO: Document me
   @Throws(InvalidRequestConfigException::class, ObjectNotFoundException::class, BucketNotFoundException::class, S34kException::class)
-  fun deleteObjectTags(params: ObjectTagDeleteParams): S3TagSet
+  fun deleteObjectTags(params: S3ObjectTagDeleteParams): S3MutableTagSet
 
   // endregion Delete Object Tags
 
@@ -462,8 +428,7 @@ interface S3Bucket {
    * 'cause' value.
    */
   @Throws(BucketNotFoundException::class, S34kException::class)
-  fun objectExists(path: String) =
-    objectExists(ObjectExistsParams(path, region))
+  fun objectExists(path: String): Boolean
 
   /**
    * Tests for the existence of an object with the operation configured by the
@@ -483,8 +448,7 @@ interface S3Bucket {
    * 'cause' value.
    */
   @Throws(InvalidRequestConfigException::class, BucketNotFoundException::class, S34kException::class)
-  fun objectExists(action: ObjectExistsParams.() -> Unit) =
-    objectExists(ObjectExistsParams(null, region).also(action))
+  fun objectExists(action: S3ObjectExistsParams.() -> Unit): Boolean
 
 
   /**
@@ -505,7 +469,7 @@ interface S3Bucket {
    * 'cause' value.
    */
   @Throws(InvalidRequestConfigException::class, BucketNotFoundException::class, S34kException::class)
-  fun objectExists(params: ObjectExistsParams): Boolean
+  fun objectExists(params: S3ObjectExistsParams): Boolean
 
   // endregion
 
@@ -527,8 +491,7 @@ interface S3Bucket {
    * 'cause' value.
    */
   @Throws(ObjectNotFoundException::class, BucketNotFoundException::class, S34kException::class)
-  fun statObject(path: String) =
-    statObject(ObjectStatParams(path, region))
+  fun statObject(path: String): S3ObjectMeta
 
   /**
    * Fetches metadata for the object in this bucket at the configured path.
@@ -549,8 +512,7 @@ interface S3Bucket {
    * 'cause' value.
    */
   @Throws(InvalidRequestConfigException::class, ObjectNotFoundException::class, BucketNotFoundException::class, S34kException::class)
-  fun statObject(action: ObjectStatParams.() -> Unit) =
-    statObject(ObjectStatParams(null, region).also(action))
+  fun statObject(action: S3ObjectStatParams.() -> Unit): S3ObjectMeta
 
   /**
    * Fetches metadata for the object in this bucket at the configured path.
@@ -571,71 +533,53 @@ interface S3Bucket {
    * 'cause' value.
    */
   @Throws(InvalidRequestConfigException::class, ObjectNotFoundException::class, BucketNotFoundException::class, S34kException::class)
-  fun statObject(params: ObjectStatParams): S3ObjectMeta
+  fun statObject(params: S3ObjectStatParams): S3ObjectMeta
 
   // endregion
 
   // region Get Object
 
   // TODO: Document me
-  fun getObject(path: String) =
-    getObject(ObjectGetParams(path, region))
-
+  fun getObject(path: String): S3StreamObject
 
   // TODO: Document me
-  fun getObject(action: ObjectGetParams.() -> Unit) =
-    getObject(ObjectGetParams(null, region).also(action))
+  fun getObject(action: S3ObjectGetParams.() -> Unit): S3StreamObject
 
   // TODO: Document me
-  fun getObject(params: ObjectGetParams): S3StreamObject
+  fun getObject(params: S3ObjectGetParams): S3StreamObject
 
   // endregion
 
   // region Get Object Tags
 
   // TODO: Document me
-  fun getObjectTags(path: String) =
-    getObjectTags(ObjectTagGetParams(path, region))
+  fun getObjectTags(path: String): S3MutableTagSet
 
   // TODO: Document me
-  fun getObjectTags(action: ObjectTagGetParams.() -> Unit) =
-    getObjectTags(ObjectTagGetParams(null, region).also(action))
+  fun getObjectTags(action: S3ObjectTagGetParams.() -> Unit): S3MutableTagSet
 
   // TODO: Document me
-  fun getObjectTags(params: ObjectTagGetParams): S3TagSet
+  fun getObjectTags(params: S3ObjectTagGetParams): S3MutableTagSet
 
   // endregion
 
   // region Put Object Tags
 
-  fun putObjectTags(path: String, vararg tags: Pair<String, String>) =
-    putObjectTags(ObjectTagPutParams(path, region).also {
-      tags.forEach { (k, v) -> it.tags.addTag(k, v) }
-    })
+  fun putObjectTags(path: String, vararg tags: Pair<String, String>)
 
-  fun putObjectTags(path: String, vararg tags: S3Tag) =
-    putObjectTags(ObjectTagPutParams(path, region).also {
-      tags.forEach { t -> it.tags.addTag(t) }
-    })
+  fun putObjectTags(path: String, vararg tags: S3Tag)
 
   // TODO: Document me
-  fun putObjectTags(path: String, tags: Iterable<S3Tag>) =
-    putObjectTags(ObjectTagPutParams(path, region).also {
-      it.tags.addTags(tags)
-    })
+  fun putObjectTags(path: String, tags: Iterable<S3Tag>)
 
   // TODO: Document me
-  fun putObjectTags(path: String, tags: Map<String, String>) =
-    putObjectTags(ObjectTagPutParams(path, region).also {
-      it.tags.addTags(tags)
-    })
+  fun putObjectTags(path: String, tags: Map<String, String>)
 
   // TODO: Document me
-  fun putObjectTags(action: ObjectTagPutParams.() -> Unit) =
-    putObjectTags(ObjectTagPutParams(null, region).also(action))
+  fun putObjectTags(action: S3ObjectTagCreateParams.() -> Unit)
 
   // TODO: Document me
-  fun putObjectTags(params: ObjectTagPutParams)
+  fun putObjectTags(params: S3ObjectTagCreateParams)
 
   // endregion
 
@@ -663,15 +607,13 @@ interface S3Bucket {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun downloadObject(path: String, localFile: File) =
-    downloadObject(ObjectDownloadParams(path, region, localFile))
+  fun downloadObject(path: String, localFile: File): S3FileObject
 
   // TODO: Document me
-  fun downloadObject(action: ObjectDownloadParams.() -> Unit) =
-    downloadObject(ObjectDownloadParams(null, region).also(action))
+  fun downloadObject(action: S3ObjectDownloadParams.() -> Unit): S3FileObject
 
   // TODO: Document me
-  fun downloadObject(params: ObjectDownloadParams): S3FileObject
+  fun downloadObject(params: S3ObjectDownloadParams): S3FileObject
 
   // endregion
 
@@ -688,15 +630,13 @@ interface S3Bucket {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun touchObject(path: String) =
-    touchObject(ObjectTouchParams(path, region))
+  fun touchObject(path: String): S3Object
 
   // TODO: Document me
-  fun touchObject(action: ObjectTouchParams.() -> Unit) =
-    touchObject(ObjectTouchParams(null, region).also(action))
+  fun touchObject(action: S3ObjectTouchParams.() -> Unit): S3Object
 
   // TODO: Document me
-  fun touchObject(params: ObjectTouchParams): S3Object
+  fun touchObject(params: S3ObjectTouchParams): S3Object
 
   // endregion
 
@@ -721,15 +661,13 @@ interface S3Bucket {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun putDirectory(path: String) =
-    putDirectory(DirectoryPutParams(path, region))
+  fun putDirectory(path: String): S3Object
 
   // TODO: Document me
-  fun putDirectory(action: DirectoryPutParams.() -> Unit) =
-    putDirectory(DirectoryPutParams(null, region).also(action))
+  fun putDirectory(action: S3DirectoryCreateParams.() -> Unit): S3Object
 
   // TODO: Document me
-  fun putDirectory(params: DirectoryPutParams): S3Object
+  fun putDirectory(params: S3DirectoryCreateParams): S3Object
 
   // endregion
 
@@ -753,15 +691,13 @@ interface S3Bucket {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun putObject(path: String, stream: InputStream, size: Long = -1) =
-    putObject(ObjectPutParams(path, region, stream, size))
+  fun putObject(path: String, stream: InputStream, size: Long = -1): S3Object
 
   // TODO: Document me
-  fun putObject(action: ObjectPutParams.() -> Unit) =
-    putObject(ObjectPutParams(null, region).also(action))
+  fun putObject(action: S3StreamingObjectCreateParams.() -> Unit): S3Object
 
   // TODO: Document me
-  fun putObject(params: ObjectPutParams): S3Object
+  fun putObject(params: S3StreamingObjectCreateParams): S3Object
 
   // endregion
 
@@ -782,8 +718,7 @@ interface S3Bucket {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun uploadFile(path: String, file: File) =
-    uploadFile(ObjectFilePutParams(path, region, file))
+  fun uploadFile(path: String, file: File): S3Object
 
   /**
    * Puts an object into this bucket at the configured path and copies the
@@ -799,8 +734,7 @@ interface S3Bucket {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun uploadFile(action: ObjectFilePutParams.() -> Unit) =
-    uploadFile(ObjectFilePutParams(null, region).also(action))
+  fun uploadFile(action: S3FileUploadParams.() -> Unit): S3Object
 
   /**
    * Puts an object into this bucket at the configured path and copies the
@@ -814,60 +748,49 @@ interface S3Bucket {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun uploadFile(params: ObjectFilePutParams): S3Object
+  fun uploadFile(params: S3FileUploadParams): S3Object
 
   // endregion
 
   // region Delete Object
 
   // TODO: Document me
-  fun deleteObject(path: String) =
-    deleteObject(ObjectDeleteParams(path, region))
+  fun deleteObject(path: String): Boolean
 
   // TODO: Document me
-  fun deleteObject(action: ObjectDeleteParams.() -> Unit) =
-    deleteObject(ObjectDeleteParams(null, region).also(action))
+  fun deleteObject(action: S3ObjectDeleteParams.() -> Unit): Boolean
 
   // TODO: Document me
-  fun deleteObject(params: ObjectDeleteParams): Boolean
+  fun deleteObject(params: S3ObjectDeleteParams): Boolean
 
   // endregion Delete Object
 
   // region Delete Objects
 
   // TODO: Document me
-  fun deleteObjects(vararg paths: String) =
-    deleteObjects(ObjectDeleteMultiParams(region).also {
-      it.paths.addPaths(paths.toList())
-    })
+  fun deleteObjects(vararg paths: String)
 
   // TODO: Document me
-  fun deleteObjects(paths: Iterable<String>) =
-    deleteObjects(ObjectDeleteMultiParams(region).also {
-      it.paths.addPaths(paths)
-    })
+  fun deleteObjects(paths: Iterable<String>)
 
   // TODO: Document me
-  fun deleteObjects(action: ObjectDeleteMultiParams.() -> Unit) =
-    deleteObjects(ObjectDeleteMultiParams(region).also(action))
+  fun deleteObjects(action: S3MultiObjectDeleteParams.() -> Unit)
 
   // TODO: Document me
-  fun deleteObjects(params: ObjectDeleteMultiParams)
+  fun deleteObjects(params: S3MultiObjectDeleteParams)
 
   // endregion Delete Objects
 
   // region List Objects
 
   // TODO: Document me
-  fun listObjects() =
-    listObjects(ObjectListParams(region))
+  fun listObjects(): S3ObjectList
 
   // TODO: Document me
-  fun listObjects(action: ObjectListParams.() -> Unit) =
-    listObjects(ObjectListParams(region).also(action))
+  fun listObjects(action: S3ObjectListParams.() -> Unit): S3ObjectList
 
   // TODO: Document me
-  fun listObjects(params: ObjectListParams): S3ObjectList
+  fun listObjects(params: S3ObjectListParams): S3ObjectList
 
   // endregion List Objects
 

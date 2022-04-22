@@ -1,14 +1,14 @@
 package org.veupathdb.lib.s3.s34k.errors
 
-import org.veupathdb.lib.s3.s34k.params.BaseRequest
+import org.veupathdb.lib.s3.s34k.requests.S3RequestParams
 
 class InvalidRequestConfigException : S34kException {
 
   val reason: String
 
-  val params: BaseRequest
+  val params: S3RequestParams
 
-  constructor(reason: String, params: BaseRequest) : super(
+  constructor(reason: String, params: S3RequestParams) : super(
     "S3 request was not sent due to an invalid request configuration: $reason",
   ) {
     this.reason = reason
@@ -17,7 +17,7 @@ class InvalidRequestConfigException : S34kException {
 
   constructor(
     reason: String,
-    params: BaseRequest,
+    params: S3RequestParams,
     cause:  Throwable
   ) : super(
     "S3 request was not sent due to an invalid request configuration: $reason",
@@ -29,7 +29,7 @@ class InvalidRequestConfigException : S34kException {
 
   constructor(
     reason:  String,
-    params:  BaseRequest,
+    params: S3RequestParams,
     message: String
   ) : super(message) {
     this.reason = reason
@@ -38,7 +38,7 @@ class InvalidRequestConfigException : S34kException {
 
   constructor(
     reason: String,
-    params: BaseRequest,
+    params: S3RequestParams,
     message: String,
     cause: Throwable
   ) : super(message, cause) {

@@ -11,8 +11,8 @@ org.veupathdb.lib.s3.s34k.fields.headers
 org.veupathdb.lib.s3.s34k.fields.query_params
 org.veupathdb.lib.s3.s34k.fields.tags
 org.veupathdb.lib.s3.s34k.params
-org.veupathdb.lib.s3.s34k.request.bucket
-org.veupathdb.lib.s3.s34k.request.object
+org.veupathdb.lib.s3.s34k.requests.bucket
+org.veupathdb.lib.s3.s34k.requests.object
 org.veupathdb.lib.s3.s34k.response
 org.veupathdb.lib.s3.s34k.response.object
 
