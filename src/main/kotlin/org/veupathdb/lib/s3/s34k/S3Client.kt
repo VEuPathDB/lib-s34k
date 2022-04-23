@@ -2,6 +2,7 @@ package org.veupathdb.lib.s3.s34k
 
 import org.veupathdb.lib.s3.s34k.errors.*
 import org.veupathdb.lib.s3.s34k.fields.BucketName
+import org.veupathdb.lib.s3.s34k.requests.bucket.recursive.S3ClientRecursiveBucketDeleteParams
 import org.veupathdb.lib.s3.s34k.requests.client.*
 
 /**
@@ -379,10 +380,10 @@ interface S3Client {
   fun deleteBucketRecursive(name: BucketName, region: String? = null): Boolean
 
   // TODO: Document me
-  fun deleteBucketRecursive(action: S3BucketDeleteParams.() -> Unit): Boolean
+  fun deleteBucketRecursive(action: S3ClientRecursiveBucketDeleteParams.() -> Unit): Boolean
 
   // TODO: Document me
-  fun deleteBucketRecursive(params: S3BucketDeleteParams): Boolean
+  fun deleteBucketRecursive(params: S3ClientRecursiveBucketDeleteParams): Boolean
 
   // endregion Delete Bucket Recursive
 }

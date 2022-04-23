@@ -7,6 +7,8 @@ import org.veupathdb.lib.s3.s34k.fields.tags.S3TagMap
 import org.veupathdb.lib.s3.s34k.requests.*
 import org.veupathdb.lib.s3.s34k.response.`object`.S3ObjectMeta
 import org.veupathdb.lib.s3.s34k.requests.bucket.S3BucketTagDeleteParams
+import org.veupathdb.lib.s3.s34k.requests.bucket.recursive.RecursiveBucketDeleteError
+import org.veupathdb.lib.s3.s34k.requests.bucket.recursive.S3RecursiveBucketDeleteParams
 import org.veupathdb.lib.s3.s34k.requests.`object`.*
 import org.veupathdb.lib.s3.s34k.response.`object`.S3FileObject
 import org.veupathdb.lib.s3.s34k.response.`object`.S3Object
@@ -128,8 +130,19 @@ interface S3Bucket {
   /**
    * Recursively deletes this bucket and all its contents.
    *
+   * This operation happens in 3 phases which can be configured independently
+   * using the [S3RecursiveBucketDeleteParams] class.
+   * The 3 phases are:
+   *
+   * 1. Fetch a list of all the objects in the bucket.
+   * 2. Delete all the objects from the bucket.
+   * 3. Delete the bucket itself.
+   *
    * @return Whether the bucket was deleted.  `true` if the bucket previously
    * existed and has been deleted, `false` if the bucket did not exist.
+   *
+   * @throws RecursiveBucketDeleteError If an error occurs while attempting to
+   * delete the bucket, or it's contained objects.
    *
    * @throws S34kException If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
@@ -137,7 +150,7 @@ interface S3Bucket {
    *
    * @see delete
    */
-  @Throws(S34kException::class)
+  @Throws(RecursiveBucketDeleteError::class, S34kException::class)
   fun deleteRecursive(): Boolean
 
   /**
@@ -149,14 +162,17 @@ interface S3Bucket {
    * @return Whether the bucket was deleted.  `true` if the bucket previously
    * existed and has been deleted, `false` if the bucket did not exist.
    *
+   * @throws RecursiveBucketDeleteError If an error occurs while attempting to
+   * delete the bucket, or it's contained objects.
+   *
    * @throws S34kException If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    *
    * @see delete
    */
-  @Throws(S34kException::class)
-  fun deleteRecursive(action: S3DeleteRequestParams.() -> Unit): Boolean
+  @Throws(RecursiveBucketDeleteError::class, S34kException::class)
+  fun deleteRecursive(action: S3RecursiveBucketDeleteParams.() -> Unit): Boolean
 
   /**
    * Recursively deletes this bucket and all its contents with the operation
@@ -167,14 +183,17 @@ interface S3Bucket {
    * @return Whether the bucket was deleted.  `true` if the bucket previously
    * existed and has been deleted, `false` if the bucket did not exist.
    *
+   * @throws RecursiveBucketDeleteError If an error occurs while attempting to
+   * delete the bucket, or it's contained objects.
+   *
    * @throws S34kException If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    *
    * @see delete
    */
-  @Throws(S34kException::class)
-  fun deleteRecursive(params: S3DeleteRequestParams): Boolean
+  @Throws(RecursiveBucketDeleteError::class, S34kException::class)
+  fun deleteRecursive(params: S3RecursiveBucketDeleteParams): Boolean
 
   // endregion
 
