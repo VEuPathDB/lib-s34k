@@ -70,7 +70,6 @@ interface S3Bucket {
    *
    * @see deleteRecursive
    */
-  @Throws(BucketNotEmptyException::class, S34kException::class)
   fun delete(): Boolean
 
   /**
@@ -93,7 +92,6 @@ interface S3Bucket {
    *
    * @see deleteRecursive
    */
-  @Throws(InvalidRequestConfigException::class, BucketNotEmptyException::class, S34kException::class)
   fun delete(action: S3DeleteRequestParams.() -> Unit): Boolean
 
   /**
@@ -116,7 +114,6 @@ interface S3Bucket {
    *
    * @see deleteRecursive
    */
-  @Throws(InvalidRequestConfigException::class, BucketNotEmptyException::class, S34kException::class)
   fun delete(params: S3DeleteRequestParams): Boolean
 
   // endregion Delete
@@ -146,7 +143,6 @@ interface S3Bucket {
    *
    * @see delete
    */
-  @Throws(RecursiveBucketDeleteError::class, S34kException::class)
   fun deleteRecursive(): Boolean
 
   /**
@@ -167,7 +163,6 @@ interface S3Bucket {
    *
    * @see delete
    */
-  @Throws(RecursiveBucketDeleteError::class, S34kException::class)
   fun deleteRecursive(action: S3RecursiveBucketDeleteParams.() -> Unit): Boolean
 
   /**
@@ -188,7 +183,6 @@ interface S3Bucket {
    *
    * @see delete
    */
-  @Throws(RecursiveBucketDeleteError::class, S34kException::class)
   fun deleteRecursive(params: S3RecursiveBucketDeleteParams): Boolean
 
   // endregion
@@ -206,7 +200,6 @@ interface S3Bucket {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  @Throws(BucketNotFoundException::class, S34kException::class)
   fun deleteBucketTags(): S3TagMap
 
   /**
@@ -222,7 +215,6 @@ interface S3Bucket {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  @Throws(BucketNotFoundException::class, S34kException::class)
   fun deleteBucketTags(vararg tags: String): S3TagMap
 
   /**
@@ -238,7 +230,6 @@ interface S3Bucket {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  @Throws(BucketNotFoundException::class, S34kException::class)
   fun deleteBucketTags(tags: Iterable<String>): S3TagMap
 
   /**
@@ -254,7 +245,6 @@ interface S3Bucket {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  @Throws(BucketNotFoundException::class, S34kException::class)
   fun deleteBucketTags(action: S3BucketTagDeleteParams.() -> Unit): S3TagMap
 
   /**
@@ -270,7 +260,6 @@ interface S3Bucket {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  @Throws(BucketNotFoundException::class, S34kException::class)
   fun deleteBucketTags(params: S3BucketTagDeleteParams): S3TagMap
 
   // endregion Delete Bucket Tags
@@ -288,7 +277,6 @@ interface S3Bucket {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  @Throws(BucketNotFoundException::class, S34kException::class)
   fun getBucketTags(): S3TagMap
 
   /**
@@ -304,7 +292,6 @@ interface S3Bucket {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  @Throws(BucketNotFoundException::class, S34kException::class)
   fun getBucketTags(action: S3BlankTagGetParams.() -> Unit): S3TagMap
 
   /**
@@ -320,7 +307,6 @@ interface S3Bucket {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  @Throws(BucketNotFoundException::class, S34kException::class)
   fun getBucketTags(params: S3BlankTagGetParams): S3TagMap
 
   // endregion
@@ -340,7 +326,6 @@ interface S3Bucket {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  @Throws(BucketNotFoundException::class, S34kException::class)
   fun putBucketTags(vararg tags: Pair<String, String>)
 
   /**
@@ -356,7 +341,6 @@ interface S3Bucket {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  @Throws(BucketNotFoundException::class, S34kException::class)
   fun putBucketTags(vararg tags: S3Tag)
 
   /**
@@ -372,7 +356,6 @@ interface S3Bucket {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  @Throws(BucketNotFoundException::class, S34kException::class)
   fun putBucketTags(tags: Map<String, String>)
 
   /**
@@ -388,7 +371,6 @@ interface S3Bucket {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  @Throws(BucketNotFoundException::class, S34kException::class)
   fun putBucketTags(tags: Iterable<S3Tag>)
 
   /**
@@ -402,7 +384,6 @@ interface S3Bucket {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  @Throws(BucketNotFoundException::class, S34kException::class)
   fun putBucketTags(action: S3BlankTagCreateParams.() -> Unit)
 
   /**
@@ -418,7 +399,6 @@ interface S3Bucket {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  @Throws(BucketNotFoundException::class, S34kException::class)
   fun putBucketTags(params: S3BlankTagCreateParams)
 
   // endregion
@@ -446,7 +426,6 @@ interface S3Bucket {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  @Throws(ObjectNotFoundException::class, BucketNotFoundException::class, S34kException::class)
   fun deleteObjectTags(path: String): S3TagMap
 
   /**
@@ -484,7 +463,6 @@ interface S3Bucket {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  @Throws(ObjectNotFoundException::class, BucketNotFoundException::class, S34kException::class)
   fun deleteObjectTags(path: String, vararg tags: String): S3TagMap
 
   /**
@@ -522,7 +500,6 @@ interface S3Bucket {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  @Throws(ObjectNotFoundException::class, BucketNotFoundException::class, S34kException::class)
   fun deleteObjectTags(path: String, tags: Iterable<String>): S3TagMap
 
   /**
@@ -558,7 +535,6 @@ interface S3Bucket {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  @Throws(InvalidRequestConfigException::class, ObjectNotFoundException::class, BucketNotFoundException::class, S34kException::class)
   fun deleteObjectTags(action: S3ObjectTagDeleteParams.() -> Unit): S3TagMap
 
   /**
@@ -594,7 +570,6 @@ interface S3Bucket {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  @Throws(InvalidRequestConfigException::class, ObjectNotFoundException::class, BucketNotFoundException::class, S34kException::class)
   fun deleteObjectTags(params: S3ObjectTagDeleteParams): S3TagMap
 
   // endregion Delete Object Tags
@@ -614,7 +589,6 @@ interface S3Bucket {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  @Throws(BucketNotFoundException::class, S34kException::class)
   fun objectExists(path: String): Boolean
 
   /**
@@ -634,7 +608,6 @@ interface S3Bucket {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  @Throws(InvalidRequestConfigException::class, BucketNotFoundException::class, S34kException::class)
   fun objectExists(action: S3ObjectExistsParams.() -> Unit): Boolean
 
   /**
@@ -654,7 +627,6 @@ interface S3Bucket {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  @Throws(InvalidRequestConfigException::class, BucketNotFoundException::class, S34kException::class)
   fun objectExists(params: S3ObjectExistsParams): Boolean
 
   // endregion
@@ -676,7 +648,6 @@ interface S3Bucket {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  @Throws(ObjectNotFoundException::class, BucketNotFoundException::class, S34kException::class)
   fun statObject(path: String): S3ObjectMeta
 
   /**
@@ -697,7 +668,6 @@ interface S3Bucket {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  @Throws(InvalidRequestConfigException::class, ObjectNotFoundException::class, BucketNotFoundException::class, S34kException::class)
   fun statObject(action: S3ObjectStatParams.() -> Unit): S3ObjectMeta
 
   /**
@@ -718,7 +688,6 @@ interface S3Bucket {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  @Throws(InvalidRequestConfigException::class, ObjectNotFoundException::class, BucketNotFoundException::class, S34kException::class)
   fun statObject(params: S3ObjectStatParams): S3ObjectMeta
 
   // endregion
@@ -810,6 +779,8 @@ interface S3Bucket {
    *
    * @param path Path to the empty object to create.
    *
+   * @return An [S3Object] instance wrapping the created empty object.
+   *
    * @throws BucketNotFoundException If this bucket no longer exists.
    *
    * @throws S34kException If an implementation specific exception is thrown.
@@ -818,10 +789,36 @@ interface S3Bucket {
    */
   fun touchObject(path: String): S3Object
 
-  // TODO: Document me
+  /**
+   * Creates an empty object at the target path with the operation configured
+   * by the given action.
+   *
+   * @param action Action used to configure the S3 operation.
+   *
+   * @return An [S3Object] instance wrapping the created empty object.
+   *
+   * @throws BucketNotFoundException If this bucket no longer exists.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
   fun touchObject(action: S3ObjectTouchParams.() -> Unit): S3Object
 
-  // TODO: Document me
+  /**
+   * Creates an empty object at the target path with the operation configured
+   * by the given params.
+   *
+   * @param params S3 operation parameters.
+   *
+   * @return An [S3Object] instance wrapping the created empty object.
+   *
+   * @throws BucketNotFoundException If this bucket no longer exists.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
   fun touchObject(params: S3ObjectTouchParams): S3Object
 
   // endregion
