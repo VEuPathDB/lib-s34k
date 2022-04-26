@@ -572,13 +572,13 @@ interface S3Bucket {
   // region Get Object Tags
 
   // TODO: Document me
-  fun getObjectTags(path: String): S3MutableTagSet
+  fun getObjectTags(path: String): S3TagMap
 
   // TODO: Document me
-  fun getObjectTags(action: S3ObjectTagGetParams.() -> Unit): S3MutableTagSet
+  fun getObjectTags(action: S3ObjectTagGetParams.() -> Unit): S3TagMap
 
   // TODO: Document me
-  fun getObjectTags(params: S3ObjectTagGetParams): S3MutableTagSet
+  fun getObjectTags(params: S3ObjectTagGetParams): S3TagMap
 
   // endregion
 
