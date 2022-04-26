@@ -327,11 +327,35 @@ interface S3Bucket {
 
   // region Put Bucket Tags
 
-  // TODO: Document me
+  /**
+   * Attaches the given tags to this S3 bucket.
+   *
+   * If the given array of tag pairs is empty, this method does nothing.
+   *
+   * @param tags Array of key -> value pairs to assign to this bucket as tags.
+   *
+   * @throws BucketNotFoundException If this bucket no longer exists.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
   @Throws(BucketNotFoundException::class, S34kException::class)
   fun putBucketTags(vararg tags: Pair<String, String>)
 
-  // TODO: Document me
+  /**
+   * Attaches the given tags to this S3 bucket.
+   *
+   * If the given array of tags is empty, this method does nothing.
+   *
+   * @param tags Array of tags to assign to this bucket as tags.
+   *
+   * @throws BucketNotFoundException If this bucket no longer exists.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
   @Throws(BucketNotFoundException::class, S34kException::class)
   fun putBucketTags(vararg tags: S3Tag)
 
@@ -405,23 +429,171 @@ interface S3Bucket {
 
   // region Delete Object Tags
 
-  // TODO: Document me
+  /**
+   * Deletes all the tags attached to the S3 object at the given [path].
+   *
+   * @param path Path to the object whose tags should be deleted.
+   *
+   * @return An [S3TagMap] containing the keys/values that were previously
+   * attached to the target object.  If the target object previously had no tags
+   * attached, this method will be empty.
+   *
+   * @throws ObjectNotFoundException If the target object does not exist.
+   *
+   * @throws BucketNotFoundException If this bucket no longer exists.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
   @Throws(ObjectNotFoundException::class, BucketNotFoundException::class, S34kException::class)
   fun deleteObjectTags(path: String): S3TagMap
 
-  // TODO: Document me
+  /**
+   * Deletes only the specified target tags from the S3 object at the given
+   * [path].
+   *
+   * This operation happens in 3 phases due to S3 not presently supporting
+   * targeted tag deletions:
+   *
+   * 1. Fetch a list of all the tags presently on the target object.
+   * 2. Delete all tags from the target object.
+   * 3. Re-append the tags to the object that did not appear in the tag removal
+   *    list.
+   *
+   * Any/all tags not specified in the list of tags for removal will be
+   * re-appended to the target object.
+   *
+   * If one or more tags in the removal list, they will be ignored and will not
+   * appear in the output [S3TagMap].
+   *
+   * @param path Path to the object whose tags should be deleted.
+   *
+   * @param tags Tags to be removed from the object.
+   *
+   * @return An [S3TagMap] containing the tags that were previously attached to
+   * the target object.  If any tags in the removal list were not attached to
+   * the object at the time this method was called, those tags will not appear
+   * in the returned tag map.
+   *
+   * @throws ObjectNotFoundException If the target object does not exist.
+   *
+   * @throws BucketNotFoundException If this bucket no longer exists.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
   @Throws(ObjectNotFoundException::class, BucketNotFoundException::class, S34kException::class)
   fun deleteObjectTags(path: String, vararg tags: String): S3TagMap
 
-  // TODO: Document me
+  /**
+   * Deletes only the specified target tags from the S3 object at the given
+   * [path].
+   *
+   * This operation happens in 3 phases due to S3 not presently supporting
+   * targeted tag deletions:
+   *
+   * 1. Fetch a list of all the tags presently on the target object.
+   * 2. Delete all tags from the target object.
+   * 3. Re-append the tags to the object that did not appear in the tag removal
+   *    list.
+   *
+   * Any/all tags not specified in the list of tags for removal will be
+   * re-appended to the target object.
+   *
+   * If one or more tags in the removal list, they will be ignored and will not
+   * appear in the output [S3TagMap].
+   *
+   * @param path Path to the object whose tags should be deleted.
+   *
+   * @param tags Tags to be removed from the object.
+   *
+   * @return An [S3TagMap] containing the tags that were previously attached to
+   * the target object.  If any tags in the removal list were not attached to
+   * the object at the time this method was called, those tags will not appear
+   * in the returned tag map.
+   *
+   * @throws ObjectNotFoundException If the target object does not exist.
+   *
+   * @throws BucketNotFoundException If this bucket no longer exists.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
   @Throws(ObjectNotFoundException::class, BucketNotFoundException::class, S34kException::class)
   fun deleteObjectTags(path: String, tags: Iterable<String>): S3TagMap
 
-  // TODO: Document me
+  /**
+   * Deletes only the specified target tags from the S3 object at the object
+   * path configured by the given configuration [action].
+   *
+   * This operation happens in 3 phases due to S3 not presently supporting
+   * targeted tag deletions:
+   *
+   * 1. Fetch a list of all the tags presently on the target object.
+   * 2. Delete all tags from the target object.
+   * 3. Re-append the tags to the object that did not appear in the tag removal
+   *    list.
+   *
+   * Any/all tags not specified in the list of tags for removal will be
+   * re-appended to the target object.
+   *
+   * If one or more tags in the removal list, they will be ignored and will not
+   * appear in the output [S3TagMap].
+   *
+   * @param action Action used to configure this S3 operation.
+   *
+   * @return An [S3TagMap] containing the tags that were previously attached to
+   * the target object.  If any tags in the removal list were not attached to
+   * the object at the time this method was called, those tags will not appear
+   * in the returned tag map.
+   *
+   * @throws ObjectNotFoundException If the target object does not exist.
+   *
+   * @throws BucketNotFoundException If this bucket no longer exists.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
   @Throws(InvalidRequestConfigException::class, ObjectNotFoundException::class, BucketNotFoundException::class, S34kException::class)
   fun deleteObjectTags(action: S3ObjectTagDeleteParams.() -> Unit): S3TagMap
 
-  // TODO: Document me
+  /**
+   * Deletes only the specified target tags from the S3 object at the object
+   * path configured by the given configuration.
+   *
+   * This operation happens in 3 phases due to S3 not presently supporting
+   * targeted tag deletions:
+   *
+   * 1. Fetch a list of all the tags presently on the target object.
+   * 2. Delete all tags from the target object.
+   * 3. Re-append the tags to the object that did not appear in the tag removal
+   *    list.
+   *
+   * Any/all tags not specified in the list of tags for removal will be
+   * re-appended to the target object.
+   *
+   * If one or more tags in the removal list, they will be ignored and will not
+   * appear in the output [S3TagMap].
+   *
+   * @param params S3 operation parameters.
+   *
+   * @return An [S3TagMap] containing the tags that were previously attached to
+   * the target object.  If any tags in the removal list were not attached to
+   * the object at the time this method was called, those tags will not appear
+   * in the returned tag map.
+   *
+   * @throws ObjectNotFoundException If the target object does not exist.
+   *
+   * @throws BucketNotFoundException If this bucket no longer exists.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
   @Throws(InvalidRequestConfigException::class, ObjectNotFoundException::class, BucketNotFoundException::class, S34kException::class)
   fun deleteObjectTags(params: S3ObjectTagDeleteParams): S3TagMap
 
@@ -464,7 +636,6 @@ interface S3Bucket {
    */
   @Throws(InvalidRequestConfigException::class, BucketNotFoundException::class, S34kException::class)
   fun objectExists(action: S3ObjectExistsParams.() -> Unit): Boolean
-
 
   /**
    * Tests for the existence of an object with the operation configured by the

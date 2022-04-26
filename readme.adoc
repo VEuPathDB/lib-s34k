@@ -24,6 +24,17 @@ Does not include separate headers for multi-stage actions, such as recursive
 tag deletion.
 +
 See the docs linked above for more information on what features are provided.
++
+TODOs:
++
+* [ ] https://github.com/VEuPathDB/lib-s34k/issues/1
 
 v0.2.0::
-* Complex configuration of multi-stage actions.
+TODOs:
++
+--
+* [x] Configuration of multi-stage recursive bucket deletion.
+* [ ] Configuration of multi-stage targeted object tag deleteion.
+* [ ] Configuration of multi-stage targeted bucket tag deletion.
+* [ ] Version ID on object tag deletion params
+--

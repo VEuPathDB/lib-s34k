@@ -340,7 +340,6 @@ interface S3Client {
    */
   fun deleteBucket(name: BucketName, region: String? = null): Boolean
 
-
   /**
    * Deletes the target bucket from the S3 instance.
    *
