@@ -120,7 +120,7 @@ var pathtoroot = "../../../../../../../";
 public interface <span class="typeNameLabel"><a href=S3Headers.html>S3Headers</a></span>
  implements <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html>Iterable</a>&lt;<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-pair/index.html>Pair</a>&lt;<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html>String</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html>List</a>&lt;<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html>String</a>&gt;&gt;&gt;
                     </pre>
-                    <div class="block"></div>
+                    <div class="block"><p>Map of headers being sent to or returned from an S3 operation.</p></div>
                 </li>
             </ul>
         </div>
@@ -245,7 +245,7 @@ public interface <span class="typeNameLabel"><a href=S3Headers.html>S3Headers</a
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=S3Headers.html#toMap()>toMap</a>() </code>
                                             </th>
-                                            <td class="colLast"></td>
+                                            <td class="colLast">Converts this <a href=S3Headers.html>S3Headers</a> instance into a standard Java map of headers to value lists.</td>
                                         </tr>
                                         
                                         <tr id="i1" class="rowColor">
@@ -253,7 +253,7 @@ public interface <span class="typeNameLabel"><a href=S3Headers.html>S3Headers</a
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=S3Headers.html#stream()>stream</a>() </code>
                                             </th>
-                                            <td class="colLast"></td>
+                                            <td class="colLast">Returns a stream over the contents of this <a href=S3Headers.html>S3Headers</a> map.</td>
                                         </tr>
                                         
                                         <tr id="i2" class="altColor">
@@ -261,7 +261,7 @@ public interface <span class="typeNameLabel"><a href=S3Headers.html>S3Headers</a
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=S3Headers.html#get(String)>get</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> header) </code>
                                             </th>
-                                            <td class="colLast"></td>
+                                            <td class="colLast">Returns a list of header values stored under the given header key.</td>
                                         </tr>
                                         
                                         <tr id="i3" class="rowColor">
@@ -269,7 +269,7 @@ public interface <span class="typeNameLabel"><a href=S3Headers.html>S3Headers</a
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=S3Headers.html#getSize()>getSize</a>() </code>
                                             </th>
-                                            <td class="colLast">Number of tag pairs currently in this TagMap</td>
+                                            <td class="colLast">Number of header entries in this <a href=S3Headers.html>S3Headers</a> map.</td>
                                         </tr>
                                         
                                         <tr id="i4" class="altColor">
@@ -277,7 +277,7 @@ public interface <span class="typeNameLabel"><a href=S3Headers.html>S3Headers</a
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=S3Headers.html#getIsEmpty()>getIsEmpty</a>() </code>
                                             </th>
-                                            <td class="colLast">Whether this TagMap is empty.</td>
+                                            <td class="colLast">Whether this header map is empty.</td>
                                         </tr>
                                         
                                         <tr id="i5" class="rowColor">
@@ -285,7 +285,7 @@ public interface <span class="typeNameLabel"><a href=S3Headers.html>S3Headers</a
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=S3Headers.html#getIsNotEmpty()>getIsNotEmpty</a>() </code>
                                             </th>
-                                            <td class="colLast">Whether this TagMap is not empty.</td>
+                                            <td class="colLast">Whether this header map is not empty.</td>
                                         </tr>
                                         
                                         </tbody>
@@ -347,7 +347,7 @@ public interface <span class="typeNameLabel"><a href=S3Headers.html>S3Headers</a
                                     <li class="blockList">
                                         <h4>toMap</h4>
                                         <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/util/Map.html>Map</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>, <a href=https://docs.oracle.com/javase/8/docs/api/java/util/List.html>List</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>&gt;&gt; <a href=S3Headers.html#toMap()>toMap</a>()</pre>
-                                        <div class="block"></div>
+                                        <div class="block"><p>Converts this <a href=S3Headers.html>S3Headers</a> instance into a standard Java map of headers to value lists.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -362,7 +362,7 @@ public interface <span class="typeNameLabel"><a href=S3Headers.html>S3Headers</a
                                     <li class="blockList">
                                         <h4>stream</h4>
                                         <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html>Stream</a>&lt;<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-pair/index.html>Pair</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>, <a href=https://docs.oracle.com/javase/8/docs/api/java/util/List.html>List</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>&gt;&gt;&gt; <a href=S3Headers.html#stream()>stream</a>()</pre>
-                                        <div class="block"></div>
+                                        <div class="block"><p>Returns a stream over the contents of this <a href=S3Headers.html>S3Headers</a> map.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -377,7 +377,7 @@ public interface <span class="typeNameLabel"><a href=S3Headers.html>S3Headers</a
                                     <li class="blockList">
                                         <h4>get</h4>
                                         <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/util/List.html>List</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>&gt; <a href=S3Headers.html#get(String)>get</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> header)</pre>
-                                        <div class="block"></div>
+                                        <div class="block"><p>Returns a list of header values stored under the given header key.</p><p>If no such key exists, <code>null</code> will be returned.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -392,7 +392,7 @@ public interface <span class="typeNameLabel"><a href=S3Headers.html>S3Headers</a
                                     <li class="blockList">
                                         <h4>getSize</h4>
                                         <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> <a href=S3Headers.html#getSize()>getSize</a>()</pre>
-                                        <div class="block"><p>Number of tag pairs currently in this TagMap</p></div>
+                                        <div class="block"><p>Number of header entries in this <a href=S3Headers.html>S3Headers</a> map.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -407,7 +407,7 @@ public interface <span class="typeNameLabel"><a href=S3Headers.html>S3Headers</a
                                     <li class="blockList">
                                         <h4>getIsEmpty</h4>
                                         <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a> <a href=S3Headers.html#getIsEmpty()>getIsEmpty</a>()</pre>
-                                        <div class="block"><p>Whether this TagMap is empty.</p></div>
+                                        <div class="block"><p>Whether this header map is empty.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -422,7 +422,7 @@ public interface <span class="typeNameLabel"><a href=S3Headers.html>S3Headers</a
                                     <li class="blockList">
                                         <h4>getIsNotEmpty</h4>
                                         <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a> <a href=S3Headers.html#getIsNotEmpty()>getIsNotEmpty</a>()</pre>
-                                        <div class="block"><p>Whether this TagMap is not empty.</p></div>
+                                        <div class="block"><p>Whether this header map is not empty.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
