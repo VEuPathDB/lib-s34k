@@ -125,7 +125,7 @@ var pathtoroot = "../../../../../../../";
 public interface <span class="typeNameLabel"><a href=S3QueryParamsMutable.html>S3QueryParamsMutable</a></span>
  implements <a href=S3QueryParams.html>S3QueryParams</a>
                     </pre>
-                    <div class="block"></div>
+                    <div class="block"><p>Mutable map of query params being sent as part of an S3 operation request.</p></div>
                 </li>
             </ul>
         </div>
@@ -248,33 +248,33 @@ public interface <span class="typeNameLabel"><a href=S3QueryParamsMutable.html>S
                                         <tr id="i0" class="altColor">
                                             <td class="colFirst"><code>abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=S3QueryParamsMutable.html#addQueryParam(String,String)>addQueryParam</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> header, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> values) </code>
+                                            <th class="colSecond" scope="row"><code><a href=S3QueryParamsMutable.html#addQueryParam(String,String)>addQueryParam</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> param, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> values) </code>
                                             </th>
-                                            <td class="colLast"></td>
+                                            <td class="colLast">Adds the given header and values to this query param map.</td>
                                         </tr>
                                         
                                         <tr id="i1" class="rowColor">
                                             <td class="colFirst"><code>abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=S3QueryParamsMutable.html#addQueryParam(String,Iterable)>addQueryParam</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> header, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html>Iterable</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>&gt; values) </code>
+                                            <th class="colSecond" scope="row"><code><a href=S3QueryParamsMutable.html#addQueryParam(String,Iterable)>addQueryParam</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> param, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html>Iterable</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>&gt; values) </code>
                                             </th>
-                                            <td class="colLast"></td>
+                                            <td class="colLast">Adds the given header and values to this query param map.</td>
                                         </tr>
                                         
                                         <tr id="i2" class="altColor">
                                             <td class="colFirst"><code>abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=S3QueryParamsMutable.html#addQueryParams(Map)>addQueryParams</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/util/Map.html>Map</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html>Iterable</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>&gt;&gt; headers) </code>
+                                            <th class="colSecond" scope="row"><code><a href=S3QueryParamsMutable.html#addQueryParams(Map)>addQueryParams</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/util/Map.html>Map</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html>Iterable</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>&gt;&gt; params) </code>
                                             </th>
-                                            <td class="colLast"></td>
+                                            <td class="colLast">Adds the query params in the given map to this query param map.</td>
                                         </tr>
                                         
                                         <tr id="i3" class="rowColor">
                                             <td class="colFirst"><code>abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=S3QueryParamsMutable.html#addQueryParams(Pair)>addQueryParams</a>(<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-pair/index.html>Pair</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>&gt; headers) </code>
+                                            <th class="colSecond" scope="row"><code><a href=S3QueryParamsMutable.html#addQueryParams(Pair)>addQueryParams</a>(<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-pair/index.html>Pair</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>&gt; params) </code>
                                             </th>
-                                            <td class="colLast"></td>
+                                            <td class="colLast">Adds the query params in the given set of pairs to this query param map.</td>
                                         </tr>
                                         
                                         <tr id="i4" class="altColor">
@@ -282,7 +282,7 @@ public interface <span class="typeNameLabel"><a href=S3QueryParamsMutable.html>S
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=S3QueryParamsMutable.html#getSize()>getSize</a>() </code>
                                             </th>
-                                            <td class="colLast">Number of tag pairs currently in this TagMap</td>
+                                            <td class="colLast">Number of header entries in this <a href=S3QueryParams.html>S3QueryParams</a> map.</td>
                                         </tr>
                                         
                                         <tr id="i5" class="rowColor">
@@ -290,7 +290,7 @@ public interface <span class="typeNameLabel"><a href=S3QueryParamsMutable.html>S
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=S3QueryParamsMutable.html#getIsEmpty()>getIsEmpty</a>() </code>
                                             </th>
-                                            <td class="colLast">Whether this TagMap is empty.</td>
+                                            <td class="colLast">Whether this query param map is empty.</td>
                                         </tr>
                                         
                                         <tr id="i6" class="altColor">
@@ -298,7 +298,7 @@ public interface <span class="typeNameLabel"><a href=S3QueryParamsMutable.html>S
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=S3QueryParamsMutable.html#getIsNotEmpty()>getIsNotEmpty</a>() </code>
                                             </th>
-                                            <td class="colLast">Whether this TagMap is not empty.</td>
+                                            <td class="colLast">Converts this <a href=S3QueryParams.html>S3QueryParams</a> instance into a standard map of headers to value lists.</td>
                                         </tr>
                                         
                                         </tbody>
@@ -365,8 +365,21 @@ public interface <span class="typeNameLabel"><a href=S3QueryParamsMutable.html>S
                                           >
                                     <li class="blockList">
                                         <h4>addQueryParam</h4>
-                                        <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=S3QueryParamsMutable.html#addQueryParam(String,String)>addQueryParam</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> header, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> values)</pre>
-                                        <div class="block"></div>
+                                        <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=S3QueryParamsMutable.html#addQueryParam(String,String)>addQueryParam</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> param, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> values)</pre>
+                                        <div class="block"><p>Adds the given header and values to this query param map.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>param</code> - Query parameter.</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>values</code> - Values.</dd>
+                                            
+                                            
+                                        </dl>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -380,8 +393,21 @@ public interface <span class="typeNameLabel"><a href=S3QueryParamsMutable.html>S
                                           >
                                     <li class="blockList">
                                         <h4>addQueryParam</h4>
-                                        <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=S3QueryParamsMutable.html#addQueryParam(String,Iterable)>addQueryParam</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> header, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html>Iterable</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>&gt; values)</pre>
-                                        <div class="block"></div>
+                                        <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=S3QueryParamsMutable.html#addQueryParam(String,Iterable)>addQueryParam</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> param, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html>Iterable</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>&gt; values)</pre>
+                                        <div class="block"><p>Adds the given header and values to this query param map.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>param</code> - Query parameter.</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>values</code> - Values.</dd>
+                                            
+                                            
+                                        </dl>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -395,8 +421,17 @@ public interface <span class="typeNameLabel"><a href=S3QueryParamsMutable.html>S
                                           >
                                     <li class="blockList">
                                         <h4>addQueryParams</h4>
-                                        <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=S3QueryParamsMutable.html#addQueryParams(Map)>addQueryParams</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/util/Map.html>Map</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html>Iterable</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>&gt;&gt; headers)</pre>
-                                        <div class="block"></div>
+                                        <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=S3QueryParamsMutable.html#addQueryParams(Map)>addQueryParams</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/util/Map.html>Map</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html>Iterable</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>&gt;&gt; params)</pre>
+                                        <div class="block"><p>Adds the query params in the given map to this query param map.</p><p>If there exists any key in the input <a href=S3QueryParamsMutable.html#addQueryParams(Map)>params</a> map that already exists in this query parameter map, the values in the supplied iterator will be appended to the param values already in this map.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>params</code> - Map of query parameters to values that will be appended to this map.</dd>
+                                            
+                                            
+                                        </dl>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -410,8 +445,17 @@ public interface <span class="typeNameLabel"><a href=S3QueryParamsMutable.html>S
                                           >
                                     <li class="blockList">
                                         <h4>addQueryParams</h4>
-                                        <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=S3QueryParamsMutable.html#addQueryParams(Pair)>addQueryParams</a>(<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-pair/index.html>Pair</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>&gt; headers)</pre>
-                                        <div class="block"></div>
+                                        <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=S3QueryParamsMutable.html#addQueryParams(Pair)>addQueryParams</a>(<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-pair/index.html>Pair</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>&gt; params)</pre>
+                                        <div class="block"><p>Adds the query params in the given set of pairs to this query param map.</p><p>If there exists any key in the input <a href=S3QueryParamsMutable.html#addQueryParams(Pair)>params</a> pairs that already exists in this map, the value in the supplied pair will be appended to the values already in this map.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>params</code> - Collection of pairs of query parameters to values that will be appended to this header map.</dd>
+                                            
+                                            
+                                        </dl>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -426,7 +470,7 @@ public interface <span class="typeNameLabel"><a href=S3QueryParamsMutable.html>S
                                     <li class="blockList">
                                         <h4>getSize</h4>
                                         <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> <a href=S3QueryParamsMutable.html#getSize()>getSize</a>()</pre>
-                                        <div class="block"><p>Number of tag pairs currently in this TagMap</p></div>
+                                        <div class="block"><p>Number of header entries in this <a href=S3QueryParams.html>S3QueryParams</a> map.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -441,7 +485,7 @@ public interface <span class="typeNameLabel"><a href=S3QueryParamsMutable.html>S
                                     <li class="blockList">
                                         <h4>getIsEmpty</h4>
                                         <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a> <a href=S3QueryParamsMutable.html#getIsEmpty()>getIsEmpty</a>()</pre>
-                                        <div class="block"><p>Whether this TagMap is empty.</p></div>
+                                        <div class="block"><p>Whether this query param map is empty.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -456,7 +500,7 @@ public interface <span class="typeNameLabel"><a href=S3QueryParamsMutable.html>S
                                     <li class="blockList">
                                         <h4>getIsNotEmpty</h4>
                                         <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a> <a href=S3QueryParamsMutable.html#getIsNotEmpty()>getIsNotEmpty</a>()</pre>
-                                        <div class="block"><p>Whether this TagMap is not empty.</p></div>
+                                        <div class="block"><p>Converts this <a href=S3QueryParams.html>S3QueryParams</a> instance into a standard map of headers to value lists.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
