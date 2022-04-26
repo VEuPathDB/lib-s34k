@@ -256,7 +256,7 @@ public interface <span class="typeNameLabel"><a href=S3Object.html>S3Object</a><
                                         <tr id="i1" class="rowColor">
                                             <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=S3Object.html#exists(Function1)>exists</a>(Function1&lt;<a href=../../params/ExistsParams.html>ExistsParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action) </code>
+                                            <th class="colSecond" scope="row"><code><a href=S3Object.html#exists(Function1)>exists</a>(Function1&lt;<a href=../../requests/S3BlankExistsParams.html>S3BlankExistsParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action) </code>
                                             </th>
                                             <td class="colLast"></td>
                                         </tr>
@@ -264,7 +264,7 @@ public interface <span class="typeNameLabel"><a href=S3Object.html>S3Object</a><
                                         <tr id="i2" class="altColor">
                                             <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=S3Object.html#exists(ExistsParams)>exists</a>(<a href=../../params/ExistsParams.html>ExistsParams</a> params) </code>
+                                            <th class="colSecond" scope="row"><code><a href=S3Object.html#exists(S3BlankExistsParams)>exists</a>(<a href=../../requests/S3BlankExistsParams.html>S3BlankExistsParams</a> params) </code>
                                             </th>
                                             <td class="colLast"></td>
                                         </tr>
@@ -280,7 +280,7 @@ public interface <span class="typeNameLabel"><a href=S3Object.html>S3Object</a><
                                         <tr id="i4" class="altColor">
                                             <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=S3Object.html#delete(Function1)>delete</a>(Function1&lt;<a href=../../params/DeleteParams.html>DeleteParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action) </code>
+                                            <th class="colSecond" scope="row"><code><a href=S3Object.html#delete(Function1)>delete</a>(Function1&lt;<a href=../../requests/S3DeleteRequestParams.html>S3DeleteRequestParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action) </code>
                                             </th>
                                             <td class="colLast">Deletes the current object from the S3 store (if it still exists).</td>
                                         </tr>
@@ -288,7 +288,7 @@ public interface <span class="typeNameLabel"><a href=S3Object.html>S3Object</a><
                                         <tr id="i5" class="rowColor">
                                             <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=S3Object.html#delete(DeleteParams)>delete</a>(<a href=../../params/DeleteParams.html>DeleteParams</a> params) </code>
+                                            <th class="colSecond" scope="row"><code><a href=S3Object.html#delete(S3DeleteRequestParams)>delete</a>(<a href=../../requests/S3DeleteRequestParams.html>S3DeleteRequestParams</a> params) </code>
                                             </th>
                                             <td class="colLast">Deletes the current object from the S3 store (if it still exists).</td>
                                         </tr>
@@ -304,7 +304,7 @@ public interface <span class="typeNameLabel"><a href=S3Object.html>S3Object</a><
                                         <tr id="i7" class="rowColor">
                                             <td class="colFirst"><code>abstract <a href=S3ObjectMeta.html>S3ObjectMeta</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=S3Object.html#stat(Function1)>stat</a>(Function1&lt;<a href=../../params/StatParams.html>StatParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action) </code>
+                                            <th class="colSecond" scope="row"><code><a href=S3Object.html#stat(Function1)>stat</a>(Function1&lt;<a href=../../requests/S3BlankStatParams.html>S3BlankStatParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action) </code>
                                             </th>
                                             <td class="colLast"></td>
                                         </tr>
@@ -312,13 +312,13 @@ public interface <span class="typeNameLabel"><a href=S3Object.html>S3Object</a><
                                         <tr id="i8" class="altColor">
                                             <td class="colFirst"><code>abstract <a href=S3ObjectMeta.html>S3ObjectMeta</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=S3Object.html#stat(StatParams)>stat</a>(<a href=../../params/StatParams.html>StatParams</a> params) </code>
+                                            <th class="colSecond" scope="row"><code><a href=S3Object.html#stat(S3BlankStatParams)>stat</a>(<a href=../../requests/S3BlankStatParams.html>S3BlankStatParams</a> params) </code>
                                             </th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
                                         <tr id="i9" class="rowColor">
-                                            <td class="colFirst"><code>abstract <a href=../../S3TagSet.html>S3TagSet</a></code>
+                                            <td class="colFirst"><code>abstract <a href=../../fields/tags/S3MutableTagSet.html>S3MutableTagSet</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=S3Object.html#getTags()>getTags</a>() </code>
                                             </th>
@@ -326,17 +326,17 @@ public interface <span class="typeNameLabel"><a href=S3Object.html>S3Object</a><
                                         </tr>
                                         
                                         <tr id="i10" class="altColor">
-                                            <td class="colFirst"><code>abstract <a href=../../S3TagSet.html>S3TagSet</a></code>
+                                            <td class="colFirst"><code>abstract <a href=../../fields/tags/S3MutableTagSet.html>S3MutableTagSet</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=S3Object.html#getTags(Function1)>getTags</a>(Function1&lt;<a href=../../params/TagGetParams.html>TagGetParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action) </code>
+                                            <th class="colSecond" scope="row"><code><a href=S3Object.html#getTags(Function1)>getTags</a>(Function1&lt;<a href=../../requests/S3BlankTagGetParams.html>S3BlankTagGetParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action) </code>
                                             </th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
                                         <tr id="i11" class="rowColor">
-                                            <td class="colFirst"><code>abstract <a href=../../S3TagSet.html>S3TagSet</a></code>
+                                            <td class="colFirst"><code>abstract <a href=../../fields/tags/S3MutableTagSet.html>S3MutableTagSet</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=S3Object.html#getTags(TagGetParams)>getTags</a>(<a href=../../params/TagGetParams.html>TagGetParams</a> params) </code>
+                                            <th class="colSecond" scope="row"><code><a href=S3Object.html#getTags(S3BlankTagGetParams)>getTags</a>(<a href=../../requests/S3BlankTagGetParams.html>S3BlankTagGetParams</a> params) </code>
                                             </th>
                                             <td class="colLast"></td>
                                         </tr>
@@ -376,7 +376,7 @@ public interface <span class="typeNameLabel"><a href=S3Object.html>S3Object</a><
                                         <tr id="i16" class="altColor">
                                             <td class="colFirst"><code>abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=S3Object.html#setTags(Function1)>setTags</a>(Function1&lt;<a href=../../params/TagPutParams.html>TagPutParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action) </code>
+                                            <th class="colSecond" scope="row"><code><a href=S3Object.html#setTags(Function1)>setTags</a>(Function1&lt;<a href=../../requests/S3BlankTagCreateParams.html>S3BlankTagCreateParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action) </code>
                                             </th>
                                             <td class="colLast"></td>
                                         </tr>
@@ -384,13 +384,13 @@ public interface <span class="typeNameLabel"><a href=S3Object.html>S3Object</a><
                                         <tr id="i17" class="rowColor">
                                             <td class="colFirst"><code>abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=S3Object.html#setTags(TagPutParams)>setTags</a>(<a href=../../params/TagPutParams.html>TagPutParams</a> params) </code>
+                                            <th class="colSecond" scope="row"><code><a href=S3Object.html#setTags(S3BlankTagCreateParams)>setTags</a>(<a href=../../requests/S3BlankTagCreateParams.html>S3BlankTagCreateParams</a> params) </code>
                                             </th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
                                         <tr id="i18" class="altColor">
-                                            <td class="colFirst"><code>abstract <a href=../../S3TagSet.html>S3TagSet</a></code>
+                                            <td class="colFirst"><code>abstract <a href=../../fields/tags/S3MutableTagSet.html>S3MutableTagSet</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=S3Object.html#deleteTags()>deleteTags</a>() </code>
                                             </th>
@@ -398,7 +398,7 @@ public interface <span class="typeNameLabel"><a href=S3Object.html>S3Object</a><
                                         </tr>
                                         
                                         <tr id="i19" class="rowColor">
-                                            <td class="colFirst"><code>abstract <a href=../../S3TagSet.html>S3TagSet</a></code>
+                                            <td class="colFirst"><code>abstract <a href=../../fields/tags/S3MutableTagSet.html>S3MutableTagSet</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=S3Object.html#deleteTags(String)>deleteTags</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> tags) </code>
                                             </th>
@@ -406,7 +406,7 @@ public interface <span class="typeNameLabel"><a href=S3Object.html>S3Object</a><
                                         </tr>
                                         
                                         <tr id="i20" class="altColor">
-                                            <td class="colFirst"><code>abstract <a href=../../S3TagSet.html>S3TagSet</a></code>
+                                            <td class="colFirst"><code>abstract <a href=../../fields/tags/S3MutableTagSet.html>S3MutableTagSet</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=S3Object.html#deleteTags(Iterable)>deleteTags</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html>Iterable</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>&gt; tags) </code>
                                             </th>
@@ -414,17 +414,17 @@ public interface <span class="typeNameLabel"><a href=S3Object.html>S3Object</a><
                                         </tr>
                                         
                                         <tr id="i21" class="rowColor">
-                                            <td class="colFirst"><code>abstract <a href=../../S3TagSet.html>S3TagSet</a></code>
+                                            <td class="colFirst"><code>abstract <a href=../../fields/tags/S3MutableTagSet.html>S3MutableTagSet</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=S3Object.html#deleteTags(Function1)>deleteTags</a>(Function1&lt;<a href=../../params/TagDeleteParams.html>TagDeleteParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action) </code>
+                                            <th class="colSecond" scope="row"><code><a href=S3Object.html#deleteTags(Function1)>deleteTags</a>(Function1&lt;<a href=../../requests/S3BlankTagDeleteParams.html>S3BlankTagDeleteParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action) </code>
                                             </th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
                                         <tr id="i22" class="altColor">
-                                            <td class="colFirst"><code>abstract <a href=../../S3TagSet.html>S3TagSet</a></code>
+                                            <td class="colFirst"><code>abstract <a href=../../fields/tags/S3MutableTagSet.html>S3MutableTagSet</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=S3Object.html#deleteTags(TagDeleteParams)>deleteTags</a>(<a href=../../params/TagDeleteParams.html>TagDeleteParams</a> params) </code>
+                                            <th class="colSecond" scope="row"><code><a href=S3Object.html#deleteTags(S3BlankTagDeleteParams)>deleteTags</a>(<a href=../../requests/S3BlankTagDeleteParams.html>S3BlankTagDeleteParams</a> params) </code>
                                             </th>
                                             <td class="colLast"></td>
                                         </tr>
@@ -528,14 +528,14 @@ public interface <span class="typeNameLabel"><a href=S3Object.html>S3Object</a><
                                           >
                                     <li class="blockList">
                                         <h4>exists</h4>
-                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a> <a href=S3Object.html#exists(Function1)>exists</a>(Function1&lt;<a href=../../params/ExistsParams.html>ExistsParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action)</pre>
+                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a> <a href=S3Object.html#exists(Function1)>exists</a>(Function1&lt;<a href=../../requests/S3BlankExistsParams.html>S3BlankExistsParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action)</pre>
                                         <div class="block"></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
                                 </ul>
                                 
-                                <a id="exists(ExistsParams)">
+                                <a id="exists(S3BlankExistsParams)">
                                     <!--   -->
                                 </a>
                                 <ul class=
@@ -543,7 +543,7 @@ public interface <span class="typeNameLabel"><a href=S3Object.html>S3Object</a><
                                           >
                                     <li class="blockList">
                                         <h4>exists</h4>
-                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a> <a href=S3Object.html#exists(ExistsParams)>exists</a>(<a href=../../params/ExistsParams.html>ExistsParams</a> params)</pre>
+                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a> <a href=S3Object.html#exists(S3BlankExistsParams)>exists</a>(<a href=../../requests/S3BlankExistsParams.html>S3BlankExistsParams</a> params)</pre>
                                         <div class="block"></div>
                                         
                                         <!-- TODO missing return annotation -->
@@ -573,7 +573,7 @@ public interface <span class="typeNameLabel"><a href=S3Object.html>S3Object</a><
                                           >
                                     <li class="blockList">
                                         <h4>delete</h4>
-                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a> <a href=S3Object.html#delete(Function1)>delete</a>(Function1&lt;<a href=../../params/DeleteParams.html>DeleteParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action)</pre>
+                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a> <a href=S3Object.html#delete(Function1)>delete</a>(Function1&lt;<a href=../../requests/S3DeleteRequestParams.html>S3DeleteRequestParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action)</pre>
                                         <div class="block"><p>Deletes the current object from the S3 store (if it still exists).</p></div>
                                         
                                         <dl>
@@ -589,7 +589,7 @@ public interface <span class="typeNameLabel"><a href=S3Object.html>S3Object</a><
                                     </li>
                                 </ul>
                                 
-                                <a id="delete(DeleteParams)">
+                                <a id="delete(S3DeleteRequestParams)">
                                     <!--   -->
                                 </a>
                                 <ul class=
@@ -597,7 +597,7 @@ public interface <span class="typeNameLabel"><a href=S3Object.html>S3Object</a><
                                           >
                                     <li class="blockList">
                                         <h4>delete</h4>
-                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a> <a href=S3Object.html#delete(DeleteParams)>delete</a>(<a href=../../params/DeleteParams.html>DeleteParams</a> params)</pre>
+                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a> <a href=S3Object.html#delete(S3DeleteRequestParams)>delete</a>(<a href=../../requests/S3DeleteRequestParams.html>S3DeleteRequestParams</a> params)</pre>
                                         <div class="block"><p>Deletes the current object from the S3 store (if it still exists).</p></div>
                                         
                                         <dl>
@@ -636,14 +636,14 @@ public interface <span class="typeNameLabel"><a href=S3Object.html>S3Object</a><
                                           >
                                     <li class="blockList">
                                         <h4>stat</h4>
-                                        <pre class="methodSignature"> abstract <a href=S3ObjectMeta.html>S3ObjectMeta</a> <a href=S3Object.html#stat(Function1)>stat</a>(Function1&lt;<a href=../../params/StatParams.html>StatParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action)</pre>
+                                        <pre class="methodSignature"> abstract <a href=S3ObjectMeta.html>S3ObjectMeta</a> <a href=S3Object.html#stat(Function1)>stat</a>(Function1&lt;<a href=../../requests/S3BlankStatParams.html>S3BlankStatParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action)</pre>
                                         <div class="block"></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
                                 </ul>
                                 
-                                <a id="stat(StatParams)">
+                                <a id="stat(S3BlankStatParams)">
                                     <!--   -->
                                 </a>
                                 <ul class=
@@ -651,7 +651,7 @@ public interface <span class="typeNameLabel"><a href=S3Object.html>S3Object</a><
                                           >
                                     <li class="blockList">
                                         <h4>stat</h4>
-                                        <pre class="methodSignature"> abstract <a href=S3ObjectMeta.html>S3ObjectMeta</a> <a href=S3Object.html#stat(StatParams)>stat</a>(<a href=../../params/StatParams.html>StatParams</a> params)</pre>
+                                        <pre class="methodSignature"> abstract <a href=S3ObjectMeta.html>S3ObjectMeta</a> <a href=S3Object.html#stat(S3BlankStatParams)>stat</a>(<a href=../../requests/S3BlankStatParams.html>S3BlankStatParams</a> params)</pre>
                                         <div class="block"></div>
                                         
                                         <!-- TODO missing return annotation -->
@@ -666,7 +666,7 @@ public interface <span class="typeNameLabel"><a href=S3Object.html>S3Object</a><
                                           >
                                     <li class="blockList">
                                         <h4>getTags</h4>
-                                        <pre class="methodSignature"> abstract <a href=../../S3TagSet.html>S3TagSet</a> <a href=S3Object.html#getTags()>getTags</a>()</pre>
+                                        <pre class="methodSignature"> abstract <a href=../../fields/tags/S3MutableTagSet.html>S3MutableTagSet</a> <a href=S3Object.html#getTags()>getTags</a>()</pre>
                                         <div class="block"></div>
                                         
                                         <!-- TODO missing return annotation -->
@@ -681,14 +681,14 @@ public interface <span class="typeNameLabel"><a href=S3Object.html>S3Object</a><
                                           >
                                     <li class="blockList">
                                         <h4>getTags</h4>
-                                        <pre class="methodSignature"> abstract <a href=../../S3TagSet.html>S3TagSet</a> <a href=S3Object.html#getTags(Function1)>getTags</a>(Function1&lt;<a href=../../params/TagGetParams.html>TagGetParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action)</pre>
+                                        <pre class="methodSignature"> abstract <a href=../../fields/tags/S3MutableTagSet.html>S3MutableTagSet</a> <a href=S3Object.html#getTags(Function1)>getTags</a>(Function1&lt;<a href=../../requests/S3BlankTagGetParams.html>S3BlankTagGetParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action)</pre>
                                         <div class="block"></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
                                 </ul>
                                 
-                                <a id="getTags(TagGetParams)">
+                                <a id="getTags(S3BlankTagGetParams)">
                                     <!--   -->
                                 </a>
                                 <ul class=
@@ -696,7 +696,7 @@ public interface <span class="typeNameLabel"><a href=S3Object.html>S3Object</a><
                                           >
                                     <li class="blockList">
                                         <h4>getTags</h4>
-                                        <pre class="methodSignature"> abstract <a href=../../S3TagSet.html>S3TagSet</a> <a href=S3Object.html#getTags(TagGetParams)>getTags</a>(<a href=../../params/TagGetParams.html>TagGetParams</a> params)</pre>
+                                        <pre class="methodSignature"> abstract <a href=../../fields/tags/S3MutableTagSet.html>S3MutableTagSet</a> <a href=S3Object.html#getTags(S3BlankTagGetParams)>getTags</a>(<a href=../../requests/S3BlankTagGetParams.html>S3BlankTagGetParams</a> params)</pre>
                                         <div class="block"></div>
                                         
                                         <!-- TODO missing return annotation -->
@@ -771,14 +771,14 @@ public interface <span class="typeNameLabel"><a href=S3Object.html>S3Object</a><
                                           >
                                     <li class="blockList">
                                         <h4>setTags</h4>
-                                        <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=S3Object.html#setTags(Function1)>setTags</a>(Function1&lt;<a href=../../params/TagPutParams.html>TagPutParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action)</pre>
+                                        <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=S3Object.html#setTags(Function1)>setTags</a>(Function1&lt;<a href=../../requests/S3BlankTagCreateParams.html>S3BlankTagCreateParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action)</pre>
                                         <div class="block"></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
                                 </ul>
                                 
-                                <a id="setTags(TagPutParams)">
+                                <a id="setTags(S3BlankTagCreateParams)">
                                     <!--   -->
                                 </a>
                                 <ul class=
@@ -786,7 +786,7 @@ public interface <span class="typeNameLabel"><a href=S3Object.html>S3Object</a><
                                           >
                                     <li class="blockList">
                                         <h4>setTags</h4>
-                                        <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=S3Object.html#setTags(TagPutParams)>setTags</a>(<a href=../../params/TagPutParams.html>TagPutParams</a> params)</pre>
+                                        <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=S3Object.html#setTags(S3BlankTagCreateParams)>setTags</a>(<a href=../../requests/S3BlankTagCreateParams.html>S3BlankTagCreateParams</a> params)</pre>
                                         <div class="block"></div>
                                         
                                         <!-- TODO missing return annotation -->
@@ -801,7 +801,7 @@ public interface <span class="typeNameLabel"><a href=S3Object.html>S3Object</a><
                                           >
                                     <li class="blockList">
                                         <h4>deleteTags</h4>
-                                        <pre class="methodSignature"> abstract <a href=../../S3TagSet.html>S3TagSet</a> <a href=S3Object.html#deleteTags()>deleteTags</a>()</pre>
+                                        <pre class="methodSignature"> abstract <a href=../../fields/tags/S3MutableTagSet.html>S3MutableTagSet</a> <a href=S3Object.html#deleteTags()>deleteTags</a>()</pre>
                                         <div class="block"><p>Deletes all the tags currently attached to this object.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
@@ -816,7 +816,7 @@ public interface <span class="typeNameLabel"><a href=S3Object.html>S3Object</a><
                                           >
                                     <li class="blockList">
                                         <h4>deleteTags</h4>
-                                        <pre class="methodSignature"> abstract <a href=../../S3TagSet.html>S3TagSet</a> <a href=S3Object.html#deleteTags(String)>deleteTags</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> tags)</pre>
+                                        <pre class="methodSignature"> abstract <a href=../../fields/tags/S3MutableTagSet.html>S3MutableTagSet</a> <a href=S3Object.html#deleteTags(String)>deleteTags</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> tags)</pre>
                                         <div class="block"><p>Deletes the specified tags currently attached to this object.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
@@ -831,7 +831,7 @@ public interface <span class="typeNameLabel"><a href=S3Object.html>S3Object</a><
                                           >
                                     <li class="blockList">
                                         <h4>deleteTags</h4>
-                                        <pre class="methodSignature"> abstract <a href=../../S3TagSet.html>S3TagSet</a> <a href=S3Object.html#deleteTags(Iterable)>deleteTags</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html>Iterable</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>&gt; tags)</pre>
+                                        <pre class="methodSignature"> abstract <a href=../../fields/tags/S3MutableTagSet.html>S3MutableTagSet</a> <a href=S3Object.html#deleteTags(Iterable)>deleteTags</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html>Iterable</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>&gt; tags)</pre>
                                         <div class="block"><p>Deletes the specified tags currently attached to this object.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
@@ -846,14 +846,14 @@ public interface <span class="typeNameLabel"><a href=S3Object.html>S3Object</a><
                                           >
                                     <li class="blockList">
                                         <h4>deleteTags</h4>
-                                        <pre class="methodSignature"> abstract <a href=../../S3TagSet.html>S3TagSet</a> <a href=S3Object.html#deleteTags(Function1)>deleteTags</a>(Function1&lt;<a href=../../params/TagDeleteParams.html>TagDeleteParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action)</pre>
+                                        <pre class="methodSignature"> abstract <a href=../../fields/tags/S3MutableTagSet.html>S3MutableTagSet</a> <a href=S3Object.html#deleteTags(Function1)>deleteTags</a>(Function1&lt;<a href=../../requests/S3BlankTagDeleteParams.html>S3BlankTagDeleteParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action)</pre>
                                         <div class="block"></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
                                 </ul>
                                 
-                                <a id="deleteTags(TagDeleteParams)">
+                                <a id="deleteTags(S3BlankTagDeleteParams)">
                                     <!--   -->
                                 </a>
                                 <ul class=
@@ -861,7 +861,7 @@ public interface <span class="typeNameLabel"><a href=S3Object.html>S3Object</a><
                                           >
                                     <li class="blockList">
                                         <h4>deleteTags</h4>
-                                        <pre class="methodSignature"> abstract <a href=../../S3TagSet.html>S3TagSet</a> <a href=S3Object.html#deleteTags(TagDeleteParams)>deleteTags</a>(<a href=../../params/TagDeleteParams.html>TagDeleteParams</a> params)</pre>
+                                        <pre class="methodSignature"> abstract <a href=../../fields/tags/S3MutableTagSet.html>S3MutableTagSet</a> <a href=S3Object.html#deleteTags(S3BlankTagDeleteParams)>deleteTags</a>(<a href=../../requests/S3BlankTagDeleteParams.html>S3BlankTagDeleteParams</a> params)</pre>
                                         <div class="block"></div>
                                         
                                         <!-- TODO missing return annotation -->

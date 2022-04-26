@@ -1,5 +1,6 @@
-package org.veupathdb.lib.s3.s34k
+package org.veupathdb.lib.s3.s34k.response
 
+import org.veupathdb.lib.s3.s34k.S3Bucket
 import org.veupathdb.lib.s3.s34k.fields.BucketName
 import java.util.stream.Stream
 
