@@ -707,13 +707,61 @@ interface S3Bucket {
 
   // region Get Object Tags
 
-  // TODO: Document me
+  /**
+   * Fetches a map of the tags currently attached to the object at the given
+   * target [path].
+   *
+   * @param path Path to the target object whose tags should be fetched.
+   *
+   * @return A map of tag keys to values for all tags attached to the target
+   * object.
+   *
+   * @throws ObjectNotFoundException If the target object does not exist.
+   *
+   * @throws BucketNotFoundException If this bucket no longer exists.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
   fun getObjectTags(path: String): S3TagMap
 
-  // TODO: Document me
+  /**
+   * Fetches a map of the tags currently attached to the object at the target
+   * with the operation configured by the given action.
+   *
+   * @param action Action used to configure the S3 operation.
+   *
+   * @return A map of tag keys to values for all tags attached to the target
+   * object.
+   *
+   * @throws ObjectNotFoundException If the target object does not exist.
+   *
+   * @throws BucketNotFoundException If this bucket no longer exists.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
   fun getObjectTags(action: S3ObjectTagGetParams.() -> Unit): S3TagMap
 
-  // TODO: Document me
+  /**
+   * Fetches a map of the tags currently attached to the object at the target
+   * with the operation configured by the given parameters.
+   *
+   * @param params S3 operation parameters.
+   *
+   * @return A map of tag keys to values for all tags attached to the target
+   * object.
+   *
+   * @throws ObjectNotFoundException If the target object does not exist.
+   *
+   * @throws BucketNotFoundException If this bucket no longer exists.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
   fun getObjectTags(params: S3ObjectTagGetParams): S3TagMap
 
   // endregion
