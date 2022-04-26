@@ -3,6 +3,7 @@ package org.veupathdb.lib.s3.s34k.response.`object`
 import org.veupathdb.lib.s3.s34k.S3Tag
 import org.veupathdb.lib.s3.s34k.errors.*
 import org.veupathdb.lib.s3.s34k.fields.tags.S3MutableTagSet
+import org.veupathdb.lib.s3.s34k.fields.tags.S3TagMap
 import org.veupathdb.lib.s3.s34k.requests.*
 
 // TODO: Document me
@@ -72,13 +73,13 @@ interface S3Object : S3ObjectResponse {
   // region Get Tags
 
   // TODO: Document me
-  fun getTags(): S3MutableTagSet
+  fun getTags(): S3TagMap
 
   // TODO: Document me
-  fun getTags(action: S3BlankTagGetParams.() -> Unit): S3MutableTagSet
+  fun getTags(action: S3BlankTagGetParams.() -> Unit): S3TagMap
 
   // TODO: Document me
-  fun getTags(params: S3BlankTagGetParams): S3MutableTagSet
+  fun getTags(params: S3BlankTagGetParams): S3TagMap
 
   // endregion
 
@@ -120,7 +121,7 @@ interface S3Object : S3ObjectResponse {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun deleteTags(): S3MutableTagSet
+  fun deleteTags(): S3TagMap
 
   /**
    * Deletes the specified tags currently attached to this object.
@@ -133,7 +134,7 @@ interface S3Object : S3ObjectResponse {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun deleteTags(vararg tags: String): S3MutableTagSet
+  fun deleteTags(vararg tags: String): S3TagMap
 
   /**
    * Deletes the specified tags currently attached to this object.
@@ -146,13 +147,13 @@ interface S3Object : S3ObjectResponse {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun deleteTags(tags: Iterable<String>): S3MutableTagSet
+  fun deleteTags(tags: Iterable<String>): S3TagMap
 
   // TODO: Document me
-  fun deleteTags(action: S3BlankTagDeleteParams.() -> Unit): S3MutableTagSet
+  fun deleteTags(action: S3BlankTagDeleteParams.() -> Unit): S3TagMap
 
   // TODO: Document me
-  fun deleteTags(params: S3BlankTagDeleteParams): S3MutableTagSet
+  fun deleteTags(params: S3BlankTagDeleteParams): S3TagMap
 
   // endregion
 }
