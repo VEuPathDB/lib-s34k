@@ -411,23 +411,23 @@ interface S3Bucket {
 
   // TODO: Document me
   @Throws(ObjectNotFoundException::class, BucketNotFoundException::class, S34kException::class)
-  fun deleteObjectTags(path: String): S3MutableTagSet
+  fun deleteObjectTags(path: String): S3TagMap
 
   // TODO: Document me
   @Throws(ObjectNotFoundException::class, BucketNotFoundException::class, S34kException::class)
-  fun deleteObjectTags(path: String, vararg tags: String): S3MutableTagSet
+  fun deleteObjectTags(path: String, vararg tags: String): S3TagMap
 
   // TODO: Document me
   @Throws(ObjectNotFoundException::class, BucketNotFoundException::class, S34kException::class)
-  fun deleteObjectTags(path: String, tags: Iterable<String>): S3MutableTagSet
+  fun deleteObjectTags(path: String, tags: Iterable<String>): S3TagMap
 
   // TODO: Document me
   @Throws(InvalidRequestConfigException::class, ObjectNotFoundException::class, BucketNotFoundException::class, S34kException::class)
-  fun deleteObjectTags(action: S3ObjectTagDeleteParams.() -> Unit): S3MutableTagSet
+  fun deleteObjectTags(action: S3ObjectTagDeleteParams.() -> Unit): S3TagMap
 
   // TODO: Document me
   @Throws(InvalidRequestConfigException::class, ObjectNotFoundException::class, BucketNotFoundException::class, S34kException::class)
-  fun deleteObjectTags(params: S3ObjectTagDeleteParams): S3MutableTagSet
+  fun deleteObjectTags(params: S3ObjectTagDeleteParams): S3TagMap
 
   // endregion Delete Object Tags
 
