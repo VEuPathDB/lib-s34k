@@ -117,7 +117,7 @@ var pathtoroot = "../../../../../";
 public final class <span class="typeNameLabel"><a href=S3Config.html>S3Config</a></span>
 
                     </pre>
-                    <div class="block"></div>
+                    <div class="block"><p>S3 Client Configuration</p></div>
                 </li>
             </ul>
         </div>
@@ -183,12 +183,6 @@ public final class <span class="typeNameLabel"><a href=S3Config.html>S3Config</a
                                         </tr>
                                         
                                         <tr class="rowColor">
-                                            <td class="colFirst"><code>private final <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a></code></td>
-                                            <th class="colSecond" scope="row"><code><a href=S3Config.html#secure>secure</a></code></th>
-                                            <td class="colLast"></td>
-                                        </tr>
-                                        
-                                        <tr class="altColor">
                                             <td class="colFirst"><code>private final <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a></code></td>
                                             <th class="colSecond" scope="row"><code><a href=S3Config.html#region>region</a></code></th>
                                             <td class="colLast"></td>
@@ -220,7 +214,7 @@ public final class <span class="typeNameLabel"><a href=S3Config.html>S3Config</a
                                         
                                             <tr class="altColor">
                                                 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
-                                                        href="#S3Config(String,String,String,Boolean,String)">S3Config</a></span>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> url, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> accessKey, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> secretKey, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a> secure, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> region)</code></th>
+                                                        href="#S3Config(String,String,String,String)">S3Config</a></span>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> url, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> accessKey, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> secretKey, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> region)</code></th>
                                                 <td class="colLast"></td>
                                             </tr>
                                         
@@ -286,7 +280,7 @@ public final class <span class="typeNameLabel"><a href=S3Config.html>S3Config</a
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=S3Config.html#getAccessKey()>getAccessKey</a>() </code>
                                             </th>
-                                            <td class="colLast"></td>
+                                            <td class="colLast">Access token/key used to authenticate with the S3 service.</td>
                                         </tr>
                                         
                                         <tr id="i2" class="altColor">
@@ -294,18 +288,10 @@ public final class <span class="typeNameLabel"><a href=S3Config.html>S3Config</a
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=S3Config.html#getSecretKey()>getSecretKey</a>() </code>
                                             </th>
-                                            <td class="colLast"></td>
+                                            <td class="colLast">Secret token/key used to authenticate with the S3 service.</td>
                                         </tr>
                                         
                                         <tr id="i3" class="rowColor">
-                                            <td class="colFirst"><code>final <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a></code>
-                                            </td>
-                                            <th class="colSecond" scope="row"><code><a href=S3Config.html#getSecure()>getSecure</a>() </code>
-                                            </th>
-                                            <td class="colLast"></td>
-                                        </tr>
-                                        
-                                        <tr id="i4" class="altColor">
                                             <td class="colFirst"><code>final <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=S3Config.html#getRegion()>getRegion</a>() </code>
@@ -313,7 +299,7 @@ public final class <span class="typeNameLabel"><a href=S3Config.html>S3Config</a
                                             <td class="colLast">Default region to use if not specified in operation specific params.</td>
                                         </tr>
                                         
-                                        <tr id="i5" class="rowColor">
+                                        <tr id="i4" class="altColor">
                                             <td class="colFirst"><code><a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=S3Config.html#toString()>toString</a>() </code>
@@ -352,11 +338,11 @@ public final class <span class="typeNameLabel"><a href=S3Config.html>S3Config</a
                             </a>
                                 <h3>Constructor Detail</h3>
                                 
-                                <a name="S3Config(String,String,String,Boolean,String)"></a>
+                                <a name="S3Config(String,String,String,String)"></a>
                                 <ul class="blockList">
                                     <li class="blockList">
                                         <h4>S3Config</h4>
-                                        <pre>S3Config(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> url, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> accessKey, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> secretKey, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a> secure, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> region)</pre>
+                                        <pre>S3Config(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> url, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> accessKey, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> secretKey, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> region)</pre>
                                         <div class="block"></div>
                                         
                                     </li>
@@ -399,7 +385,7 @@ public final class <span class="typeNameLabel"><a href=S3Config.html>S3Config</a
                                     <li class="blockList">
                                         <h4>getAccessKey</h4>
                                         <pre class="methodSignature"> final <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> <a href=S3Config.html#getAccessKey()>getAccessKey</a>()</pre>
-                                        <div class="block"></div>
+                                        <div class="block"><p>Access token/key used to authenticate with the S3 service.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -414,22 +400,7 @@ public final class <span class="typeNameLabel"><a href=S3Config.html>S3Config</a
                                     <li class="blockList">
                                         <h4>getSecretKey</h4>
                                         <pre class="methodSignature"> final <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> <a href=S3Config.html#getSecretKey()>getSecretKey</a>()</pre>
-                                        <div class="block"></div>
-                                        
-                                        <!-- TODO missing return annotation -->
-                                    </li>
-                                </ul>
-                                
-                                <a id="getSecure()">
-                                    <!--   -->
-                                </a>
-                                <ul class=
-                                              "blockList"
-                                          >
-                                    <li class="blockList">
-                                        <h4>getSecure</h4>
-                                        <pre class="methodSignature"> final <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a> <a href=S3Config.html#getSecure()>getSecure</a>()</pre>
-                                        <div class="block"></div>
+                                        <div class="block"><p>Secret token/key used to authenticate with the S3 service.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
