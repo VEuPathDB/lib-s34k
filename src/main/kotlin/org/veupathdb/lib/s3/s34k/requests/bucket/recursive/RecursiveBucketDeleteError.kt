@@ -32,8 +32,8 @@ open class RecursiveBucketDeleteError : S34kException {
   ) : super(message, cause) {
     this.bucketName = req.bucketName!!
 
-    this.globalHeaders = req.globalHeaders
-    this.globalQueryParams = req.globalQueryParams
+    this.globalHeaders = req.headers
+    this.globalQueryParams = req.queryParams
 
     this.objectListHeaders = req.objectFetch.headers
     this.objectListQueryParams = req.objectFetch.queryParams
