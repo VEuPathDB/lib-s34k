@@ -1,12 +1,12 @@
 package org.veupathdb.lib.s3.s34k.fields
 
 /**
- * Mutable set of tag names.
+ * Set of object names.
  */
 interface S3PathSet : Iterable<String> {
 
   /**
-   * Number of tags currently in this [S3PathSet]
+   * Number of paths currently in this [S3PathSet]
    */
   val size: Int
 
@@ -21,7 +21,7 @@ interface S3PathSet : Iterable<String> {
   val isNotEmpty: Boolean
 
   /**
-   * Returns a read only set containing the tag names in this [S3PathSet].
+   * Returns a read only set containing the paths in this [S3PathSet].
    */
   fun toSet(): Set<String>
 

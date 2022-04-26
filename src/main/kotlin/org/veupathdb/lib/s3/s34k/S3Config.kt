@@ -1,6 +1,12 @@
 package org.veupathdb.lib.s3.s34k
 
-// TODO: Document me
+/**
+ * S3 Client Configuration
+ *
+ * @author Elizabeth Paige Harper [https://github.com/Foxcapades]
+ *
+ * @since  v0.1.0
+ */
 data class S3Config(
 
   /**
@@ -8,14 +14,15 @@ data class S3Config(
    */
   val url: String,
 
-  // TODO: Document me
+  /**
+   * Access token/key used to authenticate with the S3 service.
+   */
   val accessKey: String,
 
-  // TODO: Document me
+  /**
+   * Secret token/key used to authenticate with the S3 service.
+   */
   val secretKey: String,
-
-  // TODO: Document me
-  val secure: Boolean = true,
 
   /**
    * Default region to use if not specified in operation specific params.
@@ -27,7 +34,6 @@ data class S3Config(
       "  url = $url,\n" +
       "  accessKey = ***,\n" +
       "  secretKey = ***,\n" +
-      "  secure = $secure,\n" +
       "  region = $region\n" +
       "}"
   }
