@@ -2,17 +2,13 @@ package org.veupathdb.lib.s3.s34k
 
 import org.veupathdb.lib.s3.s34k.errors.*
 import org.veupathdb.lib.s3.s34k.fields.BucketName
-import org.veupathdb.lib.s3.s34k.fields.tags.S3MutableTagSet
 import org.veupathdb.lib.s3.s34k.fields.tags.S3TagMap
 import org.veupathdb.lib.s3.s34k.requests.*
-import org.veupathdb.lib.s3.s34k.response.`object`.S3ObjectMeta
 import org.veupathdb.lib.s3.s34k.requests.bucket.S3BucketTagDeleteParams
 import org.veupathdb.lib.s3.s34k.requests.bucket.recursive.RecursiveBucketDeleteError
 import org.veupathdb.lib.s3.s34k.requests.bucket.recursive.S3RecursiveBucketDeleteParams
 import org.veupathdb.lib.s3.s34k.requests.`object`.*
-import org.veupathdb.lib.s3.s34k.response.`object`.S3FileObject
-import org.veupathdb.lib.s3.s34k.response.`object`.S3Object
-import org.veupathdb.lib.s3.s34k.response.`object`.S3StreamObject
+import org.veupathdb.lib.s3.s34k.response.`object`.*
 import java.io.File
 import java.io.InputStream
 import java.time.OffsetDateTime
