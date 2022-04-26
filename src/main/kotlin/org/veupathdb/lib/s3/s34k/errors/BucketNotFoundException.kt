@@ -4,6 +4,15 @@ import org.veupathdb.lib.s3.s34k.S3ErrorCode
 import org.veupathdb.lib.s3.s34k.fields.BucketName
 
 
+/**
+ * `NoSuchBucket`
+ *
+ * The specified bucket does not exist.
+ *
+ * @author Elizabeth Paige Harper [https://github.com/Foxcapades]
+ *
+ * @since  v0.1.0
+ */
 class BucketNotFoundException : AbstractBucketOperationException {
 
   override val code = S3ErrorCode.NoSuchBucket

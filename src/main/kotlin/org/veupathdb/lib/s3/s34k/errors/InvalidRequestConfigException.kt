@@ -2,6 +2,16 @@ package org.veupathdb.lib.s3.s34k.errors
 
 import org.veupathdb.lib.s3.s34k.requests.S3RequestParams
 
+/**
+ * Exception thrown due to an invalid request/operation configuration.
+ *
+ * Generally this is due to a required field, such as `bucketName` or `path` not
+ * being set on the operation config.
+ *
+ * @author Elizabeth Paige Harper [https://github.com/Foxcapades]
+ *
+ * @since  v0.1.0
+ */
 class InvalidRequestConfigException : S34kException {
 
   val reason: String
