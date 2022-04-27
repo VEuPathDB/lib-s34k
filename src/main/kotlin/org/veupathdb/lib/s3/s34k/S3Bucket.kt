@@ -25,6 +25,8 @@ import java.time.OffsetDateTime
 @Suppress("unused")
 interface S3Bucket {
 
+  // region Properties
+
   /**
    * Reference to the parent client that created this [S3Bucket] instance.
    */
@@ -50,6 +52,8 @@ interface S3Bucket {
    * Date/time this bucket was created.
    */
   val creationDate: OffsetDateTime
+
+  // endregion Properties
 
   // region Bucket Actions
 
@@ -527,6 +531,9 @@ interface S3Bucket {
    * the object at the time this method was called, those tags will not appear
    * in the returned tag map.
    *
+   * @throws InvalidRequestConfigException If the `path` property is not set on
+   * the configured [S3ObjectTagDeleteParams] instance.
+   *
    * @throws ObjectNotFoundException If the target object does not exist.
    *
    * @throws BucketNotFoundException If this bucket no longer exists.
@@ -561,6 +568,9 @@ interface S3Bucket {
    * the target object.  If any tags in the removal list were not attached to
    * the object at the time this method was called, those tags will not appear
    * in the returned tag map.
+   *
+   * @throws InvalidRequestConfigException If the `path` property is not set on
+   * the configured [S3ObjectTagDeleteParams] instance.
    *
    * @throws ObjectNotFoundException If the target object does not exist.
    *
@@ -789,6 +799,9 @@ interface S3Bucket {
    * @return A map of tag keys to values for all tags attached to the target
    * object.
    *
+   * @throws InvalidRequestConfigException If the S3 operation parameters are
+   * missing required fields or otherwise incorrectly configured.
+   *
    * @throws ObjectNotFoundException If the target object does not exist.
    *
    * @throws BucketNotFoundException If this bucket no longer exists.
@@ -807,6 +820,9 @@ interface S3Bucket {
    *
    * @return A map of tag keys to values for all tags attached to the target
    * object.
+   *
+   * @throws InvalidRequestConfigException If the S3 operation parameters are
+   * missing required fields or otherwise incorrectly configured.
    *
    * @throws ObjectNotFoundException If the target object does not exist.
    *
@@ -899,6 +915,9 @@ interface S3Bucket {
    *
    * @return An [S3Object] instance wrapping the created empty object.
    *
+   * @throws InvalidRequestConfigException If the S3 operation parameters are
+   * missing required fields or otherwise incorrectly configured.
+   *
    * @throws BucketNotFoundException If this bucket no longer exists.
    *
    * @throws S34kException If an implementation specific exception is thrown.
@@ -914,6 +933,9 @@ interface S3Bucket {
    * @param params S3 operation parameters.
    *
    * @return An [S3Object] instance wrapping the created empty object.
+   *
+   * @throws InvalidRequestConfigException If the S3 operation parameters are
+   * missing required fields or otherwise incorrectly configured.
    *
    * @throws BucketNotFoundException If this bucket no longer exists.
    *
@@ -1013,6 +1035,9 @@ interface S3Bucket {
    *
    * @param action Action used to configure the S3 operation parameters.
    *
+   * @throws InvalidRequestConfigException If the S3 operation parameters are
+   * missing required fields or otherwise incorrectly configured.
+   *
    * @throws BucketNotFoundException If this bucket no longer exists.
    *
    * @throws S34kException If an implementation specific exception is thrown.
@@ -1026,6 +1051,9 @@ interface S3Bucket {
    * contents of the given configured file into the newly created object.
    *
    * @param params S3 operation parameters.
+   *
+   * @throws InvalidRequestConfigException If the S3 operation parameters are
+   * missing required fields or otherwise incorrectly configured.
    *
    * @throws BucketNotFoundException If this bucket no longer exists.
    *
