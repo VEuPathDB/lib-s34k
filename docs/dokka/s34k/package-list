@@ -201,7 +201,6 @@ $dokka.location:org.veupathdb.lib.s3.s34k.requests.object/S3ObjectCreateParams/c
 $dokka.location:org.veupathdb.lib.s3.s34k.requests.object/S3ObjectCreateParams/contentType/#/PointingToDeclaration/s34k/org.veupathdb.lib.s3.s34k.requests.object/-s3-object-create-params/content-type.html
 $dokka.location:org.veupathdb.lib.s3.s34k.requests.object/S3ObjectDeleteParams///PointingToDeclaration/s34k/org.veupathdb.lib.s3.s34k.requests.object/-s3-object-delete-params/index.html
 $dokka.location:org.veupathdb.lib.s3.s34k.requests.object/S3ObjectDeleteParams/callback/#/PointingToDeclaration/s34k/org.veupathdb.lib.s3.s34k.requests.object/-s3-object-delete-params/callback.html
-$dokka.location:org.veupathdb.lib.s3.s34k.requests.object/S3ObjectDeleteParams/recursive/#/PointingToDeclaration/s34k/org.veupathdb.lib.s3.s34k.requests.object/-s3-object-delete-params/recursive.html
 $dokka.location:org.veupathdb.lib.s3.s34k.requests.object/S3ObjectDownloadParams///PointingToDeclaration/s34k/org.veupathdb.lib.s3.s34k.requests.object/-s3-object-download-params/index.html
 $dokka.location:org.veupathdb.lib.s3.s34k.requests.object/S3ObjectDownloadParams/callback/#/PointingToDeclaration/s34k/org.veupathdb.lib.s3.s34k.requests.object/-s3-object-download-params/callback.html
 $dokka.location:org.veupathdb.lib.s3.s34k.requests.object/S3ObjectDownloadParams/localFile/#/PointingToDeclaration/s34k/org.veupathdb.lib.s3.s34k.requests.object/-s3-object-download-params/local-file.html
@@ -340,7 +339,7 @@ $dokka.location:org.veupathdb.lib.s3.s34k/S3Bucket/deleteBucketTags/#kotlin.Func
 $dokka.location:org.veupathdb.lib.s3.s34k/S3Bucket/deleteBucketTags/#kotlin.collections.Iterable[kotlin.String]/PointingToDeclaration/s34k/org.veupathdb.lib.s3.s34k/-s3-bucket/delete-bucket-tags.html
 $dokka.location:org.veupathdb.lib.s3.s34k/S3Bucket/deleteBucketTags/#org.veupathdb.lib.s3.s34k.requests.bucket.S3BucketTagDeleteParams/PointingToDeclaration/s34k/org.veupathdb.lib.s3.s34k/-s3-bucket/delete-bucket-tags.html
 $dokka.location:org.veupathdb.lib.s3.s34k/S3Bucket/deleteObject/#kotlin.Function1[org.veupathdb.lib.s3.s34k.requests.object.S3ObjectDeleteParams,kotlin.Unit]/PointingToDeclaration/s34k/org.veupathdb.lib.s3.s34k/-s3-bucket/delete-object.html
-$dokka.location:org.veupathdb.lib.s3.s34k/S3Bucket/deleteObject/#kotlin.String#kotlin.Boolean/PointingToDeclaration/s34k/org.veupathdb.lib.s3.s34k/-s3-bucket/delete-object.html
+$dokka.location:org.veupathdb.lib.s3.s34k/S3Bucket/deleteObject/#kotlin.String/PointingToDeclaration/s34k/org.veupathdb.lib.s3.s34k/-s3-bucket/delete-object.html
 $dokka.location:org.veupathdb.lib.s3.s34k/S3Bucket/deleteObject/#org.veupathdb.lib.s3.s34k.requests.object.S3ObjectDeleteParams/PointingToDeclaration/s34k/org.veupathdb.lib.s3.s34k/-s3-bucket/delete-object.html
 $dokka.location:org.veupathdb.lib.s3.s34k/S3Bucket/deleteObjectTags/#kotlin.Function1[org.veupathdb.lib.s3.s34k.requests.object.S3ObjectTagDeleteParams,kotlin.Unit]/PointingToDeclaration/s34k/org.veupathdb.lib.s3.s34k/-s3-bucket/delete-object-tags.html
 $dokka.location:org.veupathdb.lib.s3.s34k/S3Bucket/deleteObjectTags/#kotlin.String#kotlin.Array[kotlin.String]/PointingToDeclaration/s34k/org.veupathdb.lib.s3.s34k/-s3-bucket/delete-object-tags.html

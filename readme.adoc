@@ -37,4 +37,5 @@ TODOs:
 * [ ] Configuration of multi-stage targeted object tag deleteion.
 * [ ] Configuration of multi-stage targeted bucket tag deletion.
 * [ ] Version ID on object tag deletion params
+* [ ] Recursive object deletes
 --

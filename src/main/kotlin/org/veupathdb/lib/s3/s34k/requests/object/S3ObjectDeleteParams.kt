@@ -18,48 +18,4 @@ interface S3ObjectDeleteParams : S3ObjectRequestParams {
    * `false` means the file did not exist at the time the request was made.
    */
   var callback: ((Boolean) -> Unit)?
-
-  /**
-   * Whether the object delete should be recursive, I.E. should all keys with
-   * this object path as a prefix also be deleted.
-   *
-   * ### Examples
-   *
-   * Examples for operations where the target key `/foo/bar` is deleted.
-   *
-   * #### Without Recursive
-   *
-   * Before:
-   * ```
-   * /foo/bar
-   * /foo/bar/fizz
-   * /foo/bar/buzz
-   * /hi/bye/something
-   * ```
-   *
-   * After:
-   * ```
-   * /foo/bar/fizz
-   * /foo/bar/buzz
-   * /hi/bye/something
-   * ```
-   *
-   * #### With Recursive
-   *
-   * Before:
-   * ```
-   * /foo/bar
-   * /foo/bar/fizz
-   * /foo/bar/buzz
-   * /hi/bye/something
-   * ```
-   *
-   * After:
-   * ```
-   * /hi/bye/something
-   * ```
-   *
-   * Default value: `false`
-   */
-  var recursive: Boolean
 }
