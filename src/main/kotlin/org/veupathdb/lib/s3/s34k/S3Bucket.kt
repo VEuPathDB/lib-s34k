@@ -3,7 +3,9 @@ package org.veupathdb.lib.s3.s34k
 import org.veupathdb.lib.s3.s34k.errors.*
 import org.veupathdb.lib.s3.s34k.fields.BucketName
 import org.veupathdb.lib.s3.s34k.fields.tags.S3TagMap
-import org.veupathdb.lib.s3.s34k.requests.*
+import org.veupathdb.lib.s3.s34k.requests.S3BlankTagCreateParams
+import org.veupathdb.lib.s3.s34k.requests.S3BlankTagGetParams
+import org.veupathdb.lib.s3.s34k.requests.S3DeleteRequestParams
 import org.veupathdb.lib.s3.s34k.requests.bucket.S3BucketTagDeleteParams
 import org.veupathdb.lib.s3.s34k.requests.bucket.recursive.RecursiveBucketDeleteError
 import org.veupathdb.lib.s3.s34k.requests.bucket.recursive.S3RecursiveBucketDeleteParams

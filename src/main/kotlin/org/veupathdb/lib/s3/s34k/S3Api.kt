@@ -1,7 +1,7 @@
 package org.veupathdb.lib.s3.s34k
 
 import org.slf4j.LoggerFactory
-import java.util.ServiceLoader
+import java.util.*
 
 /**
  * S3 API Client Provider

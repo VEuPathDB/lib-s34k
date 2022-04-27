@@ -1,7 +1,9 @@
 package org.veupathdb.lib.s3.s34k.response.`object`
 
 import org.veupathdb.lib.s3.s34k.S3Tag
-import org.veupathdb.lib.s3.s34k.errors.*
+import org.veupathdb.lib.s3.s34k.errors.BucketNotFoundException
+import org.veupathdb.lib.s3.s34k.errors.ObjectNotFoundException
+import org.veupathdb.lib.s3.s34k.errors.S34kException
 import org.veupathdb.lib.s3.s34k.fields.tags.S3TagMap
 import org.veupathdb.lib.s3.s34k.requests.*
 

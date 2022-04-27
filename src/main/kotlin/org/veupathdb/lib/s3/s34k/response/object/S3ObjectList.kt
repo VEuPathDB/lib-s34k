@@ -1,6 +1,5 @@
 package org.veupathdb.lib.s3.s34k.response.`object`
 
-import org.veupathdb.lib.s3.s34k.response.`object`.S3Object
 import java.util.stream.Stream
 
 // TODO: Document me
