@@ -10,9 +10,23 @@ package org.veupathdb.lib.s3.s34k
 data class S3Config(
 
   /**
-   * URL to the S3 instance including protocol and port if necessary.
+   * URL to the S3 endpoint.
    */
-  val url: String,
+  val url: String = "127.0.0.1",
+
+  /**
+   * Port for the S3 endpoint.
+   *
+   * Default value (`0`) means decide based on the value of the [secure] flag.
+   */
+  val port: UShort = 0u,
+
+  /**
+   * Whether HTTPS should be used instead of plain HTTP.
+   *
+   * Defaults to `true`
+   */
+  val secure: Boolean = true,
 
   /**
    * Access token/key used to authenticate with the S3 service.
