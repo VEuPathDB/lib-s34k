@@ -1178,10 +1178,12 @@ interface S3Bucket {
    *
    * @param path Path to the target object that should be deleted.
    *
+   * @param recursive Whether the delete should be recursive.  For a more
+   * detailed explanation of what this means, see
+   * [S3ObjectDeleteParams.recursive].
+   *
    * @return `true` if the object previously existed and has now been deleted,
    * `false` if the file already did not exist at the time of this operation.
-   *
-   * TODO: What happens when you delete a directory key?
    *
    * @throws BucketNotFoundException If this bucket no longer exists.
    *
@@ -1189,7 +1191,7 @@ interface S3Bucket {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun deleteObject(path: String): Boolean
+  fun deleteObject(path: String, recursive: Boolean = false): Boolean
 
   /**
    * Deletes the configured target object from this bucket.
@@ -1198,8 +1200,6 @@ interface S3Bucket {
    *
    * @return `true` if the object previously existed and has now been deleted,
    * `false` if the file already did not exist at the time of this operation.
-   *
-   * TODO: What happens when you delete a directory key?
    *
    * @throws InvalidRequestConfigException If the S3 operation parameters are
    * missing required fields or otherwise incorrectly configured.
@@ -1219,8 +1219,6 @@ interface S3Bucket {
    *
    * @return `true` if the object previously existed and has now been deleted,
    * `false` if the file already did not exist at the time of this operation.
-   *
-   * TODO: What happens when you delete a directory key?
    *
    * @throws InvalidRequestConfigException If the S3 operation parameters are
    * missing required fields or otherwise incorrectly configured.
