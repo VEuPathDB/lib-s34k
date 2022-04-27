@@ -171,6 +171,18 @@ public final class <span class="typeNameLabel"><a href=S3Config.html>S3Config</a
                                         </tr>
                                         
                                         <tr class="rowColor">
+                                            <td class="colFirst"><code>private final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-u-short/index.html>UShort</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=S3Config.html#port>port</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="altColor">
+                                            <td class="colFirst"><code>private final <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=S3Config.html#secure>secure</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="rowColor">
                                             <td class="colFirst"><code>private final <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a></code></td>
                                             <th class="colSecond" scope="row"><code><a href=S3Config.html#accessKey>accessKey</a></code></th>
                                             <td class="colLast"></td>
@@ -214,7 +226,7 @@ public final class <span class="typeNameLabel"><a href=S3Config.html>S3Config</a
                                         
                                             <tr class="altColor">
                                                 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
-                                                        href="#S3Config(String,String,String,String)">S3Config</a></span>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> url, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> accessKey, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> secretKey, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> region)</code></th>
+                                                        href="#S3Config(String,UShort,Boolean,String,String,String)">S3Config</a></span>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> url, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-u-short/index.html>UShort</a> port, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a> secure, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> accessKey, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> secretKey, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> region)</code></th>
                                                 <td class="colLast"></td>
                                             </tr>
                                         
@@ -272,10 +284,26 @@ public final class <span class="typeNameLabel"><a href=S3Config.html>S3Config</a
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=S3Config.html#getUrl()>getUrl</a>() </code>
                                             </th>
-                                            <td class="colLast">URL to the S3 instance including protocol and port if necessary.</td>
+                                            <td class="colLast">URL to the S3 endpoint.</td>
                                         </tr>
                                         
                                         <tr id="i1" class="rowColor">
+                                            <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-u-short/index.html>UShort</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=S3Config.html#getPort()>getPort</a>() </code>
+                                            </th>
+                                            <td class="colLast">Port for the S3 endpoint.</td>
+                                        </tr>
+                                        
+                                        <tr id="i2" class="altColor">
+                                            <td class="colFirst"><code>final <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=S3Config.html#getSecure()>getSecure</a>() </code>
+                                            </th>
+                                            <td class="colLast">Whether HTTPS should be used instead of plain HTTP.</td>
+                                        </tr>
+                                        
+                                        <tr id="i3" class="rowColor">
                                             <td class="colFirst"><code>final <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=S3Config.html#getAccessKey()>getAccessKey</a>() </code>
@@ -283,7 +311,7 @@ public final class <span class="typeNameLabel"><a href=S3Config.html>S3Config</a
                                             <td class="colLast">Access token/key used to authenticate with the S3 service.</td>
                                         </tr>
                                         
-                                        <tr id="i2" class="altColor">
+                                        <tr id="i4" class="altColor">
                                             <td class="colFirst"><code>final <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=S3Config.html#getSecretKey()>getSecretKey</a>() </code>
@@ -291,7 +319,7 @@ public final class <span class="typeNameLabel"><a href=S3Config.html>S3Config</a
                                             <td class="colLast">Secret token/key used to authenticate with the S3 service.</td>
                                         </tr>
                                         
-                                        <tr id="i3" class="rowColor">
+                                        <tr id="i5" class="rowColor">
                                             <td class="colFirst"><code>final <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=S3Config.html#getRegion()>getRegion</a>() </code>
@@ -299,7 +327,7 @@ public final class <span class="typeNameLabel"><a href=S3Config.html>S3Config</a
                                             <td class="colLast">Default region to use if not specified in operation specific params.</td>
                                         </tr>
                                         
-                                        <tr id="i4" class="altColor">
+                                        <tr id="i6" class="altColor">
                                             <td class="colFirst"><code><a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=S3Config.html#toString()>toString</a>() </code>
@@ -338,11 +366,11 @@ public final class <span class="typeNameLabel"><a href=S3Config.html>S3Config</a
                             </a>
                                 <h3>Constructor Detail</h3>
                                 
-                                <a name="S3Config(String,String,String,String)"></a>
+                                <a name="S3Config(String,UShort,Boolean,String,String,String)"></a>
                                 <ul class="blockList">
                                     <li class="blockList">
                                         <h4>S3Config</h4>
-                                        <pre>S3Config(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> url, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> accessKey, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> secretKey, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> region)</pre>
+                                        <pre>S3Config(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> url, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-u-short/index.html>UShort</a> port, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a> secure, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> accessKey, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> secretKey, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> region)</pre>
                                         <div class="block"></div>
                                         
                                     </li>
@@ -370,7 +398,37 @@ public final class <span class="typeNameLabel"><a href=S3Config.html>S3Config</a
                                     <li class="blockList">
                                         <h4>getUrl</h4>
                                         <pre class="methodSignature"> final <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> <a href=S3Config.html#getUrl()>getUrl</a>()</pre>
-                                        <div class="block"><p>URL to the S3 instance including protocol and port if necessary.</p></div>
+                                        <div class="block"><p>URL to the S3 endpoint.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="getPort()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getPort</h4>
+                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-u-short/index.html>UShort</a> <a href=S3Config.html#getPort()>getPort</a>()</pre>
+                                        <div class="block"><p>Port for the S3 endpoint.</p><p>Default value (<code>0</code>) means decide based on the value of the <a href=S3Config.html#secure>secure</a> flag.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="getSecure()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getSecure</h4>
+                                        <pre class="methodSignature"> final <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a> <a href=S3Config.html#getSecure()>getSecure</a>()</pre>
+                                        <div class="block"><p>Whether HTTPS should be used instead of plain HTTP.</p><p>Defaults to <code>true</code></p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>

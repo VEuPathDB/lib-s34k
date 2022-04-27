@@ -424,10 +424,12 @@ $dokka.location:org.veupathdb.lib.s3.s34k/S3Client/listBuckets/#org.veupathdb.li
 $dokka.location:org.veupathdb.lib.s3.s34k/S3ClientProvider///PointingToDeclaration/s34k/org.veupathdb.lib.s3.s34k/-s3-client-provider/index.html
 $dokka.location:org.veupathdb.lib.s3.s34k/S3ClientProvider/new/#org.veupathdb.lib.s3.s34k.S3Config/PointingToDeclaration/s34k/org.veupathdb.lib.s3.s34k/-s3-client-provider/new.html
 $dokka.location:org.veupathdb.lib.s3.s34k/S3Config///PointingToDeclaration/s34k/org.veupathdb.lib.s3.s34k/-s3-config/index.html
-$dokka.location:org.veupathdb.lib.s3.s34k/S3Config/S3Config/#kotlin.String#kotlin.String#kotlin.String#kotlin.String?/PointingToDeclaration/s34k/org.veupathdb.lib.s3.s34k/-s3-config/-s3-config.html
+$dokka.location:org.veupathdb.lib.s3.s34k/S3Config/S3Config/#kotlin.String#kotlin.UShort#kotlin.Boolean#kotlin.String#kotlin.String#kotlin.String?/PointingToDeclaration/s34k/org.veupathdb.lib.s3.s34k/-s3-config/-s3-config.html
 $dokka.location:org.veupathdb.lib.s3.s34k/S3Config/accessKey/#/PointingToDeclaration/s34k/org.veupathdb.lib.s3.s34k/-s3-config/access-key.html
+$dokka.location:org.veupathdb.lib.s3.s34k/S3Config/port/#/PointingToDeclaration/s34k/org.veupathdb.lib.s3.s34k/-s3-config/port.html
 $dokka.location:org.veupathdb.lib.s3.s34k/S3Config/region/#/PointingToDeclaration/s34k/org.veupathdb.lib.s3.s34k/-s3-config/region.html
 $dokka.location:org.veupathdb.lib.s3.s34k/S3Config/secretKey/#/PointingToDeclaration/s34k/org.veupathdb.lib.s3.s34k/-s3-config/secret-key.html
+$dokka.location:org.veupathdb.lib.s3.s34k/S3Config/secure/#/PointingToDeclaration/s34k/org.veupathdb.lib.s3.s34k/-s3-config/secure.html
 $dokka.location:org.veupathdb.lib.s3.s34k/S3Config/toString/#/PointingToDeclaration/s34k/org.veupathdb.lib.s3.s34k/-s3-config/to-string.html
 $dokka.location:org.veupathdb.lib.s3.s34k/S3Config/url/#/PointingToDeclaration/s34k/org.veupathdb.lib.s3.s34k/-s3-config/url.html
 $dokka.location:org.veupathdb.lib.s3.s34k/S3ErrorCode///PointingToDeclaration/s34k/org.veupathdb.lib.s3.s34k/-s3-error-code/index.html
