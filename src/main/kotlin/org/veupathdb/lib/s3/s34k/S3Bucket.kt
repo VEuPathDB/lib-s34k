@@ -1173,13 +1173,64 @@ interface S3Bucket {
 
   // region Delete Object
 
-  // TODO: Document me
+  /**
+   * Deletes the target object from this bucket.
+   *
+   * @param path Path to the target object that should be deleted.
+   *
+   * @return `true` if the object previously existed and has now been deleted,
+   * `false` if the file already did not exist at the time of this operation.
+   *
+   * TODO: What happens when you delete a directory key?
+   *
+   * @throws BucketNotFoundException If this bucket no longer exists.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
   fun deleteObject(path: String): Boolean
 
-  // TODO: Document me
+  /**
+   * Deletes the configured target object from this bucket.
+   *
+   * @param action Action used to configure the S3 operation.
+   *
+   * @return `true` if the object previously existed and has now been deleted,
+   * `false` if the file already did not exist at the time of this operation.
+   *
+   * TODO: What happens when you delete a directory key?
+   *
+   * @throws InvalidRequestConfigException If the S3 operation parameters are
+   * missing required fields or otherwise incorrectly configured.
+   *
+   * @throws BucketNotFoundException If this bucket no longer exists.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
   fun deleteObject(action: S3ObjectDeleteParams.() -> Unit): Boolean
 
-  // TODO: Document me
+  /**
+   * Deletes the configured target object from this bucket.
+   *
+   * @param params S3 operation parameters.
+   *
+   * @return `true` if the object previously existed and has now been deleted,
+   * `false` if the file already did not exist at the time of this operation.
+   *
+   * TODO: What happens when you delete a directory key?
+   *
+   * @throws InvalidRequestConfigException If the S3 operation parameters are
+   * missing required fields or otherwise incorrectly configured.
+   *
+   * @throws BucketNotFoundException If this bucket no longer exists.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
   fun deleteObject(params: S3ObjectDeleteParams): Boolean
 
   // endregion Delete Object
