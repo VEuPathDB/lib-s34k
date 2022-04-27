@@ -694,13 +694,67 @@ interface S3Bucket {
 
   // region Get Object
 
-  // TODO: Document me
+  /**
+   * Fetches a target object from this bucket and returns an object reference
+   * with a stream over the contents of the remote object.
+   *
+   * @param path Path to the target object.
+   *
+   * @return An object reference to the target object, containing a stream over
+   * the contents of that object.
+   *
+   * @throws ObjectNotFoundException If the target object does not exist.
+   *
+   * @throws BucketNotFoundException If this bucket no longer exists.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
   fun getObject(path: String): S3StreamObject
 
-  // TODO: Document me
+  /**
+   * Fetches the configured target object from this bucket and returns an object
+   * reference with a stream over the contents of the remote object.
+   *
+   * @param action Action used to configure this S3 operation.
+   *
+   * @return An object reference to the target object, containing a stream over
+   * the contents of that object.
+   *
+   * @throws InvalidRequestConfigException If the `path` property is not set on
+   * the [S3ObjectGetParams] instance.
+   *
+   * @throws ObjectNotFoundException If the target object does not exist.
+   *
+   * @throws BucketNotFoundException If this bucket no longer exists.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
   fun getObject(action: S3ObjectGetParams.() -> Unit): S3StreamObject
 
-  // TODO: Document me
+  /**
+   * Fetches the configured target object from this bucket and returns an object
+   * reference with a stream over the contents of the remote object.
+   *
+   * @param params S3 operation parameters.
+   *
+   * @return An object reference to the target object, containing a stream over
+   * the contents of that object.
+   *
+   * @throws InvalidRequestConfigException If the `path` property is not set on
+   * the [S3ObjectGetParams] instance.
+   *
+   * @throws ObjectNotFoundException If the target object does not exist.
+   *
+   * @throws BucketNotFoundException If this bucket no longer exists.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
   fun getObject(params: S3ObjectGetParams): S3StreamObject
 
   // endregion
