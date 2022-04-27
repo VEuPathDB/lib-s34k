@@ -16,19 +16,27 @@ import org.veupathdb.lib.s3.s34k.requests.`object`.ObjectDeleteError
  *
  * @since  v0.1.0
  */
-class RecursiveBucketDeleteObjectDeleteError(
-  req: S3ClientRecursiveBucketDeleteParams,
-  errs: List<ObjectDeleteError>,
-  message: String,
-  cause: Throwable
-) : RecursiveBucketDeleteError(S3RecursiveDeletePhase.DeleteObjects, req, message, cause) {
+open class RecursiveBucketDeleteObjectDeleteError : RecursiveBucketDeleteError {
 
   /**
    * List of errors that occurred for each object whose delete operation failed.
    */
   val objectErrors: List<ObjectDeleteError>
 
-  init {
+  constructor(
+    req: S3ClientRecursiveBucketDeleteParams,
+    errs: List<ObjectDeleteError>,
+    message: String,
+    cause: Throwable
+  ) : super(S3RecursiveDeletePhase.DeleteObjects, req, message, cause) {
     objectErrors = errs
   }
+
+  constructor(
+    req: S3ClientRecursiveBucketDeleteParams,
+    errs: List<ObjectDeleteError>,
+  ) : super(S3RecursiveDeletePhase.DeleteObjects, req) {
+    objectErrors = errs
+  }
+
 }

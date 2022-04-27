@@ -25,12 +25,7 @@ import org.veupathdb.lib.s3.s34k.fields.query_params.S3QueryParams
  *
  * @since  v0.1.0
  */
-open class RecursiveBucketDeleteError(
-  phase: S3RecursiveDeletePhase,
-  req: S3ClientRecursiveBucketDeleteParams,
-  message: String,
-  cause: Throwable
-) : S34kException(message, cause) {
+open class RecursiveBucketDeleteError : S34kException {
 
   /**
    * Operation phase in which the error occurred.
@@ -91,7 +86,28 @@ open class RecursiveBucketDeleteError(
    */
   val bucketDeleteQueryParams: S3QueryParams
 
-  init {
+  constructor(
+    phase: S3RecursiveDeletePhase,
+    req: S3ClientRecursiveBucketDeleteParams,
+    message: String,
+    cause: Throwable
+  ) : super(message, cause) {
+    this.phase = phase
+    this.bucketName = req.bucketName!!
+    this.globalHeaders = req.headers
+    this.globalQueryParams = req.queryParams
+    this.objectListHeaders = req.objectFetch.headers
+    this.objectListQueryParams = req.objectFetch.queryParams
+    this.objectDeleteHeaders = req.objectDelete.headers
+    this.objectDeleteQueryParams = req.objectDelete.queryParams
+    this.bucketDeleteHeaders = req.bucketDelete.headers
+    this.bucketDeleteQueryParams = req.bucketDelete.queryParams
+  }
+
+  constructor(
+    phase: S3RecursiveDeletePhase,
+    req: S3ClientRecursiveBucketDeleteParams,
+  ) : super() {
     this.phase = phase
     this.bucketName = req.bucketName!!
     this.globalHeaders = req.headers
