@@ -838,20 +838,124 @@ interface S3Bucket {
 
   // region Put Object Tags
 
+  /**
+   * Attaches the given key/value pairs as tags onto the target object.
+   *
+   * @param path Path to the target object onto which the tags should be
+   * assigned.
+   *
+   * @param tags List of key/value pairs that will be assigned to the target
+   * object.
+   *
+   * @throws IllegalArgumentException If any of the given pairs of tags fail
+   * to meet the validation requirements outlined in the [S3Tag] documentation.
+   *
+   * @throws ObjectNotFoundException If the target object does not exist.
+   *
+   * @throws BucketNotFoundException If this bucket no longer exists.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
   fun putObjectTags(path: String, vararg tags: Pair<String, String>)
 
+  /**
+   * Attaches the given [S3Tag]s onto the target object.
+   *
+   * @param path Path to the target object onto which the tags should be
+   * assigned.
+   *
+   * @param tags List of [S3Tag] pairs that will be assigned to the target
+   * object.
+   *
+   * @throws ObjectNotFoundException If the target object does not exist.
+   *
+   * @throws BucketNotFoundException If this bucket no longer exists.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
   fun putObjectTags(path: String, vararg tags: S3Tag)
 
-  // TODO: Document me
+  /**
+   * Attaches the given [S3Tag]s onto the target object.
+   *
+   * @param path Path to the target object onto which the tags should be
+   * assigned.
+   *
+   * @param tags List of [S3Tag] pairs that will be assigned to the target
+   * object.
+   *
+   * @throws ObjectNotFoundException If the target object does not exist.
+   *
+   * @throws BucketNotFoundException If this bucket no longer exists.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
   fun putObjectTags(path: String, tags: Iterable<S3Tag>)
 
-  // TODO: Document me
+  /**
+   * Attaches the key/value pairs in the given map as tags onto the target
+   * object.
+   *
+   * @param path Path to the target object onto which the tags should be
+   * assigned.
+   *
+   * @param tags Map\ of key/value pairs that will be assigned to the target
+   * object.
+   *
+   * @throws IllegalArgumentException If any of the key/value pairs of in the
+   * given map fail to meet the validation requirements outlined in the [S3Tag]
+   * documentation.
+   *
+   * @throws ObjectNotFoundException If the target object does not exist.
+   *
+   * @throws BucketNotFoundException If this bucket no longer exists.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
   fun putObjectTags(path: String, tags: Map<String, String>)
 
-  // TODO: Document me
+  /**
+   * Attaches the configured tags to the target object.
+   *
+   * @param action Action used to configure the S3 operation.
+   *
+   * @throws InvalidRequestConfigException If the S3 operation parameters are
+   * missing required fields or otherwise incorrectly configured.
+   *
+   * @throws ObjectNotFoundException If the target object does not exist.
+   *
+   * @throws BucketNotFoundException If this bucket no longer exists.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
   fun putObjectTags(action: S3ObjectTagCreateParams.() -> Unit)
 
-  // TODO: Document me
+  /**
+   * Attaches the configured tags to the target object.
+   *
+   * @param params S3 operation parameters.
+   *
+   * @throws InvalidRequestConfigException If the S3 operation parameters are
+   * missing required fields or otherwise incorrectly configured.
+   *
+   * @throws ObjectNotFoundException If the target object does not exist.
+   *
+   * @throws BucketNotFoundException If this bucket no longer exists.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
   fun putObjectTags(params: S3ObjectTagCreateParams)
 
   // endregion
