@@ -2,6 +2,7 @@
 :source-highlighter: highlightjs
 
 image:https://img.shields.io/badge/jvm-1.8-blue[title="Compatible with JVM 1.8"]
+image:https://img.shields.io/github/v/release/veupathdb/lib-s34k[title="Version"]
 image:https://img.shields.io/badge/docs-javadoc-brightgreen[link="https://veupathdb.github.io/lib-s34k/javadoc"]
 image:https://img.shields.io/badge/docs-dokka-brightgreen[link="https://veupathdb.github.io/lib-s34k/dokka"]
 
