@@ -11,7 +11,7 @@ import org.veupathdb.lib.s3.s34k.fields.query_params.S3QueryParams
  *
  * This exception may be thrown during any phase of the action, and thus it is
  * possible that no write operation has occurred, or it is also possible that
- * the S3 store has been left in a half-deleted state.
+ * the S3 store has been left in a partially-deleted state.
  *
  * It is important to verify the state of the S3 store after this exception is
  * thrown.
@@ -92,6 +92,23 @@ open class RecursiveBucketDeleteError : S34kException {
     message: String,
     cause: Throwable
   ) : super(message, cause) {
+    this.phase = phase
+    this.bucketName = req.bucketName!!
+    this.globalHeaders = req.headers
+    this.globalQueryParams = req.queryParams
+    this.objectListHeaders = req.objectFetch.headers
+    this.objectListQueryParams = req.objectFetch.queryParams
+    this.objectDeleteHeaders = req.objectDelete.headers
+    this.objectDeleteQueryParams = req.objectDelete.queryParams
+    this.bucketDeleteHeaders = req.bucketDelete.headers
+    this.bucketDeleteQueryParams = req.bucketDelete.queryParams
+  }
+
+  constructor(
+    phase: S3RecursiveDeletePhase,
+    req: S3ClientRecursiveBucketDeleteParams,
+    cause: Throwable
+  ) : super(cause) {
     this.phase = phase
     this.bucketName = req.bucketName!!
     this.globalHeaders = req.headers
