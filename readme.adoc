@@ -5,6 +5,62 @@ image:https://img.shields.io/badge/docs-javadoc-brightgreen[link="https://veupat
 image:https://img.shields.io/badge/docs-dokka-brightgreen[link="https://veupathdb.github.io/lib-s34k/dokka"]
 
 
+== Operations
+
+=== Tiers
+
+==== Client
+
+General bucket operations:
+
+* Create bucket
+* Create bucket if not exists
+* Test bucket existence
+* List buckets
+* Delete bucket
+* Delete bucket recursive
+
+
+==== Bucket
+
+Bucket specific and general object operations.
+
+.Bucket operations:
+* Delete
+* Delete recursive
+* Delete tags (all)
+* Delete tags (targeted)
+* Get tags
+* Put tags
+
+.Object operations:
+* Delete single
+* Delete bulk
+* Delete tags
+* Download
+* Existence test
+* Get
+* Get tags
+* List
+* Put
+* Put tags
+* Put 'directory'
+* Stat
+* Touch
+* Upload
+
+==== Object
+
+Object specific operations.
+
+.Operations
+* Exists test
+* Delete
+* Stat
+* Get Tags
+* Put Tags
+* Delete Tags (all)
+* Delete Tags (targeted)
 
 == Roadmap
 
