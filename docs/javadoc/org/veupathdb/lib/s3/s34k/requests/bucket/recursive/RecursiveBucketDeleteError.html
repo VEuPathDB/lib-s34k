@@ -120,7 +120,7 @@ var pathtoroot = "../../../../../../../../";
 public class <span class="typeNameLabel"><a href=RecursiveBucketDeleteError.html>RecursiveBucketDeleteError</a></span>
 extends <a href=../../../errors/S34kException.html>S34kException</a>
                     </pre>
-                    <div class="block"><p>Represents and exception thrown during any phase of the complex action of recursively deleting an S3 bucket.</p><p>This exception may be thrown during any phase of the action, and thus it is possible that no write operation has occurred, or it is also possible that the S3 store has been left in a half-deleted state.</p><p>It is important to verify the state of the S3 store after this exception is thrown.</p><p>This exception will contain as much information as possible about the error and the request that caused it.</p></div>
+                    <div class="block"><p>Represents and exception thrown during any phase of the complex action of recursively deleting an S3 bucket.</p><p>This exception may be thrown during any phase of the action, and thus it is possible that no write operation has occurred, or it is also possible that the S3 store has been left in a partially-deleted state.</p><p>It is important to verify the state of the S3 store after this exception is thrown.</p><p>This exception will contain as much information as possible about the error and the request that caused it.</p></div>
                 </li>
             </ul>
         </div>
@@ -266,6 +266,18 @@ extends <a href=../../../errors/S34kException.html>S34kException</a>
                                             <tr class="altColor">
                                                 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
                                                         href="#RecursiveBucketDeleteError(S3RecursiveDeletePhase,S3ClientRecursiveBucketDeleteParams,String,Throwable)">RecursiveBucketDeleteError</a></span>(<a href=S3RecursiveDeletePhase.html>S3RecursiveDeletePhase</a> phase, <a href=S3ClientRecursiveBucketDeleteParams.html>S3ClientRecursiveBucketDeleteParams</a> req, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> message, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Throwable.html>Throwable</a> cause)</code></th>
+                                                <td class="colLast"></td>
+                                            </tr>
+                                        
+                                            <tr class="rowColor">
+                                                <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
+                                                        href="#RecursiveBucketDeleteError(S3RecursiveDeletePhase,S3ClientRecursiveBucketDeleteParams,Throwable)">RecursiveBucketDeleteError</a></span>(<a href=S3RecursiveDeletePhase.html>S3RecursiveDeletePhase</a> phase, <a href=S3ClientRecursiveBucketDeleteParams.html>S3ClientRecursiveBucketDeleteParams</a> req, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Throwable.html>Throwable</a> cause)</code></th>
+                                                <td class="colLast"></td>
+                                            </tr>
+                                        
+                                            <tr class="altColor">
+                                                <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
+                                                        href="#RecursiveBucketDeleteError(S3RecursiveDeletePhase,S3ClientRecursiveBucketDeleteParams)">RecursiveBucketDeleteError</a></span>(<a href=S3RecursiveDeletePhase.html>S3RecursiveDeletePhase</a> phase, <a href=S3ClientRecursiveBucketDeleteParams.html>S3ClientRecursiveBucketDeleteParams</a> req)</code></th>
                                                 <td class="colLast"></td>
                                             </tr>
                                         
@@ -456,6 +468,26 @@ extends <a href=../../../errors/S34kException.html>S34kException</a>
                                     <li class="blockList">
                                         <h4>RecursiveBucketDeleteError</h4>
                                         <pre>RecursiveBucketDeleteError(<a href=S3RecursiveDeletePhase.html>S3RecursiveDeletePhase</a> phase, <a href=S3ClientRecursiveBucketDeleteParams.html>S3ClientRecursiveBucketDeleteParams</a> req, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> message, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Throwable.html>Throwable</a> cause)</pre>
+                                        <div class="block"></div>
+                                        
+                                    </li>
+                                </ul>
+                                
+                                <a name="RecursiveBucketDeleteError(S3RecursiveDeletePhase,S3ClientRecursiveBucketDeleteParams,Throwable)"></a>
+                                <ul class="blockList">
+                                    <li class="blockList">
+                                        <h4>RecursiveBucketDeleteError</h4>
+                                        <pre>RecursiveBucketDeleteError(<a href=S3RecursiveDeletePhase.html>S3RecursiveDeletePhase</a> phase, <a href=S3ClientRecursiveBucketDeleteParams.html>S3ClientRecursiveBucketDeleteParams</a> req, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Throwable.html>Throwable</a> cause)</pre>
+                                        <div class="block"></div>
+                                        
+                                    </li>
+                                </ul>
+                                
+                                <a name="RecursiveBucketDeleteError(S3RecursiveDeletePhase,S3ClientRecursiveBucketDeleteParams)"></a>
+                                <ul class="blockList">
+                                    <li class="blockList">
+                                        <h4>RecursiveBucketDeleteError</h4>
+                                        <pre>RecursiveBucketDeleteError(<a href=S3RecursiveDeletePhase.html>S3RecursiveDeletePhase</a> phase, <a href=S3ClientRecursiveBucketDeleteParams.html>S3ClientRecursiveBucketDeleteParams</a> req)</pre>
                                         <div class="block"></div>
                                         
                                     </li>
