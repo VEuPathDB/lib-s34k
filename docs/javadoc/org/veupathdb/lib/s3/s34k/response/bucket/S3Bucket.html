@@ -778,7 +778,7 @@ public interface <span class="typeNameLabel"><a href=S3Bucket.html>S3Bucket</a><
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=S3Bucket.html#deleteDirectory(S3DirectoryDeleteParams)>deleteDirectory</a>(<a href=../../requests/object/directory/S3DirectoryDeleteParams.html>S3DirectoryDeleteParams</a> params) </code>
                                             </th>
-                                            <td class="colLast">Deletes the target directory from this bucket with the operation configured by the given action.</td>
+                                            <td class="colLast">Deletes the target directory from this bucket with the operation configured by the given <a href=S3Bucket.html#deleteDirectory(S3DirectoryDeleteParams)>params</a>.</td>
                                         </tr>
                                         
                                         <tr id="i68" class="altColor">
@@ -2416,7 +2416,7 @@ public interface <span class="typeNameLabel"><a href=S3Bucket.html>S3Bucket</a><
                                     <li class="blockList">
                                         <h4>deleteDirectory</h4>
                                         <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a> <a href=S3Bucket.html#deleteDirectory(S3DirectoryDeleteParams)>deleteDirectory</a>(<a href=../../requests/object/directory/S3DirectoryDeleteParams.html>S3DirectoryDeleteParams</a> params)</pre>
-                                        <div class="block"><p>Deletes the target directory from this bucket with the operation configured by the given action.</p><p>This method differs from <a href=S3Bucket.html#deleteObject(String)>deleteObject</a> and <a href=S3Bucket.html#deleteObjects(String)>deleteObjects</a> in that it treats the target object as if it was a directory rather than just a plain object and follows standard *nix directory removal rules.</p></div>
+                                        <div class="block"><p>Deletes the target directory from this bucket with the operation configured by the given <a href=S3Bucket.html#deleteDirectory(S3DirectoryDeleteParams)>params</a>.</p><p>This method differs from <a href=S3Bucket.html#deleteObject(String)>deleteObject</a> and <a href=S3Bucket.html#deleteObjects(String)>deleteObjects</a> in that it treats the target object as if it was a directory rather than just a plain object and follows standard *nix directory removal rules.</p></div>
                                         
                                         <dl>
                                             <dt><span class="paramLabel">Parameters:</span></dt>

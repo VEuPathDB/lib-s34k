@@ -39,7 +39,7 @@ tasks.dokkaJavadoc {
   outputDirectory.set(file("docs/javadoc"))
 }
 
-tasks.dokkaJavadoc {
+tasks.dokkaGfm {
   outputDirectory.set(file("docs/gfm"))
 }
 
