@@ -13,6 +13,7 @@ import org.veupathdb.lib.s3.s34k.requests.bucket.recursive.RecursiveBucketDelete
 import org.veupathdb.lib.s3.s34k.requests.bucket.recursive.S3RecursiveBucketDeleteParams
 import org.veupathdb.lib.s3.s34k.requests.`object`.*
 import org.veupathdb.lib.s3.s34k.requests.`object`.directory.DirectoryNotEmptyError
+import org.veupathdb.lib.s3.s34k.requests.`object`.directory.DirectoryObjectDeleteError
 import org.veupathdb.lib.s3.s34k.requests.`object`.directory.S3DirectoryCreateParams
 import org.veupathdb.lib.s3.s34k.requests.`object`.directory.S3DirectoryDeleteParams
 import org.veupathdb.lib.s3.s34k.response.`object`.*
@@ -1273,6 +1274,9 @@ interface S3Bucket {
    * @throws DirectoryNotEmptyError If the target directory is not empty and
    * [recursive] was set to `false`.
    *
+   * @throws DirectoryObjectDeleteError If [recursive] is true but one or more
+   * objects in the directory could not be deleted.
+   *
    * @throws S34kException If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
@@ -1297,6 +1301,9 @@ interface S3Bucket {
    * @throws DirectoryNotEmptyError If the target directory is not empty and
    * [S3DirectoryDeleteParams.recursive] was set to `false`.
    *
+   * @throws DirectoryObjectDeleteError If [S3DirectoryDeleteParams.recursive]
+   * is true but one or more objects in the directory could not be deleted.
+   *
    * @throws S34kException If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
@@ -1320,6 +1327,9 @@ interface S3Bucket {
    *
    * @throws DirectoryNotEmptyError If the target directory is not empty and
    * [S3DirectoryDeleteParams.recursive] was set to `false`.
+   *
+   * @throws DirectoryObjectDeleteError If [S3DirectoryDeleteParams.recursive]
+   * is true but one or more objects in the directory could not be deleted.
    *
    * @throws S34kException If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
