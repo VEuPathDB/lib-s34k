@@ -1305,7 +1305,7 @@ interface S3Bucket {
 
   /**
    * Deletes the target directory from this bucket with the operation configured
-   * by the given [action].
+   * by the given [params].
    *
    * This method differs from [deleteObject] and [deleteObjects] in that it
    * treats the target object as if it was a directory rather than just a plain
