@@ -39,8 +39,12 @@ tasks.dokkaJavadoc {
   outputDirectory.set(file("docs/javadoc"))
 }
 
+tasks.dokkaJavadoc {
+  outputDirectory.set(file("docs/gfm"))
+}
+
 task("docs") {
-  dependsOn("dokkaHtml", "dokkaJavadoc")
+  dependsOn("dokkaHtml", "dokkaJavadoc", "dokkaGfm")
 }
 
 tasks.test {
