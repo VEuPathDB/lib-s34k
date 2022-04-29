@@ -139,10 +139,9 @@ TODOs:
 * [ ] Configuration of multi-stage targeted object tag deletion.
 * [ ] Configuration of multi-stage targeted bucket tag deletion.
 * [ ] Configuration of multi-stage recursive directory deletion.
-* [ ] Version ID on object tag deletion params
 * [x] Recursive directory object deletes
-* [ ] Configurable list operation page sizes
 * [ ] Add callback to recursive bucket delete (all phases or just full op?)
 * [ ] Rename default region to region (it's a normal property)
 * [ ] Include cascading region value fetching (params || bucket || client)
+* [ ] Support version ID in operations
 --
