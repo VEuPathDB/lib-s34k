@@ -5,6 +5,7 @@ import org.veupathdb.lib.s3.s34k.fields.BucketName
 import org.veupathdb.lib.s3.s34k.requests.bucket.recursive.S3ClientRecursiveBucketDeleteParams
 import org.veupathdb.lib.s3.s34k.requests.client.*
 import org.veupathdb.lib.s3.s34k.response.S3BucketList
+import org.veupathdb.lib.s3.s34k.response.bucket.S3Bucket
 
 /**
  * S3 API Wrapper

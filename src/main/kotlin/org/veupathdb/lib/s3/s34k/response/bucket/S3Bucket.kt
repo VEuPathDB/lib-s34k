@@ -1,5 +1,7 @@
-package org.veupathdb.lib.s3.s34k
+package org.veupathdb.lib.s3.s34k.response.bucket
 
+import org.veupathdb.lib.s3.s34k.S3Client
+import org.veupathdb.lib.s3.s34k.S3Tag
 import org.veupathdb.lib.s3.s34k.errors.*
 import org.veupathdb.lib.s3.s34k.fields.BucketName
 import org.veupathdb.lib.s3.s34k.fields.tags.S3TagMap
@@ -10,6 +12,9 @@ import org.veupathdb.lib.s3.s34k.requests.bucket.S3BucketTagDeleteParams
 import org.veupathdb.lib.s3.s34k.requests.bucket.recursive.RecursiveBucketDeleteError
 import org.veupathdb.lib.s3.s34k.requests.bucket.recursive.S3RecursiveBucketDeleteParams
 import org.veupathdb.lib.s3.s34k.requests.`object`.*
+import org.veupathdb.lib.s3.s34k.requests.`object`.directory.DirectoryNotEmptyError
+import org.veupathdb.lib.s3.s34k.requests.`object`.directory.S3DirectoryCreateParams
+import org.veupathdb.lib.s3.s34k.requests.`object`.directory.S3DirectoryDeleteParams
 import org.veupathdb.lib.s3.s34k.response.`object`.*
 import java.io.File
 import java.io.InputStream
@@ -1244,6 +1249,85 @@ interface S3Bucket {
   fun deleteObjects(params: S3MultiObjectDeleteParams)
 
   // endregion Delete Objects
+
+  // region Delete Directory
+
+  /**
+   * Deletes the target directory from this bucket.
+   *
+   * This method differs from [deleteObject] and [deleteObjects] in that it
+   * treats the target object as if it was a directory rather than just a plain
+   * object and follows standard *nix directory removal rules.
+   *
+   * @param path Path to the target directory that should be deleted.
+   *
+   * @param recursive Whether the directory should be deleted recursively.  If
+   * set to `false` and the directory is not empty, a [DirectoryNotEmptyError]
+   * exception will be thrown.
+   *
+   * @return `true` if the directory previously existed and was deleted, `false`
+   * if the directory did not exist at the time this method was called.
+   *
+   * @throws BucketNotFoundException If this bucket no longer exists.
+   *
+   * @throws DirectoryNotEmptyError If the target directory is not empty and
+   * [recursive] was set to `false`.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
+  fun deleteDirectory(path: String, recursive: Boolean = true): Boolean
+
+  /**
+   * Deletes the target directory from this bucket with the operation configured
+   * by the given [action].
+   *
+   * This method differs from [deleteObject] and [deleteObjects] in that it
+   * treats the target object as if it was a directory rather than just a plain
+   * object and follows standard *nix directory removal rules.
+   *
+   * @param action Action used to configure the S3 operation.
+   *
+   * @return `true` if the directory previously existed and was deleted, `false`
+   * if the directory did not exist at the time this method was called.
+   *
+   * @throws BucketNotFoundException If this bucket no longer exists.
+   *
+   * @throws DirectoryNotEmptyError If the target directory is not empty and
+   * [S3DirectoryDeleteParams.recursive] was set to `false`.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
+  fun deleteDirectory(action: S3DirectoryDeleteParams.() -> Unit): Boolean
+
+  /**
+   * Deletes the target directory from this bucket with the operation configured
+   * by the given [action].
+   *
+   * This method differs from [deleteObject] and [deleteObjects] in that it
+   * treats the target object as if it was a directory rather than just a plain
+   * object and follows standard *nix directory removal rules.
+   *
+   * @param params S3 operation parameters.
+   *
+   * @return `true` if the directory previously existed and was deleted, `false`
+   * if the directory did not exist at the time this method was called.
+   *
+   * @throws BucketNotFoundException If this bucket no longer exists.
+   *
+   * @throws DirectoryNotEmptyError If the target directory is not empty and
+   * [S3DirectoryDeleteParams.recursive] was set to `false`.
+   *
+   * @throws S34kException If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
+  fun deleteDirectory(params: S3DirectoryDeleteParams): Boolean
+
+  // endregion Delete Directory
 
   // region List Objects
 

@@ -131,28 +131,7 @@ Object specific operations.
 
 == Roadmap
 
-v0.1.0::
-Initial release.
-+
-Provides basic functionality over the S3 API.  In addition to:
-+
---
-* Targeted object/bucket tag deletions.
-* Recursive bucket deletion
---
-+
-Does not include complex configuration of SSL, permissions, etc..
-+
-Does not include separate headers for multi-stage actions, such as recursive
-tag deletion.
-+
-See the docs linked above for more information on what features are provided.
-+
-TODOs:
-+
-* [ ] https://github.com/VEuPathDB/lib-s34k/issues/1
-
-v0.2.0::
+Full Release::
 TODOs:
 +
 --
@@ -160,7 +139,7 @@ TODOs:
 * [ ] Configuration of multi-stage targeted object tag deletion.
 * [ ] Configuration of multi-stage targeted bucket tag deletion.
 * [ ] Version ID on object tag deletion params
-* [ ] Recursive object deletes
+* [x] Recursive directory object deletes
 * [ ] Configurable list operation page sizes
 * [ ] Add callback to recursive bucket delete (all phases or just full op?)
 * [ ] Rename default region to region (it's a normal property)

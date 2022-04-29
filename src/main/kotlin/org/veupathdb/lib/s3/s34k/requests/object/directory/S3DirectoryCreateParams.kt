@@ -1,5 +1,6 @@
-package org.veupathdb.lib.s3.s34k.requests.`object`
+package org.veupathdb.lib.s3.s34k.requests.`object`.directory
 
+import org.veupathdb.lib.s3.s34k.requests.`object`.S3ObjectWriteParams
 import org.veupathdb.lib.s3.s34k.response.`object`.S3Object
 
 /**

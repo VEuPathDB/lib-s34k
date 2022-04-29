@@ -14,6 +14,8 @@ org.veupathdb.lib.s3.s34k.requests.bucket
 org.veupathdb.lib.s3.s34k.requests.bucket.recursive
 org.veupathdb.lib.s3.s34k.requests.client
 org.veupathdb.lib.s3.s34k.requests.object
+org.veupathdb.lib.s3.s34k.requests.object.directory
 org.veupathdb.lib.s3.s34k.response
+org.veupathdb.lib.s3.s34k.response.bucket
 org.veupathdb.lib.s3.s34k.response.object
 
