@@ -1,6 +1,6 @@
 package org.veupathdb.lib.s3.s34k.requests.`object`.directory
 
-import org.veupathdb.lib.s3.s34k.requests.S3RequestParams
+import org.veupathdb.lib.s3.s34k.requests.`object`.S3ObjectRequestParams
 
 /**
  * Directory deletion request parameters.
@@ -9,7 +9,7 @@ import org.veupathdb.lib.s3.s34k.requests.S3RequestParams
  *
  * @since v0.1.0
  */
-interface S3DirectoryDeleteParams : S3RequestParams {
+interface S3DirectoryDeleteParams : S3ObjectRequestParams {
 
   /**
    * Optional callback that will be executed on successful completion of the
