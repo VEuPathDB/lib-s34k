@@ -27,34 +27,22 @@ interface S3Object : S3ObjectResponse {
 
   /**
    * Deletes the current object from the S3 store (if it still exists).
-   *
-   * @return Flag indicating if the object was deleted from the store.  `true`
-   * if the object existed and was deleted, `false` if the
-   * object did not exist.
    */
-  fun delete(): Boolean
+  fun delete()
 
   /**
    * Deletes the current object from the S3 store (if it still exists).
    *
    * @param action Action used to configure the S3 operation.
-   *
-   * @return Flag indicating if the object was deleted from the store.  `true`
-   * if the object existed and was deleted, `false` if the
-   * object did not exist.
    */
-  fun delete(action: S3DeleteRequestParams.() -> Unit): Boolean
+  fun delete(action: S3DeleteRequestParams.() -> Unit)
 
   /**
    * Deletes the current object from the S3 store (if it still exists).
    *
    * @param params S3 operation parameters.
-   *
-   * @return Flag indicating if the object was deleted from the store.  `true`
-   * if the object existed and was deleted, `false` if the
-   * object did not exist.
    */
-  fun delete(params: S3DeleteRequestParams): Boolean
+  fun delete(params: S3DeleteRequestParams)
 
   // endregion
 
