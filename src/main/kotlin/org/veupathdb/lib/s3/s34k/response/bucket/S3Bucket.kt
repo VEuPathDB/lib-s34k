@@ -70,9 +70,6 @@ interface S3Bucket {
   /**
    * Deletes this bucket.
    *
-   * @return Whether the bucket was deleted.  `true` if the bucket previously
-   * existed and has been deleted, `false` if the bucket did not exist.
-   *
    * @throws BucketNotEmptyException If this bucket is not empty and must be
    * cleared before deletion.
    *
@@ -82,16 +79,13 @@ interface S3Bucket {
    *
    * @see deleteRecursive
    */
-  fun delete(): Boolean
+  fun delete()
 
   /**
    * Deletes this bucket with the operation configured by the given action.
    *
    * @param action Action used to configure the S3 operation.
    *
-   * @return Whether the bucket was deleted.  `true` if the bucket previously
-   * existed and has been deleted, `false` if the bucket did not exist.
-   *
    * @throws InvalidRequestConfigException If the S3 operation parameters are
    * missing required fields or otherwise incorrectly configured.
    *
@@ -104,16 +98,13 @@ interface S3Bucket {
    *
    * @see deleteRecursive
    */
-  fun delete(action: S3DeleteRequestParams.() -> Unit): Boolean
+  fun delete(action: S3DeleteRequestParams.() -> Unit)
 
   /**
    * Deletes this bucket with the operation configured by the given params.
    *
    * @param params S3 operation parameters.
    *
-   * @return Whether the bucket was deleted.  `true` if the bucket previously
-   * existed and has been deleted, `false` if the bucket did not exist.
-   *
    * @throws InvalidRequestConfigException If the S3 operation parameters are
    * missing required fields or otherwise incorrectly configured.
    *
@@ -126,7 +117,7 @@ interface S3Bucket {
    *
    * @see deleteRecursive
    */
-  fun delete(params: S3DeleteRequestParams): Boolean
+  fun delete(params: S3DeleteRequestParams)
 
   // endregion Delete
 
@@ -143,9 +134,6 @@ interface S3Bucket {
    * 2. Delete all the objects from the bucket.
    * 3. Delete the bucket itself.
    *
-   * @return Whether the bucket was deleted.  `true` if the bucket previously
-   * existed and has been deleted, `false` if the bucket did not exist.
-   *
    * @throws RecursiveBucketDeleteError If an error occurs while attempting to
    * delete the bucket, or it's contained objects.
    *
@@ -155,16 +143,21 @@ interface S3Bucket {
    *
    * @see delete
    */
-  fun deleteRecursive(): Boolean
+  fun deleteRecursive()
 
   /**
    * Recursively deletes this bucket and all its contents with the operation
    * configured by the given action.
    *
-   * @param action Action used to configure the S3 operation.
+   * This operation happens in 3 phases which can be configured independently
+   * using the [S3RecursiveBucketDeleteParams] class.
+   * The 3 phases are:
    *
-   * @return Whether the bucket was deleted.  `true` if the bucket previously
-   * existed and has been deleted, `false` if the bucket did not exist.
+   * 1. Fetch a list of all the objects in the bucket.
+   * 2. Delete all the objects from the bucket.
+   * 3. Delete the bucket itself.
+   *
+   * @param action Action used to configure the S3 operation.
    *
    * @throws RecursiveBucketDeleteError If an error occurs while attempting to
    * delete the bucket, or it's contained objects.
@@ -175,16 +168,21 @@ interface S3Bucket {
    *
    * @see delete
    */
-  fun deleteRecursive(action: S3RecursiveBucketDeleteParams.() -> Unit): Boolean
+  fun deleteRecursive(action: S3RecursiveBucketDeleteParams.() -> Unit)
 
   /**
    * Recursively deletes this bucket and all its contents with the operation
    * configured by the given params.
    *
-   * @param params S3 operation parameters.
+   * This operation happens in 3 phases which can be configured independently
+   * using the [S3RecursiveBucketDeleteParams] class.
+   * The 3 phases are:
    *
-   * @return Whether the bucket was deleted.  `true` if the bucket previously
-   * existed and has been deleted, `false` if the bucket did not exist.
+   * 1. Fetch a list of all the objects in the bucket.
+   * 2. Delete all the objects from the bucket.
+   * 3. Delete the bucket itself.
+   *
+   * @param params S3 operation parameters.
    *
    * @throws RecursiveBucketDeleteError If an error occurs while attempting to
    * delete the bucket, or it's contained objects.
@@ -195,7 +193,7 @@ interface S3Bucket {
    *
    * @see delete
    */
-  fun deleteRecursive(params: S3RecursiveBucketDeleteParams): Boolean
+  fun deleteRecursive(params: S3RecursiveBucketDeleteParams)
 
   // endregion
 
@@ -1184,25 +1182,19 @@ interface S3Bucket {
    *
    * @param path Path to the target object that should be deleted.
    *
-   * @return `true` if the object previously existed and has now been deleted,
-   * `false` if the file already did not exist at the time of this operation.
-   *
    * @throws BucketNotFoundException If this bucket no longer exists.
    *
    * @throws S34kException If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun deleteObject(path: String): Boolean
+  fun deleteObject(path: String)
 
   /**
    * Deletes the configured target object from this bucket.
    *
    * @param action Action used to configure the S3 operation.
    *
-   * @return `true` if the object previously existed and has now been deleted,
-   * `false` if the file already did not exist at the time of this operation.
-   *
    * @throws InvalidRequestConfigException If the S3 operation parameters are
    * missing required fields or otherwise incorrectly configured.
    *
@@ -1212,16 +1204,13 @@ interface S3Bucket {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun deleteObject(action: S3ObjectDeleteParams.() -> Unit): Boolean
+  fun deleteObject(action: S3ObjectDeleteParams.() -> Unit)
 
   /**
    * Deletes the configured target object from this bucket.
    *
    * @param params S3 operation parameters.
    *
-   * @return `true` if the object previously existed and has now been deleted,
-   * `false` if the file already did not exist at the time of this operation.
-   *
    * @throws InvalidRequestConfigException If the S3 operation parameters are
    * missing required fields or otherwise incorrectly configured.
    *
@@ -1231,7 +1220,7 @@ interface S3Bucket {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun deleteObject(params: S3ObjectDeleteParams): Boolean
+  fun deleteObject(params: S3ObjectDeleteParams)
 
   // endregion Delete Object
 
@@ -1266,9 +1255,6 @@ interface S3Bucket {
    * set to `false` and the directory is not empty, a [DirectoryNotEmptyError]
    * exception will be thrown.
    *
-   * @return `true` if the directory previously existed and was deleted, `false`
-   * if the directory did not exist at the time this method was called.
-   *
    * @throws BucketNotFoundException If this bucket no longer exists.
    *
    * @throws DirectoryNotEmptyError If the target directory is not empty and
@@ -1281,7 +1267,7 @@ interface S3Bucket {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun deleteDirectory(path: String, recursive: Boolean = true): Boolean
+  fun deleteDirectory(path: String, recursive: Boolean = true)
 
   /**
    * Deletes the target directory from this bucket with the operation configured
@@ -1293,9 +1279,6 @@ interface S3Bucket {
    *
    * @param action Action used to configure the S3 operation.
    *
-   * @return `true` if the directory previously existed and was deleted, `false`
-   * if the directory did not exist at the time this method was called.
-   *
    * @throws BucketNotFoundException If this bucket no longer exists.
    *
    * @throws DirectoryNotEmptyError If the target directory is not empty and
@@ -1308,7 +1291,7 @@ interface S3Bucket {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun deleteDirectory(action: S3DirectoryDeleteParams.() -> Unit): Boolean
+  fun deleteDirectory(action: S3DirectoryDeleteParams.() -> Unit)
 
   /**
    * Deletes the target directory from this bucket with the operation configured
@@ -1320,9 +1303,6 @@ interface S3Bucket {
    *
    * @param params S3 operation parameters.
    *
-   * @return `true` if the directory previously existed and was deleted, `false`
-   * if the directory did not exist at the time this method was called.
-   *
    * @throws BucketNotFoundException If this bucket no longer exists.
    *
    * @throws DirectoryNotEmptyError If the target directory is not empty and
@@ -1335,7 +1315,7 @@ interface S3Bucket {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun deleteDirectory(params: S3DirectoryDeleteParams): Boolean
+  fun deleteDirectory(params: S3DirectoryDeleteParams)
 
   // endregion Delete Directory
 

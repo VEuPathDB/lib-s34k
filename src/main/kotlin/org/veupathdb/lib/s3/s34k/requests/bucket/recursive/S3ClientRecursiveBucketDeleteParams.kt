@@ -29,10 +29,4 @@ interface S3ClientRecursiveBucketDeleteParams : S3RecursiveBucketDeleteParams {
    * when the request is attempted.
    */
   var bucketName: BucketName?
-
-  /**
-   * Optional callback that will be executed on successful completion of the S3
-   * operation.
-   */
-  var callback: (() -> Unit)?
 }

@@ -61,5 +61,11 @@ interface S3RecursiveBucketDeleteParams : S3RegionRequestParams {
    * Bucket delete operation parameters.
    */
   val bucketDelete: S3RBDBucketDeleteParams
+
+  /**
+   * Optional callback that will be executed on successful completion of the S3
+   * operation.
+   */
+  var callback: (() -> Unit)?
 }
 
