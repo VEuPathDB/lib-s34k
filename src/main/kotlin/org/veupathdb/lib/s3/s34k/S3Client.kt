@@ -330,61 +330,52 @@ interface S3Client {
    *
    * @param region Optional region value for the S3 operation.
    *
-   * @return Flag indicating whether the target bucket was deleted.  `true` if
-   * the bucket existed and was deleted, `false` if the bucket did not exist.
-   *
    * @throws BucketNotEmptyException If the target bucket is not empty.
    *
    * @throws S34kException If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun deleteBucket(name: BucketName, region: String? = null): Boolean
+  fun deleteBucket(name: BucketName, region: String? = null)
 
   /**
    * Deletes the target bucket from the S3 instance.
    *
    * @param action Action used to configure the S3 operation parameters.
    *
-   * @return Flag indicating whether the target bucket was deleted.  `true` if
-   * the bucket existed and was deleted, `false` if the bucket did not exist.
-   *
    * @throws BucketNotEmptyException If the target bucket is not empty.
    *
    * @throws S34kException If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun deleteBucket(action: S3BucketDeleteParams.() -> Unit): Boolean
+  fun deleteBucket(action: S3BucketDeleteParams.() -> Unit)
 
   /**
    * Deletes the target bucket from the S3 instance.
    *
    * @param params S3 operation parameters.
    *
-   * @return Flag indicating whether the target bucket was deleted.  `true` if
-   * the bucket existed and was deleted, `false` if the bucket did not exist.
-   *
    * @throws BucketNotEmptyException If the target bucket is not empty.
    *
    * @throws S34kException If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun deleteBucket(params: S3BucketDeleteParams): Boolean
+  fun deleteBucket(params: S3BucketDeleteParams)
 
   // endregion
 
   // region Delete Bucket Recursive
 
   // TODO: Document me
-  fun deleteBucketRecursive(name: BucketName, region: String? = null): Boolean
+  fun deleteBucketRecursive(name: BucketName, region: String? = null)
 
   // TODO: Document me
-  fun deleteBucketRecursive(action: S3ClientRecursiveBucketDeleteParams.() -> Unit): Boolean
+  fun deleteBucketRecursive(action: S3ClientRecursiveBucketDeleteParams.() -> Unit)
 
   // TODO: Document me
-  fun deleteBucketRecursive(params: S3ClientRecursiveBucketDeleteParams): Boolean
+  fun deleteBucketRecursive(params: S3ClientRecursiveBucketDeleteParams)
 
   // endregion Delete Bucket Recursive
 }
