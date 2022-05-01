@@ -1,6 +1,6 @@
 package org.veupathdb.lib.s3.s34k.requests.bucket.recursive
 
-import org.veupathdb.lib.s3.s34k.errors.S34kException
+import org.veupathdb.lib.s3.s34k.errors.S34KError
 import org.veupathdb.lib.s3.s34k.fields.BucketName
 import org.veupathdb.lib.s3.s34k.fields.headers.S3Headers
 import org.veupathdb.lib.s3.s34k.fields.query_params.S3QueryParams
@@ -25,7 +25,7 @@ import org.veupathdb.lib.s3.s34k.fields.query_params.S3QueryParams
  *
  * @since  v0.1.0
  */
-open class RecursiveBucketDeleteError : S34kException {
+open class RecursiveBucketDeleteError : S34KError {
 
   /**
    * Operation phase in which the error occurred.

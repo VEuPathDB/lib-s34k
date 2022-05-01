@@ -1,14 +1,13 @@
 package org.veupathdb.lib.s3.s34k.response.bucket
 
 import org.veupathdb.lib.s3.s34k.S3Client
+import org.veupathdb.lib.s3.s34k.S3ObjectContainer
 import org.veupathdb.lib.s3.s34k.S3Tag
+import org.veupathdb.lib.s3.s34k.S3TagManager
 import org.veupathdb.lib.s3.s34k.errors.*
 import org.veupathdb.lib.s3.s34k.fields.BucketName
 import org.veupathdb.lib.s3.s34k.fields.tags.S3TagMap
-import org.veupathdb.lib.s3.s34k.requests.S3BlankTagCreateParams
-import org.veupathdb.lib.s3.s34k.requests.S3BlankTagGetParams
 import org.veupathdb.lib.s3.s34k.requests.S3DeleteRequestParams
-import org.veupathdb.lib.s3.s34k.requests.bucket.S3BucketTagDeleteParams
 import org.veupathdb.lib.s3.s34k.requests.bucket.recursive.RecursiveBucketDeleteError
 import org.veupathdb.lib.s3.s34k.requests.bucket.recursive.S3RecursiveBucketDeleteParams
 import org.veupathdb.lib.s3.s34k.requests.`object`.*
@@ -61,6 +60,16 @@ interface S3Bucket {
    */
   val creationDate: OffsetDateTime
 
+  /**
+   * Bucket tag manager.
+   */
+  val tags: S3TagManager
+
+  /**
+   * Bucket object manager
+   */
+  val objects: S3ObjectContainer
+
   // endregion Properties
 
   // region Bucket Actions
@@ -73,7 +82,7 @@ interface S3Bucket {
    * @throws BucketNotEmptyException If this bucket is not empty and must be
    * cleared before deletion.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    *
@@ -92,7 +101,7 @@ interface S3Bucket {
    * @throws BucketNotEmptyException If this bucket is not empty and must be
    * cleared before deletion.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    *
@@ -111,7 +120,7 @@ interface S3Bucket {
    * @throws BucketNotEmptyException If this bucket is not empty and must be
    * cleared before deletion.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    *
@@ -137,7 +146,7 @@ interface S3Bucket {
    * @throws RecursiveBucketDeleteError If an error occurs while attempting to
    * delete the bucket, or it's contained objects.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    *
@@ -162,7 +171,7 @@ interface S3Bucket {
    * @throws RecursiveBucketDeleteError If an error occurs while attempting to
    * delete the bucket, or it's contained objects.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    *
@@ -187,229 +196,13 @@ interface S3Bucket {
    * @throws RecursiveBucketDeleteError If an error occurs while attempting to
    * delete the bucket, or it's contained objects.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    *
    * @see delete
    */
   fun deleteRecursive(params: S3RecursiveBucketDeleteParams)
-
-  // endregion
-
-  // region Delete Bucket Tags
-
-  /**
-   * Deletes all the tags from this bucket.
-   *
-   * @return Set of the tags that were deleted.
-   *
-   * @throws BucketNotFoundException If this bucket no longer exists.
-   *
-   * @throws S34kException If an implementation specific exception is thrown.
-   * The implementation specific exception will be set to the thrown exception's
-   * 'cause' value.
-   */
-  fun deleteBucketTags(): S3TagMap
-
-  /**
-   * Deletes the listed tags from this bucket.
-   *
-   * @param tags Tags to delete.
-   *
-   * @return Set of the tags that were deleted.
-   *
-   * @throws BucketNotFoundException If this bucket no longer exists.
-   *
-   * @throws S34kException If an implementation specific exception is thrown.
-   * The implementation specific exception will be set to the thrown exception's
-   * 'cause' value.
-   */
-  fun deleteBucketTags(vararg tags: String): S3TagMap
-
-  /**
-   * Deletes the listed tags from this bucket.
-   *
-   * @param tags Iterable over tags to delete.
-   *
-   * @return Set of the tags that were deleted.
-   *
-   * @throws BucketNotFoundException If this bucket no longer exists.
-   *
-   * @throws S34kException If an implementation specific exception is thrown.
-   * The implementation specific exception will be set to the thrown exception's
-   * 'cause' value.
-   */
-  fun deleteBucketTags(tags: Iterable<String>): S3TagMap
-
-  /**
-   * Deletes the target tags from this bucket.
-   *
-   * @param action Action used to configure the S3 operation parameters.
-   *
-   * @return Set of the tags that were deleted.
-   *
-   * @throws BucketNotFoundException If this bucket no longer exists.
-   *
-   * @throws S34kException If an implementation specific exception is thrown.
-   * The implementation specific exception will be set to the thrown exception's
-   * 'cause' value.
-   */
-  fun deleteBucketTags(action: S3BucketTagDeleteParams.() -> Unit): S3TagMap
-
-  /**
-   * Deletes the target tags from this bucket.
-   *
-   * @param params S3 operation parameters.
-   *
-   * @return Set of the tags that were deleted.
-   *
-   * @throws BucketNotFoundException If this bucket no longer exists.
-   *
-   * @throws S34kException If an implementation specific exception is thrown.
-   * The implementation specific exception will be set to the thrown exception's
-   * 'cause' value.
-   */
-  fun deleteBucketTags(params: S3BucketTagDeleteParams): S3TagMap
-
-  // endregion Delete Bucket Tags
-
-  // region Get Bucket Tags
-
-  /**
-   * Fetches the tags attached to this bucket.
-   *
-   * @return A set of the tags associated with this bucket.
-   *
-   * @throws BucketNotFoundException If this bucket no longer exists.
-   *
-   * @throws S34kException If an implementation specific exception is thrown.
-   * The implementation specific exception will be set to the thrown exception's
-   * 'cause' value.
-   */
-  fun getBucketTags(): S3TagMap
-
-  /**
-   * Fetches the tags attached to this bucket.
-   *
-   * @param action Function used to configure the S3 operation parameters.
-   *
-   * @return A set of the tags associated with this bucket.
-   *
-   * @throws BucketNotFoundException If this bucket no longer exists.
-   *
-   * @throws S34kException If an implementation specific exception is thrown.
-   * The implementation specific exception will be set to the thrown exception's
-   * 'cause' value.
-   */
-  fun getBucketTags(action: S3BlankTagGetParams.() -> Unit): S3TagMap
-
-  /**
-   * Fetches the tags attached to this bucket.
-   *
-   * @param params S3 operation parameters.
-   *
-   * @return A set of the tags associated with this bucket.
-   *
-   * @throws BucketNotFoundException If this bucket no longer exists.
-   *
-   * @throws S34kException If an implementation specific exception is thrown.
-   * The implementation specific exception will be set to the thrown exception's
-   * 'cause' value.
-   */
-  fun getBucketTags(params: S3BlankTagGetParams): S3TagMap
-
-  // endregion
-
-  // region Put Bucket Tags
-
-  /**
-   * Attaches the given tags to this S3 bucket.
-   *
-   * If the given array of tag pairs is empty, this method does nothing.
-   *
-   * @param tags Array of key -> value pairs to assign to this bucket as tags.
-   *
-   * @throws BucketNotFoundException If this bucket no longer exists.
-   *
-   * @throws S34kException If an implementation specific exception is thrown.
-   * The implementation specific exception will be set to the thrown exception's
-   * 'cause' value.
-   */
-  fun putBucketTags(vararg tags: Pair<String, String>)
-
-  /**
-   * Attaches the given tags to this S3 bucket.
-   *
-   * If the given array of tags is empty, this method does nothing.
-   *
-   * @param tags Array of tags to assign to this bucket as tags.
-   *
-   * @throws BucketNotFoundException If this bucket no longer exists.
-   *
-   * @throws S34kException If an implementation specific exception is thrown.
-   * The implementation specific exception will be set to the thrown exception's
-   * 'cause' value.
-   */
-  fun putBucketTags(vararg tags: S3Tag)
-
-  /**
-   * Attaches the given tags to this S3 bucket.
-   *
-   * If the given map of tags is empty, this method does nothing.
-   *
-   * @param tags Tags to attach to this bucket.
-   *
-   * @throws BucketNotFoundException If this bucket no longer exists.
-   *
-   * @throws S34kException If an implementation specific exception is thrown.
-   * The implementation specific exception will be set to the thrown exception's
-   * 'cause' value.
-   */
-  fun putBucketTags(tags: Map<String, String>)
-
-  /**
-   * Attaches the given tags to this S3 bucket.
-   *
-   * If the given collection of tags is empty, this method does nothing.
-   *
-   * @param tags Tags to attach to this bucket.
-   *
-   * @throws BucketNotFoundException If this bucket no longer exists.
-   *
-   * @throws S34kException If an implementation specific exception is thrown.
-   * The implementation specific exception will be set to the thrown exception's
-   * 'cause' value.
-   */
-  fun putBucketTags(tags: Iterable<S3Tag>)
-
-  /**
-   * Attaches the tags from the given operation parameters to this bucket.
-   *
-   * @param action Action used to configure the S3 operation parameters.
-   *
-   * @throws BucketNotFoundException If this bucket no longer exists.
-   *
-   * @throws S34kException If an implementation specific exception is thrown.
-   * The implementation specific exception will be set to the thrown exception's
-   * 'cause' value.
-   */
-  fun putBucketTags(action: S3BlankTagCreateParams.() -> Unit)
-
-  /**
-   * Attaches the tags from the given operation parameters to this bucket.
-   *
-   * If the configured collection of tags is empty, this method does nothing.
-   *
-   * @param params Parameters for the S3 operation.
-   *
-   * @throws BucketNotFoundException If this bucket no longer exists.
-   *
-   * @throws S34kException If an implementation specific exception is thrown.
-   * The implementation specific exception will be set to the thrown exception's
-   * 'cause' value.
-   */
-  fun putBucketTags(params: S3BlankTagCreateParams)
 
   // endregion
 
@@ -430,9 +223,9 @@ interface S3Bucket {
    *
    * @throws ObjectNotFoundException If the target object does not exist.
    *
-   * @throws BucketNotFoundException If this bucket no longer exists.
+   * @throws BucketNotFoundError If this bucket no longer exists.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
@@ -467,9 +260,9 @@ interface S3Bucket {
    *
    * @throws ObjectNotFoundException If the target object does not exist.
    *
-   * @throws BucketNotFoundException If this bucket no longer exists.
+   * @throws BucketNotFoundError If this bucket no longer exists.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
@@ -504,9 +297,9 @@ interface S3Bucket {
    *
    * @throws ObjectNotFoundException If the target object does not exist.
    *
-   * @throws BucketNotFoundException If this bucket no longer exists.
+   * @throws BucketNotFoundError If this bucket no longer exists.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
@@ -542,9 +335,9 @@ interface S3Bucket {
    *
    * @throws ObjectNotFoundException If the target object does not exist.
    *
-   * @throws BucketNotFoundException If this bucket no longer exists.
+   * @throws BucketNotFoundError If this bucket no longer exists.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
@@ -580,9 +373,9 @@ interface S3Bucket {
    *
    * @throws ObjectNotFoundException If the target object does not exist.
    *
-   * @throws BucketNotFoundException If this bucket no longer exists.
+   * @throws BucketNotFoundError If this bucket no longer exists.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
@@ -599,9 +392,9 @@ interface S3Bucket {
    *
    * @return `true` if an object exists at the given path, otherwise `false`.
    *
-   * @throws BucketNotFoundException If this bucket no longer exists.
+   * @throws BucketNotFoundError If this bucket no longer exists.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
@@ -618,9 +411,9 @@ interface S3Bucket {
    * @throws InvalidRequestConfigException If the S3 operation parameters are
    * missing required fields or otherwise incorrectly configured.
    *
-   * @throws BucketNotFoundException If this bucket no longer exists.
+   * @throws BucketNotFoundError If this bucket no longer exists.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
@@ -637,9 +430,9 @@ interface S3Bucket {
    * @throws InvalidRequestConfigException If the S3 operation parameters are
    * missing required fields or otherwise incorrectly configured.
    *
-   * @throws BucketNotFoundException If this bucket no longer exists.
+   * @throws BucketNotFoundError If this bucket no longer exists.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
@@ -656,11 +449,11 @@ interface S3Bucket {
    *
    * @return Metadata about the specified object.
    *
-   * @throws BucketNotFoundException If this bucket no longer exists.
+   * @throws BucketNotFoundError If this bucket no longer exists.
    *
    * @throws ObjectNotFoundException If the target object does not exist.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
@@ -676,11 +469,11 @@ interface S3Bucket {
    * @throws InvalidRequestConfigException If the S3 operation parameters are
    * missing required fields or otherwise incorrectly configured.
    *
-   * @throws BucketNotFoundException If this bucket no longer exists.
+   * @throws BucketNotFoundError If this bucket no longer exists.
    *
    * @throws ObjectNotFoundException If the target object does not exist.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
@@ -696,11 +489,11 @@ interface S3Bucket {
    * @throws InvalidRequestConfigException If the S3 operation parameters are
    * missing required fields or otherwise incorrectly configured.
    *
-   * @throws BucketNotFoundException If this bucket no longer exists.
+   * @throws BucketNotFoundError If this bucket no longer exists.
    *
    * @throws ObjectNotFoundException If the target object does not exist.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
@@ -721,9 +514,9 @@ interface S3Bucket {
    *
    * @throws ObjectNotFoundException If the target object does not exist.
    *
-   * @throws BucketNotFoundException If this bucket no longer exists.
+   * @throws BucketNotFoundError If this bucket no longer exists.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
@@ -743,9 +536,9 @@ interface S3Bucket {
    *
    * @throws ObjectNotFoundException If the target object does not exist.
    *
-   * @throws BucketNotFoundException If this bucket no longer exists.
+   * @throws BucketNotFoundError If this bucket no longer exists.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
@@ -765,9 +558,9 @@ interface S3Bucket {
    *
    * @throws ObjectNotFoundException If the target object does not exist.
    *
-   * @throws BucketNotFoundException If this bucket no longer exists.
+   * @throws BucketNotFoundError If this bucket no longer exists.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
@@ -788,9 +581,9 @@ interface S3Bucket {
    *
    * @throws ObjectNotFoundException If the target object does not exist.
    *
-   * @throws BucketNotFoundException If this bucket no longer exists.
+   * @throws BucketNotFoundError If this bucket no longer exists.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
@@ -810,9 +603,9 @@ interface S3Bucket {
    *
    * @throws ObjectNotFoundException If the target object does not exist.
    *
-   * @throws BucketNotFoundException If this bucket no longer exists.
+   * @throws BucketNotFoundError If this bucket no longer exists.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
@@ -832,9 +625,9 @@ interface S3Bucket {
    *
    * @throws ObjectNotFoundException If the target object does not exist.
    *
-   * @throws BucketNotFoundException If this bucket no longer exists.
+   * @throws BucketNotFoundError If this bucket no longer exists.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
@@ -858,9 +651,9 @@ interface S3Bucket {
    *
    * @throws ObjectNotFoundException If the target object does not exist.
    *
-   * @throws BucketNotFoundException If this bucket no longer exists.
+   * @throws BucketNotFoundError If this bucket no longer exists.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
@@ -877,9 +670,9 @@ interface S3Bucket {
    *
    * @throws ObjectNotFoundException If the target object does not exist.
    *
-   * @throws BucketNotFoundException If this bucket no longer exists.
+   * @throws BucketNotFoundError If this bucket no longer exists.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
@@ -896,9 +689,9 @@ interface S3Bucket {
    *
    * @throws ObjectNotFoundException If the target object does not exist.
    *
-   * @throws BucketNotFoundException If this bucket no longer exists.
+   * @throws BucketNotFoundError If this bucket no longer exists.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
@@ -920,9 +713,9 @@ interface S3Bucket {
    *
    * @throws ObjectNotFoundException If the target object does not exist.
    *
-   * @throws BucketNotFoundException If this bucket no longer exists.
+   * @throws BucketNotFoundError If this bucket no longer exists.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
@@ -938,9 +731,9 @@ interface S3Bucket {
    *
    * @throws ObjectNotFoundException If the target object does not exist.
    *
-   * @throws BucketNotFoundException If this bucket no longer exists.
+   * @throws BucketNotFoundError If this bucket no longer exists.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
@@ -956,9 +749,9 @@ interface S3Bucket {
    *
    * @throws ObjectNotFoundException If the target object does not exist.
    *
-   * @throws BucketNotFoundException If this bucket no longer exists.
+   * @throws BucketNotFoundError If this bucket no longer exists.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
@@ -984,9 +777,9 @@ interface S3Bucket {
    * @throws ObjectNotFoundException If the object at the given path does not
    * exist.
    *
-   * @throws BucketNotFoundException If this bucket no longer exists.
+   * @throws BucketNotFoundError If this bucket no longer exists.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
@@ -1009,9 +802,9 @@ interface S3Bucket {
    *
    * @return An [S3Object] instance wrapping the created empty object.
    *
-   * @throws BucketNotFoundException If this bucket no longer exists.
+   * @throws BucketNotFoundError If this bucket no longer exists.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
@@ -1028,9 +821,9 @@ interface S3Bucket {
    * @throws InvalidRequestConfigException If the S3 operation parameters are
    * missing required fields or otherwise incorrectly configured.
    *
-   * @throws BucketNotFoundException If this bucket no longer exists.
+   * @throws BucketNotFoundError If this bucket no longer exists.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
@@ -1047,9 +840,9 @@ interface S3Bucket {
    * @throws InvalidRequestConfigException If the S3 operation parameters are
    * missing required fields or otherwise incorrectly configured.
    *
-   * @throws BucketNotFoundException If this bucket no longer exists.
+   * @throws BucketNotFoundError If this bucket no longer exists.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
@@ -1072,9 +865,9 @@ interface S3Bucket {
    *
    * @param path Path to the object to create.
    *
-   * @throws BucketNotFoundException If this bucket no longer exists.
+   * @throws BucketNotFoundError If this bucket no longer exists.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
@@ -1102,9 +895,9 @@ interface S3Bucket {
    *
    * @param size Number of bytes to copy into the newly created object.
    *
-   * @throws BucketNotFoundException If this bucket no longer exists.
+   * @throws BucketNotFoundError If this bucket no longer exists.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
@@ -1129,9 +922,9 @@ interface S3Bucket {
    * @param file File whose contents will be copied into the newly created
    * object.
    *
-   * @throws BucketNotFoundException If this bucket no longer exists.
+   * @throws BucketNotFoundError If this bucket no longer exists.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
@@ -1148,9 +941,9 @@ interface S3Bucket {
    * @throws InvalidRequestConfigException If the S3 operation parameters are
    * missing required fields or otherwise incorrectly configured.
    *
-   * @throws BucketNotFoundException If this bucket no longer exists.
+   * @throws BucketNotFoundError If this bucket no longer exists.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
@@ -1165,9 +958,9 @@ interface S3Bucket {
    * @throws InvalidRequestConfigException If the S3 operation parameters are
    * missing required fields or otherwise incorrectly configured.
    *
-   * @throws BucketNotFoundException If this bucket no longer exists.
+   * @throws BucketNotFoundError If this bucket no longer exists.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
@@ -1182,9 +975,9 @@ interface S3Bucket {
    *
    * @param path Path to the target object that should be deleted.
    *
-   * @throws BucketNotFoundException If this bucket no longer exists.
+   * @throws BucketNotFoundError If this bucket no longer exists.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
@@ -1198,9 +991,9 @@ interface S3Bucket {
    * @throws InvalidRequestConfigException If the S3 operation parameters are
    * missing required fields or otherwise incorrectly configured.
    *
-   * @throws BucketNotFoundException If this bucket no longer exists.
+   * @throws BucketNotFoundError If this bucket no longer exists.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
@@ -1214,9 +1007,9 @@ interface S3Bucket {
    * @throws InvalidRequestConfigException If the S3 operation parameters are
    * missing required fields or otherwise incorrectly configured.
    *
-   * @throws BucketNotFoundException If this bucket no longer exists.
+   * @throws BucketNotFoundError If this bucket no longer exists.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
@@ -1255,7 +1048,7 @@ interface S3Bucket {
    * set to `false` and the directory is not empty, a [DirectoryNotEmptyError]
    * exception will be thrown.
    *
-   * @throws BucketNotFoundException If this bucket no longer exists.
+   * @throws BucketNotFoundError If this bucket no longer exists.
    *
    * @throws DirectoryNotEmptyError If the target directory is not empty and
    * [recursive] was set to `false`.
@@ -1263,7 +1056,7 @@ interface S3Bucket {
    * @throws DirectoryObjectDeleteError If [recursive] is true but one or more
    * objects in the directory could not be deleted.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
@@ -1279,7 +1072,7 @@ interface S3Bucket {
    *
    * @param action Action used to configure the S3 operation.
    *
-   * @throws BucketNotFoundException If this bucket no longer exists.
+   * @throws BucketNotFoundError If this bucket no longer exists.
    *
    * @throws DirectoryNotEmptyError If the target directory is not empty and
    * [S3DirectoryDeleteParams.recursive] was set to `false`.
@@ -1287,7 +1080,7 @@ interface S3Bucket {
    * @throws DirectoryObjectDeleteError If [S3DirectoryDeleteParams.recursive]
    * is true but one or more objects in the directory could not be deleted.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
@@ -1303,7 +1096,7 @@ interface S3Bucket {
    *
    * @param params S3 operation parameters.
    *
-   * @throws BucketNotFoundException If this bucket no longer exists.
+   * @throws BucketNotFoundError If this bucket no longer exists.
    *
    * @throws DirectoryNotEmptyError If the target directory is not empty and
    * [S3DirectoryDeleteParams.recursive] was set to `false`.
@@ -1311,7 +1104,7 @@ interface S3Bucket {
    * @throws DirectoryObjectDeleteError If [S3DirectoryDeleteParams.recursive]
    * is true but one or more objects in the directory could not be deleted.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */

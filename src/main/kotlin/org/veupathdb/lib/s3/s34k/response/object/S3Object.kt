@@ -1,9 +1,9 @@
 package org.veupathdb.lib.s3.s34k.response.`object`
 
 import org.veupathdb.lib.s3.s34k.S3Tag
-import org.veupathdb.lib.s3.s34k.errors.BucketNotFoundException
+import org.veupathdb.lib.s3.s34k.errors.BucketNotFoundError
 import org.veupathdb.lib.s3.s34k.errors.ObjectNotFoundException
-import org.veupathdb.lib.s3.s34k.errors.S34kException
+import org.veupathdb.lib.s3.s34k.errors.S34KError
 import org.veupathdb.lib.s3.s34k.fields.tags.S3TagMap
 import org.veupathdb.lib.s3.s34k.requests.*
 
@@ -102,11 +102,11 @@ interface S3Object : S3ObjectResponse {
    * @return A tag set containing only the tags that existed on the target
    * object and were deleted.
    *
-   * @throws BucketNotFoundException If the parent bucket no longer exists.
+   * @throws BucketNotFoundError If the parent bucket no longer exists.
    *
    * @throws ObjectNotFoundException If this object no longer exists.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
@@ -115,11 +115,11 @@ interface S3Object : S3ObjectResponse {
   /**
    * Deletes the specified tags currently attached to this object.
    *
-   * @throws BucketNotFoundException If the parent bucket no longer exists.
+   * @throws BucketNotFoundError If the parent bucket no longer exists.
    *
    * @throws ObjectNotFoundException If this object no longer exists.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
@@ -128,11 +128,11 @@ interface S3Object : S3ObjectResponse {
   /**
    * Deletes the specified tags currently attached to this object.
    *
-   * @throws BucketNotFoundException If the parent bucket no longer exists.
+   * @throws BucketNotFoundError If the parent bucket no longer exists.
    *
    * @throws ObjectNotFoundException If this object no longer exists.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */

@@ -7,7 +7,7 @@ package org.veupathdb.lib.s3.s34k.errors
  *
  * @since  v0.1.0
  */
-open class S34kException : RuntimeException {
+open class S34KError : Exception {
 
   constructor() : super()
 

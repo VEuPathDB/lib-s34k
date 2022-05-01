@@ -7,7 +7,7 @@ package org.veupathdb.lib.s3.s34k.errors
  *
  * @since  v0.1.0
  */
-abstract class AbstractResponseException : S34kException {
+abstract class AbstractResponseException : S34KError {
 
   /**
    * S3 Error Code

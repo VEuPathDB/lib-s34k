@@ -1,8 +1,8 @@
 package org.veupathdb.lib.s3.s34k.requests.`object`.directory
 
-import org.veupathdb.lib.s3.s34k.errors.S34kException
+import org.veupathdb.lib.s3.s34k.errors.S34KError
 
-open class DirectoryDeleteError : S34kException {
+open class DirectoryDeleteError : S34KError {
 
   /**
    * Name of the bucket containing the directory on which the delete operation

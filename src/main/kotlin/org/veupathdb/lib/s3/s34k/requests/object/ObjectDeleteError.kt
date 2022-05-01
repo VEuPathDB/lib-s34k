@@ -1,6 +1,6 @@
 package org.veupathdb.lib.s3.s34k.requests.`object`
 
-import org.veupathdb.lib.s3.s34k.errors.S34kException
+import org.veupathdb.lib.s3.s34k.errors.S34KError
 
 /**
  * Object deletion error.
@@ -15,7 +15,7 @@ import org.veupathdb.lib.s3.s34k.errors.S34kException
  *
  * @since v0.1.0
  */
-class ObjectDeleteError : S34kException {
+class ObjectDeleteError : S34KError {
 
   /**
    * Key/path of the object on which the delete operation was attempted.

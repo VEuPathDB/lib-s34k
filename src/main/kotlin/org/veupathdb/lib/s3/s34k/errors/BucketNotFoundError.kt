@@ -13,7 +13,7 @@ import org.veupathdb.lib.s3.s34k.fields.BucketName
  *
  * @since  v0.1.0
  */
-class BucketNotFoundException : AbstractBucketOperationException {
+class BucketNotFoundError : AbstractBucketOperationException {
 
   override val code = S3ErrorCode.NoSuchBucket
 

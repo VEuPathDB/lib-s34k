@@ -33,7 +33,7 @@ interface S3Client {
    *
    * @return `true` if the target bucket exists, otherwise `false`.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
@@ -47,7 +47,7 @@ interface S3Client {
    *
    * @return `true` if the target bucket exists, otherwise `false`.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
@@ -61,7 +61,7 @@ interface S3Client {
    *
    * @return `true` if the target bucket exists, otherwise `false`.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
@@ -90,7 +90,7 @@ interface S3Client {
    * @throws BucketAlreadyExistsException If a bucket already exists in the S3
    * store with the given name.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    *
@@ -117,7 +117,7 @@ interface S3Client {
    * @throws BucketAlreadyExistsException If a bucket already exists in the S3
    * store with the given name.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    *
@@ -144,7 +144,7 @@ interface S3Client {
    * @throws BucketAlreadyExistsException If a bucket already exists in the S3
    * store with the given name.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    *
@@ -188,7 +188,7 @@ interface S3Client {
    * @return A new [S3Bucket] instance wrapping either the newly created bucket
    * or the pre-existing bucket.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    *
@@ -209,7 +209,7 @@ interface S3Client {
    * @return A new [S3Bucket] instance wrapping either the newly created bucket
    * or the pre-existing bucket.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    *
@@ -231,9 +231,9 @@ interface S3Client {
    *
    * @return A new [S3Bucket] instance wrapping the target bucket.
    *
-   * @throws BucketNotFoundException If the target bucket does not exist.
+   * @throws BucketNotFoundError If the target bucket does not exist.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    *
@@ -249,9 +249,9 @@ interface S3Client {
    *
    * @return A new [S3Bucket] instance wrapping the target bucket.
    *
-   * @throws BucketNotFoundException If the target bucket does not exist.
+   * @throws BucketNotFoundError If the target bucket does not exist.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    *
@@ -267,9 +267,9 @@ interface S3Client {
    *
    * @return A new [S3Bucket] instance wrapping the target bucket.
    *
-   * @throws BucketNotFoundException If the target bucket does not exist.
+   * @throws BucketNotFoundError If the target bucket does not exist.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    *
@@ -287,7 +287,7 @@ interface S3Client {
    *
    * @return A list of S3 bucket wrappers.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
@@ -300,7 +300,7 @@ interface S3Client {
    *
    * @return A list of S3 bucket wrappers.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
@@ -313,7 +313,7 @@ interface S3Client {
    *
    * @return A list of S3 bucket wrappers.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
@@ -332,7 +332,7 @@ interface S3Client {
    *
    * @throws BucketNotEmptyException If the target bucket is not empty.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
@@ -345,7 +345,7 @@ interface S3Client {
    *
    * @throws BucketNotEmptyException If the target bucket is not empty.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
@@ -358,7 +358,7 @@ interface S3Client {
    *
    * @throws BucketNotEmptyException If the target bucket is not empty.
    *
-   * @throws S34kException If an implementation specific exception is thrown.
+   * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
