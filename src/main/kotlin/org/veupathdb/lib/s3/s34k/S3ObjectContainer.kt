@@ -9,6 +9,7 @@ import org.veupathdb.lib.s3.s34k.requests.`object`.directory.DirectoryDeleteErro
 import org.veupathdb.lib.s3.s34k.requests.`object`.directory.S3DirectoryDeleteParams
 import org.veupathdb.lib.s3.s34k.response.`object`.*
 import java.io.File
+import java.io.FileNotFoundException
 import java.io.InputStream
 
 // TODO: S3Directory should contain an object manager
@@ -1134,6 +1135,8 @@ interface S3ObjectContainer {
    *
    * @param path Path to the new object to create.
    *
+   * @return An [S3Object] instance handle on the target object.
+   *
    * @param stream Stream whose contents will be written to the object in the
    * store at the given path.
    *
@@ -1159,6 +1162,8 @@ interface S3ObjectContainer {
    * @param stream Stream whose contents will be written to the object in the
    * store at the given path.
    *
+   * @return An [S3Object] instance handle on the target object.
+   *
    * @throws BucketNotFoundError If this bucket or the bucket in which this
    * object container resides no longer exists.
    *
@@ -1176,6 +1181,8 @@ interface S3ObjectContainer {
    * uploaded from the configured stream.
    *
    * @param action Action used to configure the backing S3 operation.
+   *
+   * @return An [S3Object] instance handle on the target object.
    *
    * @throws InvalidRequestConfigError If either the `path` value or `stream`
    * value is not set on the configured parameters.
@@ -1201,6 +1208,8 @@ interface S3ObjectContainer {
    * uploaded from the configured stream.
    *
    * @param params Parameters for the backing S3 operation.
+   *
+   * @return An [S3Object] instance handle on the target object.
    *
    * @throws InvalidRequestConfigError If either the `path` value or `stream`
    * value is not set on the configured parameters.
@@ -1229,6 +1238,8 @@ interface S3ObjectContainer {
    *
    * @param path Path to the new object to create.
    *
+   * @return An [S3Object] instance handle on the target object.
+   *
    * @param stream Stream whose contents will be written to the object in the
    * store at the given path.
    *
@@ -1251,6 +1262,8 @@ interface S3ObjectContainer {
    * This method is an alias of [put].
    *
    * @param action Action used to configure the backing S3 operation.
+   *
+   * @return An [S3Object] instance handle on the target object.
    *
    * @throws InvalidRequestConfigError If either the `path` value or `stream`
    * value is not set on the configured parameters.
@@ -1279,6 +1292,8 @@ interface S3ObjectContainer {
    *
    * @param params Parameters for the backing S3 operation.
    *
+   * @return An [S3Object] instance handle on the target object.
+   *
    * @throws InvalidRequestConfigError If either the `path` value or `stream`
    * value is not set on the configured parameters.
    *
@@ -1302,23 +1317,217 @@ interface S3ObjectContainer {
 
   // region Put File
 
-  // TODO: what happens if the local file doesn't exist?
+  /**
+   * Uploads the specified file to this container at the given path, overwriting
+   * any object presently at that path.
+   *
+   * This method is a Kotlin syntax extra that is an alias for [upload].
+   *
+   * @param path Path to the object to create/overwrite in this container.
+   *
+   * @param file Local file to upload.
+   *
+   * @return An [S3Object] instance handle on the target object.
+   *
+   * @throws FileNotFoundException If the given local file does not exist.
+   *
+   * @throws BucketNotFoundError If this bucket or the bucket in which this
+   * object container resides no longer exists.
+   *
+   * @throws S34KError If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   *
+   * @see upload
+   * @see putFile
+   */
+  @Throws(
+    FileNotFoundException::class,
+    BucketNotFoundError::class,
+    S34KError::class,
+  )
   operator fun set(path: String, file: File) = upload(path, file)
 
+  /**
+   * Uploads the specified file to this container at the given path, overwriting
+   * any object presently at that path.
+   *
+   * @param path Path to the object to create/overwrite in this container.
+   *
+   * @param file Local file to upload.
+   *
+   * @return An [S3Object] instance handle on the target object.
+   *
+   * @throws FileNotFoundException If the given local file does not exist.
+   *
+   * @throws BucketNotFoundError If this bucket or the bucket in which this
+   * object container resides no longer exists.
+   *
+   * @throws S34KError If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   *
+   * @see putFile
+   */
+  @Throws(
+    FileNotFoundException::class,
+    BucketNotFoundError::class,
+    S34KError::class,
+  )
   fun upload(path: String, file: File): S3Object
 
-  @Throws(InvalidRequestConfigError::class, BucketNotFoundError::class, S34KError::class)
+  /**
+   * Uploads the configured file to this container at the configured path,
+   * overwriting any object presently at that path.
+   *
+   * @param action Action used to configure the backing S3 operation.
+   *
+   * @return An [S3Object] instance handle on the target object.
+   *
+   * @throws InvalidRequestConfigError If either the `path` value or `localFile`
+   * value is not set on the configured parameters.
+   *
+   * @throws FileNotFoundException If the configured local file does not exist.
+   *
+   * @throws BucketNotFoundError If this bucket or the bucket in which this
+   * object container resides no longer exists.
+   *
+   * @throws S34KError If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   *
+   * @see putFile
+   */
+  @Throws(
+    InvalidRequestConfigError::class,
+    FileNotFoundException::class,
+    BucketNotFoundError::class,
+    S34KError::class,
+  )
   fun upload(action: S3FileUploadParams.() -> Unit): S3Object
 
-  @Throws(InvalidRequestConfigError::class, BucketNotFoundError::class, S34KError::class)
+  /**
+   * Uploads the configured file to this container at the configured path,
+   * overwriting any object presently at that path.
+   *
+   * @param params Parameters for the backing S3 operation.
+   *
+   * @return An [S3Object] instance handle on the target object.
+   *
+   * @throws InvalidRequestConfigError If either the `path` value or `localFile`
+   * value is not set on the configured parameters.
+   *
+   * @throws FileNotFoundException If the configured local file does not exist.
+   *
+   * @throws BucketNotFoundError If this bucket or the bucket in which this
+   * object container resides no longer exists.
+   *
+   * @throws S34KError If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   *
+   * @see putFile
+   */
+  @Throws(
+    InvalidRequestConfigError::class,
+    FileNotFoundException::class,
+    BucketNotFoundError::class,
+    S34KError::class,
+  )
   fun upload(params: S3FileUploadParams): S3Object
 
+  /**
+   * Uploads the specified file to this container at the given path, overwriting
+   * any object presently at that path.
+   *
+   * This method is an alias of [upload].
+   *
+   * @param path Path to the object to create/overwrite in this container.
+   *
+   * @param file Local file to upload.
+   *
+   * @return An [S3Object] instance handle on the target object.
+   *
+   * @throws FileNotFoundException If the given local file does not exist.
+   *
+   * @throws BucketNotFoundError If this bucket or the bucket in which this
+   * object container resides no longer exists.
+   *
+   * @throws S34KError If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   *
+   * @see upload
+   */
+  @Throws(
+    FileNotFoundException::class,
+    BucketNotFoundError::class,
+    S34KError::class,
+  )
   fun putFile(path: String, file: File) = upload(path, file)
 
-  @Throws(InvalidRequestConfigError::class, BucketNotFoundError::class, S34KError::class)
+  /**
+   * Uploads the configured file to this container at the configured path,
+   * overwriting any object presently at that path.
+   *
+   * This method is an alias of [upload].
+   *
+   * @param action Action used to configure the backing S3 operation.
+   *
+   * @return An [S3Object] instance handle on the target object.
+   *
+   * @throws InvalidRequestConfigError If either the `path` value or `localFile`
+   * value is not set on the configured parameters.
+   *
+   * @throws FileNotFoundException If the configured local file does not exist.
+   *
+   * @throws BucketNotFoundError If this bucket or the bucket in which this
+   * object container resides no longer exists.
+   *
+   * @throws S34KError If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   *
+   * @see upload
+   */
+  @Throws(
+    InvalidRequestConfigError::class,
+    FileNotFoundException::class,
+    BucketNotFoundError::class,
+    S34KError::class,
+  )
   fun putFile(action: S3FileUploadParams.() -> Unit) = upload(action)
 
-  @Throws(InvalidRequestConfigError::class, BucketNotFoundError::class, S34KError::class)
+  /**
+   * Uploads the configured file to this container at the configured path,
+   * overwriting any object presently at that path.
+   *
+   * This method is an alias of [upload].
+   *
+   * @param params Parameters for the backing S3 operation.
+   *
+   * @return An [S3Object] instance handle on the target object.
+   *
+   * @throws InvalidRequestConfigError If either the `path` value or `localFile`
+   * value is not set on the configured parameters.
+   *
+   * @throws FileNotFoundException If the configured local file does not exist.
+   *
+   * @throws BucketNotFoundError If this bucket or the bucket in which this
+   * object container resides no longer exists.
+   *
+   * @throws S34KError If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   *
+   * @see upload
+   */
+  @Throws(
+    InvalidRequestConfigError::class,
+    FileNotFoundException::class,
+    BucketNotFoundError::class,
+    S34KError::class,
+  )
   fun putFile(params: S3FileUploadParams) = upload(params)
 
   // endregion Put File
@@ -1335,25 +1544,135 @@ interface S3ObjectContainer {
 
   // region Delete Object
 
+  /**
+   * Deletes the object at the target path from this container.
+   *
+   * @param path Path to the target object to delete.
+   *
+   * @throws BucketNotFoundError If this bucket or the bucket in which this
+   * object container resides no longer exists.
+   *
+   * @throws S34KError If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
+  @Throws(BucketNotFoundError::class, S34KError::class)
   fun delete(path: String)
 
-  @Throws(InvalidRequestConfigError::class, BucketNotFoundError::class, S34KError::class)
+  /**
+   * Deletes the object at the target path from this container.
+   *
+   * @param action Action used to configure the backing S3 operation.
+   *
+   * @throws InvalidRequestConfigError If the `path` value  is not set on the
+   * configured parameters.
+   *
+   * @throws BucketNotFoundError If this bucket or the bucket in which this
+   * object container resides no longer exists.
+   *
+   * @throws S34KError If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
+  @Throws(
+    InvalidRequestConfigError::class,
+    BucketNotFoundError::class,
+    S34KError::class,
+  )
   fun delete(action: S3ObjectDeleteParams.() -> Unit)
 
-  @Throws(InvalidRequestConfigError::class, BucketNotFoundError::class, S34KError::class)
+  /**
+   * Deletes the object at the target path from this container.
+   *
+   * @param params Parameters for the backing S3 operation.
+   *
+   * @throws InvalidRequestConfigError If the `path` value  is not set on the
+   * configured parameters.
+   *
+   * @throws BucketNotFoundError If this bucket or the bucket in which this
+   * object container resides no longer exists.
+   *
+   * @throws S34KError If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
+  @Throws(
+    InvalidRequestConfigError::class,
+    BucketNotFoundError::class,
+    S34KError::class,
+  )
   fun delete(params: S3ObjectDeleteParams)
 
   // endregion Delete Object
 
   // region Delete Multi
 
+  /**
+   * Deletes all the given target objects from this container.
+   *
+   * If the target paths set is empty, this method does nothing.
+   *
+   * @param paths Target paths to delete.
+   *
+   * @throws BucketNotFoundError If this bucket or the bucket in which this
+   * object container resides no longer exists.
+   *
+   * @throws S34KError If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
+  @Throws(BucketNotFoundError::class, S34KError::class)
   fun deleteAll(vararg paths: String)
 
+  /**
+   * Deletes all the given target objects from this container.
+   *
+   * If the target paths set is empty, this method does nothing.
+   *
+   * @param paths Target paths to delete.
+   *
+   * @throws BucketNotFoundError If this bucket or the bucket in which this
+   * object container resides no longer exists.
+   *
+   * @throws S34KError If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
+  @Throws(BucketNotFoundError::class, S34KError::class)
   fun deleteAll(paths: Iterable<String>)
 
-  // TODO: Does nothing if the path set is empty.
+  /**
+   * Deletes all the given target objects from this container.
+   *
+   * If the target paths set is empty, this method does nothing.
+   *
+   * @param action Action used to configure the backing S3 operation.
+   *
+   * @throws BucketNotFoundError If this bucket or the bucket in which this
+   * object container resides no longer exists.
+   *
+   * @throws S34KError If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
+  @Throws(BucketNotFoundError::class, S34KError::class)
   fun deleteAll(action: S3MultiObjectDeleteParams.() -> Unit)
 
+  /**
+   * Deletes all the given target objects from this container.
+   *
+   * If the target paths set is empty, this method does nothing.
+   *
+   * @param params Parameters for the backing S3 operation.
+   *
+   * @throws BucketNotFoundError If this bucket or the bucket in which this
+   * object container resides no longer exists.
+   *
+   * @throws S34KError If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
+  @Throws(BucketNotFoundError::class, S34KError::class)
   fun deleteAll(params: S3MultiObjectDeleteParams)
 
   // endregion Delete Multi
@@ -1388,23 +1707,259 @@ interface S3ObjectContainer {
    * @throws DirectoryDeleteError If some or all of the directory's contents
    * could not be deleted.
    *
-   * @throws BucketNotFoundError I
+   * @throws BucketNotFoundError If this bucket or the bucket in which this
+   * object container resides no longer exists.
+   *
+   * @throws S34KError If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   *
+   * @see deleteDirectory
    */
-  @Throws(DirectoryDeleteError::class, BucketNotFoundError::class, S34KError::class)
+  @Throws(
+    DirectoryDeleteError::class,
+    BucketNotFoundError::class,
+    S34KError::class,
+  )
   fun rmdir(path: String)
 
-  @Throws(InvalidRequestConfigError::class, BucketNotFoundError::class, S34KError::class)
+  /**
+   * Recursively removes all contents in the target directory.
+   *
+   * **Example**
+   *
+   * Given the container state:
+   * ```
+   * foo/bar/bazz.txt
+   * foo/bar/fizz.txt
+   * foo/buzz.txt
+   * food/world.png
+   * ```
+   *
+   * The operation:
+   * ```
+   * container.rmdir("foo")
+   * ```
+   *
+   * Will result in the state:
+   * ```
+   * food/world.png
+   * ```
+   *
+   * @param action Action used to configure the backing S3 operation.
+   *
+   * @throws DirectoryDeleteError If some or all of the directory's contents
+   * could not be deleted.
+   *
+   * @throws BucketNotFoundError If this bucket or the bucket in which this
+   * object container resides no longer exists.
+   *
+   * @throws S34KError If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   *
+   * @see deleteDirectory
+   */
+  @Throws(
+    InvalidRequestConfigError::class,
+    DirectoryDeleteError::class,
+    BucketNotFoundError::class,
+    S34KError::class,
+  )
   fun rmdir(action: S3DirectoryDeleteParams.() -> Unit)
 
-  @Throws(InvalidRequestConfigError::class, BucketNotFoundError::class, S34KError::class)
+  /**
+   * Recursively removes all contents in the target directory.
+   *
+   * **Example**
+   *
+   * Given the container state:
+   * ```
+   * foo/bar/bazz.txt
+   * foo/bar/fizz.txt
+   * foo/buzz.txt
+   * food/world.png
+   * ```
+   *
+   * The operation:
+   * ```
+   * container.rmdir("foo")
+   * ```
+   *
+   * Will result in the state:
+   * ```
+   * food/world.png
+   * ```
+   *
+   * @param params Parameters for the backing S3 operation.
+   *
+   * @throws InvalidRequestConfigError If either the `path` value or `localFile`
+   * value is not set on the configured parameters.
+   *
+   * @throws DirectoryDeleteError If some or all of the directory's contents
+   * could not be deleted.
+   *
+   * @throws BucketNotFoundError If this bucket or the bucket in which this
+   * object container resides no longer exists.
+   *
+   * @throws S34KError If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   *
+   * @see deleteDirectory
+   */
+  @Throws(
+    InvalidRequestConfigError::class,
+    DirectoryDeleteError::class,
+    BucketNotFoundError::class,
+    S34KError::class,
+  )
   fun rmdir(params: S3DirectoryDeleteParams)
 
+  /**
+   * Recursively removes all contents in the target directory.
+   *
+   * This method is an alias of [rmdir].
+   *
+   * **Example**
+   *
+   * Given the container state:
+   * ```
+   * foo/bar/bazz.txt
+   * foo/bar/fizz.txt
+   * foo/buzz.txt
+   * food/world.png
+   * ```
+   *
+   * The operation:
+   * ```
+   * container.rmdir("foo")
+   * ```
+   *
+   * Will result in the state:
+   * ```
+   * food/world.png
+   * ```
+   *
+   * @param path Path to the target directory that will be removed.
+   *
+   * @throws DirectoryDeleteError If some or all of the directory's contents
+   * could not be deleted.
+   *
+   * @throws BucketNotFoundError If this bucket or the bucket in which this
+   * object container resides no longer exists.
+   *
+   * @throws S34KError If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   *
+   * @see rmdir
+   */
+  @Throws(
+    DirectoryDeleteError::class,
+    BucketNotFoundError::class,
+    S34KError::class,
+  )
   fun deleteDirectory(path: String) = rmdir(path)
 
-  @Throws(InvalidRequestConfigError::class, BucketNotFoundError::class, S34KError::class)
+  /**
+   * Recursively removes all contents in the target directory.
+   *
+   * This method is an alias of [rmdir].
+   *
+   * **Example**
+   *
+   * Given the container state:
+   * ```
+   * foo/bar/bazz.txt
+   * foo/bar/fizz.txt
+   * foo/buzz.txt
+   * food/world.png
+   * ```
+   *
+   * The operation:
+   * ```
+   * container.rmdir("foo")
+   * ```
+   *
+   * Will result in the state:
+   * ```
+   * food/world.png
+   * ```
+   *
+   * @param action Action used to configure the backing S3 operation.
+   *
+   * @throws InvalidRequestConfigError If either the `path` value or `localFile`
+   * value is not set on the configured parameters.
+   *
+   * @throws DirectoryDeleteError If some or all of the directory's contents
+   * could not be deleted.
+   *
+   * @throws BucketNotFoundError If this bucket or the bucket in which this
+   * object container resides no longer exists.
+   *
+   * @throws S34KError If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   *
+   * @see rmdir
+   */
+  @Throws(
+    InvalidRequestConfigError::class,
+    DirectoryDeleteError::class,
+    BucketNotFoundError::class,
+    S34KError::class,
+  )
   fun deleteDirectory(action: S3DirectoryDeleteParams.() -> Unit) = rmdir(action)
 
-  @Throws(InvalidRequestConfigError::class, BucketNotFoundError::class, S34KError::class)
+  /**
+   * Recursively removes all contents in the target directory.
+   *
+   * This method is an alias of [rmdir].
+   *
+   * **Example**
+   *
+   * Given the container state:
+   * ```
+   * foo/bar/bazz.txt
+   * foo/bar/fizz.txt
+   * foo/buzz.txt
+   * food/world.png
+   * ```
+   *
+   * The operation:
+   * ```
+   * container.rmdir("foo")
+   * ```
+   *
+   * Will result in the state:
+   * ```
+   * food/world.png
+   * ```
+   *
+   * @param params Parameters for the backing S3 operation.
+   *
+   * @throws InvalidRequestConfigError If either the `path` value or `localFile`
+   * value is not set on the configured parameters.
+   *
+   * @throws DirectoryDeleteError If some or all of the directory's contents
+   * could not be deleted.
+   *
+   * @throws BucketNotFoundError If this bucket or the bucket in which this
+   * object container resides no longer exists.
+   *
+   * @throws S34KError If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   *
+   * @see rmdir
+   */
+  @Throws(
+    InvalidRequestConfigError::class,
+    DirectoryDeleteError::class,
+    BucketNotFoundError::class,
+    S34KError::class,
+  )
   fun deleteDirectory(params: S3DirectoryDeleteParams) = rmdir(params)
 
   // endregion RmDir
