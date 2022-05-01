@@ -1,6 +1,6 @@
 package org.veupathdb.lib.s3.s34k.requests.`object`
 
-import org.veupathdb.lib.s3.s34k.errors.InvalidRequestConfigException
+import org.veupathdb.lib.s3.s34k.errors.InvalidRequestConfigError
 import java.io.InputStream
 
 /**
@@ -17,7 +17,7 @@ interface S3StreamingObjectCreateParams : S3ObjectCreateParams {
    * in the S3 store.
    *
    * If this value is not set when attempting to perform the S3 operation, an
-   * [InvalidRequestConfigException] will be thrown.
+   * [InvalidRequestConfigError] will be thrown.
    */
   var stream: InputStream?
 

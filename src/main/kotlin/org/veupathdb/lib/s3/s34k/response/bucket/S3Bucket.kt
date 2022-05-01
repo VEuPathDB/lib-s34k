@@ -95,7 +95,7 @@ interface S3Bucket {
    *
    * @param action Action used to configure the S3 operation.
    *
-   * @throws InvalidRequestConfigException If the S3 operation parameters are
+   * @throws InvalidRequestConfigError If the S3 operation parameters are
    * missing required fields or otherwise incorrectly configured.
    *
    * @throws BucketNotEmptyException If this bucket is not empty and must be
@@ -114,7 +114,7 @@ interface S3Bucket {
    *
    * @param params S3 operation parameters.
    *
-   * @throws InvalidRequestConfigException If the S3 operation parameters are
+   * @throws InvalidRequestConfigError If the S3 operation parameters are
    * missing required fields or otherwise incorrectly configured.
    *
    * @throws BucketNotEmptyException If this bucket is not empty and must be
@@ -330,7 +330,7 @@ interface S3Bucket {
    * the object at the time this method was called, those tags will not appear
    * in the returned tag map.
    *
-   * @throws InvalidRequestConfigException If the `path` property is not set on
+   * @throws InvalidRequestConfigError If the `path` property is not set on
    * the configured [S3ObjectTagDeleteParams] instance.
    *
    * @throws ObjectNotFoundException If the target object does not exist.
@@ -368,7 +368,7 @@ interface S3Bucket {
    * the object at the time this method was called, those tags will not appear
    * in the returned tag map.
    *
-   * @throws InvalidRequestConfigException If the `path` property is not set on
+   * @throws InvalidRequestConfigError If the `path` property is not set on
    * the configured [S3ObjectTagDeleteParams] instance.
    *
    * @throws ObjectNotFoundException If the target object does not exist.
@@ -408,7 +408,7 @@ interface S3Bucket {
    *
    * @return `true` if an object exists at the given path, otherwise `false`.
    *
-   * @throws InvalidRequestConfigException If the S3 operation parameters are
+   * @throws InvalidRequestConfigError If the S3 operation parameters are
    * missing required fields or otherwise incorrectly configured.
    *
    * @throws BucketNotFoundError If this bucket no longer exists.
@@ -427,7 +427,7 @@ interface S3Bucket {
    *
    * @return `true` if an object exists at the given path, otherwise `false`.
    *
-   * @throws InvalidRequestConfigException If the S3 operation parameters are
+   * @throws InvalidRequestConfigError If the S3 operation parameters are
    * missing required fields or otherwise incorrectly configured.
    *
    * @throws BucketNotFoundError If this bucket no longer exists.
@@ -466,7 +466,7 @@ interface S3Bucket {
    *
    * @return Metadata about the specified object.
    *
-   * @throws InvalidRequestConfigException If the S3 operation parameters are
+   * @throws InvalidRequestConfigError If the S3 operation parameters are
    * missing required fields or otherwise incorrectly configured.
    *
    * @throws BucketNotFoundError If this bucket no longer exists.
@@ -486,7 +486,7 @@ interface S3Bucket {
    *
    * @return Metadata about the specified object.
    *
-   * @throws InvalidRequestConfigException If the S3 operation parameters are
+   * @throws InvalidRequestConfigError If the S3 operation parameters are
    * missing required fields or otherwise incorrectly configured.
    *
    * @throws BucketNotFoundError If this bucket no longer exists.
@@ -531,7 +531,7 @@ interface S3Bucket {
    * @return An object reference to the target object, containing a stream over
    * the contents of that object.
    *
-   * @throws InvalidRequestConfigException If the `path` property is not set on
+   * @throws InvalidRequestConfigError If the `path` property is not set on
    * the [S3ObjectGetParams] instance.
    *
    * @throws ObjectNotFoundException If the target object does not exist.
@@ -553,7 +553,7 @@ interface S3Bucket {
    * @return An object reference to the target object, containing a stream over
    * the contents of that object.
    *
-   * @throws InvalidRequestConfigException If the `path` property is not set on
+   * @throws InvalidRequestConfigError If the `path` property is not set on
    * the [S3ObjectGetParams] instance.
    *
    * @throws ObjectNotFoundException If the target object does not exist.
@@ -598,7 +598,7 @@ interface S3Bucket {
    * @return A map of tag keys to values for all tags attached to the target
    * object.
    *
-   * @throws InvalidRequestConfigException If the S3 operation parameters are
+   * @throws InvalidRequestConfigError If the S3 operation parameters are
    * missing required fields or otherwise incorrectly configured.
    *
    * @throws ObjectNotFoundException If the target object does not exist.
@@ -620,7 +620,7 @@ interface S3Bucket {
    * @return A map of tag keys to values for all tags attached to the target
    * object.
    *
-   * @throws InvalidRequestConfigException If the S3 operation parameters are
+   * @throws InvalidRequestConfigError If the S3 operation parameters are
    * missing required fields or otherwise incorrectly configured.
    *
    * @throws ObjectNotFoundException If the target object does not exist.
@@ -726,7 +726,7 @@ interface S3Bucket {
    *
    * @param action Action used to configure the S3 operation.
    *
-   * @throws InvalidRequestConfigException If the S3 operation parameters are
+   * @throws InvalidRequestConfigError If the S3 operation parameters are
    * missing required fields or otherwise incorrectly configured.
    *
    * @throws ObjectNotFoundException If the target object does not exist.
@@ -744,7 +744,7 @@ interface S3Bucket {
    *
    * @param params S3 operation parameters.
    *
-   * @throws InvalidRequestConfigException If the S3 operation parameters are
+   * @throws InvalidRequestConfigError If the S3 operation parameters are
    * missing required fields or otherwise incorrectly configured.
    *
    * @throws ObjectNotFoundException If the target object does not exist.
@@ -818,7 +818,7 @@ interface S3Bucket {
    *
    * @return An [S3Object] instance wrapping the created empty object.
    *
-   * @throws InvalidRequestConfigException If the S3 operation parameters are
+   * @throws InvalidRequestConfigError If the S3 operation parameters are
    * missing required fields or otherwise incorrectly configured.
    *
    * @throws BucketNotFoundError If this bucket no longer exists.
@@ -837,7 +837,7 @@ interface S3Bucket {
    *
    * @return An [S3Object] instance wrapping the created empty object.
    *
-   * @throws InvalidRequestConfigException If the S3 operation parameters are
+   * @throws InvalidRequestConfigError If the S3 operation parameters are
    * missing required fields or otherwise incorrectly configured.
    *
    * @throws BucketNotFoundError If this bucket no longer exists.
@@ -938,7 +938,7 @@ interface S3Bucket {
    *
    * @param action Action used to configure the S3 operation parameters.
    *
-   * @throws InvalidRequestConfigException If the S3 operation parameters are
+   * @throws InvalidRequestConfigError If the S3 operation parameters are
    * missing required fields or otherwise incorrectly configured.
    *
    * @throws BucketNotFoundError If this bucket no longer exists.
@@ -955,7 +955,7 @@ interface S3Bucket {
    *
    * @param params S3 operation parameters.
    *
-   * @throws InvalidRequestConfigException If the S3 operation parameters are
+   * @throws InvalidRequestConfigError If the S3 operation parameters are
    * missing required fields or otherwise incorrectly configured.
    *
    * @throws BucketNotFoundError If this bucket no longer exists.
@@ -988,7 +988,7 @@ interface S3Bucket {
    *
    * @param action Action used to configure the S3 operation.
    *
-   * @throws InvalidRequestConfigException If the S3 operation parameters are
+   * @throws InvalidRequestConfigError If the S3 operation parameters are
    * missing required fields or otherwise incorrectly configured.
    *
    * @throws BucketNotFoundError If this bucket no longer exists.
@@ -1004,7 +1004,7 @@ interface S3Bucket {
    *
    * @param params S3 operation parameters.
    *
-   * @throws InvalidRequestConfigException If the S3 operation parameters are
+   * @throws InvalidRequestConfigError If the S3 operation parameters are
    * missing required fields or otherwise incorrectly configured.
    *
    * @throws BucketNotFoundError If this bucket no longer exists.

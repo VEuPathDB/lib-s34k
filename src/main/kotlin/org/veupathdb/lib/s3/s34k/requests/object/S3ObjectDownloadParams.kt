@@ -1,6 +1,6 @@
 package org.veupathdb.lib.s3.s34k.requests.`object`
 
-import org.veupathdb.lib.s3.s34k.errors.InvalidRequestConfigException
+import org.veupathdb.lib.s3.s34k.errors.InvalidRequestConfigError
 import org.veupathdb.lib.s3.s34k.response.`object`.S3FileObject
 import java.io.File
 
@@ -19,7 +19,7 @@ interface S3ObjectDownloadParams : S3ObjectRequestParams {
    *
    * This file does not need to already exist.
    *
-   * This value must be set or an [InvalidRequestConfigException] will be thrown
+   * This value must be set or an [InvalidRequestConfigError] will be thrown
    * when the request is attempted.
    */
   var localFile: File?

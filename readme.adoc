@@ -10,8 +10,10 @@ image:https://img.shields.io/badge/docs-dokka-brightgreen[link="https://veupathd
 == Usage
 
 S34K defines the base API for a generalized abstraction layer over S3 API
-clients and SDKs.  This project simply defines a standard API and does not
-provide any functionality on its own.
+clients and SDKs treating the target S3 store as a remote filesystem.
+
+This project and repository simply defines a standard API and does not provide
+any functionality on its own.
 
 Usage of this API is done through specific implementations (such as
 https://github.com/VEuPathDB/lib-s34k-minio[S34K-Minio]).
