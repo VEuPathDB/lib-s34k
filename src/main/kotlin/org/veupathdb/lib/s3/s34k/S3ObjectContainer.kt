@@ -2,8 +2,9 @@ package org.veupathdb.lib.s3.s34k
 
 import org.veupathdb.lib.s3.s34k.errors.BucketNotFoundError
 import org.veupathdb.lib.s3.s34k.errors.InvalidRequestConfigError
-import org.veupathdb.lib.s3.s34k.errors.ObjectNotFoundException
+import org.veupathdb.lib.s3.s34k.errors.ObjectNotFoundError
 import org.veupathdb.lib.s3.s34k.errors.S34KError
+import org.veupathdb.lib.s3.s34k.fields.tags.S3TagMap
 import org.veupathdb.lib.s3.s34k.requests.`object`.*
 import org.veupathdb.lib.s3.s34k.requests.`object`.directory.DirectoryDeleteError
 import org.veupathdb.lib.s3.s34k.requests.`object`.directory.S3DirectoryDeleteParams
@@ -13,21 +14,51 @@ import java.io.FileNotFoundException
 import java.io.InputStream
 
 // TODO: S3Directory should contain an object manager
-// TODO: "what is a directory?" (an empty object for s34k)
-// TODO: XMinioObjectExistsAsDirectory error when trying to put an object at the parent path of a directory?
-//       Existing path:      /pot/avie1.png
-//       Attempted put path: /pot
-//       custom minio error codes: https://github.com/minio/minio/blob/master/cmd/api-errors.go
-// TODO: Access denied when trying to use a file as part of a new key name?
-//       Existing object:    /port
-//       Attempted put path: /port/grapes
-// TODO: All paths used in all methods on this type are relative to the root of
-//       the object container.  In the case of a bucket, that would be the root
-//       of the bucket.  In the case of a directory, that will be a subpath
-//       under the directory root.  The exception would be paths starting with
-//       a '/' character.
+/**
+ * # S3 Object Container
+ *
+ * Represents a segment of an S3 store that may contain objects.  This could
+ * either be a bucket or a 'directory'.
+ *
+ * All paths for all methods defined in this type are treated as relative to the
+ * root of the container.  In the case of a bucket, all paths are absolute paths
+ * to the bucket root.  In the case of a 'directory', all paths are relative to
+ * the directory prefix.  The exception to this is paths starting with a leading
+ * '`/`' character which will be treated as absolute paths in all cases.
+ *
+ * @author Elizabeth Paige Harper [https://github.com/Foxcapades]
+ *
+ * @since v0.3.0
+ */
 @Suppress("unused")
 interface S3ObjectContainer {
+
+  // region Imaginary
+
+  /**
+   * Executes the given action on the target object (which may or may not
+   * exist).
+   *
+   * This method will execute the given action regardless of whether the target
+   * object exists or not.  It is up to the given action to determine whether
+   * the object exists if necessary.
+   *
+   * @param path Path/key to the target object.  The target object need not
+   * exist for this method to be called.
+   *
+   * @param action Action that will be called on the [S3Object] handle on the
+   * target object.
+   */
+  @Throws(
+    BucketNotFoundError::class,
+    S34KError::class,
+  )
+  fun <R> withObject(path: String, action: (S3Object) -> R): R
+
+  // TODO:
+  // fun <R> withDirectory(path: String, action: (S3Directory) -> R): R
+
+  // endregion Imaginary
 
   // region Fetch
 
@@ -510,7 +541,7 @@ interface S3ObjectContainer {
    * @return An [S3FileObject] instance handle on the target object and local
    * file.
    *
-   * @throws ObjectNotFoundException If the configured target object does not
+   * @throws ObjectNotFoundError If the configured target object does not
    * exist.
    *
    * @throws BucketNotFoundError If this bucket or the bucket in which this
@@ -523,7 +554,7 @@ interface S3ObjectContainer {
    * @see getFile
    */
   @Throws(
-    ObjectNotFoundException::class,
+    ObjectNotFoundError::class,
     BucketNotFoundError::class,
     S34KError::class,
   )
@@ -546,7 +577,7 @@ interface S3ObjectContainer {
    * @throws InvalidRequestConfigError If either the `path` or `localFile` value
    * is not set on the configured parameters.
    *
-   * @throws ObjectNotFoundException If the configured target object does not
+   * @throws ObjectNotFoundError If the configured target object does not
    * exist.
    *
    * @throws BucketNotFoundError If this bucket or the bucket in which this
@@ -560,7 +591,7 @@ interface S3ObjectContainer {
    */
   @Throws(
     InvalidRequestConfigError::class,
-    ObjectNotFoundException::class,
+    ObjectNotFoundError::class,
     BucketNotFoundError::class,
     S34KError::class
   )
@@ -583,7 +614,7 @@ interface S3ObjectContainer {
    * @throws InvalidRequestConfigError If either the `path` or `localFile` value
    * is not set on the configured parameters.
    *
-   * @throws ObjectNotFoundException If the configured target object does not
+   * @throws ObjectNotFoundError If the configured target object does not
    * exist.
    *
    * @throws BucketNotFoundError If this bucket or the bucket in which this
@@ -597,7 +628,7 @@ interface S3ObjectContainer {
    */
   @Throws(
     InvalidRequestConfigError::class,
-    ObjectNotFoundException::class,
+    ObjectNotFoundError::class,
     BucketNotFoundError::class,
     S34KError::class
   )
@@ -622,7 +653,7 @@ interface S3ObjectContainer {
    * @return An [S3FileObject] instance handle on the target object and local
    * file.
    *
-   * @throws ObjectNotFoundException If the configured target object does not
+   * @throws ObjectNotFoundError If the configured target object does not
    * exist.
    *
    * @throws BucketNotFoundError If this bucket or the bucket in which this
@@ -635,7 +666,7 @@ interface S3ObjectContainer {
    * @see download
    */
   @Throws(
-    ObjectNotFoundException::class,
+    ObjectNotFoundError::class,
     BucketNotFoundError::class,
     S34KError::class,
   )
@@ -660,7 +691,7 @@ interface S3ObjectContainer {
    * @throws InvalidRequestConfigError If either the `path` or `localFile` value
    * is not set on the configured parameters.
    *
-   * @throws ObjectNotFoundException If the configured target object does not
+   * @throws ObjectNotFoundError If the configured target object does not
    * exist.
    *
    * @throws BucketNotFoundError If this bucket or the bucket in which this
@@ -674,7 +705,7 @@ interface S3ObjectContainer {
    */
   @Throws(
     InvalidRequestConfigError::class,
-    ObjectNotFoundException::class,
+    ObjectNotFoundError::class,
     BucketNotFoundError::class,
     S34KError::class,
   )
@@ -699,7 +730,7 @@ interface S3ObjectContainer {
    * @throws InvalidRequestConfigError If either the `path` or `localFile` value
    * is not set on the configured parameters.
    *
-   * @throws ObjectNotFoundException If the configured target object does not
+   * @throws ObjectNotFoundError If the configured target object does not
    * exist.
    *
    * @throws BucketNotFoundError If this bucket or the bucket in which this
@@ -713,7 +744,7 @@ interface S3ObjectContainer {
    */
   @Throws(
     InvalidRequestConfigError::class,
-    ObjectNotFoundException::class,
+    ObjectNotFoundError::class,
     BucketNotFoundError::class,
     S34KError::class
   )
@@ -1748,6 +1779,9 @@ interface S3ObjectContainer {
    *
    * @param action Action used to configure the backing S3 operation.
    *
+   * @throws InvalidRequestConfigError If `path` value is not set on the
+   * configured parameters.
+   *
    * @throws DirectoryDeleteError If some or all of the directory's contents
    * could not be deleted.
    *
@@ -1793,8 +1827,8 @@ interface S3ObjectContainer {
    *
    * @param params Parameters for the backing S3 operation.
    *
-   * @throws InvalidRequestConfigError If either the `path` value or `localFile`
-   * value is not set on the configured parameters.
+   * @throws InvalidRequestConfigError If the `path` value is not set on the
+   * configured parameters.
    *
    * @throws DirectoryDeleteError If some or all of the directory's contents
    * could not be deleted.
@@ -1889,8 +1923,8 @@ interface S3ObjectContainer {
    *
    * @param action Action used to configure the backing S3 operation.
    *
-   * @throws InvalidRequestConfigError If either the `path` value or `localFile`
-   * value is not set on the configured parameters.
+   * @throws InvalidRequestConfigError If the `path` value is not set on the
+   * configured parameters.
    *
    * @throws DirectoryDeleteError If some or all of the directory's contents
    * could not be deleted.
@@ -1939,8 +1973,8 @@ interface S3ObjectContainer {
    *
    * @param params Parameters for the backing S3 operation.
    *
-   * @throws InvalidRequestConfigError If either the `path` value or `localFile`
-   * value is not set on the configured parameters.
+   * @throws InvalidRequestConfigError If the `path` is not set on the
+   * configured parameters.
    *
    * @throws DirectoryDeleteError If some or all of the directory's contents
    * could not be deleted.
@@ -1965,4 +1999,429 @@ interface S3ObjectContainer {
   // endregion RmDir
 
   // endregion Delete
+
+  // region Tags
+
+  // region Put Tags
+
+  /**
+   * Puts the given tags onto the object at the target path.
+   *
+   * If the given array of tags is empty, this method does nothing.
+   *
+   * @param path Path to the object on which the tags should be set.
+   *
+   * @param tags Array of tags to append to the target object.  If this array
+   * is empty, this method does nothing.
+   *
+   * @throws ObjectNotFoundError If the target object does not exist.
+   *
+   * @throws BucketNotFoundError If this bucket or the bucket in which this
+   * object container resides no longer exists.
+   *
+   * @throws S34KError If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
+  @Throws(
+    ObjectNotFoundError::class,
+    BucketNotFoundError::class,
+    S34KError::class,
+  )
+  fun putTags(path: String, vararg tags: S3Tag)
+
+  /**
+   * Puts the given tags onto the object at the target path.
+   *
+   * If the given array of tags is empty, this method does nothing.
+   *
+   * @param path Path to the object on which the tags should be set.
+   *
+   * @param tags Array of tags to append to the target object.  If this array
+   * is empty, this method does nothing.
+   *
+   * @throws IllegalArgumentException If any of the keys or values in the array
+   * of pairs is not valid against the rules outlined in the [S3Tag] docs.
+   *
+   * @throws ObjectNotFoundError If the target object does not exist.
+   *
+   * @throws BucketNotFoundError If this bucket or the bucket in which this
+   * object container resides no longer exists.
+   *
+   * @throws S34KError If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
+  @Throws(
+    IllegalArgumentException::class,
+    ObjectNotFoundError::class,
+    BucketNotFoundError::class,
+    S34KError::class,
+  )
+  fun putTags(path: String, vararg tags: Pair<String, String>)
+
+  /**
+   * Puts the given tags onto the object at the target path.
+   *
+   * If the given iterable, this method does nothing.
+   *
+   * @param path Path to the object on which the tags should be set.
+   *
+   * @param tags Iterable of tags to append to the target object.  If this
+   * iterable contains no elements, this method does nothing.
+   *
+   * @throws ObjectNotFoundError If the target object does not exist.
+   *
+   * @throws BucketNotFoundError If this bucket or the bucket in which this
+   * object container resides no longer exists.
+   *
+   * @throws S34KError If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
+  @Throws(
+    ObjectNotFoundError::class,
+    BucketNotFoundError::class,
+    S34KError::class,
+  )
+  fun putTags(path: String, tags: Iterable<S3Tag>)
+
+  /**
+   * Puts the given tags onto the object at the target path.
+   *
+   * If the given map of tags is empty, this method does nothing.
+   *
+   * @param path Path to the object on which the tags should be set.
+   *
+   * @param tags Map of tag keys to values that will be appended to the target
+   * object.  If this map is empty, this method does nothing.
+   *
+   * @throws IllegalArgumentException If any of the keys or values in the array
+   * of pairs is not valid against the rules outlined in the [S3Tag] docs.
+   *
+   * @throws ObjectNotFoundError If the target object does not exist.
+   *
+   * @throws BucketNotFoundError If this bucket or the bucket in which this
+   * object container resides no longer exists.
+   *
+   * @throws S34KError If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
+  @Throws(
+    IllegalArgumentException::class,
+    ObjectNotFoundError::class,
+    BucketNotFoundError::class,
+    S34KError::class,
+  )
+  fun putTags(path: String, tags: Map<String, String>)
+
+  /**
+   * Puts the given tags onto the object at the target path.
+   *
+   * If the given map of tags is empty, this method does nothing.
+   *
+   * @param action Action used to configure the backing S3 operation.
+   *
+   * @throws InvalidRequestConfigError If the `path` is not set on the
+   * configured parameters.
+   *
+   * @throws ObjectNotFoundError If the target object does not exist.
+   *
+   * @throws BucketNotFoundError If this bucket or the bucket in which this
+   * object container resides no longer exists.
+   *
+   * @throws S34KError If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
+  @Throws(
+    InvalidRequestConfigError::class,
+    ObjectNotFoundError::class,
+    BucketNotFoundError::class,
+    S34KError::class,
+  )
+  fun putTags(action: S3ObjectTagCreateParams.() -> Unit)
+
+  /**
+   * Puts the given tags onto the object at the target path.
+   *
+   * If the given map of tags is empty, this method does nothing.
+   *
+   * @param params Parameters for the backing S3 operation.
+   *
+   * @throws InvalidRequestConfigError If the `path` is not set on the
+   * configured parameters.
+   *
+   * @throws ObjectNotFoundError If the target object does not exist.
+   *
+   * @throws BucketNotFoundError If this bucket or the bucket in which this
+   * object container resides no longer exists.
+   *
+   * @throws S34KError If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
+  @Throws(
+    InvalidRequestConfigError::class,
+    ObjectNotFoundError::class,
+    BucketNotFoundError::class,
+    S34KError::class,
+  )
+  fun putTags(params: S3ObjectTagCreateParams)
+
+  // endregion Put Tags
+
+  // region Get Tags
+
+  /**
+   * Fetches the tags currently attached to the object at the target path.
+   *
+   * @param path Path/key to the target object.
+   *
+   * @return An [S3TagMap] instance containing all the tags attached to the
+   * object as of the time of this method call.
+   *
+   * @throws ObjectNotFoundError If the target object does not exist.
+   *
+   * @throws BucketNotFoundError If this bucket or the bucket in which this
+   * object container resides no longer exists.
+   *
+   * @throws S34KError If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
+  @Throws(
+    ObjectNotFoundError::class,
+    BucketNotFoundError::class,
+    S34KError::class,
+  )
+  fun getTags(path: String): S3TagMap
+
+  /**
+   * Fetches the tags currently attached to the object at the target path.
+   *
+   * @param action Action used to configure the backing S3 operation.
+   *
+   * @return An [S3TagMap] instance containing all the tags attached to the
+   * object as of the time of this method call.
+   *
+   * @throws InvalidRequestConfigError If the `path` is not set on the
+   * configured parameters.
+   *
+   * @throws ObjectNotFoundError If the target object does not exist.
+   *
+   * @throws BucketNotFoundError If this bucket or the bucket in which this
+   * object container resides no longer exists.
+   *
+   * @throws S34KError If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
+  @Throws(
+    InvalidRequestConfigError::class,
+    ObjectNotFoundError::class,
+    BucketNotFoundError::class,
+    S34KError::class,
+  )
+  fun getTags(action: S3ObjectTagGetParams.() -> Unit): S3TagMap
+
+  /**
+   * Fetches the tags currently attached to the object at the target path.
+   *
+   * @param params Parameters for the backing S3 operation.
+   *
+   * @return An [S3TagMap] instance containing all the tags attached to the
+   * object as of the time of this method call.
+   *
+   * @throws InvalidRequestConfigError If the `path` is not set on the
+   * configured parameters.
+   *
+   * @throws ObjectNotFoundError If the target object does not exist.
+   *
+   * @throws BucketNotFoundError If this bucket or the bucket in which this
+   * object container resides no longer exists.
+   *
+   * @throws S34KError If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
+  @Throws(
+    InvalidRequestConfigError::class,
+    ObjectNotFoundError::class,
+    BucketNotFoundError::class,
+    S34KError::class,
+  )
+  fun getTags(params: S3ObjectTagGetParams): S3TagMap
+
+  // endregion Get Tags
+
+  // region Delete Tags
+
+  /**
+   * Deletes all tags from the target object.
+   *
+   * @param path Path/key to the target object whose keys will be deleted.
+   *
+   * @throws ObjectNotFoundError If the target object does not exist.
+   *
+   * @throws BucketNotFoundError If this bucket or the bucket in which this
+   * object container resides no longer exists.
+   *
+   * @throws S34KError If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
+  @Throws(
+    ObjectNotFoundError::class,
+    BucketNotFoundError::class,
+    S34KError::class,
+  )
+  fun deleteAllTags(path: String)
+
+  /**
+   * Deletes the target tags from the target object.
+   *
+   * If the [tags] array is empty, this method does nothing.
+   *
+   * This is a 'complex' operation in that multiple S3 requests will need to be
+   * made to perform this task.  These operations are as follows:
+   *
+   * 1. Retrieve all the tags currently attached to the target object.
+   * 2. Delete all the tags currently attached to the target object.
+   * 3. Re-append the non-deleted tags back onto the target object.
+   *
+   * @param path Path/key to the target object.
+   *
+   * @param tags Array of tag keys for the tags to delete from the target
+   * object.  If this array is empty, this method does nothing.
+   *
+   * @throws ObjectNotFoundError If the target object does not exist.
+   *
+   * @throws BucketNotFoundError If this bucket or the bucket in which this
+   * object container resides no longer exists.
+   *
+   * @throws S34KError If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
+  @Throws(
+    ObjectNotFoundError::class,
+    BucketNotFoundError::class,
+    S34KError::class,
+  )
+  fun deleteTags(path: String, vararg tags: String)
+
+  /**
+   * Deletes the target tags from the target object.
+   *
+   * If the [tags] iterable contains no elements, this method does nothing.
+   *
+   * This is a 'complex' operation in that multiple S3 requests will need to be
+   * made to perform this task.  These operations are as follows:
+   *
+   * 1. Retrieve all the tags currently attached to the target object.
+   * 2. Delete all the tags currently attached to the target object.
+   * 3. Re-append the non-deleted tags back onto the target object.
+   *
+   * @param path Path/key to the target object.
+   *
+   * @param tags Iterable of tag keys for the tags to delete from the target
+   * object.  If this iterable contains no elements, this method does nothing.
+   *
+   * @throws ObjectNotFoundError If the target object does not exist.
+   *
+   * @throws BucketNotFoundError If this bucket or the bucket in which this
+   * object container resides no longer exists.
+   *
+   * @throws S34KError If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
+  @Throws(
+    ObjectNotFoundError::class,
+    BucketNotFoundError::class,
+    S34KError::class,
+  )
+  fun deleteTags(path: String, tags: Iterable<String>)
+
+  /**
+   * Deletes the target tags from the target object.
+   *
+   * If the configuration's `allTags` flag is set to `true`, the contents of the
+   * configuration's `tags` property will be ignored and all tags will be
+   * deleted from the target object.
+   *
+   * If the configuration's `allTags` flag is set to `false`, the contents of
+   * the configuration's `tags` property will be the only tags deleted from the
+   * target object.  This means that if the configuration's `tags` set is empty,
+   * no tags will be deleted from the target object.
+   *
+   * This is a 'complex' operation in that multiple S3 requests will need to be
+   * made to perform this task.  These operations are as follows:
+   *
+   * 1. Retrieve all the tags currently attached to the target object.
+   * 2. Delete all the tags currently attached to the target object.
+   * 3. Re-append the non-deleted tags back onto the target object.
+   *
+   * @param action Action used to configure the backing S3 operation.
+   *
+   * @throws ObjectNotFoundError If the target object does not exist.
+   *
+   * @throws BucketNotFoundError If this bucket or the bucket in which this
+   * object container resides no longer exists.
+   *
+   * @throws S34KError If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
+  @Throws(
+    InvalidRequestConfigError::class,
+    ObjectNotFoundError::class,
+    BucketNotFoundError::class,
+    S34KError::class,
+  )
+  fun deleteTags(action: S3ObjectTagDeleteParams.() -> Unit)
+
+  /**
+   * Deletes the target tags from the target object.
+   *
+   * If the configuration's `allTags` flag is set to `true`, the contents of the
+   * configuration's `tags` property will be ignored and all tags will be
+   * deleted from the target object.
+   *
+   * If the configuration's `allTags` flag is set to `false`, the contents of
+   * the configuration's `tags` property will be the only tags deleted from the
+   * target object.  This means that if the configuration's `tags` set is empty,
+   * no tags will be deleted from the target object.
+   *
+   * This is a 'complex' operation in that multiple S3 requests will need to be
+   * made to perform this task.  These operations are as follows:
+   *
+   * 1. Retrieve all the tags currently attached to the target object.
+   * 2. Delete all the tags currently attached to the target object.
+   * 3. Re-append the non-deleted tags back onto the target object.
+   *
+   * @param params Parameters for the backing S3 operation.
+   *
+   * @throws ObjectNotFoundError If the target object does not exist.
+   *
+   * @throws BucketNotFoundError If this bucket or the bucket in which this
+   * object container resides no longer exists.
+   *
+   * @throws S34KError If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
+   */
+  @Throws(
+    InvalidRequestConfigError::class,
+    ObjectNotFoundError::class,
+    BucketNotFoundError::class,
+    S34KError::class,
+  )
+  fun deleteTags(params: S3ObjectTagDeleteParams)
+
+  // endregion Delete Tags
+
+  // endregion Tags
 }

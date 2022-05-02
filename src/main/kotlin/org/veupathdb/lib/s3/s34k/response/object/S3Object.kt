@@ -2,7 +2,7 @@ package org.veupathdb.lib.s3.s34k.response.`object`
 
 import org.veupathdb.lib.s3.s34k.S3Tag
 import org.veupathdb.lib.s3.s34k.errors.BucketNotFoundError
-import org.veupathdb.lib.s3.s34k.errors.ObjectNotFoundException
+import org.veupathdb.lib.s3.s34k.errors.ObjectNotFoundError
 import org.veupathdb.lib.s3.s34k.errors.S34KError
 import org.veupathdb.lib.s3.s34k.fields.tags.S3TagMap
 import org.veupathdb.lib.s3.s34k.requests.*
@@ -104,7 +104,7 @@ interface S3Object : S3ObjectResponse {
    *
    * @throws BucketNotFoundError If the parent bucket no longer exists.
    *
-   * @throws ObjectNotFoundException If this object no longer exists.
+   * @throws ObjectNotFoundError If this object no longer exists.
    *
    * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
@@ -117,7 +117,7 @@ interface S3Object : S3ObjectResponse {
    *
    * @throws BucketNotFoundError If the parent bucket no longer exists.
    *
-   * @throws ObjectNotFoundException If this object no longer exists.
+   * @throws ObjectNotFoundError If this object no longer exists.
    *
    * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
@@ -130,7 +130,7 @@ interface S3Object : S3ObjectResponse {
    *
    * @throws BucketNotFoundError If the parent bucket no longer exists.
    *
-   * @throws ObjectNotFoundException If this object no longer exists.
+   * @throws ObjectNotFoundError If this object no longer exists.
    *
    * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's

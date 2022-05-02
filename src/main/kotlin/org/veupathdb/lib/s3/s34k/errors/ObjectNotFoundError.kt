@@ -12,7 +12,7 @@ import org.veupathdb.lib.s3.s34k.fields.BucketName
  *
  * @since  v0.1.0
  */
-class ObjectNotFoundException : AbstractResponseException {
+class ObjectNotFoundError : AbstractResponseException {
 
   override val code = S3ErrorCode.NoSuchKey
 
