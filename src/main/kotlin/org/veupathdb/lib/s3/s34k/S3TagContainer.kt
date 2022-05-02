@@ -36,9 +36,9 @@ interface S3TagContainer {
   )
   fun count(): Int
 
-  fun count(action: S3TagCountParams.() -> Unit)
+  fun count(action: S3TagCountParams.() -> Unit): Int
 
-  fun count(params: S3TagCountParams)
+  fun count(params: S3TagCountParams): Int
 
   // endregion Size
 
@@ -71,9 +71,9 @@ interface S3TagContainer {
   )
   operator fun contains(key: String): Boolean
 
-  fun contains(action: S3TagExistsParams.() -> Unit)
+  fun contains(action: S3TagExistsParams.() -> Unit): Boolean
 
-  fun contains(params: S3TagExistsParams)
+  fun contains(params: S3TagExistsParams): Boolean
 
   // endregion Contains
 
