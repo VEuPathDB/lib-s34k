@@ -8,5 +8,5 @@ interface S3TagCountParams : S3RegionRequestParams {
    *
    * This callback will be passed the count of tags attached to the call target.
    */
-  var callback: ((Int) -> Unit)?
+  var callback: ((count: Int) -> Unit)?
 }
