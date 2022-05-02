@@ -18,6 +18,9 @@ interface S3TagContainer {
   /**
    * Fetches the number of tags currently attached to this tag container.
    *
+   * @return The number of tags currently attached to this tag container.  This
+   * value will be `10` at most.
+   *
    * @throws ObjectNotFoundError If this [S3TagContainer] is an object, and that
    * object does not exist.
    *
