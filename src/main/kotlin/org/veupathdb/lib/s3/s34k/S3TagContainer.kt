@@ -4,9 +4,7 @@ import org.veupathdb.lib.s3.s34k.errors.BucketNotFoundError
 import org.veupathdb.lib.s3.s34k.errors.ObjectNotFoundError
 import org.veupathdb.lib.s3.s34k.errors.S34KError
 import org.veupathdb.lib.s3.s34k.fields.tags.S3TagMap
-import org.veupathdb.lib.s3.s34k.requests.S3TagCreateParams
-import org.veupathdb.lib.s3.s34k.requests.S3TagDeleteParams
-import org.veupathdb.lib.s3.s34k.requests.S3TagGetParams
+import org.veupathdb.lib.s3.s34k.requests.*
 
 // TODO: what error should be thrown when attempting to put more than 10
 //       tags via one at a time adding
@@ -38,6 +36,10 @@ interface S3TagContainer {
   )
   fun count(): Int
 
+  fun count(action: S3TagCountParams.() -> Unit)
+
+  fun count(params: S3TagCountParams)
+
   // endregion Size
 
   // region Contains
@@ -68,6 +70,10 @@ interface S3TagContainer {
     S34KError::class,
   )
   operator fun contains(key: String): Boolean
+
+  fun contains(action: S3TagExistsParams.() -> Unit)
+
+  fun contains(params: S3TagExistsParams)
 
   // endregion Contains
 
