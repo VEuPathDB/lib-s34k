@@ -2,7 +2,7 @@ package org.veupathdb.lib.s3.s34k.response.bucket
 
 import org.veupathdb.lib.s3.s34k.S3Client
 import org.veupathdb.lib.s3.s34k.S3ObjectContainer
-import org.veupathdb.lib.s3.s34k.S3TagManager
+import org.veupathdb.lib.s3.s34k.S3TagContainer
 import org.veupathdb.lib.s3.s34k.errors.*
 import org.veupathdb.lib.s3.s34k.fields.BucketName
 import org.veupathdb.lib.s3.s34k.requests.S3DeleteRequestParams
@@ -53,7 +53,7 @@ interface S3Bucket {
   /**
    * Bucket tag manager.
    */
-  val tags: S3TagManager
+  val tags: S3TagContainer
 
   /**
    * Bucket object manager

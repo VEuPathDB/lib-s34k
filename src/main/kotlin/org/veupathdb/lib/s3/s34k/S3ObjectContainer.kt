@@ -48,6 +48,13 @@ interface S3ObjectContainer {
    *
    * @param action Action that will be called on the [S3Object] handle on the
    * target object.
+   *
+   * @throws BucketNotFoundError If this bucket or the bucket in which this
+   * object container resides no longer exists.
+   *
+   * @throws S34KError If an implementation specific exception is thrown.
+   * The implementation specific exception will be set to the thrown exception's
+   * 'cause' value.
    */
   @Throws(
     BucketNotFoundError::class,

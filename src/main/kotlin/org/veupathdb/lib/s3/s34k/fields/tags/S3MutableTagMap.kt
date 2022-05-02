@@ -15,6 +15,9 @@ interface S3MutableTagMap : S3TagMap {
    * Adds the single given tag to this map.
    *
    * @param tag Tag to add to this map.
+   *
+   * @throws IllegalStateException If adding this new tag would increase the
+   * number of tags in this tag map to a value greater than 10.
    */
   fun add(tag: S3Tag)
 
@@ -22,6 +25,12 @@ interface S3MutableTagMap : S3TagMap {
    * Adds the given tags to this map.
    *
    * @param tags Tags to add to this map.
+   *
+   * @throws IllegalArgumentException If the given array of tags contains more
+   * than 10 elements.
+   *
+   * @throws IllegalStateException If adding these new tags would increase the
+   * number of tags in this tag map to a value greater than 10.
    */
   fun add(vararg tags: S3Tag)
 
@@ -29,6 +38,12 @@ interface S3MutableTagMap : S3TagMap {
    * Adds the given tags to this map.
    *
    * @param tags Tags to add to this map.
+   *
+   * @throws IllegalArgumentException If the given iterable of tags contains
+   * more than 10 elements.
+   *
+   * @throws IllegalStateException If adding these new tags would increase the
+   * number of tags in this tag map to a value greater than 10.
    */
   fun add(tags: Iterable<S3Tag>)
 
@@ -39,6 +54,12 @@ interface S3MutableTagMap : S3TagMap {
    *
    * @throws IllegalArgumentException as per the rules outlined in the [S3Tag]
    * docs.
+   *
+   * @throws IllegalArgumentException If the given map of tags contains more
+   * than 10 elements.
+   *
+   * @throws IllegalStateException If adding these new tags would increase the
+   * number of tags in this tag map to a value greater than 10.
    */
   fun add(tags: Map<String, String>)
 
@@ -49,8 +70,34 @@ interface S3MutableTagMap : S3TagMap {
    *
    * @throws IllegalArgumentException as per the rules outlined in the [S3Tag]
    * docs.
+   *
+   * @throws IllegalArgumentException If the given array of tags contains more
+   * than 10 elements.
+   *
+   * @throws IllegalStateException If adding these new tags would increase the
+   * number of tags in this tag map to a value greater than 10.
    */
   fun add(vararg tags: Pair<String, String>)
+
+  /**
+   * Adds the given key/value pair as a tag to this map.
+   *
+   * @param key Key for this tag.
+   *
+   * @param value Value for this tag.
+   *
+   * @throws IllegalArgumentException as per the rules outlined in the [S3Tag]
+   * docs.
+   *
+   * @throws IllegalArgumentException If the given array of tags contains more
+   * than 10 elements.
+   *
+   * @throws IllegalStateException If adding these new tags would increase the
+   * number of tags in this tag map to a value greater than 10.
+   *
+   * @see set
+   */
+  fun add(key: String, value: String)
 
   /**
    * Sets the given values as a tag in this map.
@@ -61,13 +108,21 @@ interface S3MutableTagMap : S3TagMap {
    *
    * @throws IllegalArgumentException as per the rules outlined in the [S3Tag]
    * docs.
+   *
+   * @throws IllegalStateException If adding these new tags would increase the
+   * number of tags in this tag map to a value greater than 10.
+   *
+   * @see add
    */
-  operator fun set(key: String, value: String)
+  operator fun set(key: String, value: String) = add(key, value)
 
   /**
    * Appends the given value to this map.
    *
    * @param tag Tag to add to this map.
+   *
+   * @throws IllegalStateException If adding these new tags would increase the
+   * number of tags in this tag map to a value greater than 10.
    */
   operator fun plusAssign(tag: S3Tag)
 
@@ -78,6 +133,12 @@ interface S3MutableTagMap : S3TagMap {
    *
    * @throws IllegalArgumentException as per the rules outlined in the [S3Tag]
    * docs.
+   *
+   * @throws IllegalArgumentException If the given map of tags contains more
+   * than 10 elements.
+   *
+   * @throws IllegalStateException If adding these new tags would increase the
+   * number of tags in this tag map to a value greater than 10.
    */
   operator fun plusAssign(tags: Map<String, String>)
 
@@ -93,6 +154,9 @@ interface S3MutableTagMap : S3TagMap {
    *
    * @throws IllegalArgumentException as per the rules outlined in the [S3Tag]
    * docs.
+   *
+   * @throws IllegalStateException If adding these new tags would increase the
+   * number of tags in this tag map to a value greater than 10.
    */
   operator fun plusAssign(tag: Pair<String, String>)
 }

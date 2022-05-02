@@ -14,6 +14,8 @@ interface S3TagMap : Iterable<S3Tag> {
 
   /**
    * Number of tag pairs currently in this [S3MutableTagMap]
+   *
+   * This value will be `10` at most.
    */
   val size: Int
 
