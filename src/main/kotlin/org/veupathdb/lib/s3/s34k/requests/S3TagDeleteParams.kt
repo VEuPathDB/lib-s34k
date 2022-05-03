@@ -38,10 +38,6 @@ interface S3TagDeleteParams : S3RegionRequestParams {
   /**
    * Optional callback that will be executed on successful completion of the S3
    * operation.
-   *
-   * This callback will be passed an [S3TagMap] instance containing the tags
-   * that were deleted from the S3 store.  If a target tag did not exist at the
-   * time the delete request was made, it will not appear in this tag map.
    */
-  var callback: ((S3TagMap) -> Unit)?
+  var callback: (() -> Unit)?
 }

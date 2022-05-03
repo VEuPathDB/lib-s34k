@@ -325,9 +325,9 @@ interface S3TagContainer {
 
   fun delete(keys: Iterable<String>)
 
-  fun delete(action: S3BlankTagDeleteParams.() -> Unit)
+  fun delete(action: S3TagDeleteParams.() -> Unit)
 
-  fun delete(params: S3BlankTagDeleteParams)
+  fun delete(params: S3TagDeleteParams)
 
   // endregion Delete
 }
