@@ -1652,6 +1652,9 @@ interface S3ObjectContainer {
    *
    * @param paths Target paths to delete.
    *
+   * @throws MultiObjectDeleteError If one or more of the object deletes in this
+   * operation could not be deleted.
+   *
    * @throws BucketNotFoundError If this bucket or the bucket in which this
    * object container resides no longer exists.
    *
@@ -1668,6 +1671,9 @@ interface S3ObjectContainer {
    * If the target paths set is empty, this method does nothing.
    *
    * @param paths Target paths to delete.
+   *
+   * @throws MultiObjectDeleteError If one or more of the object deletes in this
+   * operation could not be deleted.
    *
    * @throws BucketNotFoundError If this bucket or the bucket in which this
    * object container resides no longer exists.
@@ -1686,6 +1692,9 @@ interface S3ObjectContainer {
    *
    * @param action Action used to configure the backing S3 operation.
    *
+   * @throws MultiObjectDeleteError If one or more of the object deletes in this
+   * operation could not be deleted.
+   *
    * @throws BucketNotFoundError If this bucket or the bucket in which this
    * object container resides no longer exists.
    *
@@ -1702,6 +1711,9 @@ interface S3ObjectContainer {
    * If the target paths set is empty, this method does nothing.
    *
    * @param params Parameters for the backing S3 operation.
+   *
+   * @throws MultiObjectDeleteError If one or more of the object deletes in this
+   * operation could not be deleted.
    *
    * @throws BucketNotFoundError If this bucket or the bucket in which this
    * object container resides no longer exists.
