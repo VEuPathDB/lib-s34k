@@ -1,7 +1,5 @@
 package org.veupathdb.lib.s3.s34k.params
 
-import org.veupathdb.lib.s3.s34k.requests.S3RequestParams
-
 /**
  * Represents an S3 request with a 'region' parameter.
  *

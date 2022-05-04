@@ -1,6 +1,6 @@
 package org.veupathdb.lib.s3.s34k.errors
 
-import org.veupathdb.lib.s3.s34k.requests.S3RequestParams
+import org.veupathdb.lib.s3.s34k.params.S3RequestParams
 
 /**
  * Exception thrown due to an invalid request/operation configuration.

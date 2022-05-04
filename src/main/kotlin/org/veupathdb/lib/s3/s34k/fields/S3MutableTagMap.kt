@@ -89,9 +89,6 @@ interface S3MutableTagMap : S3TagMap {
    * @throws IllegalArgumentException as per the rules outlined in the [S3Tag]
    * docs.
    *
-   * @throws IllegalArgumentException If the given array of tags contains more
-   * than 10 elements.
-   *
    * @throws IllegalStateException If adding these new tags would increase the
    * number of tags in this tag map to a value greater than 10.
    *

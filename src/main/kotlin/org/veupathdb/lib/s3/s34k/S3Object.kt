@@ -1,6 +1,8 @@
 package org.veupathdb.lib.s3.s34k
 
-import org.veupathdb.lib.s3.s34k.requests.*
+import org.veupathdb.lib.s3.s34k.params.S3DeleteRequestParams
+import org.veupathdb.lib.s3.s34k.params.S3ExistsParams
+import org.veupathdb.lib.s3.s34k.params.S3StatParams
 
 // TODO: Document me
 interface S3Object : S3ObjectResponse {

@@ -1,8 +1,11 @@
 package org.veupathdb.lib.s3.s34k
 
-import org.veupathdb.lib.s3.s34k.errors.*
-import org.veupathdb.lib.s3.s34k.requests.bucket.recursive.S3ClientRecursiveBucketDeleteParams
-import org.veupathdb.lib.s3.s34k.requests.client.*
+import org.veupathdb.lib.s3.s34k.errors.BucketAlreadyExistsException
+import org.veupathdb.lib.s3.s34k.errors.BucketAlreadyOwnedByYouError
+import org.veupathdb.lib.s3.s34k.errors.BucketNotFoundError
+import org.veupathdb.lib.s3.s34k.errors.S34KError
+import org.veupathdb.lib.s3.s34k.params.bucket.*
+import org.veupathdb.lib.s3.s34k.params.bucket.recursive.S3RecursiveBucketDeleteParams
 
 /**
  * # S3 Bucket Container
@@ -72,7 +75,7 @@ interface S3BucketContainer {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun exists(action: S3BucketExistsParams.() -> Unit): Boolean
+  fun exists(name: S3BucketName, action: S3BucketExistsParams.() -> Unit): Boolean
 
   /**
    * Tests for the existence of a bucket with the operation configured by the
@@ -86,7 +89,7 @@ interface S3BucketContainer {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun exists(params: S3BucketExistsParams): Boolean
+  fun exists(name: S3BucketName, params: S3BucketExistsParams): Boolean
 
   // endregion
 
@@ -137,7 +140,7 @@ interface S3BucketContainer {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun create(action: S3BucketCreateParams.() -> Unit): S3Bucket
+  fun create(name: S3BucketName, action: S3BucketCreateParams.() -> Unit): S3Bucket
 
   /**
    * Attempts to create a bucket with the given name with the operation
@@ -161,7 +164,7 @@ interface S3BucketContainer {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun create(params: S3BucketCreateParams): S3Bucket
+  fun create(name: S3BucketName, params: S3BucketCreateParams): S3Bucket
 
   // endregion
 
@@ -197,7 +200,7 @@ interface S3BucketContainer {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun createIfNotExists(action: S3BucketCreateParams.() -> Unit): S3Bucket
+  fun createIfNotExists(name: S3BucketName, action: S3BucketCreateParams.() -> Unit): S3Bucket
 
   /**
    * Attempts to create a bucket with the given name if it does not already
@@ -215,7 +218,7 @@ interface S3BucketContainer {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun createIfNotExists(params: S3BucketCreateParams): S3Bucket
+  fun createIfNotExists(name: S3BucketName, params: S3BucketCreateParams): S3Bucket
 
   // endregion
 
@@ -245,7 +248,7 @@ interface S3BucketContainer {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun get(action: S3BucketGetParams.() -> Unit): S3Bucket?
+  fun get(name: S3BucketName, action: S3BucketGetParams.() -> Unit): S3Bucket?
 
   /**
    * Creates a new [S3Bucket] instance wrapping the target S3 bucket.
@@ -258,7 +261,7 @@ interface S3BucketContainer {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun get(params: S3BucketGetParams): S3Bucket?
+  fun get(name: S3BucketName, params: S3BucketGetParams): S3Bucket?
 
   // endregion
 
@@ -329,7 +332,7 @@ interface S3BucketContainer {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun delete(action: S3BucketDeleteParams.() -> Unit)
+  fun delete(name: S3BucketName, action: S3BucketDeleteParams.() -> Unit)
 
   /**
    * Deletes the target bucket from the S3 instance.
@@ -342,7 +345,7 @@ interface S3BucketContainer {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun delete(params: S3BucketDeleteParams)
+  fun delete(name: S3BucketName, params: S3BucketDeleteParams)
 
   // endregion
 
@@ -396,7 +399,7 @@ interface S3BucketContainer {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun deleteRecursive(action: S3ClientRecursiveBucketDeleteParams.() -> Unit)
+  fun deleteRecursive(name: S3BucketName, action: S3RecursiveBucketDeleteParams.() -> Unit)
 
   /**
    * Deletes the target bucket and all of its contents.
@@ -421,7 +424,7 @@ interface S3BucketContainer {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun deleteRecursive(params: S3ClientRecursiveBucketDeleteParams)
+  fun deleteRecursive(name: S3BucketName, params: S3RecursiveBucketDeleteParams)
 
   // endregion Delete Bucket Recursive
 }

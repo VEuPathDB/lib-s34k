@@ -1,9 +1,11 @@
 package org.veupathdb.lib.s3.s34k
 
-import org.veupathdb.lib.s3.s34k.errors.*
-import org.veupathdb.lib.s3.s34k.requests.S3DeleteRequestParams
-import org.veupathdb.lib.s3.s34k.requests.bucket.recursive.RecursiveBucketDeleteError
-import org.veupathdb.lib.s3.s34k.requests.bucket.recursive.S3RecursiveBucketDeleteParams
+import org.veupathdb.lib.s3.s34k.errors.BucketNotEmptyException
+import org.veupathdb.lib.s3.s34k.errors.InvalidRequestConfigError
+import org.veupathdb.lib.s3.s34k.errors.S34KError
+import org.veupathdb.lib.s3.s34k.params.S3DeleteRequestParams
+import org.veupathdb.lib.s3.s34k.params.bucket.recursive.RecursiveBucketDeleteError
+import org.veupathdb.lib.s3.s34k.params.bucket.recursive.S3RecursiveBucketDeleteParams
 import java.time.OffsetDateTime
 
 /**
