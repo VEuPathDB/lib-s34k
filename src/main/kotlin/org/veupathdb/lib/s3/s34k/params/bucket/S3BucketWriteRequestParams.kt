@@ -1,6 +1,7 @@
 package org.veupathdb.lib.s3.s34k.params.bucket
 
 import org.veupathdb.lib.s3.s34k.fields.S3MutableTagMap
+import org.veupathdb.lib.s3.s34k.params.S3RegionRequestParams
 
 /**
  * S3 Bucket Write Request
@@ -14,7 +15,7 @@ import org.veupathdb.lib.s3.s34k.fields.S3MutableTagMap
  *
  * @since v0.1.0
  */
-interface S3BucketWriteRequestParams : S3BucketRequestParams {
+interface S3BucketWriteRequestParams : S3RegionRequestParams {
 
   /**
    * Tags that may be attached to the target bucket during the execution of

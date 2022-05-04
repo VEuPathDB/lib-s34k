@@ -2,7 +2,6 @@ package org.veupathdb.lib.s3.s34k.params.bucket
 
 import org.veupathdb.lib.s3.s34k.S3Bucket
 import org.veupathdb.lib.s3.s34k.params.S3RegionRequestParams
-import org.veupathdb.lib.s3.s34k.params.bucket.S3BucketRequestParams
 
 /**
  * Fetch bucket request parameters.

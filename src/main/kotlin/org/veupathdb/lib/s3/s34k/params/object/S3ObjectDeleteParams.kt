@@ -1,5 +1,7 @@
 package org.veupathdb.lib.s3.s34k.params.`object`
 
+import org.veupathdb.lib.s3.s34k.params.S3RegionRequestParams
+
 /**
  * Object delete request parameters.
  *
@@ -7,7 +9,7 @@ package org.veupathdb.lib.s3.s34k.params.`object`
  *
  * @since v0.1.0
  */
-interface S3ObjectDeleteParams : S3ObjectRequestParams {
+interface S3ObjectDeleteParams : S3RegionRequestParams {
 
   /**
    * Optional callback that will be executed on successful completion of the S3

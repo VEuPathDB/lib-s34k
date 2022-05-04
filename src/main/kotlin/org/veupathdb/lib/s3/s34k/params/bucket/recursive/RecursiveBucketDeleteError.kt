@@ -87,13 +87,14 @@ open class RecursiveBucketDeleteError : S34KError {
   val bucketDeleteQueryParams: S3QueryParams
 
   constructor(
+    name: S3BucketName,
     phase: S3RecursiveDeletePhase,
     req: S3RecursiveBucketDeleteParams,
     message: String,
     cause: Throwable
   ) : super(message, cause) {
     this.phase = phase
-    this.bucketName = req.bucketName!!
+    this.bucketName = name
     this.globalHeaders = req.headers
     this.globalQueryParams = req.queryParams
     this.objectListHeaders = req.objectFetch.headers
@@ -105,12 +106,13 @@ open class RecursiveBucketDeleteError : S34KError {
   }
 
   constructor(
+    name: S3BucketName,
     phase: S3RecursiveDeletePhase,
     req: S3RecursiveBucketDeleteParams,
     cause: Throwable
   ) : super(cause) {
     this.phase = phase
-    this.bucketName = req.bucketName!!
+    this.bucketName = name
     this.globalHeaders = req.headers
     this.globalQueryParams = req.queryParams
     this.objectListHeaders = req.objectFetch.headers
@@ -122,11 +124,12 @@ open class RecursiveBucketDeleteError : S34KError {
   }
 
   constructor(
+    name: S3BucketName,
     phase: S3RecursiveDeletePhase,
     req: S3RecursiveBucketDeleteParams,
   ) : super() {
     this.phase = phase
-    this.bucketName = req.bucketName!!
+    this.bucketName = name
     this.globalHeaders = req.headers
     this.globalQueryParams = req.queryParams
     this.objectListHeaders = req.objectFetch.headers
