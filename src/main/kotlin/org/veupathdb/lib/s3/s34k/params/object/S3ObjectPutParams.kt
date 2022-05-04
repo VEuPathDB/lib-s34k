@@ -2,7 +2,7 @@ package org.veupathdb.lib.s3.s34k.params.`object`
 
 import org.veupathdb.lib.s3.s34k.S3Object
 
-interface S3ObjectCreateParams : S3ObjectWriteParams {
+interface S3ObjectPutParams : S3ObjectWriteParams {
 
   /**
    * Optional content type for the S3 object being created.
