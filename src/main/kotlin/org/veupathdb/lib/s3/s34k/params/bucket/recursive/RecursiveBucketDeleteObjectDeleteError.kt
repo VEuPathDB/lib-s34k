@@ -1,5 +1,6 @@
 package org.veupathdb.lib.s3.s34k.params.bucket.recursive
 
+import org.veupathdb.lib.s3.s34k.S3BucketName
 import org.veupathdb.lib.s3.s34k.params.`object`.ObjectDeleteError
 
 /**
@@ -24,18 +25,20 @@ open class RecursiveBucketDeleteObjectDeleteError : RecursiveBucketDeleteError {
   val objectErrors: List<ObjectDeleteError>
 
   constructor(
+    name: S3BucketName,
     req: S3RecursiveBucketDeleteParams,
     errs: List<ObjectDeleteError>,
     message: String,
     cause: Throwable
-  ) : super(S3RecursiveDeletePhase.DeleteObjects, req, message, cause) {
+  ) : super(name, S3RecursiveDeletePhase.DeleteObjects, req, message, cause) {
     objectErrors = errs
   }
 
   constructor(
+    name: S3BucketName,
     req: S3RecursiveBucketDeleteParams,
     errs: List<ObjectDeleteError>,
-  ) : super(S3RecursiveDeletePhase.DeleteObjects, req) {
+  ) : super(name, S3RecursiveDeletePhase.DeleteObjects, req) {
     objectErrors = errs
   }
 
