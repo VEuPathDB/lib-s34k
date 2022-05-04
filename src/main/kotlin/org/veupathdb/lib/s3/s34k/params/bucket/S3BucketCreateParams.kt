@@ -1,7 +1,8 @@
 package org.veupathdb.lib.s3.s34k.params.bucket
 
 import org.veupathdb.lib.s3.s34k.S3Bucket
-import org.veupathdb.lib.s3.s34k.params.bucket.S3BucketWriteRequestParams
+import org.veupathdb.lib.s3.s34k.fields.S3MutableTagMap
+import org.veupathdb.lib.s3.s34k.params.S3RegionRequestParams
 
 /**
  * Bucket create request parameters.
@@ -10,7 +11,13 @@ import org.veupathdb.lib.s3.s34k.params.bucket.S3BucketWriteRequestParams
  *
  * @since v0.1.0
  */
-interface S3BucketCreateParams : S3BucketWriteRequestParams {
+interface S3BucketCreateParams : S3RegionRequestParams {
+
+  /**
+   * Tags that may be attached to the target bucket during the execution of
+   * this S3 operation.
+   */
+  val tags: S3MutableTagMap
 
   /**
    * Optional callback that will be executed on successful completion of the S3

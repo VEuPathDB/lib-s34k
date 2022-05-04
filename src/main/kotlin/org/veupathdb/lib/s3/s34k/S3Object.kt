@@ -1,6 +1,6 @@
 package org.veupathdb.lib.s3.s34k
 
-import org.veupathdb.lib.s3.s34k.params.S3DeleteRequestParams
+import org.veupathdb.lib.s3.s34k.params.S3DeleteParams
 import org.veupathdb.lib.s3.s34k.params.S3ExistsParams
 import org.veupathdb.lib.s3.s34k.params.S3StatParams
 
@@ -34,14 +34,14 @@ interface S3Object : S3ObjectResponse {
    *
    * @param action Action used to configure the S3 operation.
    */
-  fun delete(action: S3DeleteRequestParams.() -> Unit)
+  fun delete(action: S3DeleteParams.() -> Unit)
 
   /**
    * Deletes the current object from the S3 store (if it still exists).
    *
    * @param params S3 operation parameters.
    */
-  fun delete(params: S3DeleteRequestParams)
+  fun delete(params: S3DeleteParams)
 
   // endregion
 
