@@ -1,8 +1,8 @@
 package org.veupathdb.lib.s3.s34k.requests.bucket
 
 import org.veupathdb.lib.s3.s34k.errors.InvalidRequestConfigError
-import org.veupathdb.lib.s3.s34k.fields.BucketName
-import org.veupathdb.lib.s3.s34k.requests.S3RegionRequestParams
+import org.veupathdb.lib.s3.s34k.S3BucketName
+import org.veupathdb.lib.s3.s34k.params.S3RegionRequestParams
 
 /**
  * S3 Bucket Request
@@ -21,5 +21,5 @@ interface S3BucketRequestParams : S3RegionRequestParams {
    * This value must be set or an [InvalidRequestConfigError] will be thrown
    * when the request is attempted.
    */
-  var bucketName: BucketName?
+  var bucketName: S3BucketName?
 }

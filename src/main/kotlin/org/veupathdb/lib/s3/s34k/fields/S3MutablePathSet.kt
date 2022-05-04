@@ -15,4 +15,11 @@ interface S3MutablePathSet : S3PathSet {
   fun add(paths: Iterable<String>)
 
   operator fun plusAssign(path: String)
+
+  /**
+   * Returns an immutable [S3PathSet] copy of this [S3MutablePathSet] instance.
+   *
+   * @return A new [S3PathSet] copy of this object.
+   */
+  fun toImmutable(): S3PathSet
 }

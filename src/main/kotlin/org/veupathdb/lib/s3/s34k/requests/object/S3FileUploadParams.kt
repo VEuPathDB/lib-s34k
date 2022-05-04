@@ -1,7 +1,7 @@
 package org.veupathdb.lib.s3.s34k.requests.`object`
 
 import org.veupathdb.lib.s3.s34k.errors.InvalidRequestConfigError
-import org.veupathdb.lib.s3.s34k.response.`object`.S3Object
+import org.veupathdb.lib.s3.s34k.S3Object
 import java.io.File
 
 /**
@@ -40,5 +40,5 @@ interface S3FileUploadParams : S3ObjectWriteParams {
    * This callback will be passed an [S3Object] instance representing the newly
    * created object.
    */
-  var callback: ((S3Object) -> Unit)?
+  var callback: ((handle: S3Object) -> Unit)?
 }

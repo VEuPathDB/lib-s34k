@@ -16,5 +16,5 @@ interface S3ObjectExistsParams : S3ObjectRequestParams {
    * This callback will be passed a boolean flag indicating whether the target
    * object exists.
    */
-  var callback: ((Boolean) -> Unit)?
+  var callback: ((exists: Boolean) -> Unit)?
 }

@@ -3,7 +3,7 @@ package org.veupathdb.lib.s3.s34k
 import org.veupathdb.lib.s3.s34k.errors.BucketNotFoundError
 import org.veupathdb.lib.s3.s34k.errors.ObjectNotFoundError
 import org.veupathdb.lib.s3.s34k.errors.S34KError
-import org.veupathdb.lib.s3.s34k.fields.tags.S3TagMap
+import org.veupathdb.lib.s3.s34k.fields.S3TagMap
 import org.veupathdb.lib.s3.s34k.requests.*
 
 // TODO: what error should be thrown when attempting to put more than 10

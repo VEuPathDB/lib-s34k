@@ -1,7 +1,7 @@
 package org.veupathdb.lib.s3.s34k.errors
 
 import org.veupathdb.lib.s3.s34k.S3ErrorCode
-import org.veupathdb.lib.s3.s34k.fields.BucketName
+import org.veupathdb.lib.s3.s34k.S3BucketName
 
 
 /**
@@ -14,15 +14,15 @@ import org.veupathdb.lib.s3.s34k.fields.BucketName
  *
  * @since  v0.1.0
  */
-open class BucketAlreadyExistsException : AbstractBucketOperationException {
+open class BucketAlreadyExistsException : AbstractBucketOperationError {
 
   override val code = S3ErrorCode.BucketAlreadyExists
 
-  constructor(bucket: BucketName, msg: String) : super(bucket, msg)
+  constructor(bucket: S3BucketName, msg: String) : super(bucket, msg)
 
-  constructor(bucket: BucketName, cause: Throwable)
+  constructor(bucket: S3BucketName, cause: Throwable)
     : super(bucket, "Bucket $bucket already exists.", cause)
 
-  constructor(bucket: BucketName, msg: String, cause: Throwable)
+  constructor(bucket: S3BucketName, msg: String, cause: Throwable)
     : super(bucket, msg, cause)
 }

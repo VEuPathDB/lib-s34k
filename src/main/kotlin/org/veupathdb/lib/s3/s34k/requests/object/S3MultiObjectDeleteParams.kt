@@ -1,7 +1,7 @@
 package org.veupathdb.lib.s3.s34k.requests.`object`
 
 import org.veupathdb.lib.s3.s34k.fields.S3MutablePathSet
-import org.veupathdb.lib.s3.s34k.requests.S3RegionRequestParams
+import org.veupathdb.lib.s3.s34k.params.S3RegionRequestParams
 
 /**
  * Multi-Object delete request parameters.

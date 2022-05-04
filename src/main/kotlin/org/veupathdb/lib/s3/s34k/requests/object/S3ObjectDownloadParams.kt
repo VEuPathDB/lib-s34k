@@ -1,7 +1,7 @@
 package org.veupathdb.lib.s3.s34k.requests.`object`
 
 import org.veupathdb.lib.s3.s34k.errors.InvalidRequestConfigError
-import org.veupathdb.lib.s3.s34k.response.`object`.S3FileObject
+import org.veupathdb.lib.s3.s34k.S3FileObject
 import java.io.File
 
 /**
@@ -31,5 +31,5 @@ interface S3ObjectDownloadParams : S3ObjectRequestParams {
    * This callback will be passed an [S3FileObject] instance representing the
    * file that was downloaded.
    */
-  var callback: ((S3FileObject) -> Unit)?
+  var callback: ((handle: S3FileObject) -> Unit)?
 }

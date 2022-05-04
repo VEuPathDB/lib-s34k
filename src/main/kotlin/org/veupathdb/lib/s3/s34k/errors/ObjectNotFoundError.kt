@@ -1,7 +1,7 @@
 package org.veupathdb.lib.s3.s34k.errors
 
 import org.veupathdb.lib.s3.s34k.S3ErrorCode
-import org.veupathdb.lib.s3.s34k.fields.BucketName
+import org.veupathdb.lib.s3.s34k.S3BucketName
 
 /**
  * `NoSuchKey`
@@ -12,28 +12,28 @@ import org.veupathdb.lib.s3.s34k.fields.BucketName
  *
  * @since  v0.1.0
  */
-class ObjectNotFoundError : AbstractResponseException {
+class ObjectNotFoundError : AbstractResponseError {
 
   override val code = S3ErrorCode.NoSuchKey
 
-  val bucket: BucketName
+  val bucket: S3BucketName
 
   val path: String
 
-  constructor(bucket: BucketName, path: String) :
+  constructor(bucket: S3BucketName, path: String) :
     super("Object $path not found in bucket $bucket") {
     this.bucket = bucket
     this.path   = path
   }
 
-  constructor(bucket: BucketName, path: String, cause: Throwable) :
+  constructor(bucket: S3BucketName, path: String, cause: Throwable) :
     super("Object $path not found in bucket $bucket", cause) {
     this.bucket = bucket
     this.path   = path
   }
 
   constructor(
-    bucket:  BucketName,
+    bucket: S3BucketName,
     path:    String,
     message: String
   ) : super(message) {
@@ -42,7 +42,7 @@ class ObjectNotFoundError : AbstractResponseException {
   }
 
   constructor(
-    bucket:  BucketName,
+    bucket: S3BucketName,
     path:    String,
     message: String,
     cause:   Throwable

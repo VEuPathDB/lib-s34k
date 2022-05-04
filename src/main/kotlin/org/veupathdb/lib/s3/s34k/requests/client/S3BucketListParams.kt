@@ -1,7 +1,7 @@
 package org.veupathdb.lib.s3.s34k.requests.client
 
 import org.veupathdb.lib.s3.s34k.requests.S3RequestParams
-import org.veupathdb.lib.s3.s34k.response.S3BucketList
+import org.veupathdb.lib.s3.s34k.S3BucketList
 
 /**
  * Fetch bucket list request parameters.

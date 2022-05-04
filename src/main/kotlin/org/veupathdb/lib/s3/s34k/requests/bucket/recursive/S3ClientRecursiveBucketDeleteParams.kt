@@ -2,7 +2,7 @@ package org.veupathdb.lib.s3.s34k.requests.bucket.recursive
 
 import org.veupathdb.lib.s3.s34k.S3Client
 import org.veupathdb.lib.s3.s34k.errors.InvalidRequestConfigError
-import org.veupathdb.lib.s3.s34k.fields.BucketName
+import org.veupathdb.lib.s3.s34k.S3BucketName
 
 /**
  * Client Recursive Bucket Delete Params.
@@ -28,5 +28,5 @@ interface S3ClientRecursiveBucketDeleteParams : S3RecursiveBucketDeleteParams {
    * This value must be set or an [InvalidRequestConfigError] will be thrown
    * when the request is attempted.
    */
-  var bucketName: BucketName?
+  var bucketName: S3BucketName?
 }

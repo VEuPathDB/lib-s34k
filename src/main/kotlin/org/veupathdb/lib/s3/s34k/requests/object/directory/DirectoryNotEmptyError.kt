@@ -6,15 +6,19 @@ package org.veupathdb.lib.s3.s34k.requests.`object`.directory
  */
 class DirectoryNotEmptyError : DirectoryDeleteError {
 
-  constructor(bucketName: String, path: String) : super(bucketName, path, makeErrMsg(bucketName, path))
+  constructor(bucket: String, path: String)
+    : super(bucket, path, err(bucket, path))
 
-  constructor(bucketName: String, path: String, cause: Throwable) : super(bucketName, path, makeErrMsg(bucketName, path), cause)
+  constructor(bucket: String, path: String, message: String)
+    : super(bucket, path, message)
 
-  constructor(bucketName: String, path: String, msg: String) : super(bucketName, path, msg)
+  constructor(bucket: String, path: String, cause: Throwable)
+    : super(bucket, path, err(bucket, path), cause)
 
-  constructor(bucketName: String, path: String, msg: String, cause: Throwable) : super(bucketName, path, msg, cause)
+  constructor(bucket: String, path: String, message: String, cause: Throwable)
+    : super(bucket, path, message, cause)
 }
 
 @Suppress("NOTHING_TO_INLINE")
-private inline fun makeErrMsg(bucketName: String, path: String) =
-  "Could not delete non-empty directory '$path' from bucket '$bucketName', `recursive` was not specified."
+private inline fun err(bucket: String, path: String) =
+  "Could not delete non-empty directory '$path' from bucket '$bucket', `recursive` was not specified."

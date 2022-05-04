@@ -1,9 +1,9 @@
 package org.veupathdb.lib.s3.s34k.requests.bucket.recursive
 
 import org.veupathdb.lib.s3.s34k.errors.S34KError
-import org.veupathdb.lib.s3.s34k.fields.BucketName
-import org.veupathdb.lib.s3.s34k.fields.headers.S3Headers
-import org.veupathdb.lib.s3.s34k.fields.query_params.S3QueryParams
+import org.veupathdb.lib.s3.s34k.S3BucketName
+import org.veupathdb.lib.s3.s34k.fields.S3Headers
+import org.veupathdb.lib.s3.s34k.fields.S3QueryParams
 
 /**
  * Represents and exception thrown during any phase of the complex action of
@@ -36,7 +36,7 @@ open class RecursiveBucketDeleteError : S34KError {
    * Name of the target bucket on which the recursive delete was being
    * attempted.
    */
-  val bucketName: BucketName
+  val bucketName: S3BucketName
 
   /**
    * Headers that were being sent as part of every request in all phases of the
