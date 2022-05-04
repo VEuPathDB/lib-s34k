@@ -1,6 +1,6 @@
 package org.veupathdb.lib.s3.s34k
 
-import org.veupathdb.lib.s3.s34k.fields.S3Headers
+import org.veupathdb.lib.s3.s34k.fields.Headers
 
 // TODO: Document me
 interface S3Response {
@@ -12,5 +12,5 @@ interface S3Response {
   val region: String?
 
   // TODO: Document me
-  val headers: S3Headers
+  val headers: Headers
 }

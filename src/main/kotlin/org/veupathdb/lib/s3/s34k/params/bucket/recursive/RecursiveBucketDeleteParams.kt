@@ -1,7 +1,7 @@
 package org.veupathdb.lib.s3.s34k.params.bucket.recursive
 
-import org.veupathdb.lib.s3.s34k.fields.S3MutableHeaders
-import org.veupathdb.lib.s3.s34k.fields.S3MutableQueryParams
+import org.veupathdb.lib.s3.s34k.fields.MutableHeaders
+import org.veupathdb.lib.s3.s34k.fields.MutableQueryParams
 import org.veupathdb.lib.s3.s34k.params.RegionRequestParams
 
 /**
@@ -33,13 +33,13 @@ interface RecursiveBucketDeleteParams : RegionRequestParams {
    * Headers that will be applied to all requests in all phases of the recursive
    * bucket delete operation.
    */
-  override val headers: S3MutableHeaders
+  override val headers: MutableHeaders
 
   /**
    * Query parameters that will be applied to all requests in all phases of the
    * recursive bucket delete operation.
    */
-  override val queryParams: S3MutableQueryParams
+  override val queryParams: MutableQueryParams
 
   /**
    * Global region value that will be applied to all requests in all phases of

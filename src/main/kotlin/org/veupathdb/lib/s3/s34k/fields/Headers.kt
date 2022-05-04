@@ -9,10 +9,10 @@ import java.util.stream.Stream
  *
  * @since  v0.1.0
  */
-interface S3Headers : Iterable<Pair<String, List<String>>> {
+interface Headers : Iterable<Pair<String, List<String>>> {
 
   /**
-   * Number of header entries in this [S3Headers] map.
+   * Number of header entries in this [Headers] map.
    */
   val size: Int
 
@@ -27,7 +27,7 @@ interface S3Headers : Iterable<Pair<String, List<String>>> {
   val isNotEmpty: Boolean
 
   /**
-   * Converts this [S3Headers] instance into a standard map of headers to value
+   * Converts this [Headers] instance into a standard map of headers to value
    * lists.
    *
    * @return The converted map.
@@ -35,7 +35,7 @@ interface S3Headers : Iterable<Pair<String, List<String>>> {
   fun toMap(): Map<String, List<String>>
 
   /**
-   * Returns a stream over the contents of this [S3Headers] map.
+   * Returns a stream over the contents of this [Headers] map.
    *
    * @return Stream over the contents of this header map.
    */

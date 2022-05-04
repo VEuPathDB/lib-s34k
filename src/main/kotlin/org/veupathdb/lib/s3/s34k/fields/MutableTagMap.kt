@@ -9,7 +9,7 @@ import org.veupathdb.lib.s3.s34k.Tag
  *
  * @since v0.1.0
  */
-interface S3MutableTagMap : S3TagMap {
+interface MutableTagMap : TagMap {
 
   /**
    * Adds the single given tag to this map.
@@ -157,5 +157,5 @@ interface S3MutableTagMap : S3TagMap {
    */
   operator fun plusAssign(tag: Pair<String, String>)
 
-  fun toImmutable(): S3TagMap
+  fun toImmutable(): TagMap
 }

@@ -1,8 +1,8 @@
 package org.veupathdb.lib.s3.s34k.params.tag
 
-import org.veupathdb.lib.s3.s34k.fields.S3MutableHeaders
-import org.veupathdb.lib.s3.s34k.fields.S3MutableQueryParams
-import org.veupathdb.lib.s3.s34k.fields.S3MutableTagSet
+import org.veupathdb.lib.s3.s34k.fields.MutableHeaders
+import org.veupathdb.lib.s3.s34k.fields.MutableQueryParams
+import org.veupathdb.lib.s3.s34k.fields.MutableTagSet
 import org.veupathdb.lib.s3.s34k.params.RegionRequestParams
 
 /**
@@ -26,17 +26,17 @@ interface TagDeleteParams : RegionRequestParams {
   /**
    * Set of tags to delete from the target bucket.
    */
-  val tags: S3MutableTagSet
+  val tags: MutableTagSet
 
   /**
    * Global headers that will be used in all phases of this operation.
    */
-  override val headers: S3MutableHeaders
+  override val headers: MutableHeaders
 
   /**
    * Global query params that will be used in all phases of this operation.
    */
-  override val queryParams: S3MutableQueryParams
+  override val queryParams: MutableQueryParams
 
   /**
    * Optional callback that will be executed on successful completion of the S3

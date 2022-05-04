@@ -2,8 +2,8 @@ package org.veupathdb.lib.s3.s34k.params.bucket.recursive
 
 import org.veupathdb.lib.s3.s34k.BucketName
 import org.veupathdb.lib.s3.s34k.errors.S34KError
-import org.veupathdb.lib.s3.s34k.fields.S3Headers
-import org.veupathdb.lib.s3.s34k.fields.S3QueryParams
+import org.veupathdb.lib.s3.s34k.fields.Headers
+import org.veupathdb.lib.s3.s34k.fields.QueryParams
 
 /**
  * Represents and exception thrown during any phase of the complex action of
@@ -42,49 +42,49 @@ open class RecursiveBucketDeleteError : S34KError {
    * Headers that were being sent as part of every request in all phases of the
    * recursive delete operation.
    */
-  val globalHeaders: S3Headers
+  val globalHeaders: Headers
 
   /**
    * Query parameters that were being sent as part of every request in all
    * phases of the recursive delete operation.
    */
-  val globalQueryParams: S3QueryParams
+  val globalQueryParams: QueryParams
 
   /**
    * Headers that were being sent exclusively as part of the bucket object list
    * operation.
    */
-  val objectListHeaders: S3Headers
+  val objectListHeaders: Headers
 
   /**
    * Query parameters that were being sent exclusively as part of the bucket
    * object list operation.
    */
-  val objectListQueryParams: S3QueryParams
+  val objectListQueryParams: QueryParams
 
   /**
    * Headers that were being sent exclusively as part of the bucket object
    * delete operation.
    */
-  val objectDeleteHeaders: S3Headers
+  val objectDeleteHeaders: Headers
 
   /**
    * Query parameters that were being sent exclusively as part of the bucket
    * object delete operation.
    */
-  val objectDeleteQueryParams: S3QueryParams
+  val objectDeleteQueryParams: QueryParams
 
   /**
    * Headers that were being sent exclusively as part of the bucket delete
    * operation.
    */
-  val bucketDeleteHeaders: S3Headers
+  val bucketDeleteHeaders: Headers
 
   /**
    * Query parameters that were being sent exclusively as part of the bucket
    * delete operation.
    */
-  val bucketDeleteQueryParams: S3QueryParams
+  val bucketDeleteQueryParams: QueryParams
 
   constructor(
     name: BucketName,

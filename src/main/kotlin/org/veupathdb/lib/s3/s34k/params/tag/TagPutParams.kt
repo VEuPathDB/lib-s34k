@@ -1,7 +1,7 @@
 package org.veupathdb.lib.s3.s34k.params.tag
 
-import org.veupathdb.lib.s3.s34k.fields.S3MutableTagMap
-import org.veupathdb.lib.s3.s34k.fields.S3TagMap
+import org.veupathdb.lib.s3.s34k.fields.MutableTagMap
+import org.veupathdb.lib.s3.s34k.fields.TagMap
 import org.veupathdb.lib.s3.s34k.params.RegionRequestParams
 
 /**
@@ -17,14 +17,14 @@ interface TagPutParams : RegionRequestParams {
   /**
    * Tags that will be attached to the target object.
    */
-  val tags: S3MutableTagMap
+  val tags: MutableTagMap
 
   /**
    * Optional callback that will be executed on successful completion of the S3
    * operation.
    *
-   * This callback will be passed an [S3TagMap] instance containing all the tags
+   * This callback will be passed an [TagMap] instance containing all the tags
    * that were attached to the S3 target.
    */
-  var callback: ((tags: S3TagMap) -> Unit)?
+  var callback: ((tags: TagMap) -> Unit)?
 }

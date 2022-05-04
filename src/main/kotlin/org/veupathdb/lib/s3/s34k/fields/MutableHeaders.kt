@@ -7,7 +7,7 @@ package org.veupathdb.lib.s3.s34k.fields
  *
  * @since  v0.1.0
  */
-interface S3MutableHeaders : S3Headers {
+interface MutableHeaders : Headers {
 
   /**
    * Adds the given header and values to this header map.
@@ -53,9 +53,9 @@ interface S3MutableHeaders : S3Headers {
 
 
   /**
-   * Returns an immutable copy of this [S3MutableHeaders] instance.
+   * Returns an immutable copy of this [MutableHeaders] instance.
    *
-   * @return An immutable [S3Headers] instance copy of this object.
+   * @return An immutable [Headers] instance copy of this object.
    */
-  fun toImmutable(): S3Headers
+  fun toImmutable(): Headers
 }

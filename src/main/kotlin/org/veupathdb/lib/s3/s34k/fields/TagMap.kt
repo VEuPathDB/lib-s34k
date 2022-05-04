@@ -10,27 +10,27 @@ import java.util.stream.Stream
  *
  * @since v0.1.0
  */
-interface S3TagMap : Iterable<Tag> {
+interface TagMap : Iterable<Tag> {
 
   /**
-   * Number of tag pairs currently in this [S3MutableTagMap]
+   * Number of tag pairs currently in this [MutableTagMap]
    *
    * This value will be `10` at most.
    */
   val size: Int
 
   /**
-   * Whether this [S3MutableTagMap] is empty.
+   * Whether this [MutableTagMap] is empty.
    */
   val isEmpty: Boolean
 
   /**
-   * Whether this [S3MutableTagMap] is not empty.
+   * Whether this [MutableTagMap] is not empty.
    */
   val isNotEmpty: Boolean
 
   /**
-   * Returns the contents of this [S3TagMap] as a map of string key to string
+   * Returns the contents of this [TagMap] as a map of string key to string
    * value.
    *
    * @return Map of tag keys to values.
@@ -38,23 +38,23 @@ interface S3TagMap : Iterable<Tag> {
   fun toMap(): Map<String, String>
 
   /**
-   * Returns the contents of this [S3TagMap] as a set of [Tag] instances.
+   * Returns the contents of this [TagMap] as a set of [Tag] instances.
    *
    * @return Set of [Tag] values.
    */
   fun toSet(): Set<Tag>
 
   /**
-   * Returns the contents of this [S3TagMap] as a list of [Tag] instances.
+   * Returns the contents of this [TagMap] as a list of [Tag] instances.
    *
    * @return List of [Tag] values.
    */
   fun toList(): List<Tag>
 
   /**
-   * Returns a stream over the contents of this [S3TagMap].
+   * Returns a stream over the contents of this [TagMap].
    *
-   * @return Stream over the contents of this [S3TagMap].
+   * @return Stream over the contents of this [TagMap].
    */
   fun stream(): Stream<Tag>
 

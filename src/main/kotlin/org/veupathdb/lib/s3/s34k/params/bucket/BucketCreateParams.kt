@@ -1,7 +1,7 @@
 package org.veupathdb.lib.s3.s34k.params.bucket
 
 import org.veupathdb.lib.s3.s34k.Bucket
-import org.veupathdb.lib.s3.s34k.fields.S3MutableTagMap
+import org.veupathdb.lib.s3.s34k.fields.MutableTagMap
 import org.veupathdb.lib.s3.s34k.params.RegionRequestParams
 
 /**
@@ -17,7 +17,7 @@ interface BucketCreateParams : RegionRequestParams {
    * Tags that may be attached to the target bucket during the execution of
    * this S3 operation.
    */
-  val tags: S3MutableTagMap
+  val tags: MutableTagMap
 
   /**
    * Optional callback that will be executed on successful completion of the S3

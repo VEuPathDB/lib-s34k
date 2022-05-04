@@ -7,10 +7,10 @@ package org.veupathdb.lib.s3.s34k.fields
  *
  * @since v0.1.0
  */
-interface S3MutableTagSet : S3TagSet {
+interface MutableTagSet : TagSet {
 
   /**
-   * Adds the given tag to this [S3MutableTagSet].
+   * Adds the given tag to this [MutableTagSet].
    *
    * @throws IllegalArgumentException if the given tag name is greater than 128
    * characters in length.
@@ -18,7 +18,7 @@ interface S3MutableTagSet : S3TagSet {
   fun add(tag: String)
 
   /**
-   * Adds the given tags to this [S3MutableTagSet].
+   * Adds the given tags to this [MutableTagSet].
    *
    * @throws IllegalArgumentException if any of the given tag names are greater
    * than 128 characters in length.
@@ -26,7 +26,7 @@ interface S3MutableTagSet : S3TagSet {
   fun add(vararg tags: String)
 
   /**
-   * Adds the tags from the [Iterable] value to this [S3MutableTagSet].
+   * Adds the tags from the [Iterable] value to this [MutableTagSet].
    *
    * @throws IllegalArgumentException if any of the given tag names are greater
    * than 128 characters in length.
@@ -34,12 +34,12 @@ interface S3MutableTagSet : S3TagSet {
   fun add(tags: Iterable<String>)
 
   /**
-   * Adds the given tag to this [S3MutableTagSet].
+   * Adds the given tag to this [MutableTagSet].
    *
    * @throws IllegalArgumentException if the given tag name is greater than 128
    * characters in length.
    */
   operator fun plusAssign(tag: String)
 
-  fun toImmutable(): S3TagSet
+  fun toImmutable(): TagSet
 }

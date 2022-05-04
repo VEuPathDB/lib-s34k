@@ -7,7 +7,7 @@ package org.veupathdb.lib.s3.s34k.fields
  *
  * @since  v0.1.0
  */
-interface S3MutableQueryParams : S3QueryParams {
+interface MutableQueryParams : QueryParams {
 
   /**
    * Adds the given header and values to this query param map.
@@ -52,9 +52,9 @@ interface S3MutableQueryParams : S3QueryParams {
   fun addQueryParams(vararg params: Pair<String, String>)
 
   /**
-   * Returns an immutable copy of this [S3MutableQueryParams] instance.
+   * Returns an immutable copy of this [MutableQueryParams] instance.
    *
-   * @return An immutable [S3QueryParams] instance copy of this object.
+   * @return An immutable [QueryParams] instance copy of this object.
    */
-  fun toImmutable(): S3QueryParams
+  fun toImmutable(): QueryParams
 }

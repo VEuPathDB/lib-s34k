@@ -3,7 +3,7 @@ package org.veupathdb.lib.s3.s34k
 import org.veupathdb.lib.s3.s34k.errors.BucketNotFoundError
 import org.veupathdb.lib.s3.s34k.errors.ObjectNotFoundError
 import org.veupathdb.lib.s3.s34k.errors.S34KError
-import org.veupathdb.lib.s3.s34k.fields.S3TagMap
+import org.veupathdb.lib.s3.s34k.fields.TagMap
 import org.veupathdb.lib.s3.s34k.params.tag.*
 
 // TODO: what error should be thrown when attempting to put more than 10
@@ -235,7 +235,7 @@ interface TagContainer {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun put(tags: S3TagMap)
+  fun put(tags: TagMap)
 
   /**
    * Puts the configured tags onto this tag container.
@@ -303,17 +303,17 @@ interface TagContainer {
 
   // region Get
 
-  fun getAll(): S3TagMap
+  fun getAll(): TagMap
 
   operator fun get(key: String): String?
 
-  fun get(vararg keys: String): S3TagMap
+  fun get(vararg keys: String): TagMap
 
-  fun get(keys: Iterable<String>): S3TagMap
+  fun get(keys: Iterable<String>): TagMap
 
-  fun get(action: TagGetParams.() -> Unit): S3TagMap
+  fun get(action: TagGetParams.() -> Unit): TagMap
 
-  fun get(params: TagGetParams): S3TagMap
+  fun get(params: TagGetParams): TagMap
 
   // endregion Get
 
