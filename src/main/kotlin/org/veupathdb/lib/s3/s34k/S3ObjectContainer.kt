@@ -293,7 +293,7 @@ interface S3ObjectContainer {
     BucketNotFoundError::class,
     S34KError::class,
   )
-  fun get(path: String, params: S3ObjectGetParams)
+  fun get(path: String, params: S3ObjectGetParams): S3Object?
 
   // endregion Get
 
