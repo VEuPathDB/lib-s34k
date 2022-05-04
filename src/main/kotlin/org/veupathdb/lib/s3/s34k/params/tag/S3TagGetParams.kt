@@ -1,7 +1,8 @@
-package org.veupathdb.lib.s3.s34k.params
+package org.veupathdb.lib.s3.s34k.params.tag
 
 import org.veupathdb.lib.s3.s34k.fields.S3MutableTagSet
 import org.veupathdb.lib.s3.s34k.fields.S3TagMap
+import org.veupathdb.lib.s3.s34k.params.S3RegionRequestParams
 
 interface S3TagGetParams : S3RegionRequestParams {
 

@@ -1,4 +1,6 @@
-package org.veupathdb.lib.s3.s34k.params
+package org.veupathdb.lib.s3.s34k.params.tag
+
+import org.veupathdb.lib.s3.s34k.params.S3RegionRequestParams
 
 interface S3TagCountParams : S3RegionRequestParams {
 

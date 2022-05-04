@@ -1,7 +1,8 @@
-package org.veupathdb.lib.s3.s34k.params
+package org.veupathdb.lib.s3.s34k.params.tag
 
 import org.veupathdb.lib.s3.s34k.fields.S3MutableTagMap
 import org.veupathdb.lib.s3.s34k.fields.S3TagMap
+import org.veupathdb.lib.s3.s34k.params.S3RegionRequestParams
 
 /**
  * Base interface for S3 operation configurations that can send tags to the S3
