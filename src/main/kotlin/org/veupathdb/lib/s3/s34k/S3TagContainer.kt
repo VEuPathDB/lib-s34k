@@ -71,9 +71,9 @@ interface S3TagContainer {
   )
   operator fun contains(key: String): Boolean
 
-  fun contains(action: S3TagExistsParams.() -> Unit): Boolean
+  fun contains(key: String, action: S3TagExistsParams.() -> Unit): Boolean
 
-  fun contains(params: S3TagExistsParams): Boolean
+  fun contains(key: String, params: S3TagExistsParams): Boolean
 
   // endregion Contains
 
