@@ -3,7 +3,7 @@ package org.veupathdb.lib.s3.s34k.params.`object`
 import org.veupathdb.lib.s3.s34k.S3Object
 
 // TODO: Document me
-interface S3ObjectTouchParams : S3ObjectWriteParams {
+interface ObjectTouchParams : ObjectWriteParams {
 
   // TODO: Document me
   var contentType: String?

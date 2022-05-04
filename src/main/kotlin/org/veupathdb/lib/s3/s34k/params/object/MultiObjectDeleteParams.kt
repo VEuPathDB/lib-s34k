@@ -10,7 +10,7 @@ import org.veupathdb.lib.s3.s34k.params.S3RegionRequestParams
  *
  * @since v0.1.0
  */
-interface S3MultiObjectDeleteParams : S3RegionRequestParams {
+interface MultiObjectDeleteParams : S3RegionRequestParams {
 
   /**
    * Collection of paths to the target objects that will be deleted.

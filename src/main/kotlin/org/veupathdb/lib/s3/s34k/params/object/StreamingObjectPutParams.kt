@@ -10,7 +10,7 @@ import java.io.InputStream
  *
  * @since v0.1.0
  */
-interface S3StreamingObjectPutParams : S3ObjectPutParams {
+interface StreamingObjectPutParams : ObjectPutParams {
 
   /**
    * *Required* [InputStream] over the data that will be written to the object

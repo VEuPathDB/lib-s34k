@@ -10,7 +10,7 @@ import org.veupathdb.lib.s3.s34k.params.S3RegionRequestParams
  *
  * @since v0.3.0
  */
-interface S3ObjectOpenParams : S3RegionRequestParams {
+interface ObjectOpenParams : S3RegionRequestParams {
 
   /**
    * Optional callback that will be executed on successful completion of the S3

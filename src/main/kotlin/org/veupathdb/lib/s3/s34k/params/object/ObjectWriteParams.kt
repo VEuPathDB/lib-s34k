@@ -10,7 +10,7 @@ import org.veupathdb.lib.s3.s34k.params.S3RegionRequestParams
  *
  * @since v0.1.0
  */
-interface S3ObjectWriteParams : S3RegionRequestParams {
+interface ObjectWriteParams : S3RegionRequestParams {
   /**
    * Tags that will be attached to the target object.
    */

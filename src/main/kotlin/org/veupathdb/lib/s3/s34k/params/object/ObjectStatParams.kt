@@ -1,23 +1,22 @@
 package org.veupathdb.lib.s3.s34k.params.`object`
 
-import org.veupathdb.lib.s3.s34k.S3Object
+import org.veupathdb.lib.s3.s34k.S3ObjectMeta
 import org.veupathdb.lib.s3.s34k.params.S3RegionRequestParams
 
 /**
- * Object get operation parameters.
+ * Parameters for an S3 object stat operation.
  *
  * @author Elizabeth Paige Harper [https://github.com/Foxcapades]
  *
  * @since v0.3.0
  */
-interface S3ObjectGetParams : S3RegionRequestParams {
+interface ObjectStatParams : S3RegionRequestParams {
 
   /**
    * Optional callback that will be executed on successful completion of the S3
    * operation.
    *
-   * This callback will be passed a handle on the target object if the target
-   * object exists, otherwise it will be passed a `null` value.
+   * This callback will be passed the metadata returned for the target object.
    */
-  var callback: ((handle: S3Object?) -> Unit)?
+  var callback: ((S3ObjectMeta) -> Unit)?
 }

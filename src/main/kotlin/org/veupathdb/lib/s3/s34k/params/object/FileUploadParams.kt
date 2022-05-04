@@ -11,7 +11,7 @@ import java.io.File
  *
  * @since v0.1.0
  */
-interface S3FileUploadParams : S3ObjectWriteParams {
+interface FileUploadParams : ObjectWriteParams {
 
   /**
    * *Required* handle on the local file that will be uploaded to the S3 store.

@@ -12,7 +12,7 @@ import java.io.File
  *
  * @since v0.1.0
  */
-interface S3ObjectDownloadParams : S3RegionRequestParams {
+interface ObjectDownloadParams : S3RegionRequestParams {
 
   /**
    * *Required* handle on the local file into which the remote object will be

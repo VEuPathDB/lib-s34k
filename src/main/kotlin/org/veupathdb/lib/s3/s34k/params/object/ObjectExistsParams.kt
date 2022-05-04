@@ -9,4 +9,4 @@ import org.veupathdb.lib.s3.s34k.params.S3ExistsParams
  *
  * @since v0.1.0
  */
-interface S3ObjectExistsParams : S3ExistsParams
+interface ObjectExistsParams : S3ExistsParams

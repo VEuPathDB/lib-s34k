@@ -124,7 +124,7 @@ interface S3ObjectContainer {
     BucketNotFoundError::class,
     S34KError::class
   )
-  fun contains(path: String, action: S3ObjectExistsParams.() -> Unit): Boolean
+  fun contains(path: String, action: ObjectExistsParams.() -> Unit): Boolean
 
   /**
    * Tests whether this object container contains an object at the configured
@@ -150,7 +150,7 @@ interface S3ObjectContainer {
     BucketNotFoundError::class,
     S34KError::class
   )
-  fun contains(path: String, params: S3ObjectExistsParams): Boolean
+  fun contains(path: String, params: ObjectExistsParams): Boolean
 
   // endregion Has
 
@@ -285,7 +285,7 @@ interface S3ObjectContainer {
     BucketNotFoundError::class,
     S34KError::class,
   )
-  fun get(path: String, action: S3ObjectGetParams.() -> Unit): S3Object?
+  fun get(path: String, action: ObjectGetParams.() -> Unit): S3Object?
 
   // TODO: document me
   @Throws(
@@ -293,7 +293,7 @@ interface S3ObjectContainer {
     BucketNotFoundError::class,
     S34KError::class,
   )
-  fun get(path: String, params: S3ObjectGetParams): S3Object?
+  fun get(path: String, params: ObjectGetParams): S3Object?
 
   // endregion Get
 
@@ -348,7 +348,7 @@ interface S3ObjectContainer {
     BucketNotFoundError::class,
     S34KError::class,
   )
-  fun open(path: String, action: S3ObjectOpenParams.() -> Unit): S3StreamObject?
+  fun open(path: String, action: ObjectOpenParams.() -> Unit): S3StreamObject?
 
   /**
    * Fetches the configured target object and returns a handle on it which can
@@ -377,7 +377,7 @@ interface S3ObjectContainer {
     BucketNotFoundError::class,
     S34KError::class,
   )
-  fun open(path: String, params: S3ObjectOpenParams): S3StreamObject?
+  fun open(path: String, params: ObjectOpenParams): S3StreamObject?
 
   // endregion Open
 
@@ -450,7 +450,7 @@ interface S3ObjectContainer {
     BucketNotFoundError::class,
     S34KError::class
   )
-  fun download(path: String, action: S3ObjectDownloadParams.() -> Unit): S3FileObject
+  fun download(path: String, action: ObjectDownloadParams.() -> Unit): S3FileObject
 
   /**
    * Fetches the object at the configured path and downloads it into the target
@@ -485,7 +485,7 @@ interface S3ObjectContainer {
     BucketNotFoundError::class,
     S34KError::class
   )
-  fun download(path: String, params: S3ObjectDownloadParams): S3FileObject
+  fun download(path: String, params: ObjectDownloadParams): S3FileObject
 
   // endregion Download
 
@@ -536,7 +536,7 @@ interface S3ObjectContainer {
     BucketNotFoundError::class,
     S34KError::class,
   )
-  fun stat(path: String, action: S3ObjectStatParams.() -> Unit): S3ObjectMeta?
+  fun stat(path: String, action: ObjectStatParams.() -> Unit): S3ObjectMeta?
 
   /**
    * Fetches metadata for the object at the target path.
@@ -563,7 +563,7 @@ interface S3ObjectContainer {
     BucketNotFoundError::class,
     S34KError::class,
   )
-  fun stat(path: String, params: S3ObjectStatParams): S3ObjectMeta?
+  fun stat(path: String, params: ObjectStatParams): S3ObjectMeta?
 
   // endregion Stat
 
@@ -601,7 +601,7 @@ interface S3ObjectContainer {
    * 'cause' value.
    */
   @Throws(BucketNotFoundError::class, S34KError::class)
-  fun listAll(action: S3ObjectListParams.() -> Unit): S3ObjectList
+  fun listAll(action: ObjectListParams.() -> Unit): S3ObjectList
 
   /**
    * Fetches a list of all the objects in this container.
@@ -619,7 +619,7 @@ interface S3ObjectContainer {
    * 'cause' value.
    */
   @Throws(BucketNotFoundError::class, S34KError::class)
-  fun listAll(params: S3ObjectListParams): S3ObjectList
+  fun listAll(params: ObjectListParams): S3ObjectList
 
   // endregion List
 
@@ -676,7 +676,7 @@ interface S3ObjectContainer {
     BucketNotFoundError::class,
     S34KError::class,
   )
-  fun touch(path: String, action: S3ObjectTouchParams.() -> Unit): S3Object
+  fun touch(path: String, action: ObjectTouchParams.() -> Unit): S3Object
 
   /**
    * Creates an empty object at the specified path if one does not already
@@ -703,7 +703,7 @@ interface S3ObjectContainer {
     BucketNotFoundError::class,
     S34KError::class,
   )
-  fun touch(path: String, params: S3ObjectTouchParams): S3Object
+  fun touch(path: String, params: ObjectTouchParams): S3Object
 
   // endregion Touch
 
@@ -778,7 +778,7 @@ interface S3ObjectContainer {
     BucketNotFoundError::class,
     S34KError::class,
   )
-  fun put(path: String, action: S3StreamingObjectPutParams.() -> Unit): S3Object
+  fun put(path: String, action: StreamingObjectPutParams.() -> Unit): S3Object
 
   /**
    * Creates or overwrites an object at the configured path with its contents
@@ -803,7 +803,7 @@ interface S3ObjectContainer {
     BucketNotFoundError::class,
     S34KError::class,
   )
-  fun put(path: String, params: S3StreamingObjectPutParams): S3Object
+  fun put(path: String, params: StreamingObjectPutParams): S3Object
 
   // endregion Put Stream
 
@@ -891,7 +891,7 @@ interface S3ObjectContainer {
     BucketNotFoundError::class,
     S34KError::class,
   )
-  fun upload(path: String, action: S3FileUploadParams.() -> Unit): S3Object
+  fun upload(path: String, action: FileUploadParams.() -> Unit): S3Object
 
   /**
    * Uploads the configured file to this container at the configured path,
@@ -919,7 +919,7 @@ interface S3ObjectContainer {
     BucketNotFoundError::class,
     S34KError::class,
   )
-  fun upload(path: String, params: S3FileUploadParams): S3Object
+  fun upload(path: String, params: FileUploadParams): S3Object
 
   // endregion Put File
 
@@ -1056,7 +1056,7 @@ interface S3ObjectContainer {
    * 'cause' value.
    */
   @Throws(BucketNotFoundError::class, S34KError::class)
-  fun deleteAll(action: S3MultiObjectDeleteParams.() -> Unit)
+  fun deleteAll(action: MultiObjectDeleteParams.() -> Unit)
 
   /**
    * Deletes all the given target objects from this container.
@@ -1076,7 +1076,7 @@ interface S3ObjectContainer {
    * 'cause' value.
    */
   @Throws(BucketNotFoundError::class, S34KError::class)
-  fun deleteAll(params: S3MultiObjectDeleteParams)
+  fun deleteAll(params: MultiObjectDeleteParams)
 
   // endregion Delete Multi
 
