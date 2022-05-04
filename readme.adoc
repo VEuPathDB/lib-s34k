@@ -39,10 +39,10 @@ fun main() {
   val client = S3Api.newClient(...)
 
   // Simple call
-  val bucket1 = client.createBucketIfNotExists("my-bucket-1")
+  val bucket1 = client.buckets.createIfNotExists("my-bucket-1")
 
   // Customized call
-  val bucket2 = client.createBucketIfNotExists {
+  val bucket2 = client.buckets.createIfNotExists {
     bucketName = "my-bucket-2"
     headers.add("x-my-custom-header", "some value")
     tags.add("some-tag", "some tag value")
@@ -58,10 +58,10 @@ fun main() {
   val bucket = client.getBucket("my-bucket")
 
   // Simple call
-  bucket.uploadFile("my/object/key", File("/path/to/some/local/file"))
+  bucket.objects.upload("my/object/key", File("/path/to/some/local/file"))
 
   // Customized call
-  bucket.uploadFile {
+  bucket.objects.upload {
     path      = "my/object/key2"
     localFile = File("/path/to/some/file")
     partSize  = 26_214_400 // 25MiB
