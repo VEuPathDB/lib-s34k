@@ -778,7 +778,7 @@ interface S3ObjectContainer {
     BucketNotFoundError::class,
     S34KError::class,
   )
-  fun put(path: String, action: S3StreamingObjectCreateParams.() -> Unit): S3Object
+  fun put(path: String, action: S3StreamingObjectPutParams.() -> Unit): S3Object
 
   /**
    * Creates or overwrites an object at the configured path with its contents
@@ -803,7 +803,7 @@ interface S3ObjectContainer {
     BucketNotFoundError::class,
     S34KError::class,
   )
-  fun put(path: String, params: S3StreamingObjectCreateParams): S3Object
+  fun put(path: String, params: S3StreamingObjectPutParams): S3Object
 
   // endregion Put Stream
 
