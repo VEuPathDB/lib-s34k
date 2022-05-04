@@ -12,7 +12,6 @@ import java.io.File
 import java.io.FileNotFoundException
 import java.io.InputStream
 
-// TODO: S3Directory should contain an object manager
 /**
  * # S3 Object Container
  *
