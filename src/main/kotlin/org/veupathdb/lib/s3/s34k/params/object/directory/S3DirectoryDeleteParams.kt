@@ -16,14 +16,4 @@ interface S3DirectoryDeleteParams : S3RegionRequestParams {
    * S3 operation.
    */
   var callback: (() -> Unit)?
-
-  /**
-   * Whether to delete this directory recursively (including all contents)
-   *
-   * If set to false and this directory is not empty, the operation will fail
-   * with a [DirectoryNotEmptyError] exception.
-   *
-   * Defaults to `true`
-   */
-  var recursive: Boolean
 }
