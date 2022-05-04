@@ -5,7 +5,7 @@ import org.veupathdb.lib.s3.s34k.errors.InvalidRequestConfigError
 import org.veupathdb.lib.s3.s34k.errors.S34KError
 import org.veupathdb.lib.s3.s34k.params.S3DeleteParams
 import org.veupathdb.lib.s3.s34k.params.bucket.recursive.RecursiveBucketDeleteError
-import org.veupathdb.lib.s3.s34k.params.bucket.recursive.S3RecursiveBucketDeleteParams
+import org.veupathdb.lib.s3.s34k.params.bucket.recursive.RecursiveBucketDeleteParams
 import java.time.OffsetDateTime
 
 /**
@@ -124,7 +124,7 @@ interface S3Bucket {
    * Recursively deletes this bucket and all its contents.
    *
    * This operation happens in 3 phases which can be configured independently
-   * using the [S3RecursiveBucketDeleteParams] class.
+   * using the [RecursiveBucketDeleteParams] class.
    * The 3 phases are:
    *
    * 1. Fetch a list of all the objects in the bucket.
@@ -147,7 +147,7 @@ interface S3Bucket {
    * configured by the given action.
    *
    * This operation happens in 3 phases which can be configured independently
-   * using the [S3RecursiveBucketDeleteParams] class.
+   * using the [RecursiveBucketDeleteParams] class.
    * The 3 phases are:
    *
    * 1. Fetch a list of all the objects in the bucket.
@@ -165,14 +165,14 @@ interface S3Bucket {
    *
    * @see delete
    */
-  fun deleteRecursive(action: S3RecursiveBucketDeleteParams.() -> Unit)
+  fun deleteRecursive(action: RecursiveBucketDeleteParams.() -> Unit)
 
   /**
    * Recursively deletes this bucket and all its contents with the operation
    * configured by the given params.
    *
    * This operation happens in 3 phases which can be configured independently
-   * using the [S3RecursiveBucketDeleteParams] class.
+   * using the [RecursiveBucketDeleteParams] class.
    * The 3 phases are:
    *
    * 1. Fetch a list of all the objects in the bucket.
@@ -190,7 +190,7 @@ interface S3Bucket {
    *
    * @see delete
    */
-  fun deleteRecursive(params: S3RecursiveBucketDeleteParams)
+  fun deleteRecursive(params: RecursiveBucketDeleteParams)
 
   // endregion
 

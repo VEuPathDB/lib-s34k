@@ -26,19 +26,19 @@ open class RecursiveBucketDeleteObjectDeleteError : RecursiveBucketDeleteError {
 
   constructor(
     name: S3BucketName,
-    req: S3RecursiveBucketDeleteParams,
+    req: RecursiveBucketDeleteParams,
     errs: List<ObjectDeleteError>,
     message: String,
     cause: Throwable
-  ) : super(name, S3RecursiveDeletePhase.DeleteObjects, req, message, cause) {
+  ) : super(name, RecursiveDeletePhase.DeleteObjects, req, message, cause) {
     objectErrors = errs
   }
 
   constructor(
     name: S3BucketName,
-    req: S3RecursiveBucketDeleteParams,
+    req: RecursiveBucketDeleteParams,
     errs: List<ObjectDeleteError>,
-  ) : super(name, S3RecursiveDeletePhase.DeleteObjects, req) {
+  ) : super(name, RecursiveDeletePhase.DeleteObjects, req) {
     objectErrors = errs
   }
 

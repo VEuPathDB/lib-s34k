@@ -10,7 +10,7 @@ package org.veupathdb.lib.s3.s34k.params.bucket.recursive
  *
  * @since  v0.1.0
  */
-enum class S3RecursiveDeletePhase {
+enum class RecursiveDeletePhase {
   ListObjects,
   DeleteObjects,
   DeleteBucket

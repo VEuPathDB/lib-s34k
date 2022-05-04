@@ -9,7 +9,7 @@ import org.veupathdb.lib.s3.s34k.params.S3RegionRequestParams
  *
  * @since v0.1.0
  */
-interface S3BucketDeleteParams : S3RegionRequestParams {
+interface BucketDeleteParams : S3RegionRequestParams {
 
   /**
    * Optional callback that will be executed on successful completion of the S3

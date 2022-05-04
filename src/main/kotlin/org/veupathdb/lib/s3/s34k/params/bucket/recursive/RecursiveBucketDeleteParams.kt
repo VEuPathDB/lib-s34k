@@ -27,7 +27,7 @@ import org.veupathdb.lib.s3.s34k.params.S3RegionRequestParams
  *
  * @since v0.1.0
  */
-interface S3RecursiveBucketDeleteParams : S3RegionRequestParams {
+interface RecursiveBucketDeleteParams : S3RegionRequestParams {
 
   /**
    * Headers that will be applied to all requests in all phases of the recursive
@@ -50,17 +50,17 @@ interface S3RecursiveBucketDeleteParams : S3RegionRequestParams {
   /**
    * Object list operation parameters.
    */
-  val objectFetch: S3RBDObjectListParams
+  val objectFetch: RBDObjectListParams
 
   /**
    * Bulk object delete operation parameters.
    */
-  val objectDelete: S3RBDObjectDeleteParams
+  val objectDelete: RBDObjectDeleteParams
 
   /**
    * Bucket delete operation parameters.
    */
-  val bucketDelete: S3RBDBucketDeleteParams
+  val bucketDelete: RBDBucketDeleteParams
 
   /**
    * Optional callback that will be executed on successful completion of the S3

@@ -10,7 +10,7 @@ import org.veupathdb.lib.s3.s34k.params.S3RequestParams
  *
  * @since v0.1.0
  */
-interface S3BucketListParams : S3RequestParams {
+interface BucketListParams : S3RequestParams {
 
   /**
    * Optional callback that will be executed on successful completion of the S3

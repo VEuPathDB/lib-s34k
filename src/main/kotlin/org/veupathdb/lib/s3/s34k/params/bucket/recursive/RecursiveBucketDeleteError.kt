@@ -30,7 +30,7 @@ open class RecursiveBucketDeleteError : S34KError {
   /**
    * Operation phase in which the error occurred.
    */
-  val phase: S3RecursiveDeletePhase
+  val phase: RecursiveDeletePhase
 
   /**
    * Name of the target bucket on which the recursive delete was being
@@ -88,8 +88,8 @@ open class RecursiveBucketDeleteError : S34KError {
 
   constructor(
     name: S3BucketName,
-    phase: S3RecursiveDeletePhase,
-    req: S3RecursiveBucketDeleteParams,
+    phase: RecursiveDeletePhase,
+    req: RecursiveBucketDeleteParams,
     message: String,
     cause: Throwable
   ) : super(message, cause) {
@@ -107,8 +107,8 @@ open class RecursiveBucketDeleteError : S34KError {
 
   constructor(
     name: S3BucketName,
-    phase: S3RecursiveDeletePhase,
-    req: S3RecursiveBucketDeleteParams,
+    phase: RecursiveDeletePhase,
+    req: RecursiveBucketDeleteParams,
     cause: Throwable
   ) : super(cause) {
     this.phase = phase
@@ -125,8 +125,8 @@ open class RecursiveBucketDeleteError : S34KError {
 
   constructor(
     name: S3BucketName,
-    phase: S3RecursiveDeletePhase,
-    req: S3RecursiveBucketDeleteParams,
+    phase: RecursiveDeletePhase,
+    req: RecursiveBucketDeleteParams,
   ) : super() {
     this.phase = phase
     this.bucketName = name
