@@ -1,6 +1,6 @@
 package org.veupathdb.lib.s3.s34k.params.bucket
 
-import org.veupathdb.lib.s3.s34k.params.S3RegionRequestParams
+import org.veupathdb.lib.s3.s34k.params.S3ExistsParams
 
 /**
  * Bucket existence check request parameters.
@@ -9,14 +9,4 @@ import org.veupathdb.lib.s3.s34k.params.S3RegionRequestParams
  *
  * @since v0.1.0
  */
-interface S3BucketExistsParams : S3RegionRequestParams {
-
-  /**
-   * Optional callback that will be executed on successful completion of the S3
-   * operation.
-   *
-   * This callback will be passed a boolean flag indicating whether the target
-   * bucket exists in the S3 store.
-   */
-  var callback: ((exists: Boolean) -> Unit)?
-}
+interface S3BucketExistsParams : S3ExistsParams
