@@ -1,7 +1,7 @@
 package org.veupathdb.lib.s3.s34k.params.`object`
 
+import org.veupathdb.lib.s3.s34k.fields.S3MutableTagMap
 import org.veupathdb.lib.s3.s34k.params.S3RegionRequestParams
-import org.veupathdb.lib.s3.s34k.params.S3TagCreateParams
 
 /**
  * Parameter base for S3 object write operations.
@@ -10,4 +10,9 @@ import org.veupathdb.lib.s3.s34k.params.S3TagCreateParams
  *
  * @since v0.1.0
  */
-interface S3ObjectWriteParams : S3TagCreateParams, S3RegionRequestParams
+interface S3ObjectWriteParams : S3RegionRequestParams {
+  /**
+   * Tags that will be attached to the target object.
+   */
+  val tags: S3MutableTagMap
+}
