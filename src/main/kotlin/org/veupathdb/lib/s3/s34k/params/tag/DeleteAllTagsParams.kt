@@ -1,15 +1,15 @@
-package org.veupathdb.lib.s3.s34k.params.bucket
+package org.veupathdb.lib.s3.s34k.params.tag
 
 import org.veupathdb.lib.s3.s34k.params.RegionRequestParams
 
 /**
- * Bucket delete request parameters.
+ * Parameters for a 'delete all tags' operation.
  *
  * @author Elizabeth Paige Harper [https://github.com/Foxcapades]
  *
- * @since v0.1.0
+ * @since v0.3.0
  */
-interface BucketDeleteParams : RegionRequestParams {
+interface DeleteAllTagsParams : RegionRequestParams {
 
   /**
    * Optional callback that will be executed on successful completion of the S3

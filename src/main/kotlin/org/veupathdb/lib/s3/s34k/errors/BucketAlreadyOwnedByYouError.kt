@@ -1,6 +1,6 @@
 package org.veupathdb.lib.s3.s34k.errors
 
-import org.veupathdb.lib.s3.s34k.S3BucketName
+import org.veupathdb.lib.s3.s34k.BucketName
 import org.veupathdb.lib.s3.s34k.S3ErrorCode
 
 /**
@@ -23,15 +23,15 @@ class BucketAlreadyOwnedByYouError : BucketAlreadyExistsException {
 
   override val code = S3ErrorCode.BucketAlreadyOwnedByYou
 
-  constructor(bucket: S3BucketName, msg: String) : super(bucket, msg)
+  constructor(bucket: BucketName, msg: String) : super(bucket, msg)
 
-  constructor(bucket: S3BucketName, msg: String, cause: Throwable) : super(
+  constructor(bucket: BucketName, msg: String, cause: Throwable) : super(
     bucket,
     msg,
     cause
   )
 
-  constructor(bucket: S3BucketName, cause: Throwable) : super(
+  constructor(bucket: BucketName, cause: Throwable) : super(
     bucket,
     "You already own bucket $bucket",
     cause

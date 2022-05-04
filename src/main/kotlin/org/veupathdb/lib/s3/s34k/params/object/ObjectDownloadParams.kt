@@ -1,8 +1,8 @@
 package org.veupathdb.lib.s3.s34k.params.`object`
 
-import org.veupathdb.lib.s3.s34k.S3FileObject
+import org.veupathdb.lib.s3.s34k.FileObject
 import org.veupathdb.lib.s3.s34k.errors.InvalidRequestConfigError
-import org.veupathdb.lib.s3.s34k.params.S3RegionRequestParams
+import org.veupathdb.lib.s3.s34k.params.RegionRequestParams
 import java.io.File
 
 /**
@@ -12,7 +12,7 @@ import java.io.File
  *
  * @since v0.1.0
  */
-interface ObjectDownloadParams : S3RegionRequestParams {
+interface ObjectDownloadParams : RegionRequestParams {
 
   /**
    * *Required* handle on the local file into which the remote object will be
@@ -29,8 +29,8 @@ interface ObjectDownloadParams : S3RegionRequestParams {
    * Optional callback that will be executed on successful completion of the S3
    * operation.
    *
-   * This callback will be passed an [S3FileObject] instance representing the
+   * This callback will be passed an [FileObject] instance representing the
    * file that was downloaded.
    */
-  var callback: ((handle: S3FileObject) -> Unit)?
+  var callback: ((handle: FileObject) -> Unit)?
 }

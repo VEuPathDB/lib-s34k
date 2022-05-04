@@ -6,7 +6,7 @@ import org.veupathdb.lib.s3.s34k.fields.S3Headers
 interface S3Response {
 
   // TODO: Document me
-  val bucket: S3Bucket
+  val bucket: Bucket
 
   // TODO: Document me
   val region: String?

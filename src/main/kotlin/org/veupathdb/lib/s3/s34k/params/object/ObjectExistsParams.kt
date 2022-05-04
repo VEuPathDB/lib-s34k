@@ -1,6 +1,6 @@
 package org.veupathdb.lib.s3.s34k.params.`object`
 
-import org.veupathdb.lib.s3.s34k.params.S3ExistsParams
+import org.veupathdb.lib.s3.s34k.params.ExistsParams
 
 /**
  * Object existence test request parameters.
@@ -9,4 +9,4 @@ import org.veupathdb.lib.s3.s34k.params.S3ExistsParams
  *
  * @since v0.1.0
  */
-interface ObjectExistsParams : S3ExistsParams
+interface ObjectExistsParams : ExistsParams

@@ -1,6 +1,6 @@
 package org.veupathdb.lib.s3.s34k.params.bucket
 
-import org.veupathdb.lib.s3.s34k.params.S3ExistsParams
+import org.veupathdb.lib.s3.s34k.params.ExistsParams
 
 /**
  * Bucket existence check request parameters.
@@ -9,4 +9,4 @@ import org.veupathdb.lib.s3.s34k.params.S3ExistsParams
  *
  * @since v0.1.0
  */
-interface BucketExistsParams : S3ExistsParams
+interface BucketExistsParams : ExistsParams

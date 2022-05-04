@@ -1,6 +1,6 @@
 package org.veupathdb.lib.s3.s34k.errors
 
-import org.veupathdb.lib.s3.s34k.S3BucketName
+import org.veupathdb.lib.s3.s34k.BucketName
 
 
 /**
@@ -15,17 +15,17 @@ abstract class AbstractBucketOperationError : AbstractResponseError {
   /**
    * Name of the bucket on which the failed operation was taking place.
    */
-  val bucket: S3BucketName
+  val bucket: BucketName
 
-  constructor(bucket: S3BucketName, message: String) : super(message) {
+  constructor(bucket: BucketName, message: String) : super(message) {
     this.bucket = bucket
   }
 
-  constructor(bucket: S3BucketName, cause: Throwable): super(cause) {
+  constructor(bucket: BucketName, cause: Throwable): super(cause) {
     this.bucket = bucket
   }
 
-  constructor(bucket: S3BucketName, message: String, cause: Throwable) : super(message, cause) {
+  constructor(bucket: BucketName, message: String, cause: Throwable) : super(message, cause) {
     this.bucket = bucket
   }
 }

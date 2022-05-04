@@ -1,13 +1,13 @@
 package org.veupathdb.lib.s3.s34k
 
-import org.veupathdb.lib.s3.s34k.params.S3DeleteParams
-import org.veupathdb.lib.s3.s34k.params.S3ExistsParams
-import org.veupathdb.lib.s3.s34k.params.S3StatParams
+import org.veupathdb.lib.s3.s34k.params.DeleteParams
+import org.veupathdb.lib.s3.s34k.params.ExistsParams
+import org.veupathdb.lib.s3.s34k.params.StatParams
 
 // TODO: Document me
-interface S3Object : S3ObjectResponse {
+interface S3Object : ObjectResponse {
 
-  val tags: S3TagContainer
+  val tags: TagContainer
 
   // region Exists
 
@@ -15,10 +15,10 @@ interface S3Object : S3ObjectResponse {
   fun exists(): Boolean
 
   // TODO: Document me
-  fun exists(action: S3ExistsParams.() -> Unit): Boolean
+  fun exists(action: ExistsParams.() -> Unit): Boolean
 
   // TODO: Document me
-  fun exists(params: S3ExistsParams): Boolean
+  fun exists(params: ExistsParams): Boolean
 
   // endregion
 
@@ -34,27 +34,27 @@ interface S3Object : S3ObjectResponse {
    *
    * @param action Action used to configure the S3 operation.
    */
-  fun delete(action: S3DeleteParams.() -> Unit)
+  fun delete(action: DeleteParams.() -> Unit)
 
   /**
    * Deletes the current object from the S3 store (if it still exists).
    *
    * @param params S3 operation parameters.
    */
-  fun delete(params: S3DeleteParams)
+  fun delete(params: DeleteParams)
 
   // endregion
 
   // region Stat
 
   // TODO: Document me
-  fun stat(): S3ObjectMeta
+  fun stat(): ObjectMeta
 
   // TODO: Document me
-  fun stat(action: S3StatParams.() -> Unit): S3ObjectMeta
+  fun stat(action: StatParams.() -> Unit): ObjectMeta
 
   // TODO: Document me
-  fun stat(params: S3StatParams): S3ObjectMeta
+  fun stat(params: StatParams): ObjectMeta
 
   // endregion
 }

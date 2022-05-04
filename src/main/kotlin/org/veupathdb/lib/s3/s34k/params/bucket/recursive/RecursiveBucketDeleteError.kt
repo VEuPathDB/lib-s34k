@@ -1,6 +1,6 @@
 package org.veupathdb.lib.s3.s34k.params.bucket.recursive
 
-import org.veupathdb.lib.s3.s34k.S3BucketName
+import org.veupathdb.lib.s3.s34k.BucketName
 import org.veupathdb.lib.s3.s34k.errors.S34KError
 import org.veupathdb.lib.s3.s34k.fields.S3Headers
 import org.veupathdb.lib.s3.s34k.fields.S3QueryParams
@@ -36,7 +36,7 @@ open class RecursiveBucketDeleteError : S34KError {
    * Name of the target bucket on which the recursive delete was being
    * attempted.
    */
-  val bucketName: S3BucketName
+  val bucketName: BucketName
 
   /**
    * Headers that were being sent as part of every request in all phases of the
@@ -87,7 +87,7 @@ open class RecursiveBucketDeleteError : S34KError {
   val bucketDeleteQueryParams: S3QueryParams
 
   constructor(
-    name: S3BucketName,
+    name: BucketName,
     phase: RecursiveDeletePhase,
     req: RecursiveBucketDeleteParams,
     message: String,
@@ -106,7 +106,7 @@ open class RecursiveBucketDeleteError : S34KError {
   }
 
   constructor(
-    name: S3BucketName,
+    name: BucketName,
     phase: RecursiveDeletePhase,
     req: RecursiveBucketDeleteParams,
     cause: Throwable
@@ -124,7 +124,7 @@ open class RecursiveBucketDeleteError : S34KError {
   }
 
   constructor(
-    name: S3BucketName,
+    name: BucketName,
     phase: RecursiveDeletePhase,
     req: RecursiveBucketDeleteParams,
   ) : super() {

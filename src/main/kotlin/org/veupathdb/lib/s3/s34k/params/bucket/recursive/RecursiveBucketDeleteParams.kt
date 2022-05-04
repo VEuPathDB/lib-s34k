@@ -2,7 +2,7 @@ package org.veupathdb.lib.s3.s34k.params.bucket.recursive
 
 import org.veupathdb.lib.s3.s34k.fields.S3MutableHeaders
 import org.veupathdb.lib.s3.s34k.fields.S3MutableQueryParams
-import org.veupathdb.lib.s3.s34k.params.S3RegionRequestParams
+import org.veupathdb.lib.s3.s34k.params.RegionRequestParams
 
 /**
  * Recursive Bucket Delete Request Parameters.
@@ -27,7 +27,7 @@ import org.veupathdb.lib.s3.s34k.params.S3RegionRequestParams
  *
  * @since v0.1.0
  */
-interface RecursiveBucketDeleteParams : S3RegionRequestParams {
+interface RecursiveBucketDeleteParams : RegionRequestParams {
 
   /**
    * Headers that will be applied to all requests in all phases of the recursive

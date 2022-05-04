@@ -1,16 +1,16 @@
 package org.veupathdb.lib.s3.s34k.fields
 
-import org.veupathdb.lib.s3.s34k.S3Tag
+import org.veupathdb.lib.s3.s34k.Tag
 import java.util.stream.Stream
 
 /**
- * Immutable map of [S3Tag] instances.
+ * Immutable map of [Tag] instances.
  *
  * @author Elizabeth Paige Harper [https://github.com/Foxcapades]
  *
  * @since v0.1.0
  */
-interface S3TagMap : Iterable<S3Tag> {
+interface S3TagMap : Iterable<Tag> {
 
   /**
    * Number of tag pairs currently in this [S3MutableTagMap]
@@ -38,25 +38,25 @@ interface S3TagMap : Iterable<S3Tag> {
   fun toMap(): Map<String, String>
 
   /**
-   * Returns the contents of this [S3TagMap] as a set of [S3Tag] instances.
+   * Returns the contents of this [S3TagMap] as a set of [Tag] instances.
    *
-   * @return Set of [S3Tag] values.
+   * @return Set of [Tag] values.
    */
-  fun toSet(): Set<S3Tag>
+  fun toSet(): Set<Tag>
 
   /**
-   * Returns the contents of this [S3TagMap] as a list of [S3Tag] instances.
+   * Returns the contents of this [S3TagMap] as a list of [Tag] instances.
    *
-   * @return List of [S3Tag] values.
+   * @return List of [Tag] values.
    */
-  fun toList(): List<S3Tag>
+  fun toList(): List<Tag>
 
   /**
    * Returns a stream over the contents of this [S3TagMap].
    *
    * @return Stream over the contents of this [S3TagMap].
    */
-  fun stream(): Stream<S3Tag>
+  fun stream(): Stream<Tag>
 
   /**
    * Gets the value for the tag with the given name ([key]).

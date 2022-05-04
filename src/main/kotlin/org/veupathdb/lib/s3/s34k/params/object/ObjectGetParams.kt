@@ -1,7 +1,7 @@
 package org.veupathdb.lib.s3.s34k.params.`object`
 
 import org.veupathdb.lib.s3.s34k.S3Object
-import org.veupathdb.lib.s3.s34k.params.S3RegionRequestParams
+import org.veupathdb.lib.s3.s34k.params.RegionRequestParams
 
 /**
  * Object get operation parameters.
@@ -10,7 +10,7 @@ import org.veupathdb.lib.s3.s34k.params.S3RegionRequestParams
  *
  * @since v0.3.0
  */
-interface ObjectGetParams : S3RegionRequestParams {
+interface ObjectGetParams : RegionRequestParams {
 
   /**
    * Optional callback that will be executed on successful completion of the S3

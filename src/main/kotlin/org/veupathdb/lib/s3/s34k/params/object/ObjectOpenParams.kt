@@ -1,7 +1,7 @@
 package org.veupathdb.lib.s3.s34k.params.`object`
 
-import org.veupathdb.lib.s3.s34k.S3StreamObject
-import org.veupathdb.lib.s3.s34k.params.S3RegionRequestParams
+import org.veupathdb.lib.s3.s34k.StreamObject
+import org.veupathdb.lib.s3.s34k.params.RegionRequestParams
 
 /**
  * Object open request parameters.
@@ -10,15 +10,15 @@ import org.veupathdb.lib.s3.s34k.params.S3RegionRequestParams
  *
  * @since v0.3.0
  */
-interface ObjectOpenParams : S3RegionRequestParams {
+interface ObjectOpenParams : RegionRequestParams {
 
   /**
    * Optional callback that will be executed on successful completion of the S3
    * operation.
    *
-   * This callback will be passed an [S3StreamObject] request wrapping a stream
+   * This callback will be passed an [StreamObject] request wrapping a stream
    * over the contents of the target object if that object exists. If the target
    * object does not exist, this callback will be passed a `null` value.
    */
-  var callback: ((S3StreamObject?) -> Unit)?
+  var callback: ((StreamObject?) -> Unit)?
 }

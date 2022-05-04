@@ -7,14 +7,14 @@ open class TargetedTagDeleteError : S34KError {
 
   val target: S3Object
 
-  val params: S3TagDeleteParams
+  val params: TagDeleteParams
 
   val phase: TargetedTagDeletePhase
 
   constructor(
     target: S3Object,
     phase:  TargetedTagDeletePhase,
-    params: S3TagDeleteParams
+    params: TagDeleteParams
   ) : super("Tag deletion failed in phase $phase") {
     this.target = target
     this.params = params
@@ -24,7 +24,7 @@ open class TargetedTagDeleteError : S34KError {
   constructor(
     target:  S3Object,
     phase:   TargetedTagDeletePhase,
-    params:  S3TagDeleteParams,
+    params:  TagDeleteParams,
     message: String
   ) : super(message) {
     this.target = target
@@ -35,7 +35,7 @@ open class TargetedTagDeleteError : S34KError {
   constructor(
     target: S3Object,
     phase:  TargetedTagDeletePhase,
-    params: S3TagDeleteParams,
+    params: TagDeleteParams,
     cause:  Throwable
   ) : super("Tag deletion failed in phase $phase", cause) {
     this.target = target
@@ -46,7 +46,7 @@ open class TargetedTagDeleteError : S34KError {
   constructor(
     target:  S3Object,
     phase:   TargetedTagDeletePhase,
-    params:  S3TagDeleteParams,
+    params:  TagDeleteParams,
     message: String,
     cause:   Throwable,
   ) : super(message, cause) {

@@ -1,6 +1,6 @@
 package org.veupathdb.lib.s3.s34k.params.bucket
 
-import org.veupathdb.lib.s3.s34k.S3BucketList
+import org.veupathdb.lib.s3.s34k.BucketList
 import org.veupathdb.lib.s3.s34k.params.S3RequestParams
 
 /**
@@ -19,5 +19,5 @@ interface BucketListParams : S3RequestParams {
    * This callback will be passed the list of buckets retrieved from the S3
    * store.
    */
-  var callback: ((buckets: S3BucketList) -> Unit)?
+  var callback: ((buckets: BucketList) -> Unit)?
 }

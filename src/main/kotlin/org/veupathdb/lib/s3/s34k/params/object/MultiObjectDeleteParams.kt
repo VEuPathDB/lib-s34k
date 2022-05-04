@@ -1,7 +1,7 @@
 package org.veupathdb.lib.s3.s34k.params.`object`
 
 import org.veupathdb.lib.s3.s34k.fields.S3MutablePathSet
-import org.veupathdb.lib.s3.s34k.params.S3RegionRequestParams
+import org.veupathdb.lib.s3.s34k.params.RegionRequestParams
 
 /**
  * Multi-Object delete request parameters.
@@ -10,7 +10,7 @@ import org.veupathdb.lib.s3.s34k.params.S3RegionRequestParams
  *
  * @since v0.1.0
  */
-interface MultiObjectDeleteParams : S3RegionRequestParams {
+interface MultiObjectDeleteParams : RegionRequestParams {
 
   /**
    * Collection of paths to the target objects that will be deleted.

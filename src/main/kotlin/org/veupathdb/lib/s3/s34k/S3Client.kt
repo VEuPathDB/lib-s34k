@@ -15,6 +15,6 @@ interface S3Client {
 
   val defaultRegion: String?
 
-  val buckets: S3BucketContainer
+  val buckets: BucketContainer
 
 }

@@ -1,6 +1,6 @@
 package org.veupathdb.lib.s3.s34k.errors
 
-import org.veupathdb.lib.s3.s34k.S3BucketName
+import org.veupathdb.lib.s3.s34k.BucketName
 import org.veupathdb.lib.s3.s34k.S3ErrorCode
 
 
@@ -17,15 +17,15 @@ class BucketNotFoundError : AbstractBucketOperationError {
 
   override val code = S3ErrorCode.NoSuchBucket
 
-  constructor(bucket: S3BucketName)
+  constructor(bucket: BucketName)
     : super(bucket, "Bucket $bucket does not exist.")
 
-  constructor(bucket: S3BucketName, message: String)
+  constructor(bucket: BucketName, message: String)
     : super(bucket, message)
 
-  constructor(bucket: S3BucketName, cause: Throwable)
+  constructor(bucket: BucketName, cause: Throwable)
     : super(bucket, "Bucket $bucket already exists.", cause)
 
-  constructor(bucket: S3BucketName, message: String, cause: Throwable)
+  constructor(bucket: BucketName, message: String, cause: Throwable)
     : super(bucket, message, cause)
 }

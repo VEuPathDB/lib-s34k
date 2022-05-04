@@ -1,8 +1,8 @@
 package org.veupathdb.lib.s3.s34k.params.bucket
 
-import org.veupathdb.lib.s3.s34k.S3Bucket
+import org.veupathdb.lib.s3.s34k.Bucket
 import org.veupathdb.lib.s3.s34k.fields.S3MutableTagMap
-import org.veupathdb.lib.s3.s34k.params.S3RegionRequestParams
+import org.veupathdb.lib.s3.s34k.params.RegionRequestParams
 
 /**
  * Bucket create request parameters.
@@ -11,7 +11,7 @@ import org.veupathdb.lib.s3.s34k.params.S3RegionRequestParams
  *
  * @since v0.1.0
  */
-interface BucketCreateParams : S3RegionRequestParams {
+interface BucketCreateParams : RegionRequestParams {
 
   /**
    * Tags that may be attached to the target bucket during the execution of
@@ -25,5 +25,5 @@ interface BucketCreateParams : S3RegionRequestParams {
    *
    * This callback will be passed a handle on the newly created S3 bucket.
    */
-  var callback: ((bucket: S3Bucket) -> Unit)?
+  var callback: ((bucket: Bucket) -> Unit)?
 }

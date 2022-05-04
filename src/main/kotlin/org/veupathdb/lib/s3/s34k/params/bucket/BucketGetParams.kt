@@ -1,7 +1,7 @@
 package org.veupathdb.lib.s3.s34k.params.bucket
 
-import org.veupathdb.lib.s3.s34k.S3Bucket
-import org.veupathdb.lib.s3.s34k.params.S3RegionRequestParams
+import org.veupathdb.lib.s3.s34k.Bucket
+import org.veupathdb.lib.s3.s34k.params.RegionRequestParams
 
 /**
  * Fetch bucket request parameters.
@@ -10,7 +10,7 @@ import org.veupathdb.lib.s3.s34k.params.S3RegionRequestParams
  *
  * @since v0.1.0
  */
-interface BucketGetParams : S3RegionRequestParams {
+interface BucketGetParams : RegionRequestParams {
 
   /**
    * Optional callback that will be executed on successful completion of the S3
@@ -19,5 +19,5 @@ interface BucketGetParams : S3RegionRequestParams {
    * This callback will be passed a handle on the bucket retrieved from the S3
    * store.
    */
-  var callback: ((bucket: S3Bucket) -> Unit)?
+  var callback: ((bucket: Bucket) -> Unit)?
 }
