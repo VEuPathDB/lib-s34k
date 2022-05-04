@@ -319,8 +319,6 @@ interface S3TagContainer {
 
   // region Delete
 
-  fun deleteAll()
-
   fun delete(vararg keys: String)
 
   fun delete(keys: Iterable<String>)
@@ -330,4 +328,14 @@ interface S3TagContainer {
   fun delete(params: S3TagDeleteParams)
 
   // endregion Delete
+
+  // region Delete All
+
+  fun deleteAll()
+
+  fun deleteAll(action: S3DeleteAllTagsParams.() -> Unit)
+
+  fun deleteAll(params: S3DeleteAllTagsParams)
+
+  // endregion Delete All
 }
