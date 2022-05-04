@@ -4,6 +4,7 @@ import org.veupathdb.lib.s3.s34k.errors.BucketNotFoundError
 import org.veupathdb.lib.s3.s34k.errors.InvalidRequestConfigError
 import org.veupathdb.lib.s3.s34k.errors.ObjectNotFoundError
 import org.veupathdb.lib.s3.s34k.errors.S34KError
+import org.veupathdb.lib.s3.s34k.params.S3DeleteParams
 import org.veupathdb.lib.s3.s34k.params.`object`.*
 import org.veupathdb.lib.s3.s34k.params.`object`.directory.DirectoryObjectDeleteError
 import org.veupathdb.lib.s3.s34k.params.`object`.directory.S3DirectoryDeleteParams
@@ -970,7 +971,7 @@ interface S3ObjectContainer {
     BucketNotFoundError::class,
     S34KError::class,
   )
-  fun delete(path: String, action: S3ObjectDeleteParams.() -> Unit)
+  fun delete(path: String, action: S3DeleteParams.() -> Unit)
 
   /**
    * Deletes the object at the target path from this container.
@@ -992,7 +993,7 @@ interface S3ObjectContainer {
     BucketNotFoundError::class,
     S34KError::class,
   )
-  fun delete(path: String, params: S3ObjectDeleteParams)
+  fun delete(path: String, params: S3DeleteParams)
 
   // endregion Delete Object
 
