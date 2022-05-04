@@ -254,7 +254,7 @@ interface S3TagContainer {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun put(action: S3TagCreateParams.() -> Unit)
+  fun put(action: S3TagPutParams.() -> Unit)
 
   /**
    * Puts the configured tags onto this tag container.
@@ -273,7 +273,7 @@ interface S3TagContainer {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun put(params: S3TagCreateParams)
+  fun put(params: S3TagPutParams)
 
   /**
    * Puts the given key/value pair as a tag on this tag container.
