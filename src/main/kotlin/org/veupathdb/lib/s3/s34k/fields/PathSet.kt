@@ -3,7 +3,15 @@ package org.veupathdb.lib.s3.s34k.fields
 import java.util.stream.Stream
 
 /**
- * Set of object names.
+ * Immutable set of object names.
+ *
+ * Implementations of this interface should be thread safe.
+ *
+ * @see MutablePathSet
+ *
+ * @author Elizabeth Paige Harper [https://github.com/Foxcapades]
+ *
+ * @since  v0.1.0
  */
 interface PathSet : Iterable<String> {
 
