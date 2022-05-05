@@ -1,5 +1,7 @@
 package org.veupathdb.lib.s3.s34k.fields
 
+import java.util.stream.Stream
+
 /**
  * Set of tag names.
  *
@@ -45,6 +47,13 @@ interface TagSet : Iterable<String> {
    * @return List of the tag names in this [TagSet].
    */
   fun toList(): List<String>
+
+  /**
+   * Returns a stream over the contents of this [TagSet].
+   *
+   * @return A stream over the contents of this [TagSet].
+   */
+  fun stream(): Stream<String>
 
   operator fun contains(tag: String): Boolean
 }

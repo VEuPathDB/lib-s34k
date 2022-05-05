@@ -5,6 +5,8 @@ import org.veupathdb.lib.s3.s34k.Tag
 /**
  * Mutable map of [Tag] instances.
  *
+ * Implementations of this interface should be thread safe.
+ *
  * @author Elizabeth Paige Harper [https://github.com/Foxcapades]
  *
  * @since v0.1.0
