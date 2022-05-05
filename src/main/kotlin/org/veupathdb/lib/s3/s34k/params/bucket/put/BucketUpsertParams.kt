@@ -1,11 +1,5 @@
 package org.veupathdb.lib.s3.s34k.params.bucket.put
 
-import org.veupathdb.lib.s3.s34k.Bucket
-import org.veupathdb.lib.s3.s34k.fields.MutableHeaders
-import org.veupathdb.lib.s3.s34k.fields.MutableQueryParams
-import org.veupathdb.lib.s3.s34k.fields.MutableTagMap
-import org.veupathdb.lib.s3.s34k.params.RegionRequestParams
-
 /**
  * Bucket 'create if not exists' request parameters.
  *
@@ -30,7 +24,7 @@ interface BucketUpsertParams : BucketPutParams {
    * should the operation append the [tags] values to the bucket already in the
    * store.
    *
-   * Default = `false`
+   * Default = `true`
    */
   var putTagsIfCollision: Boolean
 }
