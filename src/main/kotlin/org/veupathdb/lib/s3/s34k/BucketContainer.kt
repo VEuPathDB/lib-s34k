@@ -6,6 +6,7 @@ import org.veupathdb.lib.s3.s34k.errors.BucketNotFoundError
 import org.veupathdb.lib.s3.s34k.errors.S34KError
 import org.veupathdb.lib.s3.s34k.params.bucket.*
 import org.veupathdb.lib.s3.s34k.params.bucket.put.BucketPutParams
+import org.veupathdb.lib.s3.s34k.params.bucket.put.BucketUpsertParams
 import org.veupathdb.lib.s3.s34k.params.bucket.recursive.RecursiveBucketDeleteParams
 
 /**
@@ -201,7 +202,7 @@ interface BucketContainer {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun createIfNotExists(name: BucketName, action: BucketPutParams.() -> Unit): Bucket
+  fun createIfNotExists(name: BucketName, action: BucketUpsertParams.() -> Unit): Bucket
 
   /**
    * Attempts to create a bucket with the given name if it does not already
@@ -219,7 +220,7 @@ interface BucketContainer {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun createIfNotExists(name: BucketName, params: BucketPutParams): Bucket
+  fun createIfNotExists(name: BucketName, params: BucketUpsertParams): Bucket
 
   // endregion
 
