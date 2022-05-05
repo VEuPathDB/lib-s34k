@@ -11,4 +11,6 @@ import org.veupathdb.lib.s3.s34k.util.MutableListMap
  *
  * @since  v0.1.0
  */
-interface MutableHeaders : MutableListMap<String, String>, Headers
+interface MutableHeaders : MutableListMap<String, String>, Headers {
+  override fun toImmutable(): Headers
+}

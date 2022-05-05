@@ -11,4 +11,6 @@ import org.veupathdb.lib.s3.s34k.util.MutableListMap
  *
  * @since  v0.1.0
  */
-interface MutableQueryParams : MutableListMap<String, String>, QueryParams
+interface MutableQueryParams : MutableListMap<String, String>, QueryParams {
+  override fun toImmutable(): QueryParams
+}
