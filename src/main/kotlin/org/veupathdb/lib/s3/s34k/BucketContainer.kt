@@ -5,6 +5,7 @@ import org.veupathdb.lib.s3.s34k.errors.BucketAlreadyOwnedByYouError
 import org.veupathdb.lib.s3.s34k.errors.BucketNotFoundError
 import org.veupathdb.lib.s3.s34k.errors.S34KError
 import org.veupathdb.lib.s3.s34k.params.bucket.*
+import org.veupathdb.lib.s3.s34k.params.bucket.put.BucketPutParams
 import org.veupathdb.lib.s3.s34k.params.bucket.recursive.RecursiveBucketDeleteParams
 
 /**
@@ -140,7 +141,7 @@ interface BucketContainer {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun create(name: BucketName, action: BucketCreateParams.() -> Unit): Bucket
+  fun create(name: BucketName, action: BucketPutParams.() -> Unit): Bucket
 
   /**
    * Attempts to create a bucket with the given name with the operation
@@ -164,7 +165,7 @@ interface BucketContainer {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun create(name: BucketName, params: BucketCreateParams): Bucket
+  fun create(name: BucketName, params: BucketPutParams): Bucket
 
   // endregion
 
@@ -200,7 +201,7 @@ interface BucketContainer {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun createIfNotExists(name: BucketName, action: BucketCreateParams.() -> Unit): Bucket
+  fun createIfNotExists(name: BucketName, action: BucketPutParams.() -> Unit): Bucket
 
   /**
    * Attempts to create a bucket with the given name if it does not already
@@ -218,7 +219,7 @@ interface BucketContainer {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun createIfNotExists(name: BucketName, params: BucketCreateParams): Bucket
+  fun createIfNotExists(name: BucketName, params: BucketPutParams): Bucket
 
   // endregion
 

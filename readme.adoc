@@ -6,6 +6,12 @@ image:https://img.shields.io/github/v/release/veupathdb/lib-s34k[title="Version"
 image:https://img.shields.io/badge/docs-javadoc-brightgreen[link="https://veupathdb.github.io/lib-s34k/javadoc"]
 image:https://img.shields.io/badge/docs-dokka-brightgreen[link="https://veupathdb.github.io/lib-s34k/dokka"]
 
+////
+TODO: Region should only be optional at the client level and in params, buckets
+      and objects have a region attached always.
+
+TODO: create bucket is a complex operation, needs 2 sets of request params
+////
 
 == Usage
 
