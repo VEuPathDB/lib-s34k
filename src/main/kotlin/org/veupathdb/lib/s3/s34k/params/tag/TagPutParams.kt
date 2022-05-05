@@ -26,5 +26,5 @@ interface TagPutParams : RegionRequestParams {
    * This callback will be passed an [TagMap] instance containing all the tags
    * that were attached to the S3 target.
    */
-  var callback: ((tags: TagMap) -> Unit)?
+  var callback: (() -> Unit)?
 }
