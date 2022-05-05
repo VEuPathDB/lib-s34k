@@ -51,7 +51,7 @@ interface ListMap<K, V> : Iterable<Pair<K, List<V>>> {
    */
   operator fun contains(key: K): Boolean
 
-  fun toMap(): Map<String, List<String>>
+  fun toMap(): Map<K, List<V>>
 
   fun stream(): Stream<Pair<K, List<V>>>
 }
