@@ -9,7 +9,7 @@ interface S3Response {
   val bucket: Bucket
 
   // TODO: Document me
-  val region: String
+  val region: String?
 
   // TODO: Document me
   val headers: Headers

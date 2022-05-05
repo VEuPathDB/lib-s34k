@@ -36,9 +36,12 @@ interface Bucket {
    * Region of this bucket.
    *
    * This value will be used as a fallback for operations where no region is
-   * configured in the operation parameters.
+   * configured.
+   *
+   * If this value is `null` and a set of operation parameters also has a `null`
+   * region, no region will be set on the operation.
    */
-  val region: String
+  val region: String?
 
   /**
    * Date/time this bucket was created.
