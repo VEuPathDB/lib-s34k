@@ -17,7 +17,7 @@ interface BucketGetParams : RegionRequestParams {
    * operation.
    *
    * This callback will be passed a handle on the bucket retrieved from the S3
-   * store.
+   * store if the target bucket exists, otherwise `null`.
    */
-  var callback: ((bucket: Bucket) -> Unit)?
+  var callback: ((bucket: Bucket?) -> Unit)?
 }
