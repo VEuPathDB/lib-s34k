@@ -11,6 +11,8 @@ TODO: Region should only be optional at the client level and in params, buckets
       and objects have a region attached always.
 
 TODO: create bucket is a complex operation, needs 2 sets of request params
+
+TODO: should the tags field on BucketPutParams be moved to BPTagPutParams?
 ////
 
 == Usage
