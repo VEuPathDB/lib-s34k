@@ -2,6 +2,7 @@ package org.veupathdb.lib.s3.s34k.params.bucket.tag
 
 import org.veupathdb.lib.s3.s34k.fields.MutableHeaders
 import org.veupathdb.lib.s3.s34k.fields.MutableQueryParams
+import org.veupathdb.lib.s3.s34k.fields.MutableTagSet
 import org.veupathdb.lib.s3.s34k.params.RegionRequestParams
 
 interface TargetedBucketTagDeleteParams : RegionRequestParams {
@@ -16,6 +17,10 @@ interface TargetedBucketTagDeleteParams : RegionRequestParams {
    * operation.
    */
   override val queryParams: MutableQueryParams
+
+  val tags: MutableTagSet
+
+  var callback: (() -> Unit)?
 
   val getParams: TargetedBucketTagDeleteGet
 

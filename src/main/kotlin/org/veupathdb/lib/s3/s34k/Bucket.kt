@@ -51,7 +51,7 @@ interface Bucket {
   /**
    * Bucket tag manager.
    */
-  val tags: TagContainer
+  val tags: BucketTagContainer
 
   /**
    * Bucket object manager

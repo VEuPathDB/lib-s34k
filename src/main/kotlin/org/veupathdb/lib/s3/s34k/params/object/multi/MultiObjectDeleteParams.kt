@@ -1,4 +1,4 @@
-package org.veupathdb.lib.s3.s34k.params.`object`
+package org.veupathdb.lib.s3.s34k.params.`object`.multi
 
 import org.veupathdb.lib.s3.s34k.fields.MutablePathSet
 import org.veupathdb.lib.s3.s34k.params.RegionRequestParams

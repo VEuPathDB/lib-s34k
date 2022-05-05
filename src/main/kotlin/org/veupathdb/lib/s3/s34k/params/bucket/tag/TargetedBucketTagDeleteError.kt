@@ -1,19 +1,19 @@
 package org.veupathdb.lib.s3.s34k.params.bucket.tag
 
-import org.veupathdb.lib.s3.s34k.S3Object
+import org.veupathdb.lib.s3.s34k.Bucket
 import org.veupathdb.lib.s3.s34k.errors.S34KError
 
 @Suppress("unused")
 open class TargetedBucketTagDeleteError : S34KError {
 
-  val target: S3Object
+  val target: Bucket
 
   val params: TargetedBucketTagDeleteParams
 
   val phase: TargetedBucketTagDeletePhase
 
   constructor(
-    target: S3Object,
+    target: Bucket,
     phase:  TargetedBucketTagDeletePhase,
     params: TargetedBucketTagDeleteParams
   ) : super("Tag deletion failed in phase $phase") {
@@ -23,7 +23,7 @@ open class TargetedBucketTagDeleteError : S34KError {
   }
 
   constructor(
-    target:  S3Object,
+    target:  Bucket,
     phase:   TargetedBucketTagDeletePhase,
     params:  TargetedBucketTagDeleteParams,
     message: String
@@ -34,7 +34,7 @@ open class TargetedBucketTagDeleteError : S34KError {
   }
 
   constructor(
-    target: S3Object,
+    target: Bucket,
     phase:  TargetedBucketTagDeletePhase,
     params: TargetedBucketTagDeleteParams,
     cause:  Throwable
@@ -45,7 +45,7 @@ open class TargetedBucketTagDeleteError : S34KError {
   }
 
   constructor(
-    target:  S3Object,
+    target: Bucket,
     phase:   TargetedBucketTagDeletePhase,
     params:  TargetedBucketTagDeleteParams,
     message: String,

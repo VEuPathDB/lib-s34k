@@ -1,5 +1,7 @@
 package org.veupathdb.lib.s3.s34k.fields
 
+import java.util.stream.Stream
+
 /**
  * Set of object names.
  */
@@ -26,6 +28,8 @@ interface PathSet : Iterable<String> {
   fun toSet(): Set<String>
 
   fun toList(): List<String>
+
+  fun stream(): Stream<String>
 
   operator fun contains(path: String): Boolean
 }

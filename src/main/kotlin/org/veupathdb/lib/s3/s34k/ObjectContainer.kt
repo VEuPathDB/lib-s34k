@@ -8,6 +8,7 @@ import org.veupathdb.lib.s3.s34k.params.DeleteParams
 import org.veupathdb.lib.s3.s34k.params.`object`.*
 import org.veupathdb.lib.s3.s34k.params.`object`.directory.DirectoryObjectDeleteError
 import org.veupathdb.lib.s3.s34k.params.`object`.directory.DirectoryDeleteParams
+import org.veupathdb.lib.s3.s34k.params.`object`.multi.MultiObjectDeleteParams
 import java.io.File
 import java.io.FileNotFoundException
 import java.io.InputStream
@@ -39,6 +40,10 @@ import java.io.InputStream
  *
  * container["my/object"].tags.put("something", "something else")
  * ```
+ *
+ * TODO: Handle delete markers
+ * TODO: Version IDs
+ * TODO: Governance Mode
  *
  * @author Elizabeth Paige Harper [https://github.com/Foxcapades]
  *
@@ -1016,6 +1021,7 @@ interface ObjectContainer {
    * 'cause' value.
    */
   @Throws(BucketNotFoundError::class, S34KError::class)
+  // TODO: Misleading name, this should delete ALL objects
   fun deleteAll(vararg paths: String)
 
   /**
@@ -1036,6 +1042,7 @@ interface ObjectContainer {
    * 'cause' value.
    */
   @Throws(BucketNotFoundError::class, S34KError::class)
+  // TODO: Misleading name, this should delete ALL objects
   fun deleteAll(paths: Iterable<String>)
 
   /**
@@ -1056,6 +1063,7 @@ interface ObjectContainer {
    * 'cause' value.
    */
   @Throws(BucketNotFoundError::class, S34KError::class)
+  // TODO: Misleading name, this should delete ALL objects
   fun deleteAll(action: MultiObjectDeleteParams.() -> Unit)
 
   /**
@@ -1076,6 +1084,7 @@ interface ObjectContainer {
    * 'cause' value.
    */
   @Throws(BucketNotFoundError::class, S34KError::class)
+  // TODO: Misleading name, this should delete ALL objects
   fun deleteAll(params: MultiObjectDeleteParams)
 
   // endregion Delete Multi

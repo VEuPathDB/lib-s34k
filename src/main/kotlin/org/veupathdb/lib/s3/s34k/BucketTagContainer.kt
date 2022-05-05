@@ -4,12 +4,11 @@ import org.veupathdb.lib.s3.s34k.errors.BucketNotFoundError
 import org.veupathdb.lib.s3.s34k.errors.ObjectNotFoundError
 import org.veupathdb.lib.s3.s34k.errors.S34KError
 import org.veupathdb.lib.s3.s34k.fields.TagMap
+import org.veupathdb.lib.s3.s34k.params.bucket.tag.TargetedBucketTagDeleteParams
 import org.veupathdb.lib.s3.s34k.params.tag.*
 
-// TODO: what error should be thrown when attempting to put more than 10
-//       tags via one at a time adding
 @Suppress("unused")
-interface TagContainer {
+interface BucketTagContainer {
 
   // region Size
 
@@ -19,11 +18,11 @@ interface TagContainer {
    * @return The number of tags currently attached to this tag container.  This
    * value will be `10` at most.
    *
-   * @throws ObjectNotFoundError If this [TagContainer] is an object, and that
+   * @throws ObjectNotFoundError If this [BucketTagContainer] is an object, and that
    * object does not exist.
    *
-   * @throws BucketNotFoundError If this [TagContainer] is a bucket that does
-   * not exist, or if the parent bucket of this [TagContainer] does not exist.
+   * @throws BucketNotFoundError If this [BucketTagContainer] is a bucket that does
+   * not exist, or if the parent bucket of this [BucketTagContainer] does not exist.
    *
    * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
@@ -45,7 +44,7 @@ interface TagContainer {
   // region Contains
 
   /**
-   * Tests whether this [TagContainer] contains a tag with the given key.
+   * Tests whether this [BucketTagContainer] contains a tag with the given key.
    *
    * @param key Key of the tag to test for.
    *
@@ -54,11 +53,11 @@ interface TagContainer {
    * the time of this method call, this tag container did not have a tag with
    * the target key.
    *
-   * @throws ObjectNotFoundError If this [TagContainer] is an object, and that
+   * @throws ObjectNotFoundError If this [BucketTagContainer] is an object, and that
    * object does not exist.
    *
-   * @throws BucketNotFoundError If this [TagContainer] is a bucket that does
-   * not exist, or if the parent bucket of this [TagContainer] does not exist.
+   * @throws BucketNotFoundError If this [BucketTagContainer] is a bucket that does
+   * not exist, or if the parent bucket of this [BucketTagContainer] does not exist.
    *
    * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
@@ -89,11 +88,11 @@ interface TagContainer {
    * @throws IllegalArgumentException If either the key or value violate the
    * rules outlined in the [Tag] documentation.
    *
-   * @throws ObjectNotFoundError If this [TagContainer] is an object, and that
+   * @throws ObjectNotFoundError If this [BucketTagContainer] is an object, and that
    * object does not exist.
    *
-   * @throws BucketNotFoundError If this [TagContainer] is a bucket that does
-   * not exist, or if the parent bucket of this [TagContainer] does not exist.
+   * @throws BucketNotFoundError If this [BucketTagContainer] is a bucket that does
+   * not exist, or if the parent bucket of this [BucketTagContainer] does not exist.
    *
    * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
@@ -118,11 +117,11 @@ interface TagContainer {
    * @throws IllegalArgumentException If the given tag array contains more than
    * 10 values.
    *
-   * @throws ObjectNotFoundError If this [TagContainer] is an object, and that
+   * @throws ObjectNotFoundError If this [BucketTagContainer] is an object, and that
    * object does not exist.
    *
-   * @throws BucketNotFoundError If this [TagContainer] is a bucket that does
-   * not exist, or if the parent bucket of this [TagContainer] does not exist.
+   * @throws BucketNotFoundError If this [BucketTagContainer] is a bucket that does
+   * not exist, or if the parent bucket of this [BucketTagContainer] does not exist.
    *
    * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
@@ -146,11 +145,11 @@ interface TagContainer {
    * 10 values, or if any of the keys or values violate the rules outlined in
    * the [Tag] documentation
    *
-   * @throws ObjectNotFoundError If this [TagContainer] is an object, and that
+   * @throws ObjectNotFoundError If this [BucketTagContainer] is an object, and that
    * object does not exist.
    *
-   * @throws BucketNotFoundError If this [TagContainer] is a bucket that does
-   * not exist, or if the parent bucket of this [TagContainer] does not exist.
+   * @throws BucketNotFoundError If this [BucketTagContainer] is a bucket that does
+   * not exist, or if the parent bucket of this [BucketTagContainer] does not exist.
    *
    * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
@@ -173,11 +172,11 @@ interface TagContainer {
    * @throws IllegalArgumentException If the given tag iterable contains more
    * than 10 elements.
    *
-   * @throws ObjectNotFoundError If this [TagContainer] is an object, and that
+   * @throws ObjectNotFoundError If this [BucketTagContainer] is an object, and that
    * object does not exist.
    *
-   * @throws BucketNotFoundError If this [TagContainer] is a bucket that does
-   * not exist, or if the parent bucket of this [TagContainer] does not exist.
+   * @throws BucketNotFoundError If this [BucketTagContainer] is a bucket that does
+   * not exist, or if the parent bucket of this [BucketTagContainer] does not exist.
    *
    * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
@@ -201,11 +200,11 @@ interface TagContainer {
    * 10 entries, or if any of the keys or values violate the rules outlined in
    * the [Tag] documentation
    *
-   * @throws ObjectNotFoundError If this [TagContainer] is an object, and that
+   * @throws ObjectNotFoundError If this [BucketTagContainer] is an object, and that
    * object does not exist.
    *
-   * @throws BucketNotFoundError If this [TagContainer] is a bucket that does
-   * not exist, or if the parent bucket of this [TagContainer] does not exist.
+   * @throws BucketNotFoundError If this [BucketTagContainer] is a bucket that does
+   * not exist, or if the parent bucket of this [BucketTagContainer] does not exist.
    *
    * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
@@ -225,11 +224,11 @@ interface TagContainer {
    * @param tags Map of S3 tags to put on this tag container.  If this tag map
    * is empty, this method does nothing.
    *
-   * @throws ObjectNotFoundError If this [TagContainer] is an object, and that
+   * @throws ObjectNotFoundError If this [BucketTagContainer] is an object, and that
    * object does not exist.
    *
-   * @throws BucketNotFoundError If this [TagContainer] is a bucket that does
-   * not exist, or if the parent bucket of this [TagContainer] does not exist.
+   * @throws BucketNotFoundError If this [BucketTagContainer] is a bucket that does
+   * not exist, or if the parent bucket of this [BucketTagContainer] does not exist.
    *
    * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
@@ -244,11 +243,11 @@ interface TagContainer {
    *
    * @param action Action used to configure the backing S3 operation.
    *
-   * @throws ObjectNotFoundError If this [TagContainer] is an object, and that
+   * @throws ObjectNotFoundError If this [BucketTagContainer] is an object, and that
    * object does not exist.
    *
-   * @throws BucketNotFoundError If this [TagContainer] is a bucket that does
-   * not exist, or if the parent bucket of this [TagContainer] does not exist.
+   * @throws BucketNotFoundError If this [BucketTagContainer] is a bucket that does
+   * not exist, or if the parent bucket of this [BucketTagContainer] does not exist.
    *
    * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
@@ -263,11 +262,11 @@ interface TagContainer {
    *
    * @param params Parameters for the backing S3 operation.
    *
-   * @throws ObjectNotFoundError If this [TagContainer] is an object, and that
+   * @throws ObjectNotFoundError If this [BucketTagContainer] is an object, and that
    * object does not exist.
    *
-   * @throws BucketNotFoundError If this [TagContainer] is a bucket that does
-   * not exist, or if the parent bucket of this [TagContainer] does not exist.
+   * @throws BucketNotFoundError If this [BucketTagContainer] is a bucket that does
+   * not exist, or if the parent bucket of this [BucketTagContainer] does not exist.
    *
    * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
@@ -285,11 +284,11 @@ interface TagContainer {
    * @throws IllegalArgumentException If either the key or value violate the
    * rules outlined in the [Tag] documentation.
    *
-   * @throws ObjectNotFoundError If this [TagContainer] is an object, and that
+   * @throws ObjectNotFoundError If this [BucketTagContainer] is an object, and that
    * object does not exist.
    *
-   * @throws BucketNotFoundError If this [TagContainer] is a bucket that does
-   * not exist, or if the parent bucket of this [TagContainer] does not exist.
+   * @throws BucketNotFoundError If this [BucketTagContainer] is a bucket that does
+   * not exist, or if the parent bucket of this [BucketTagContainer] does not exist.
    *
    * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
@@ -323,9 +322,9 @@ interface TagContainer {
 
   fun delete(keys: Iterable<String>)
 
-  fun delete(action: TagDeleteParams.() -> Unit)
+  fun delete(action: TargetedBucketTagDeleteParams.() -> Unit)
 
-  fun delete(params: TagDeleteParams)
+  fun delete(params: TargetedBucketTagDeleteParams)
 
   // endregion Delete
 

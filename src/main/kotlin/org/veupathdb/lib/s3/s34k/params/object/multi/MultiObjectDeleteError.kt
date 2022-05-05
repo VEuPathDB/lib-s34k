@@ -1,6 +1,7 @@
-package org.veupathdb.lib.s3.s34k.params.`object`
+package org.veupathdb.lib.s3.s34k.params.`object`.multi
 
 import org.veupathdb.lib.s3.s34k.errors.S34KError
+import org.veupathdb.lib.s3.s34k.params.`object`.ObjectDeleteError
 
 open class MultiObjectDeleteError : S34KError {
 
