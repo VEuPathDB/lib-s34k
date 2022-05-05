@@ -9,11 +9,12 @@ import org.veupathdb.lib.s3.s34k.params.RegionRequestParams
 /**
  * Bucket create request parameters.
  *
- * This is a 'complex operation' in that it has 2 phases that can be configured
+ * This is a 'complex operation' in that it has 3 phases that can be configured
  * independently:
  *
  * 1. Create the bucket
- * 2. Get the created bucket
+ * 2. Attach tags to the bucket
+ * 3. Get the created bucket
  *
  * @author Elizabeth Paige Harper [https://github.com/Foxcapades]
  *
@@ -67,6 +68,11 @@ interface BucketPutParams : RegionRequestParams {
    * Options specific to the put phase of the bucket create operation.
    */
   val putParams: BPPutParams
+
+  /**
+   * Options specific to the tag put phase of the bucket create operation.
+   */
+  val tagPutParams: BPTagPutParams
 
   /**
    * Options specific to the get phase of the bucket create operation.
