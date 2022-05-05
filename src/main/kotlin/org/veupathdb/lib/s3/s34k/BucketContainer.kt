@@ -48,7 +48,7 @@ interface BucketContainer {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun <R> withBucket(name: String, action: Bucket.() -> R): R
+  fun <R> withBucket(name: BucketName, action: Bucket.() -> R): R
 
   // region Bucket Exists
 
