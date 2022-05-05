@@ -23,11 +23,6 @@ interface Bucket {
   // region Properties
 
   /**
-   * Reference to the parent client that created this [Bucket] instance.
-   */
-  val client: S3Client
-
-  /**
    * Name of this bucket.
    */
   val name: BucketName
