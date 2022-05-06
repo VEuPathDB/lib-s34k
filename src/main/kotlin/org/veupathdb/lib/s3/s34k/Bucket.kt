@@ -3,7 +3,7 @@ package org.veupathdb.lib.s3.s34k
 import org.veupathdb.lib.s3.s34k.errors.BucketNotEmptyException
 import org.veupathdb.lib.s3.s34k.errors.InvalidRequestConfigError
 import org.veupathdb.lib.s3.s34k.errors.S34KError
-import org.veupathdb.lib.s3.s34k.params.DeleteParams
+import org.veupathdb.lib.s3.s34k.params.bucket.BucketDeleteParams
 import org.veupathdb.lib.s3.s34k.params.bucket.recursive.RecursiveBucketDeleteError
 import org.veupathdb.lib.s3.s34k.params.bucket.recursive.RecursiveBucketDeleteParams
 import java.time.OffsetDateTime
@@ -90,7 +90,7 @@ interface Bucket {
    *
    * @see deleteRecursive
    */
-  fun delete(action: DeleteParams.() -> Unit)
+  fun delete(action: BucketDeleteParams.() -> Unit)
 
   /**
    * Deletes this bucket with the operation configured by the given params.
@@ -109,7 +109,7 @@ interface Bucket {
    *
    * @see deleteRecursive
    */
-  fun delete(params: DeleteParams)
+  fun delete(params: BucketDeleteParams)
 
   // endregion Delete
 
