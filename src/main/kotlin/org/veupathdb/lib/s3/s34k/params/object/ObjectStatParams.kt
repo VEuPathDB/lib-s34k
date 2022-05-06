@@ -18,5 +18,5 @@ interface ObjectStatParams : RegionRequestParams {
    *
    * This callback will be passed the metadata returned for the target object.
    */
-  var callback: ((ObjectMeta) -> Unit)?
+  var callback: ((ObjectMeta?) -> Unit)?
 }
