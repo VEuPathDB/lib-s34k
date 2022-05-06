@@ -1,7 +1,7 @@
 package org.veupathdb.lib.s3.s34k
 
 import org.veupathdb.lib.s3.s34k.params.DeleteParams
-import org.veupathdb.lib.s3.s34k.params.ExistsParams
+import org.veupathdb.lib.s3.s34k.params.`object`.ObjectExistsParams
 import org.veupathdb.lib.s3.s34k.params.`object`.ObjectStatParams
 
 // TODO: Document me
@@ -15,10 +15,10 @@ interface S3Object : ObjectResponse {
   fun exists(): Boolean
 
   // TODO: Document me
-  fun exists(action: ExistsParams.() -> Unit): Boolean
+  fun exists(action: ObjectExistsParams.() -> Unit): Boolean
 
   // TODO: Document me
-  fun exists(params: ExistsParams): Boolean
+  fun exists(params: ObjectExistsParams): Boolean
 
   // endregion
 
