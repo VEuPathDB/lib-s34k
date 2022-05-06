@@ -48,13 +48,13 @@ interface S3Object : ObjectResponse {
   // region Stat
 
   // TODO: Document me
-  fun stat(): ObjectMeta
+  fun stat(): ObjectMeta?
 
   // TODO: Document me
-  fun stat(action: ObjectStatParams.() -> Unit): ObjectMeta
+  fun stat(action: ObjectStatParams.() -> Unit): ObjectMeta?
 
   // TODO: Document me
-  fun stat(params: ObjectStatParams): ObjectMeta
+  fun stat(params: ObjectStatParams): ObjectMeta?
 
   // endregion
 }
