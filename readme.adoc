@@ -11,6 +11,15 @@ TODO: Region should only be optional at the client level and in params, buckets
       and objects have a region attached always.
 
 TODO: should the tags field on BucketPutParams be moved to BPTagPutParams? Yes
+
+TODO: Object put retention
+TODO: Object put legal hold
+TODO: Object put user meta
+TODO: object put SSE
+
+TODO: Version IDs
+
+TODO: Touch should be multi-stage so as not to overwrite existing objects.
 ////
 
 == Usage

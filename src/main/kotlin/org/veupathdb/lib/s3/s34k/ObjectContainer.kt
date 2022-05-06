@@ -9,6 +9,7 @@ import org.veupathdb.lib.s3.s34k.params.`object`.*
 import org.veupathdb.lib.s3.s34k.params.`object`.directory.DirectoryObjectDeleteError
 import org.veupathdb.lib.s3.s34k.params.`object`.directory.DirectoryDeleteParams
 import org.veupathdb.lib.s3.s34k.params.`object`.multi.MultiObjectDeleteParams
+import org.veupathdb.lib.s3.s34k.params.`object`.touch.ObjectTouchParams
 import java.io.File
 import java.io.FileNotFoundException
 import java.io.InputStream

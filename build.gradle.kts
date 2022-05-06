@@ -25,8 +25,7 @@ repositories {
 dependencies {
   implementation(kotlin("stdlib"))
   implementation(kotlin("stdlib-jdk8"))
-
-  api("org.slf4j:slf4j-api:1.7.36")
+  implementation("org.slf4j:slf4j-api:1.7.36")
 
   testImplementation(kotlin("test"))
 }
