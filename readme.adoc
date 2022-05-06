@@ -19,7 +19,8 @@ TODO: object put SSE
 
 TODO: Version IDs
 
-TODO: Touch should be multi-stage so as not to overwrite existing objects.
+TODO: ObjectWriteOperation `tags` field should be moved down to subtypes as tags
+      are not always set.
 ////
 
 == Usage

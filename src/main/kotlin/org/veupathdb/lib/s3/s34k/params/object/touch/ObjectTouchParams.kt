@@ -1,6 +1,7 @@
 package org.veupathdb.lib.s3.s34k.params.`object`.touch
 
 import org.veupathdb.lib.s3.s34k.S3Object
+import org.veupathdb.lib.s3.s34k.params.RegionRequestParams
 import org.veupathdb.lib.s3.s34k.params.`object`.ObjectWriteParams
 
 /**
@@ -25,7 +26,7 @@ import org.veupathdb.lib.s3.s34k.params.`object`.ObjectWriteParams
  *
  * @since v0.1.0
  */
-interface ObjectTouchParams : ObjectWriteParams {
+interface ObjectTouchParams : RegionRequestParams {
 
   /**
    * Whether a pre-existing object already in the store should be overwritten
