@@ -21,6 +21,12 @@ TODO: Version IDs
 
 TODO: ObjectWriteOperation `tags` field should be moved down to subtypes as tags
       are not always set.
+
+TODO: Bucket.exists method?
+
+TODO: enable/disable legal hold
+
+TODO: retention periods
 ////
 
 == Usage

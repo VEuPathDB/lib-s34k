@@ -1,6 +1,5 @@
 package org.veupathdb.lib.s3.s34k.params.`object`.touch
 
-import org.veupathdb.lib.s3.s34k.fields.MutableTagMap
 import org.veupathdb.lib.s3.s34k.params.S3RequestParams
 
 /**
@@ -9,34 +8,14 @@ import org.veupathdb.lib.s3.s34k.params.S3RequestParams
  * Parameters specific to the 'put object' phase of the object touch complex
  * operation.
  *
+ * If the target object already exists and the [ObjectTouchParams.overwrite]
+ * flag is set to `false`, these parameters will be ignored.
+ *
  * @author Elizabeth Paige Harper [https://github.com/Foxcapades]
  *
  * @since v0.3.0
  */
 interface OTPutParams : S3RequestParams {
-
-  /**
-   * Tags to append to the newly created object (if it was newly created).
-   *
-   * If the target object already existed and [putTagsIfCollision] is set to
-   * `false`, any tags set here will be ignored.
-   *
-   * If the target object already existed and [putTagsIfCollision] is set to
-   * `true`, these tags will be attached to the existing object.
-   */
-  val tags: MutableTagMap
-
-  /**
-   * Controls whether the [tags] in this parameter set should be applied to the
-   * target object if it already existed.
-   *
-   * In other words, if the target object path already exists in the store,
-   * should the operation append the [tags] values to the object already in the
-   * store.
-   *
-   * Defaults to `false`
-   */
-  var putTagsIfCollision: Boolean
 
   /**
    * Optional callback that will be executed on successful completion of the put
