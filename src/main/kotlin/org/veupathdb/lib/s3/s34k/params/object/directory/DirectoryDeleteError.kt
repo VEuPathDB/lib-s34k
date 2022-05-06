@@ -11,33 +11,41 @@ open class DirectoryDeleteError : S34KError {
    */
   val path: String
 
-  constructor(bucket: String, path: String) : super(err(bucket, path)) {
+  val phase: DirectoryDeletePhase
+
+  constructor(bucket: String, path: String, phase: DirectoryDeletePhase) : super(err(bucket, path)) {
     this.bucket = bucket
-    this.path = path
+    this.path   = path
+    this.phase  = phase
   }
 
-  constructor(bucket: String, path: String, message: String) : super(message) {
+  constructor(bucket: String, path: String, phase: DirectoryDeletePhase, message: String) : super(message) {
     this.bucket = bucket
-    this.path = path
+    this.path   = path
+    this.phase  = phase
   }
 
   constructor(
     bucket: String,
-    path: String,
-    cause: Throwable
+    path:   String,
+    phase:  DirectoryDeletePhase,
+    cause:  Throwable
   ) : super(err(bucket, path), cause) {
     this.bucket = bucket
-    this.path = path
+    this.path   = path
+    this.phase  = phase
   }
 
   constructor(
-    bucket: String,
-    path: String,
+    bucket:  String,
+    path:    String,
+    phase:   DirectoryDeletePhase,
     message: String,
-    cause: Throwable
+    cause:   Throwable,
   ) : super(message, cause) {
     this.bucket = bucket
-    this.path = path
+    this.path   = path
+    this.phase  = phase
   }
 }
 

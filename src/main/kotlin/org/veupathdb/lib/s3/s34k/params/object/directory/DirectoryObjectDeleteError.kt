@@ -6,19 +6,39 @@ class DirectoryObjectDeleteError : DirectoryDeleteError {
 
   val errors: List<ObjectDeleteError>
 
-  constructor(bucketName: String, path: String, errors: List<ObjectDeleteError>) : super(bucketName, path, makeErrMsg(bucketName, path)) {
+  constructor(
+    bucketName: String,
+    path:       String,
+    errors:     List<ObjectDeleteError>
+  ) : super(bucketName, path, DirectoryDeletePhase.DeleteObjects, makeErrMsg(bucketName, path)) {
     this.errors = errors
   }
 
-  constructor(bucketName: String, path: String, errors: List<ObjectDeleteError>, cause: Throwable) : super(bucketName, path, makeErrMsg(bucketName, path), cause) {
+  constructor(
+    bucketName: String,
+    path:       String,
+    errors:     List<ObjectDeleteError>,
+    cause:      Throwable
+  ) : super(bucketName, path, DirectoryDeletePhase.DeleteObjects, makeErrMsg(bucketName, path), cause) {
     this.errors = errors
   }
 
-  constructor(bucketName: String, path: String, errors: List<ObjectDeleteError>, msg: String) : super(bucketName, path, msg) {
+  constructor(
+    bucketName: String,
+    path:       String,
+    errors:     List<ObjectDeleteError>,
+    message:    String
+  ) : super(bucketName, path, DirectoryDeletePhase.DeleteObjects, message) {
     this.errors = errors
   }
 
-  constructor(bucketName: String, path: String, errors: List<ObjectDeleteError>, msg: String, cause: Throwable) : super(bucketName, path, msg, cause) {
+  constructor(
+    bucketName: String,
+    path:       String,
+    errors:     List<ObjectDeleteError>,
+    message:    String,
+    cause:      Throwable
+  ) : super(bucketName, path, DirectoryDeletePhase.DeleteObjects, message, cause) {
     this.errors = errors
   }
 }
