@@ -27,6 +27,11 @@ TODO: Bucket.exists method?
 TODO: enable/disable legal hold
 
 TODO: retention periods
+
+TODO: get all tags params
+
+TODO: param configuration functions (such as `callback(action: () -> Unit)` that
+      create a more dsl like vibe
 ////
 
 == Usage
