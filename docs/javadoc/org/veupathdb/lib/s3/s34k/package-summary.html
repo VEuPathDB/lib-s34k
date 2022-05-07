@@ -108,44 +108,24 @@ var pathtoroot = "../../../../../";
     <div class="typeSummary">
 
 <table>
-<caption><span>Interface Summary</span><span class="tabEnd">&nbsp;</span></caption>
+<caption><span>Object Summary</span><span class="tabEnd">&nbsp;</span></caption>
 <tr>
-<th class="colFirst" scope="col">Interface</th>
+<th class="colFirst" scope="col">Object</th>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tbody>
 
-    <tr class="altColor"><th class="colFirst" scope="row"><a href=Bucket.html>Bucket</a></th><td class="colLast">S3 Bucket API WrapperWraps the implementation specific operations on an S3 bucket.</td></tr>
+    <tr class="altColor"><th class="colFirst" scope="row"><a href=S3Api.html>S3Api</a></th><td class="colLast">S3 API Client Provider</td></tr>
 
-    <tr class="rowColor"><th class="colFirst" scope="row"><a href=BucketContainer.html>BucketContainer</a></th><td class="colLast">Represents the root of an S3 store on which bucket operations may be performed.</td></tr>
+    <tr class="rowColor"><th class="colFirst" scope="row"><a href=S3ErrorCode.html>S3ErrorCode</a></th><td class="colLast">Index of S3 error codes.</td></tr>
 
-    <tr class="altColor"><th class="colFirst" scope="row"><a href=BucketList.html>BucketList</a></th><td class="colLast"></td></tr>
+    <tr class="altColor"><th class="colFirst" scope="row"><a href=S3LegalHold.Companion.html>Companion</a></th><td class="colLast"></td></tr>
 
-    <tr class="rowColor"><th class="colFirst" scope="row"><a href=BucketTagContainer.html>BucketTagContainer</a></th><td class="colLast"></td></tr>
+    <tr class="rowColor"><th class="colFirst" scope="row"><a href=S3RequestParam.html>S3RequestParam</a></th><td class="colLast">Index of valid <code>x-amz-*</code> request headers and URI parameters.</td></tr>
 
-    <tr class="altColor"><th class="colFirst" scope="row"><a href=Directory.html>Directory</a></th><td class="colLast">Handle on a "directory" in an S3 store.</td></tr>
+    <tr class="altColor"><th class="colFirst" scope="row"><a href=S3ResponseHeader.html>S3ResponseHeader</a></th><td class="colLast">Index of valid <code>x-amz-*</code> response headers.</td></tr>
 
-    <tr class="rowColor"><th class="colFirst" scope="row"><a href=FileObject.html>FileObject</a></th><td class="colLast"></td></tr>
-
-    <tr class="altColor"><th class="colFirst" scope="row"><a href=ObjectContainer.html>ObjectContainer</a></th><td class="colLast">Represents a segment of an S3 store that may contain objects.</td></tr>
-
-    <tr class="rowColor"><th class="colFirst" scope="row"><a href=ObjectList.html>ObjectList</a></th><td class="colLast"></td></tr>
-
-    <tr class="altColor"><th class="colFirst" scope="row"><a href=ObjectMeta.html>ObjectMeta</a></th><td class="colLast"></td></tr>
-
-    <tr class="rowColor"><th class="colFirst" scope="row"><a href=ObjectResponse.html>ObjectResponse</a></th><td class="colLast">Response handle on an S3 object.</td></tr>
-
-    <tr class="altColor"><th class="colFirst" scope="row"><a href=ObjectTagContainer.html>ObjectTagContainer</a></th><td class="colLast"></td></tr>
-
-    <tr class="rowColor"><th class="colFirst" scope="row"><a href=S3Client.html>S3Client</a></th><td class="colLast">S3 API WrapperWraps a specific S3 API implementation with a general wrapper so as not to tie the code in this library to any one implementation.</td></tr>
-
-    <tr class="altColor"><th class="colFirst" scope="row"><a href=S3ClientProvider.html>S3ClientProvider</a></th><td class="colLast">S3 Client ProviderFactory/provider for creating <a href=S3Client.html>S3Client</a> instances.</td></tr>
-
-    <tr class="rowColor"><th class="colFirst" scope="row"><a href=S3Object.html>S3Object</a></th><td class="colLast"></td></tr>
-
-    <tr class="altColor"><th class="colFirst" scope="row"><a href=S3Response.html>S3Response</a></th><td class="colLast"></td></tr>
-
-    <tr class="rowColor"><th class="colFirst" scope="row"><a href=StreamObject.html>StreamObject</a></th><td class="colLast">Handle on an S3 object containing an <a href=https://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html>InputStream</a> over the contents of the remote object.</td></tr>
+    <tr class="rowColor"><th class="colFirst" scope="row"><a href=S3RetentionMode.Companion.html>Companion</a></th><td class="colLast"></td></tr>
 </tbody>
 </table>
 
@@ -162,26 +142,16 @@ var pathtoroot = "../../../../../";
     <div class="typeSummary">
 
 <table>
-<caption><span>Object Summary</span><span class="tabEnd">&nbsp;</span></caption>
+<caption><span>Interface Summary</span><span class="tabEnd">&nbsp;</span></caption>
 <tr>
-<th class="colFirst" scope="col">Object</th>
+<th class="colFirst" scope="col">Interface</th>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tbody>
 
-    <tr class="altColor"><th class="colFirst" scope="row"><a href=BucketName.Companion.html>Companion</a></th><td class="colLast"></td></tr>
+    <tr class="altColor"><th class="colFirst" scope="row"><a href=S3Client.html>S3Client</a></th><td class="colLast">S3 API WrapperWraps a specific S3 API implementation with a general wrapper so as not to tie the code in this library to any one implementation.</td></tr>
 
-    <tr class="rowColor"><th class="colFirst" scope="row"><a href=LegalHold.Companion.html>Companion</a></th><td class="colLast"></td></tr>
-
-    <tr class="altColor"><th class="colFirst" scope="row"><a href=RequestParam.html>RequestParam</a></th><td class="colLast">Index of valid <code>x-amz-*</code> request headers and URI parameters.</td></tr>
-
-    <tr class="rowColor"><th class="colFirst" scope="row"><a href=ResponseHeader.html>ResponseHeader</a></th><td class="colLast">Index of valid <code>x-amz-*</code> response headers.</td></tr>
-
-    <tr class="altColor"><th class="colFirst" scope="row"><a href=RetentionMode.Companion.html>Companion</a></th><td class="colLast"></td></tr>
-
-    <tr class="rowColor"><th class="colFirst" scope="row"><a href=S3Api.html>S3Api</a></th><td class="colLast">S3 API Client Provider</td></tr>
-
-    <tr class="altColor"><th class="colFirst" scope="row"><a href=S3ErrorCode.html>S3ErrorCode</a></th><td class="colLast">Index of S3 error codes.</td></tr>
+    <tr class="rowColor"><th class="colFirst" scope="row"><a href=S3ClientProvider.html>S3ClientProvider</a></th><td class="colLast">S3 Client ProviderFactory/provider for creating <a href=S3Client.html>S3Client</a> instances.</td></tr>
 </tbody>
 </table>
 
@@ -205,11 +175,9 @@ var pathtoroot = "../../../../../";
 </tr>
 <tbody>
 
-    <tr class="altColor"><th class="colFirst" scope="row"><a href=BucketName.html>BucketName</a></th><td class="colLast">Validating bucket name wrapper.</td></tr>
+    <tr class="altColor"><th class="colFirst" scope="row"><a href=S3Config.html>S3Config</a></th><td class="colLast">S3 Client Configuration</td></tr>
 
-    <tr class="rowColor"><th class="colFirst" scope="row"><a href=S3Config.html>S3Config</a></th><td class="colLast">S3 Client Configuration</td></tr>
-
-    <tr class="altColor"><th class="colFirst" scope="row"><a href=Tag.html>Tag</a></th><td class="colLast">Represents a single tag attached to a target object or bucket in an S3 store.</td></tr>
+    <tr class="rowColor"><th class="colFirst" scope="row"><a href=S3Tag.html>S3Tag</a></th><td class="colLast">Represents a single tag attached to a target object or bucket in an S3 store.</td></tr>
 </tbody>
 </table>
 
@@ -233,9 +201,9 @@ var pathtoroot = "../../../../../";
 </tr>
 <tbody>
 
-    <tr class="altColor"><th class="colFirst" scope="row"><a href=LegalHold.html>LegalHold</a></th><td class="colLast">S3 Legal HoldsWith Object Lock you can also place a legal hold on an object version.</td></tr>
+    <tr class="altColor"><th class="colFirst" scope="row"><a href=S3LegalHold.html>S3LegalHold</a></th><td class="colLast">S3 Legal HoldsWith Object Lock you can also place a legal hold on an object version.</td></tr>
 
-    <tr class="rowColor"><th class="colFirst" scope="row"><a href=RetentionMode.html>RetentionMode</a></th><td class="colLast">S3 Retention ModesS3 Object Lock provides two retention modes:<ul><li><p>Governance mode</p></li><li><p>Compliance mode</p></li></ul>These retention modes apply different levels of protection to your objects.</td></tr>
+    <tr class="rowColor"><th class="colFirst" scope="row"><a href=S3RetentionMode.html>S3RetentionMode</a></th><td class="colLast">S3 Retention ModesS3 Object Lock provides two retention modes:<ul><li><p>Governance mode</p></li><li><p>Compliance mode</p></li></ul>These retention modes apply different levels of protection to your objects.</td></tr>
 </tbody>
 </table>
 

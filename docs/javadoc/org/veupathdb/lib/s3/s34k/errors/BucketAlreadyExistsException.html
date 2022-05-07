@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <!-- NewPage -->
 <html lang="en"><head>
-    <title>BucketAlreadyExistsException 0.3.0-SNAPSHOT API </title>
+    <title>BucketAlreadyExistsException 0.2.0-SNAPSHOT API </title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="dc.created" content="2020-03-25">
     <link rel="stylesheet" type="text/css" href="../../../../../../stylesheet.css" title="Style">
@@ -118,7 +118,7 @@ var pathtoroot = "../../../../../../";
                     <pre class="wrap-overflow">
 
 public class <span class="typeNameLabel"><a href=BucketAlreadyExistsException.html>BucketAlreadyExistsException</a></span>
-extends <a href=AbstractBucketOperationError.html>AbstractBucketOperationError</a>
+extends <a href=AbstractBucketOperationException.html>AbstractBucketOperationException</a>
                     </pre>
                     <div class="block"><p><code>BucketAlreadyExists</code></p><p>The requested bucket name is not available. The bucket namespace is shared by all users of the system. Specify a different name and try again.</p></div>
                 </li>
@@ -174,20 +174,20 @@ extends <a href=AbstractBucketOperationError.html>AbstractBucketOperationError</
                                         </tr>
                                         
                                         <tr class="rowColor">
-                                            <td class="colFirst"><code>private final <a href=../BucketName.html>BucketName</a></code></td>
-                                            <th class="colSecond" scope="row"><code><a href=BucketNotFoundError.html#bucket>bucket</a></code></th>
+                                            <td class="colFirst"><code>private final <a href=../fields/BucketName.html>BucketName</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=BucketNotFoundException.html#bucket>bucket</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
                                         <tr class="altColor">
                                             <td class="colFirst"><code>private final <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Throwable.html>Throwable</a></code></td>
-                                            <th class="colSecond" scope="row"><code><a href=../params/tag/TargetedTagDeleteError.html#cause>cause</a></code></th>
+                                            <th class="colSecond" scope="row"><code><a href=../requests/object/directory/DirectoryObjectDeleteError.html#cause>cause</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
                                         <tr class="rowColor">
                                             <td class="colFirst"><code>private final <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a></code></td>
-                                            <th class="colSecond" scope="row"><code><a href=../params/tag/TargetedTagDeleteError.html#message>message</a></code></th>
+                                            <th class="colSecond" scope="row"><code><a href=../requests/object/directory/DirectoryObjectDeleteError.html#message>message</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
@@ -217,19 +217,19 @@ extends <a href=AbstractBucketOperationError.html>AbstractBucketOperationError</
                                         
                                             <tr class="altColor">
                                                 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
-                                                        href="#BucketAlreadyExistsException(BucketName,String)">BucketAlreadyExistsException</a></span>(<a href=../BucketName.html>BucketName</a> bucket, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> msg)</code></th>
+                                                        href="#BucketAlreadyExistsException(BucketName,String)">BucketAlreadyExistsException</a></span>(<a href=../fields/BucketName.html>BucketName</a> bucket, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> msg)</code></th>
                                                 <td class="colLast"></td>
                                             </tr>
                                         
                                             <tr class="rowColor">
                                                 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
-                                                        href="#BucketAlreadyExistsException(BucketName,Throwable)">BucketAlreadyExistsException</a></span>(<a href=../BucketName.html>BucketName</a> bucket, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Throwable.html>Throwable</a> cause)</code></th>
+                                                        href="#BucketAlreadyExistsException(BucketName,Throwable)">BucketAlreadyExistsException</a></span>(<a href=../fields/BucketName.html>BucketName</a> bucket, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Throwable.html>Throwable</a> cause)</code></th>
                                                 <td class="colLast"></td>
                                             </tr>
                                         
                                             <tr class="altColor">
                                                 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
-                                                        href="#BucketAlreadyExistsException(BucketName,String,Throwable)">BucketAlreadyExistsException</a></span>(<a href=../BucketName.html>BucketName</a> bucket, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> msg, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Throwable.html>Throwable</a> cause)</code></th>
+                                                        href="#BucketAlreadyExistsException(BucketName,String,Throwable)">BucketAlreadyExistsException</a></span>(<a href=../fields/BucketName.html>BucketName</a> bucket, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> msg, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Throwable.html>Throwable</a> cause)</code></th>
                                                 <td class="colLast"></td>
                                             </tr>
                                         
@@ -291,7 +291,7 @@ extends <a href=AbstractBucketOperationError.html>AbstractBucketOperationError</
                                         </tr>
                                         
                                         <tr id="i1" class="rowColor">
-                                            <td class="colFirst"><code>final <a href=../BucketName.html>BucketName</a></code>
+                                            <td class="colFirst"><code>final <a href=../fields/BucketName.html>BucketName</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=BucketAlreadyExistsException.html#getBucket()>getBucket</a>() </code>
                                             </th>
@@ -355,7 +355,7 @@ extends <a href=AbstractBucketOperationError.html>AbstractBucketOperationError</
                                 <ul class="blockList">
                                     <li class="blockList">
                                         <h4>BucketAlreadyExistsException</h4>
-                                        <pre>BucketAlreadyExistsException(<a href=../BucketName.html>BucketName</a> bucket, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> msg)</pre>
+                                        <pre>BucketAlreadyExistsException(<a href=../fields/BucketName.html>BucketName</a> bucket, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> msg)</pre>
                                         <div class="block"></div>
                                         
                                     </li>
@@ -365,7 +365,7 @@ extends <a href=AbstractBucketOperationError.html>AbstractBucketOperationError</
                                 <ul class="blockList">
                                     <li class="blockList">
                                         <h4>BucketAlreadyExistsException</h4>
-                                        <pre>BucketAlreadyExistsException(<a href=../BucketName.html>BucketName</a> bucket, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Throwable.html>Throwable</a> cause)</pre>
+                                        <pre>BucketAlreadyExistsException(<a href=../fields/BucketName.html>BucketName</a> bucket, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Throwable.html>Throwable</a> cause)</pre>
                                         <div class="block"></div>
                                         
                                     </li>
@@ -375,7 +375,7 @@ extends <a href=AbstractBucketOperationError.html>AbstractBucketOperationError</
                                 <ul class="blockList">
                                     <li class="blockList">
                                         <h4>BucketAlreadyExistsException</h4>
-                                        <pre>BucketAlreadyExistsException(<a href=../BucketName.html>BucketName</a> bucket, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> msg, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Throwable.html>Throwable</a> cause)</pre>
+                                        <pre>BucketAlreadyExistsException(<a href=../fields/BucketName.html>BucketName</a> bucket, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> msg, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Throwable.html>Throwable</a> cause)</pre>
                                         <div class="block"></div>
                                         
                                     </li>
@@ -417,7 +417,7 @@ extends <a href=AbstractBucketOperationError.html>AbstractBucketOperationError</
                                           >
                                     <li class="blockList">
                                         <h4>getBucket</h4>
-                                        <pre class="methodSignature"> final <a href=../BucketName.html>BucketName</a> <a href=BucketAlreadyExistsException.html#getBucket()>getBucket</a>()</pre>
+                                        <pre class="methodSignature"> final <a href=../fields/BucketName.html>BucketName</a> <a href=BucketAlreadyExistsException.html#getBucket()>getBucket</a>()</pre>
                                         <div class="block"><p>Name of the bucket on which the failed operation was taking place.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
