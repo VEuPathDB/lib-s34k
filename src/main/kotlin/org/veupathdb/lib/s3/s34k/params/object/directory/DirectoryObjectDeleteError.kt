@@ -2,7 +2,7 @@ package org.veupathdb.lib.s3.s34k.params.`object`.directory
 
 import org.veupathdb.lib.s3.s34k.params.`object`.ObjectDeleteError
 
-class DirectoryObjectDeleteError : DirectoryDeleteError {
+open class DirectoryObjectDeleteError : DirectoryDeleteError {
 
   val errors: List<ObjectDeleteError>
 

@@ -3,7 +3,7 @@ package org.veupathdb.lib.s3.s34k.params.`object`.touch
 import org.veupathdb.lib.s3.s34k.BucketName
 import org.veupathdb.lib.s3.s34k.errors.S34KError
 
-class ObjectTouchError : S34KError {
+open class ObjectTouchError : S34KError {
 
   val bucket: BucketName
 

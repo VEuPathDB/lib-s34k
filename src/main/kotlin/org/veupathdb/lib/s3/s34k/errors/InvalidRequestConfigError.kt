@@ -12,7 +12,7 @@ import org.veupathdb.lib.s3.s34k.params.S3RequestParams
  *
  * @since  v0.1.0
  */
-class InvalidRequestConfigError : S34KError {
+open class InvalidRequestConfigError : S34KError {
 
   val reason: String
 

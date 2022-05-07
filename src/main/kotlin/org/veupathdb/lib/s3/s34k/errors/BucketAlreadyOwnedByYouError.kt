@@ -19,7 +19,7 @@ import org.veupathdb.lib.s3.s34k.S3ErrorCode
  *
  * @since  v0.1.0
  */
-class BucketAlreadyOwnedByYouError : BucketAlreadyExistsException {
+open class BucketAlreadyOwnedByYouError : BucketAlreadyExistsError {
 
   override val code = S3ErrorCode.BucketAlreadyOwnedByYou
 

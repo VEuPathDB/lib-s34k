@@ -15,7 +15,7 @@ import org.veupathdb.lib.s3.s34k.errors.S34KError
  *
  * @since v0.1.0
  */
-class ObjectDeleteError : S34KError {
+open class ObjectDeleteError : S34KError {
 
   /**
    * Key/path of the object on which the delete operation was attempted.

@@ -1,6 +1,6 @@
 package org.veupathdb.lib.s3.s34k
 
-import org.veupathdb.lib.s3.s34k.errors.BucketAlreadyExistsException
+import org.veupathdb.lib.s3.s34k.errors.BucketAlreadyExistsError
 import org.veupathdb.lib.s3.s34k.errors.BucketAlreadyOwnedByYouError
 import org.veupathdb.lib.s3.s34k.errors.BucketNotFoundError
 import org.veupathdb.lib.s3.s34k.errors.S34KError
@@ -111,7 +111,7 @@ interface BucketContainer {
    * S3 store with the given name, and it was created by a user with the given
    * access credentials.
    *
-   * @throws BucketAlreadyExistsException If a bucket already exists in the S3
+   * @throws BucketAlreadyExistsError If a bucket already exists in the S3
    * store with the given name.
    *
    * @throws S34KError If an implementation specific exception is thrown.
@@ -135,7 +135,7 @@ interface BucketContainer {
    * S3 store with the given name, and it was created by a user with the given
    * access credentials.
    *
-   * @throws BucketAlreadyExistsException If a bucket already exists in the S3
+   * @throws BucketAlreadyExistsError If a bucket already exists in the S3
    * store with the given name.
    *
    * @throws S34KError If an implementation specific exception is thrown.
@@ -159,7 +159,7 @@ interface BucketContainer {
    * S3 store with the given name, and it was created by a user with the given
    * access credentials.
    *
-   * @throws BucketAlreadyExistsException If a bucket already exists in the S3
+   * @throws BucketAlreadyExistsError If a bucket already exists in the S3
    * store with the given name.
    *
    * @throws S34KError If an implementation specific exception is thrown.

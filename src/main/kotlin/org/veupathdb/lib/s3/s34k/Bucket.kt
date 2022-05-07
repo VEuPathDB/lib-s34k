@@ -1,6 +1,6 @@
 package org.veupathdb.lib.s3.s34k
 
-import org.veupathdb.lib.s3.s34k.errors.BucketNotEmptyException
+import org.veupathdb.lib.s3.s34k.errors.BucketNotEmptyError
 import org.veupathdb.lib.s3.s34k.errors.InvalidRequestConfigError
 import org.veupathdb.lib.s3.s34k.errors.S34KError
 import org.veupathdb.lib.s3.s34k.params.bucket.BucketDeleteParams
@@ -62,7 +62,7 @@ interface Bucket {
   /**
    * Deletes this bucket.
    *
-   * @throws BucketNotEmptyException If this bucket is not empty and must be
+   * @throws BucketNotEmptyError If this bucket is not empty and must be
    * cleared before deletion.
    *
    * @throws S34KError If an implementation specific exception is thrown.
@@ -81,7 +81,7 @@ interface Bucket {
    * @throws InvalidRequestConfigError If the S3 operation parameters are
    * missing required fields or otherwise incorrectly configured.
    *
-   * @throws BucketNotEmptyException If this bucket is not empty and must be
+   * @throws BucketNotEmptyError If this bucket is not empty and must be
    * cleared before deletion.
    *
    * @throws S34KError If an implementation specific exception is thrown.
@@ -100,7 +100,7 @@ interface Bucket {
    * @throws InvalidRequestConfigError If the S3 operation parameters are
    * missing required fields or otherwise incorrectly configured.
    *
-   * @throws BucketNotEmptyException If this bucket is not empty and must be
+   * @throws BucketNotEmptyError If this bucket is not empty and must be
    * cleared before deletion.
    *
    * @throws S34KError If an implementation specific exception is thrown.

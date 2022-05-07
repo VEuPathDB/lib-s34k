@@ -12,7 +12,7 @@ import org.veupathdb.lib.s3.s34k.S3ErrorCode
  *
  * @since v0.1.0
  */
-class BucketNotEmptyException : AbstractBucketOperationError {
+open class BucketNotEmptyError : AbstractBucketOperationError {
 
   override val code = S3ErrorCode.BucketNotEmpty
 
