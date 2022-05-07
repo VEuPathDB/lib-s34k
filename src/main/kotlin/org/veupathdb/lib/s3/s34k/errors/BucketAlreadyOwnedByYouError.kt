@@ -29,5 +29,6 @@ open class BucketAlreadyOwnedByYouError : BucketAlreadyExistsError {
   constructor(bucket: BucketName, message: String, cause: Throwable) : super(bucket, message, cause)
 }
 
+@Suppress("NOTHING_TO_INLINE")
 private inline fun err(bucket: BucketName) =
   "You already own bucket '$bucket'"

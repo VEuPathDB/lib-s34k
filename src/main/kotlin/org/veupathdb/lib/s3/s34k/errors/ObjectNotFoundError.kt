@@ -17,7 +17,7 @@ open class ObjectNotFoundError : ObjectError {
 
   constructor(bucket: BucketName, path: String, message: String) : super(bucket, path, message)
 
-  constructor(bucket: BucketName, path: String, cause: Throwable) : super(bucket, path, err(bucket, path))
+  constructor(bucket: BucketName, path: String, cause: Throwable) : super(bucket, path, err(bucket, path), cause)
 
   constructor(bucket: BucketName, path: String, message: String, cause: Throwable) : super(bucket, path, message, cause)
 }
