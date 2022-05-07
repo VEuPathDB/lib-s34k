@@ -1,9 +1,10 @@
-package org.veupathdb.lib.s3.s34k
+package org.veupathdb.lib.s3.s34k.buckets
 
+import org.veupathdb.lib.s3.s34k.fields.BucketName
 import java.util.stream.Stream
 
 /**
- * Collection of [Buckets][Bucket] retrieved from an S3 store.
+ * Collection of [Buckets][S3Bucket] retrieved from an S3 store.
  *
  * The contents of this [BucketList] are guaranteed to be in the order returned
  * by the S3 API.
@@ -12,7 +13,7 @@ import java.util.stream.Stream
  *
  * @since v0.3.0
  */
-interface BucketList : Iterable<Bucket> {
+interface BucketList : Iterable<S3Bucket> {
 
   /**
    * Count of buckets in this [BucketList].
@@ -34,7 +35,7 @@ interface BucketList : Iterable<Bucket> {
    *
    * @return Map of buckets.
    */
-  fun toMap(): Map<BucketName, Bucket>
+  fun toMap(): Map<BucketName, S3Bucket>
 
   /**
    * Copies the contents of this [BucketList] into a list.
@@ -43,7 +44,7 @@ interface BucketList : Iterable<Bucket> {
    *
    * @return List of buckets
    */
-  fun toList(): List<Bucket>
+  fun toList(): List<S3Bucket>
 
   /**
    * Returns a stream over the contents of this [BucketList].
@@ -53,7 +54,7 @@ interface BucketList : Iterable<Bucket> {
    *
    * @return Stream of buckets.
    */
-  fun stream(): Stream<Bucket>
+  fun stream(): Stream<S3Bucket>
 
   /**
    * Retrieves the bucket in this [BucketList] with the given name (if such a
@@ -61,12 +62,12 @@ interface BucketList : Iterable<Bucket> {
    *
    * @return The target bucket, if it exists, otherwise `null`.
    */
-  operator fun get(name: BucketName): Bucket?
+  operator fun get(name: BucketName): S3Bucket?
 
   /**
-   * Returns the [Bucket] in this [BucketList] at the given index.
+   * Returns the [S3Bucket] in this [BucketList] at the given index.
    *
    * @return The target bucket.
    */
-  operator fun get(index: Int): Bucket
+  operator fun get(index: Int): S3Bucket
 }

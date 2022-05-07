@@ -1,6 +1,6 @@
 package org.veupathdb.lib.s3.s34k.params.`object`
 
-import org.veupathdb.lib.s3.s34k.ObjectList
+import org.veupathdb.lib.s3.s34k.objects.ObjectList
 import org.veupathdb.lib.s3.s34k.params.RegionRequestParams
 
 interface ObjectListParams : RegionRequestParams {

@@ -1,5 +1,7 @@
-package org.veupathdb.lib.s3.s34k
+package org.veupathdb.lib.s3.s34k.objects
 
+import org.veupathdb.lib.s3.s34k.fields.LegalHold
+import org.veupathdb.lib.s3.s34k.fields.RetentionMode
 import java.time.OffsetDateTime
 
 // TODO: Document me

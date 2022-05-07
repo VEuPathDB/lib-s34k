@@ -1,9 +1,10 @@
-package org.veupathdb.lib.s3.s34k
+package org.veupathdb.lib.s3.s34k.buckets
 
 import org.veupathdb.lib.s3.s34k.errors.BucketAlreadyExistsError
 import org.veupathdb.lib.s3.s34k.errors.BucketAlreadyOwnedByYouError
 import org.veupathdb.lib.s3.s34k.errors.BucketNotFoundError
 import org.veupathdb.lib.s3.s34k.errors.S34KError
+import org.veupathdb.lib.s3.s34k.fields.BucketName
 import org.veupathdb.lib.s3.s34k.params.bucket.*
 import org.veupathdb.lib.s3.s34k.params.bucket.put.BucketPutParams
 import org.veupathdb.lib.s3.s34k.params.bucket.put.BucketUpsertParams
@@ -19,7 +20,7 @@ import org.veupathdb.lib.s3.s34k.params.bucket.recursive.RecursiveBucketDeletePa
  *
  * This interface does not define any methods for managing bucket tags.  To work
  * with bucket tags use one of the bucket access methods contained in this type,
- * such as [withBucket] or [get] which give access to an [Bucket] instance
+ * such as [withBucket] or [get] which give access to an [S3Bucket] instance
  * without performing any additional operations.
  *
  * **Example**:
@@ -39,7 +40,7 @@ interface BucketContainer {
    *
    * @param name Name of the target bucket.
    *
-   * @param action Action that will be called on the [Bucket] handle on the
+   * @param action Action that will be called on the [S3Bucket] handle on the
    * target bucket.
    *
    * @throws BucketNotFoundError If the target bucket does not exist.
@@ -48,7 +49,7 @@ interface BucketContainer {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun <R> withBucket(name: BucketName, action: Bucket.() -> R): R
+  fun <R> withBucket(name: BucketName, action: S3Bucket.() -> R): R
 
   // region Bucket Exists
 
@@ -105,7 +106,7 @@ interface BucketContainer {
    *
    * @param name Name of the bucket to create.
    *
-   * @return A new [Bucket] instance wrapping the newly created bucket.
+   * @return A new [S3Bucket] instance wrapping the newly created bucket.
    *
    * @throws BucketAlreadyOwnedByYouError If a bucket already exists in the
    * S3 store with the given name, and it was created by a user with the given
@@ -118,7 +119,7 @@ interface BucketContainer {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun create(name: BucketName): Bucket
+  fun create(name: BucketName): S3Bucket
 
   /**
    * Attempts to create a bucket with the given name with the operation
@@ -129,7 +130,7 @@ interface BucketContainer {
    *
    * @param action Action to configure the S3 operation.
    *
-   * @return A new [Bucket] instance wrapping the newly created bucket.
+   * @return A new [S3Bucket] instance wrapping the newly created bucket.
    *
    * @throws BucketAlreadyOwnedByYouError If a bucket already exists in the
    * S3 store with the given name, and it was created by a user with the given
@@ -142,7 +143,7 @@ interface BucketContainer {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun create(name: BucketName, action: BucketPutParams.() -> Unit): Bucket
+  fun create(name: BucketName, action: BucketPutParams.() -> Unit): S3Bucket
 
   /**
    * Attempts to create a bucket with the given name with the operation
@@ -153,7 +154,7 @@ interface BucketContainer {
    *
    * @param params S3 operation parameters.
    *
-   * @return A new [Bucket] instance wrapping the newly created bucket.
+   * @return A new [S3Bucket] instance wrapping the newly created bucket.
    *
    * @throws BucketAlreadyOwnedByYouError If a bucket already exists in the
    * S3 store with the given name, and it was created by a user with the given
@@ -166,7 +167,7 @@ interface BucketContainer {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun create(name: BucketName, params: BucketPutParams): Bucket
+  fun create(name: BucketName, params: BucketPutParams): S3Bucket
 
   // endregion
 
@@ -181,10 +182,10 @@ interface BucketContainer {
    *
    * @param name Name of the bucket to create.
    *
-   * @return A new [Bucket] instance wrapping either the newly created bucket
+   * @return A new [S3Bucket] instance wrapping either the newly created bucket
    * or the pre-existing bucket.
    */
-  fun createIfNotExists(name: BucketName): Bucket
+  fun createIfNotExists(name: BucketName): S3Bucket
 
   /**
    * Attempts to create a bucket with the given name if it does not already
@@ -195,14 +196,14 @@ interface BucketContainer {
    *
    * @param action Action used to configure the S3 operation parameters.
    *
-   * @return A new [Bucket] instance wrapping either the newly created bucket
+   * @return A new [S3Bucket] instance wrapping either the newly created bucket
    * or the pre-existing bucket.
    *
    * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun createIfNotExists(name: BucketName, action: BucketUpsertParams.() -> Unit): Bucket
+  fun createIfNotExists(name: BucketName, action: BucketUpsertParams.() -> Unit): S3Bucket
 
   /**
    * Attempts to create a bucket with the given name if it does not already
@@ -213,57 +214,57 @@ interface BucketContainer {
    *
    * @param params S3 operation parameters.
    *
-   * @return A new [Bucket] instance wrapping either the newly created bucket
+   * @return A new [S3Bucket] instance wrapping either the newly created bucket
    * or the pre-existing bucket.
    *
    * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun createIfNotExists(name: BucketName, params: BucketUpsertParams): Bucket
+  fun createIfNotExists(name: BucketName, params: BucketUpsertParams): S3Bucket
 
   // endregion
 
   // region Get Bucket
 
   /**
-   * Creates a new [Bucket] instance wrapping the target S3 bucket.
+   * Creates a new [S3Bucket] instance wrapping the target S3 bucket.
    *
    * @param name Name of the bucket to wrap.
    *
-   * @return A new [Bucket] instance wrapping the target bucket.
+   * @return A new [S3Bucket] instance wrapping the target bucket.
    *
    * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  operator fun get(name: BucketName): Bucket?
+  operator fun get(name: BucketName): S3Bucket?
 
   /**
-   * Creates a new [Bucket] instance wrapping the target S3 bucket.
+   * Creates a new [S3Bucket] instance wrapping the target S3 bucket.
    *
    * @param action Action used to configure the S3 operation parameters.
    *
-   * @return A new [Bucket] instance wrapping the target bucket.
+   * @return A new [S3Bucket] instance wrapping the target bucket.
    *
    * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun get(name: BucketName, action: BucketGetParams.() -> Unit): Bucket?
+  fun get(name: BucketName, action: BucketGetParams.() -> Unit): S3Bucket?
 
   /**
-   * Creates a new [Bucket] instance wrapping the target S3 bucket.
+   * Creates a new [S3Bucket] instance wrapping the target S3 bucket.
    *
    * @param params S3 operation parameters.
    *
-   * @return A new [Bucket] instance wrapping the target bucket.
+   * @return A new [S3Bucket] instance wrapping the target bucket.
    *
    * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  fun get(name: BucketName, params: BucketGetParams): Bucket?
+  fun get(name: BucketName, params: BucketGetParams): S3Bucket?
 
   // endregion
 

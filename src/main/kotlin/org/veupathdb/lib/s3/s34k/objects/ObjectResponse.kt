@@ -1,4 +1,6 @@
-package org.veupathdb.lib.s3.s34k
+package org.veupathdb.lib.s3.s34k.objects
+
+import org.veupathdb.lib.s3.s34k.S3Response
 
 /**
  * Response handle on an S3 object.

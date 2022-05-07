@@ -1,10 +1,9 @@
 package org.veupathdb.lib.s3.s34k.params.`object`.touch
 
-import org.veupathdb.lib.s3.s34k.S3Object
+import org.veupathdb.lib.s3.s34k.objects.S3Object
 import org.veupathdb.lib.s3.s34k.fields.MutableHeaders
 import org.veupathdb.lib.s3.s34k.fields.MutableQueryParams
 import org.veupathdb.lib.s3.s34k.params.RegionRequestParams
-import org.veupathdb.lib.s3.s34k.params.`object`.ObjectWriteParams
 
 /**
  * Touch object operation parameters.

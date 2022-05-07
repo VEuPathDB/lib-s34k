@@ -1,5 +1,7 @@
 package org.veupathdb.lib.s3.s34k
 
+import org.veupathdb.lib.s3.s34k.buckets.BucketContainer
+
 /**
  * S3 API Wrapper
  *

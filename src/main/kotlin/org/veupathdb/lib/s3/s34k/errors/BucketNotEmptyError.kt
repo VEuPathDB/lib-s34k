@@ -1,7 +1,6 @@
 package org.veupathdb.lib.s3.s34k.errors
 
-import org.veupathdb.lib.s3.s34k.BucketName
-import org.veupathdb.lib.s3.s34k.S3ErrorCode
+import org.veupathdb.lib.s3.s34k.fields.BucketName
 
 /**
  * Bucket is not empty exception.
@@ -12,18 +11,16 @@ import org.veupathdb.lib.s3.s34k.S3ErrorCode
  *
  * @since v0.1.0
  */
-open class BucketNotEmptyError : AbstractBucketOperationError {
+open class BucketNotEmptyError : BucketError {
 
-  override val code = S3ErrorCode.BucketNotEmpty
+  constructor(bucket: BucketName) : super(bucket, err(bucket))
 
-  constructor(bucket: BucketName, msg: String) : super(bucket, msg)
+  constructor(bucket: BucketName, message: String) : super(bucket, message)
 
-  constructor(bucket: BucketName, msg: String, cause: Throwable)
-    : super(bucket, msg, cause)
+  constructor(bucket: BucketName, cause: Throwable) : super(bucket, err(bucket), cause)
 
-  constructor(bucket: BucketName, cause: Throwable)
-    : super(bucket, "Cannot delete bucket $bucket, bucket is not empty.", cause)
-
-  constructor(bucket: BucketName)
-    : super(bucket, "Cannot delete bucket $bucket, bucket is not empty.")
+  constructor(bucket: BucketName, message: String, cause: Throwable) : super(bucket, message, cause)
 }
+
+private inline fun err(bucket: BucketName) =
+  "Cannot delete non-empty bucket '$bucket'"

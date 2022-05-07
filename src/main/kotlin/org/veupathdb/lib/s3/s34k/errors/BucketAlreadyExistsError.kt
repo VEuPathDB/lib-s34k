@@ -1,7 +1,6 @@
 package org.veupathdb.lib.s3.s34k.errors
 
-import org.veupathdb.lib.s3.s34k.BucketName
-import org.veupathdb.lib.s3.s34k.S3ErrorCode
+import org.veupathdb.lib.s3.s34k.fields.BucketName
 
 
 /**
@@ -14,15 +13,19 @@ import org.veupathdb.lib.s3.s34k.S3ErrorCode
  *
  * @since  v0.1.0
  */
-open class BucketAlreadyExistsError : AbstractBucketOperationError {
+open class BucketAlreadyExistsError : BucketError {
 
-  override val code = S3ErrorCode.BucketAlreadyExists
+  constructor(bucket: BucketName) : super(bucket, err(bucket))
 
-  constructor(bucket: BucketName, msg: String) : super(bucket, msg)
+  constructor(bucket: BucketName, message: String) : super(bucket, message)
 
   constructor(bucket: BucketName, cause: Throwable)
-    : super(bucket, "Bucket $bucket already exists.", cause)
+    : super(bucket, err(bucket), cause)
 
-  constructor(bucket: BucketName, msg: String, cause: Throwable)
-    : super(bucket, msg, cause)
+  constructor(bucket: BucketName, message: String, cause: Throwable)
+    : super(bucket, message, cause)
 }
+
+@Suppress("NOTHING_TO_INLINE")
+private inline fun err(bucket: BucketName) =
+  "Bucket '$bucket' already exists."

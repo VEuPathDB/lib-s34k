@@ -1,12 +1,8 @@
-package org.veupathdb.lib.s3.s34k
+package org.veupathdb.lib.s3.s34k.objects
 
-import org.veupathdb.lib.s3.s34k.errors.BucketNotFoundError
-import org.veupathdb.lib.s3.s34k.errors.InvalidRequestConfigError
-import org.veupathdb.lib.s3.s34k.errors.ObjectNotFoundError
-import org.veupathdb.lib.s3.s34k.errors.S34KError
+import org.veupathdb.lib.s3.s34k.errors.*
 import org.veupathdb.lib.s3.s34k.params.DeleteParams
 import org.veupathdb.lib.s3.s34k.params.`object`.*
-import org.veupathdb.lib.s3.s34k.params.`object`.directory.DirectoryObjectDeleteError
 import org.veupathdb.lib.s3.s34k.params.`object`.directory.DirectoryDeleteParams
 import org.veupathdb.lib.s3.s34k.params.`object`.multi.MultiObjectDeleteParams
 import org.veupathdb.lib.s3.s34k.params.`object`.touch.ObjectTouchParams
@@ -1117,7 +1113,7 @@ interface ObjectContainer {
    *
    * @param path Path to the target directory that will be removed.
    *
-   * @throws DirectoryObjectDeleteError If some or all of the directory's
+   * @throws MultiObjectDeleteError If some or all of the directory's
    * contents could not be deleted.
    *
    * @throws BucketNotFoundError If this bucket or the bucket in which this
@@ -1128,7 +1124,7 @@ interface ObjectContainer {
    * 'cause' value.
    */
   @Throws(
-    DirectoryObjectDeleteError::class,
+    MultiObjectDeleteError::class,
     BucketNotFoundError::class,
     S34KError::class,
   )
@@ -1162,7 +1158,7 @@ interface ObjectContainer {
    * @throws InvalidRequestConfigError If `path` value is not set on the
    * configured parameters.
    *
-   * @throws DirectoryObjectDeleteError If some or all of the directory's
+   * @throws MultiObjectDeleteError If some or all of the directory's
    * contents could not be deleted.
    *
    * @throws BucketNotFoundError If this bucket or the bucket in which this
@@ -1174,7 +1170,7 @@ interface ObjectContainer {
    */
   @Throws(
     InvalidRequestConfigError::class,
-    DirectoryObjectDeleteError::class,
+    MultiObjectDeleteError::class,
     BucketNotFoundError::class,
     S34KError::class,
   )
@@ -1208,7 +1204,7 @@ interface ObjectContainer {
    * @throws InvalidRequestConfigError If the `path` value is not set on the
    * configured parameters.
    *
-   * @throws DirectoryObjectDeleteError If some or all of the directory's
+   * @throws MultiObjectDeleteError If some or all of the directory's
    * contents could not be deleted.
    *
    * @throws BucketNotFoundError If this bucket or the bucket in which this
@@ -1220,7 +1216,7 @@ interface ObjectContainer {
    */
   @Throws(
     InvalidRequestConfigError::class,
-    DirectoryObjectDeleteError::class,
+    MultiObjectDeleteError::class,
     BucketNotFoundError::class,
     S34KError::class,
   )

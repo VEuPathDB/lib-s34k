@@ -1,4 +1,6 @@
-package org.veupathdb.lib.s3.s34k
+package org.veupathdb.lib.s3.s34k.objects
+
+import org.veupathdb.lib.s3.s34k.objects.ObjectContainer
 
 /**
  * Handle on a "directory" in an S3 store.

@@ -1,7 +1,6 @@
 package org.veupathdb.lib.s3.s34k.errors
 
-import org.veupathdb.lib.s3.s34k.BucketName
-import org.veupathdb.lib.s3.s34k.S3ErrorCode
+import org.veupathdb.lib.s3.s34k.fields.BucketName
 
 /**
  * `NoSuchKey`
@@ -12,42 +11,17 @@ import org.veupathdb.lib.s3.s34k.S3ErrorCode
  *
  * @since  v0.1.0
  */
-open class ObjectNotFoundError : AbstractResponseError {
+open class ObjectNotFoundError : ObjectError {
 
-  override val code = S3ErrorCode.NoSuchKey
+  constructor(bucket: BucketName, path: String) : super(bucket, path)
 
-  val bucket: BucketName
+  constructor(bucket: BucketName, path: String, message: String) : super(bucket, path, message)
 
-  val path: String
+  constructor(bucket: BucketName, path: String, cause: Throwable) : super(bucket, path, err(bucket, path))
 
-  constructor(bucket: BucketName, path: String) :
-    super("Object $path not found in bucket $bucket") {
-    this.bucket = bucket
-    this.path   = path
-  }
-
-  constructor(bucket: BucketName, path: String, cause: Throwable) :
-    super("Object $path not found in bucket $bucket", cause) {
-    this.bucket = bucket
-    this.path   = path
-  }
-
-  constructor(
-    bucket: BucketName,
-    path:    String,
-    message: String
-  ) : super(message) {
-    this.bucket = bucket
-    this.path   = path
-  }
-
-  constructor(
-    bucket: BucketName,
-    path:    String,
-    message: String,
-    cause:   Throwable
-  ) : super(message, cause) {
-    this.bucket = bucket
-    this.path   = path
-  }
+  constructor(bucket: BucketName, path: String, message: String, cause: Throwable) : super(bucket, path, message, cause)
 }
+
+@Suppress("NOTHING_TO_INLINE")
+private inline fun err(bucket: BucketName, path: String) =
+  "Object '$path' not found in bucket '$bucket'"

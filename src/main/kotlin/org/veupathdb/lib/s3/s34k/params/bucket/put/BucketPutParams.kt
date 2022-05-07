@@ -1,6 +1,6 @@
 package org.veupathdb.lib.s3.s34k.params.bucket.put
 
-import org.veupathdb.lib.s3.s34k.Bucket
+import org.veupathdb.lib.s3.s34k.buckets.S3Bucket
 import org.veupathdb.lib.s3.s34k.fields.MutableHeaders
 import org.veupathdb.lib.s3.s34k.fields.MutableQueryParams
 import org.veupathdb.lib.s3.s34k.fields.MutableTagMap
@@ -62,7 +62,7 @@ interface BucketPutParams : RegionRequestParams {
    *
    * This callback will be passed a handle on the newly created S3 bucket.
    */
-  var callback: ((bucket: Bucket) -> Unit)?
+  var callback: ((bucket: S3Bucket) -> Unit)?
 
   /**
    * Options specific to the put phase of the bucket create operation.

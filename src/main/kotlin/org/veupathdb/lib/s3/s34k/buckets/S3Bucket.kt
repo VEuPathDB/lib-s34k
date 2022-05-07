@@ -1,10 +1,11 @@
-package org.veupathdb.lib.s3.s34k
+package org.veupathdb.lib.s3.s34k.buckets
 
 import org.veupathdb.lib.s3.s34k.errors.BucketNotEmptyError
 import org.veupathdb.lib.s3.s34k.errors.InvalidRequestConfigError
 import org.veupathdb.lib.s3.s34k.errors.S34KError
+import org.veupathdb.lib.s3.s34k.fields.BucketName
+import org.veupathdb.lib.s3.s34k.objects.ObjectContainer
 import org.veupathdb.lib.s3.s34k.params.bucket.BucketDeleteParams
-import org.veupathdb.lib.s3.s34k.params.bucket.recursive.RecursiveBucketDeleteError
 import org.veupathdb.lib.s3.s34k.params.bucket.recursive.RecursiveBucketDeleteParams
 import java.time.OffsetDateTime
 
@@ -18,7 +19,7 @@ import java.time.OffsetDateTime
  * @since v0.1.0
  */
 @Suppress("unused")
-interface Bucket {
+interface S3Bucket {
 
   // region Properties
 
@@ -126,9 +127,6 @@ interface Bucket {
    * 2. Delete all the objects from the bucket.
    * 3. Delete the bucket itself.
    *
-   * @throws RecursiveBucketDeleteError If an error occurs while attempting to
-   * delete the bucket, or it's contained objects.
-   *
    * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
@@ -151,9 +149,6 @@ interface Bucket {
    *
    * @param action Action used to configure the S3 operation.
    *
-   * @throws RecursiveBucketDeleteError If an error occurs while attempting to
-   * delete the bucket, or it's contained objects.
-   *
    * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
@@ -175,9 +170,6 @@ interface Bucket {
    * 3. Delete the bucket itself.
    *
    * @param params S3 operation parameters.
-   *
-   * @throws RecursiveBucketDeleteError If an error occurs while attempting to
-   * delete the bucket, or it's contained objects.
    *
    * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's

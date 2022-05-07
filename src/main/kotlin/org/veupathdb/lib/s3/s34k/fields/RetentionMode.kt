@@ -1,4 +1,4 @@
-package org.veupathdb.lib.s3.s34k
+package org.veupathdb.lib.s3.s34k.fields
 
 /**
  * S3 Retention Modes

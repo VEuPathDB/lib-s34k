@@ -1,6 +1,6 @@
 package org.veupathdb.lib.s3.s34k.params.bucket
 
-import org.veupathdb.lib.s3.s34k.Bucket
+import org.veupathdb.lib.s3.s34k.buckets.S3Bucket
 import org.veupathdb.lib.s3.s34k.params.RegionRequestParams
 
 /**
@@ -19,5 +19,5 @@ interface BucketGetParams : RegionRequestParams {
    * This callback will be passed a handle on the bucket retrieved from the S3
    * store if the target bucket exists, otherwise `null`.
    */
-  var callback: ((bucket: Bucket?) -> Unit)?
+  var callback: ((bucket: S3Bucket?) -> Unit)?
 }

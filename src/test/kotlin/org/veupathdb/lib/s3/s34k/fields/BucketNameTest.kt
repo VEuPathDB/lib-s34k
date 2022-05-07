@@ -1,7 +1,6 @@
 package org.veupathdb.lib.s3.s34k.fields
 
 import org.junit.jupiter.api.*
-import org.veupathdb.lib.s3.s34k.BucketName
 
 @DisplayName("BucketName")
 internal class BucketNameTest {

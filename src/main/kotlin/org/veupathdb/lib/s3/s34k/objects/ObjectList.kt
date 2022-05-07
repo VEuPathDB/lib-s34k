@@ -1,4 +1,4 @@
-package org.veupathdb.lib.s3.s34k
+package org.veupathdb.lib.s3.s34k.objects
 
 import java.util.stream.Stream
 

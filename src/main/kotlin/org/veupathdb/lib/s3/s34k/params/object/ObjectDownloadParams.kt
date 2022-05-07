@@ -1,6 +1,6 @@
 package org.veupathdb.lib.s3.s34k.params.`object`
 
-import org.veupathdb.lib.s3.s34k.FileObject
+import org.veupathdb.lib.s3.s34k.objects.FileObject
 import org.veupathdb.lib.s3.s34k.errors.InvalidRequestConfigError
 import org.veupathdb.lib.s3.s34k.params.RegionRequestParams
 import java.io.File

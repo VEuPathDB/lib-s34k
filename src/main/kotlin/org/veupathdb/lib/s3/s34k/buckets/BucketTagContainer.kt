@@ -1,5 +1,6 @@
-package org.veupathdb.lib.s3.s34k
+package org.veupathdb.lib.s3.s34k.buckets
 
+import org.veupathdb.lib.s3.s34k.Tag
 import org.veupathdb.lib.s3.s34k.errors.BucketNotFoundError
 import org.veupathdb.lib.s3.s34k.errors.S34KError
 import org.veupathdb.lib.s3.s34k.fields.TagMap
@@ -17,7 +18,7 @@ interface BucketTagContainer {
    * @return The number of tags currently attached to this tag container.  This
    * value will be `10` at most.
    *
-   * @throws BucketNotFoundError If this [Bucket] does not exist.
+   * @throws BucketNotFoundError If this [S3Bucket] does not exist.
    *
    * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
@@ -37,7 +38,7 @@ interface BucketTagContainer {
    * @return The number of tags currently attached to this tag container.  This
    * value will be `10` at most.
    *
-   * @throws BucketNotFoundError If this [Bucket] does not exist.
+   * @throws BucketNotFoundError If this [S3Bucket] does not exist.
    *
    * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
@@ -57,7 +58,7 @@ interface BucketTagContainer {
    * @return The number of tags currently attached to this tag container.  This
    * value will be `10` at most.
    *
-   * @throws BucketNotFoundError If this [Bucket] does not exist.
+   * @throws BucketNotFoundError If this [S3Bucket] does not exist.
    *
    * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
@@ -83,7 +84,7 @@ interface BucketTagContainer {
    * the time of this method call, this tag container did not have a tag with
    * the target key.
    *
-   * @throws BucketNotFoundError If this [Bucket] does not exist.
+   * @throws BucketNotFoundError If this [S3Bucket] does not exist.
    *
    * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
@@ -107,7 +108,7 @@ interface BucketTagContainer {
    * the time of this method call, this tag container did not have a tag with
    * the target key.
    *
-   * @throws BucketNotFoundError If this [Bucket] does not exist.
+   * @throws BucketNotFoundError If this [S3Bucket] does not exist.
    *
    * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
@@ -131,7 +132,7 @@ interface BucketTagContainer {
    * the time of this method call, this tag container did not have a tag with
    * the target key.
    *
-   * @throws BucketNotFoundError If this [Bucket] does not exist.
+   * @throws BucketNotFoundError If this [S3Bucket] does not exist.
    *
    * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
@@ -183,7 +184,7 @@ interface BucketTagContainer {
    * @throws IllegalArgumentException If the given tag array contains more than
    * 10 values.
    *
-   * @throws BucketNotFoundError If this [Bucket] does not exist.
+   * @throws BucketNotFoundError If this [S3Bucket] does not exist.
    *
    * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
@@ -206,7 +207,7 @@ interface BucketTagContainer {
    * 10 values, or if any of the keys or values violate the rules outlined in
    * the [Tag] documentation
    *
-   * @throws BucketNotFoundError If this [Bucket] does not exist.
+   * @throws BucketNotFoundError If this [S3Bucket] does not exist.
    *
    * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
@@ -228,7 +229,7 @@ interface BucketTagContainer {
    * @throws IllegalArgumentException If the given tag iterable contains more
    * than 10 elements.
    *
-   * @throws BucketNotFoundError If this [Bucket] does not exist.
+   * @throws BucketNotFoundError If this [S3Bucket] does not exist.
    *
    * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
@@ -251,7 +252,7 @@ interface BucketTagContainer {
    * 10 entries, or if any of the keys or values violate the rules outlined in
    * the [Tag] documentation
    *
-   * @throws BucketNotFoundError If this [Bucket] does not exist.
+   * @throws BucketNotFoundError If this [S3Bucket] does not exist.
    *
    * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
@@ -270,7 +271,7 @@ interface BucketTagContainer {
    * @param tags Map of S3 tags to put on this tag container.  If this tag map
    * is empty, this method does nothing.
    *
-   * @throws BucketNotFoundError If this [Bucket] does not exist.
+   * @throws BucketNotFoundError If this [S3Bucket] does not exist.
    *
    * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
@@ -289,7 +290,7 @@ interface BucketTagContainer {
    *
    * @param action Action used to configure the backing S3 operation.
    *
-   * @throws BucketNotFoundError If this [Bucket] does not exist.
+   * @throws BucketNotFoundError If this [S3Bucket] does not exist.
    *
    * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
@@ -308,7 +309,7 @@ interface BucketTagContainer {
    *
    * @param params Parameters for the backing S3 operation.
    *
-   * @throws BucketNotFoundError If this [Bucket] does not exist.
+   * @throws BucketNotFoundError If this [S3Bucket] does not exist.
    *
    * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
@@ -330,7 +331,7 @@ interface BucketTagContainer {
    * @throws IllegalArgumentException If either the key or value violate the
    * rules outlined in the [Tag] documentation.
    *
-   * @throws BucketNotFoundError If this [Bucket] does not exist.
+   * @throws BucketNotFoundError If this [S3Bucket] does not exist.
    *
    * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
@@ -349,11 +350,11 @@ interface BucketTagContainer {
   // region Get
 
   /**
-   * Gets all tags currently attached to this [Bucket].
+   * Gets all tags currently attached to this [S3Bucket].
    *
-   * @return A [TagMap] containing all the tags attached to this [Bucket].
+   * @return A [TagMap] containing all the tags attached to this [S3Bucket].
    *
-   * @throws BucketNotFoundError If this [Bucket] does not exist.
+   * @throws BucketNotFoundError If this [S3Bucket] does not exist.
    *
    * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
@@ -366,7 +367,7 @@ interface BucketTagContainer {
   fun getAll(): TagMap
 
   /**
-   * Gets the target tag from this [Bucket].
+   * Gets the target tag from this [S3Bucket].
    *
    * @param key Key of the tag to fetch.
    *
@@ -376,7 +377,7 @@ interface BucketTagContainer {
    * @throws IllegalArgumentException If the given [key] violates the rules
    * outlined in the [Tag] documentation.
    *
-   * @throws BucketNotFoundError If this [Bucket] does not exist.
+   * @throws BucketNotFoundError If this [S3Bucket] does not exist.
    *
    * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
@@ -390,17 +391,17 @@ interface BucketTagContainer {
   operator fun get(key: String): String?
 
   /**
-   * Gets the target tags from this [Bucket].
+   * Gets the target tags from this [S3Bucket].
    *
    * @param keys Keys of the tags to fetch.
    *
    * @return A tag map containing only the specified tags that exist on the
-   * target [Bucket].
+   * target [S3Bucket].
    *
    * @throws IllegalArgumentException If any of the given [keys] violate the
    * rules outlined in the [Tag] documentation.
    *
-   * @throws BucketNotFoundError If this [Bucket] does not exist.
+   * @throws BucketNotFoundError If this [S3Bucket] does not exist.
    *
    * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
@@ -414,17 +415,17 @@ interface BucketTagContainer {
   fun get(vararg keys: String): TagMap
 
   /**
-   * Gets the target tags from this [Bucket].
+   * Gets the target tags from this [S3Bucket].
    *
    * @param keys Keys of the tags to fetch.
    *
    * @return A tag map containing only the specified tags that exist on the
-   * target [Bucket].
+   * target [S3Bucket].
    *
    * @throws IllegalArgumentException If any of the given [keys] violate the
    * rules outlined in the [Tag] documentation.
    *
-   * @throws BucketNotFoundError If this [Bucket] does not exist.
+   * @throws BucketNotFoundError If this [S3Bucket] does not exist.
    *
    * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
@@ -438,14 +439,14 @@ interface BucketTagContainer {
   fun get(keys: Iterable<String>): TagMap
 
   /**
-   * Gets the target tags from this [Bucket].
+   * Gets the target tags from this [S3Bucket].
    *
    * @param action Action used to configure this operation.
    *
    * @return A tag map containing only the specified tags that exist on the
-   * target [Bucket].
+   * target [S3Bucket].
    *
-   * @throws BucketNotFoundError If this [Bucket] does not exist.
+   * @throws BucketNotFoundError If this [S3Bucket] does not exist.
    *
    * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
@@ -458,14 +459,14 @@ interface BucketTagContainer {
   fun get(action: TagGetParams.() -> Unit): TagMap
 
   /**
-   * Gets the target tags from this [Bucket].
+   * Gets the target tags from this [S3Bucket].
    *
    * @param params Parameters used to configure this operation.
    *
    * @return A tag map containing only the specified tags that exist on the
-   * target [Bucket].
+   * target [S3Bucket].
    *
-   * @throws BucketNotFoundError If this [Bucket] does not exist.
+   * @throws BucketNotFoundError If this [S3Bucket] does not exist.
    *
    * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
@@ -482,14 +483,14 @@ interface BucketTagContainer {
   // region Delete
 
   /**
-   * Deletes the target tags from this [Bucket].
+   * Deletes the target tags from this [S3Bucket].
    *
    * @param keys Keys of the target tags to delete.
    *
    * @throws IllegalArgumentException If any of the given [keys] violate the
    * rules outlined in the [Tag] documentation.
    *
-   * @throws BucketNotFoundError If this [Bucket] does not exist.
+   * @throws BucketNotFoundError If this [S3Bucket] does not exist.
    *
    * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
@@ -503,14 +504,14 @@ interface BucketTagContainer {
   fun delete(vararg keys: String)
 
   /**
-   * Deletes the target tags from this [Bucket].
+   * Deletes the target tags from this [S3Bucket].
    *
    * @param keys Keys of the target tags to delete.
    *
    * @throws IllegalArgumentException If any of the given [keys] violate the
    * rules outlined in the [Tag] documentation.
    *
-   * @throws BucketNotFoundError If this [Bucket] does not exist.
+   * @throws BucketNotFoundError If this [S3Bucket] does not exist.
    *
    * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
@@ -524,11 +525,11 @@ interface BucketTagContainer {
   fun delete(keys: Iterable<String>)
 
   /**
-   * Deletes the target tags from this [Bucket].
+   * Deletes the target tags from this [S3Bucket].
    *
    * @param action Action used to configure this operation.
    *
-   * @throws BucketNotFoundError If this [Bucket] does not exist.
+   * @throws BucketNotFoundError If this [S3Bucket] does not exist.
    *
    * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
@@ -541,11 +542,11 @@ interface BucketTagContainer {
   fun delete(action: TargetedBucketTagDeleteParams.() -> Unit)
 
   /**
-   * Deletes the target tags from this [Bucket].
+   * Deletes the target tags from this [S3Bucket].
    *
    * @param params Parameters used to configure this operation.
    *
-   * @throws BucketNotFoundError If this [Bucket] does not exist.
+   * @throws BucketNotFoundError If this [S3Bucket] does not exist.
    *
    * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
@@ -564,7 +565,7 @@ interface BucketTagContainer {
   /**
    * Deletes all tags currently attached to this bucket.
    *
-   * @throws BucketNotFoundError If this [Bucket] does not exist.
+   * @throws BucketNotFoundError If this [S3Bucket] does not exist.
    *
    * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
@@ -581,7 +582,7 @@ interface BucketTagContainer {
    *
    * @param action Action used to configure this operation.
    *
-   * @throws BucketNotFoundError If this [Bucket] does not exist.
+   * @throws BucketNotFoundError If this [S3Bucket] does not exist.
    *
    * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's
@@ -598,7 +599,7 @@ interface BucketTagContainer {
    *
    * @param params Parameters used to configure this operation.
    *
-   * @throws BucketNotFoundError If this [Bucket] does not exist.
+   * @throws BucketNotFoundError If this [S3Bucket] does not exist.
    *
    * @throws S34KError If an implementation specific exception is thrown.
    * The implementation specific exception will be set to the thrown exception's

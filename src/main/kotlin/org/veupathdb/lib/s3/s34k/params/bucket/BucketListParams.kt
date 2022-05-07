@@ -1,6 +1,6 @@
 package org.veupathdb.lib.s3.s34k.params.bucket
 
-import org.veupathdb.lib.s3.s34k.BucketList
+import org.veupathdb.lib.s3.s34k.buckets.BucketList
 import org.veupathdb.lib.s3.s34k.params.S3RequestParams
 
 /**

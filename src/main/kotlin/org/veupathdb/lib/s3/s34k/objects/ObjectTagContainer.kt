@@ -1,5 +1,6 @@
-package org.veupathdb.lib.s3.s34k
+package org.veupathdb.lib.s3.s34k.objects
 
+import org.veupathdb.lib.s3.s34k.Tag
 import org.veupathdb.lib.s3.s34k.errors.BucketNotFoundError
 import org.veupathdb.lib.s3.s34k.errors.ObjectNotFoundError
 import org.veupathdb.lib.s3.s34k.errors.S34KError
