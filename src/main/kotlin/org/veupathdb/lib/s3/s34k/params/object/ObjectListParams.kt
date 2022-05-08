@@ -15,36 +15,6 @@ interface ObjectListParams : RegionRequestParams {
   var prefix: String?
 
   /**
-   * If set to `true`, this operation will list all paths/keys at all depths
-   * under the specified prefix.
-   *
-   * If set to `false`, this operation will only list paths directly under the
-   * specified prefix.
-   *
-   * **Examples**
-   *
-   * `container.list("foo", false)`
-   * ```
-   * ObjectList [
-   *   "foo/bar"
-   *   "foo/fizz.txt"
-   *   "foo/buzz.png"
-   * ]
-   * ```
-   *
-   * `container.list("foo", true)`
-   * ```
-   * ObjectList [
-   *   "foo/bar/hello/goodbye.txt
-   *   "foo/bar/jam/blueberry.jpg
-   *   "foo/fizz.txt"
-   *   "foo/buzz.png"
-   * ]
-   * ```
-   */
-  var recursive: Boolean
-
-  /**
    * Optional callback that will be executed on successful completion of the S3
    * operation.
    *

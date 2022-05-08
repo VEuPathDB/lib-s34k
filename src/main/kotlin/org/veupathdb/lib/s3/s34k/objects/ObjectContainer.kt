@@ -627,7 +627,7 @@ interface ObjectContainer {
 
   // region List
 
-  fun list(prefix: String? = null, recursive: Boolean = false): ObjectList
+  fun list(prefix: String? = null): ObjectList
 
   fun list(action: ObjectListParams.() -> Unit): ObjectList
 
