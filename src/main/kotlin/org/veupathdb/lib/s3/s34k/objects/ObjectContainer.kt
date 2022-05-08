@@ -629,7 +629,9 @@ interface ObjectContainer {
 
   fun list(prefix: String? = null, recursive: Boolean = false): ObjectList
 
-  fun list()
+  fun list(action: ObjectListParams.() -> Unit): ObjectList
+
+  fun list(params: ObjectListParams): ObjectList
 
   // endregion List
 
