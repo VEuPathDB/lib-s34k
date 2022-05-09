@@ -36,11 +36,10 @@ TODO: param configuration functions (such as `callback(action: () -> Unit)` that
 
 == Usage
 
-S34K defines the base API for a generalized abstraction layer over S3 API
-clients and SDKs treating the target S3 store as a remote filesystem.
+S34K defines the base API for a generalized abstraction layer over S3 API clients and SDKs treating the target S3 store
+as a remote filesystem.
 
-This project and repository simply defines a standard API and does not provide
-any functionality on its own.
+This project and repository simply defines a standard API and does not provide any functionality on its own.
 
 Usage of this API is done through specific implementations (such as
 https://github.com/VEuPathDB/lib-s34k-minio[S34K-Minio]).
@@ -113,37 +112,50 @@ The following operations are currently supported as of `v0.4.0`
 
 === Bucket
 
-.Operations:
+Bucket operations are accessible through the `buckets` property on the `S3Client` type.
+
+.*Bucket Operations*:
 * Create
 * Delete
 * Delete recursive
+* Exists Test
+* List buckets
+
+Bucket tag operations are accessible through the `tags` property on the `S3Bucket` type.
+
+.*Bucket Tag Operations*:
 * Delete tags (all)
 * Delete tags (targeted)
-* Exists Test
 * Get tags
-* List buckets
 * Put tags
+
 
 
 === Object
 
-.Operations:
+Object operations are accessible through the `objects` property on the `S3Bucket` type.
+
+.*Object Operations*:
 * Bucket contains object
 * Count objects in bucket
 * Count 'directories' in bucket
 * Delete Object
 * Delete Objects (targeted)
-* Delete Tags (all)
-* Delete Tags (targeted)
 * Download
 * Exists test
-* Get Tags
 * List all objects
 * List prefixed objects
 * Open (stream over contents)
 * Put Object
-* Put Tags
 * Remove 'directory'
 * Stat
 * Touch object
 * Upload object
+
+Object tag operations are accessible through the `tags` property on the `S3Object` type.
+
+.*Object Tag Operations*:
+* Delete Tags (all)
+* Delete Tags (targeted)
+* Get Tags
+* Put Tags
