@@ -1,5 +1,6 @@
 package org.veupathdb.lib.s3.s34k.buckets
 
+import org.veupathdb.lib.s3.s34k.S3ErrorCode
 import org.veupathdb.lib.s3.s34k.errors.BucketAlreadyExistsError
 import org.veupathdb.lib.s3.s34k.errors.BucketAlreadyOwnedByYouError
 import org.veupathdb.lib.s3.s34k.errors.BucketNotFoundError

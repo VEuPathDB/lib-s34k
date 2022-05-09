@@ -109,74 +109,41 @@ fun main() {
 
 == Operations
 
-The following operations are currently supported as of `v0.1.0`
-
-=== Client
-
-General bucket operations:
-
-* Create bucket
-* Create bucket if not exists
-* Test bucket existence
-* List buckets
-* Delete bucket
-* Delete bucket recursive
-
+The following operations are currently supported as of `v0.4.0`
 
 === Bucket
 
-Bucket specific and general object operations.
-
 .Bucket operations:
+* Create
 * Delete
 * Delete recursive
 * Delete tags (all)
 * Delete tags (targeted)
+* Exists Test
 * Get tags
+* List buckets
 * Put tags
 
-.Object operations:
-* Delete single
-* Delete bulk
-* Delete tags
-* Download
-* Existence test
-* Get
-* Get tags
-* List
-* Put
-* Put tags
-* Put 'directory'
-* Stat
-* Touch
-* Upload
 
 === Object
 
-Object specific operations.
-
 .Operations
-* Exists test
-* Delete
-* Stat
-* Get Tags
-* Put Tags
+* Bucket contains object
+* Count objects in bucket
+* Count 'directories' in bucket
+* Delete Object
+* Delete Objects (targeted)
 * Delete Tags (all)
 * Delete Tags (targeted)
-
-== Roadmap
-
-Full Release::
-TODOs:
-+
---
-* [x] Configuration of multi-stage recursive bucket deletion.
-* [ ] Configuration of multi-stage targeted object tag deletion.
-* [ ] Configuration of multi-stage targeted bucket tag deletion.
-* [ ] Configuration of multi-stage recursive directory deletion.
-* [x] Recursive directory object deletes
-* [ ] Add callback to recursive bucket delete (all phases or just full op?)
-* [ ] Rename default region to region (it's a normal property)
-* [ ] Include cascading region value fetching (params || bucket || client)
-* [ ] Support version ID in operations
---
+* Download
+* Exists test
+* Get Tags
+* List all objects
+* List prefixed objects
+* Open (stream over contents)
+* Put Object
+* Put Tags
+* Remove 'directory'
+* Stat
+* Touch object
+* Upload object
