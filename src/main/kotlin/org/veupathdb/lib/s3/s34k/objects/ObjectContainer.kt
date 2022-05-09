@@ -569,7 +569,7 @@ interface ObjectContainer {
 
   // endregion Stat
 
-  // region List
+  // region List All
 
   /**
    * Fetches a list of all the objects in this container.
@@ -603,7 +603,7 @@ interface ObjectContainer {
    * 'cause' value.
    */
   @Throws(BucketNotFoundError::class, S34KError::class)
-  fun listAll(action: ObjectListParams.() -> Unit): ObjectList
+  fun listAll(action: ObjectListAllParams.() -> Unit): ObjectList
 
   /**
    * Fetches a list of all the objects in this container.
@@ -621,7 +621,17 @@ interface ObjectContainer {
    * 'cause' value.
    */
   @Throws(BucketNotFoundError::class, S34KError::class)
-  fun listAll(params: ObjectListParams): ObjectList
+  fun listAll(params: ObjectListAllParams): ObjectList
+
+  // endregion List All
+
+  // region List
+
+  fun list(prefix: String? = null): ObjectList
+
+  fun list(action: ObjectListParams.() -> Unit): ObjectList
+
+  fun list(params: ObjectListParams): ObjectList
 
   // endregion List
 
