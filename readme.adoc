@@ -113,7 +113,7 @@ The following operations are currently supported as of `v0.4.0`
 
 === Bucket
 
-.Bucket operations:
+.Operations:
 * Create
 * Delete
 * Delete recursive
@@ -127,7 +127,7 @@ The following operations are currently supported as of `v0.4.0`
 
 === Object
 
-.Operations
+.Operations:
 * Bucket contains object
 * Count objects in bucket
 * Count 'directories' in bucket
