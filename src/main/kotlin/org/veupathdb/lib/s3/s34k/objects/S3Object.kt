@@ -3,9 +3,14 @@ package org.veupathdb.lib.s3.s34k.objects
 import org.veupathdb.lib.s3.s34k.params.DeleteParams
 import org.veupathdb.lib.s3.s34k.params.`object`.ObjectExistsParams
 import org.veupathdb.lib.s3.s34k.params.`object`.ObjectStatParams
+import java.time.OffsetDateTime
 
 // TODO: Document me
 interface S3Object : ObjectResponse {
+
+  val lastModified: OffsetDateTime
+
+  val eTag: String?
 
   val tags: ObjectTagContainer
 
