@@ -111,9 +111,6 @@ interface ObjectContainer {
    * @return `true` if this container has an object at that path, otherwise
    * `false`.
    *
-   * @throws InvalidRequestConfigError If the `path` value is not set on the
-   * configured parameters.
-   *
    * @throws BucketNotFoundError If this bucket or the bucket in which this
    * object container resides no longer exists.
    *
@@ -121,11 +118,7 @@ interface ObjectContainer {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  @Throws(
-    InvalidRequestConfigError::class,
-    BucketNotFoundError::class,
-    S34KError::class
-  )
+  @Throws(BucketNotFoundError::class, S34KError::class)
   fun contains(path: String, action: ObjectExistsParams.() -> Unit): Boolean
 
   /**
@@ -137,9 +130,6 @@ interface ObjectContainer {
    * @return `true` if this container has an object at that path, otherwise
    * `false`.
    *
-   * @throws InvalidRequestConfigError If the `path` value is not set on the
-   * configured parameters.
-   *
    * @throws BucketNotFoundError If this bucket or the bucket in which this
    * object container resides no longer exists.
    *
@@ -147,11 +137,7 @@ interface ObjectContainer {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  @Throws(
-    InvalidRequestConfigError::class,
-    BucketNotFoundError::class,
-    S34KError::class
-  )
+  @Throws(BucketNotFoundError::class, S34KError::class)
   fun contains(path: String, params: ObjectExistsParams): Boolean
 
   // endregion Has
@@ -275,26 +261,15 @@ interface ObjectContainer {
   // region Get
 
   // TODO: document me
-  @Throws(
-    BucketNotFoundError::class,
-    S34KError::class,
-  )
+  @Throws(BucketNotFoundError::class, S34KError::class)
   operator fun get(path: String): S3Object?
 
   // TODO: document me
-  @Throws(
-    InvalidRequestConfigError::class,
-    BucketNotFoundError::class,
-    S34KError::class,
-  )
+  @Throws(BucketNotFoundError::class, S34KError::class)
   fun get(path: String, action: ObjectGetParams.() -> Unit): S3Object?
 
   // TODO: document me
-  @Throws(
-    InvalidRequestConfigError::class,
-    BucketNotFoundError::class,
-    S34KError::class,
-  )
+  @Throws(BucketNotFoundError::class, S34KError::class)
   fun get(path: String, params: ObjectGetParams): S3Object?
 
   // endregion Get
@@ -335,9 +310,6 @@ interface ObjectContainer {
    * @return An [StreamObject] instance handle on the target object, or `null`
    * if no such object could be found.
    *
-   * @throws InvalidRequestConfigError If the `path` value is not set on the
-   * configured parameters.
-   *
    * @throws BucketNotFoundError If this bucket or the bucket in which this
    * object container resides no longer exists.
    *
@@ -345,11 +317,7 @@ interface ObjectContainer {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  @Throws(
-    InvalidRequestConfigError::class,
-    BucketNotFoundError::class,
-    S34KError::class,
-  )
+  @Throws(BucketNotFoundError::class, S34KError::class)
   fun open(path: String, action: ObjectOpenParams.() -> Unit): StreamObject?
 
   /**
@@ -364,9 +332,6 @@ interface ObjectContainer {
    * @return An [StreamObject] instance handle on the target object, or `null`
    * if no such object could be found.
    *
-   * @throws InvalidRequestConfigError If the `path` value is not set on the
-   * configured parameters.
-   *
    * @throws BucketNotFoundError If this bucket or the bucket in which this
    * object container resides no longer exists.
    *
@@ -374,11 +339,7 @@ interface ObjectContainer {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  @Throws(
-    InvalidRequestConfigError::class,
-    BucketNotFoundError::class,
-    S34KError::class,
-  )
+  @Throws(BucketNotFoundError::class, S34KError::class)
   fun open(path: String, params: ObjectOpenParams): StreamObject?
 
   // endregion Open
@@ -433,8 +394,8 @@ interface ObjectContainer {
    * @return An [FileObject] instance handle on the target object and local
    * file.
    *
-   * @throws InvalidRequestConfigError If either the `path` or `localFile` value
-   * is not set on the configured parameters.
+   * @throws InvalidRequestConfigError If the `localFile` value is not set on
+   * the configured parameters.
    *
    * @throws ObjectNotFoundError If the configured target object does not
    * exist.
@@ -468,8 +429,8 @@ interface ObjectContainer {
    * @return An [FileObject] instance handle on the target object and local
    * file.
    *
-   * @throws InvalidRequestConfigError If either the `path` or `localFile` value
-   * is not set on the configured parameters.
+   * @throws InvalidRequestConfigError If the `localFile` value  is not set on
+   * the configured parameters.
    *
    * @throws ObjectNotFoundError If the configured target object does not
    * exist.
@@ -518,13 +479,12 @@ interface ObjectContainer {
    *
    * If the target object does not exist, `null` will be returned.
    *
+   * @param path Path to the target object whose metadata should be returned.
+   *
    * @param action Action used to configure the backing S3 operation.
    *
    * @return An [ObjectMeta] instance containing the target object's metadata
    * if the target object exists, otherwise `null`.
-   *
-   * @throws InvalidRequestConfigError If the `path` value is not set on the
-   * configured parameters.
    *
    * @throws BucketNotFoundError If this bucket or the bucket in which this
    * object container resides no longer exists.
@@ -534,7 +494,6 @@ interface ObjectContainer {
    * 'cause' value.
    */
   @Throws(
-    InvalidRequestConfigError::class,
     BucketNotFoundError::class,
     S34KError::class,
   )
@@ -545,13 +504,12 @@ interface ObjectContainer {
    *
    * If the target object does not exist, `null` will be returned.
    *
+   * @param path Path to the target object whose metadata should be returned.
+   *
    * @param params Parameters for the backing S3 operation.
    *
    * @return An [ObjectMeta] instance containing the target object's metadata
    * if the target object exists, otherwise `null`.
-   *
-   * @throws InvalidRequestConfigError If the `path` value is not set on the
-   * configured parameters.
    *
    * @throws BucketNotFoundError If this bucket or the bucket in which this
    * object container resides no longer exists.
@@ -561,7 +519,6 @@ interface ObjectContainer {
    * 'cause' value.
    */
   @Throws(
-    InvalidRequestConfigError::class,
     BucketNotFoundError::class,
     S34KError::class,
   )
@@ -673,9 +630,6 @@ interface ObjectContainer {
    *
    * @param action Action used to configure the backing S3 operation.
    *
-   * @throws InvalidRequestConfigError If the `path` value is not set on the
-   * configured parameters.
-   *
    * @throws BucketNotFoundError If this bucket or the bucket in which this
    * object container resides no longer exists.
    *
@@ -683,11 +637,7 @@ interface ObjectContainer {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  @Throws(
-    InvalidRequestConfigError::class,
-    BucketNotFoundError::class,
-    S34KError::class,
-  )
+  @Throws(BucketNotFoundError::class, S34KError::class)
   fun touch(path: String, action: ObjectTouchParams.() -> Unit): S3Object
 
   /**
@@ -700,9 +650,6 @@ interface ObjectContainer {
    *
    * @param params Parameters for the backing S3 operation.
    *
-   * @throws InvalidRequestConfigError If the `path` value is not set on the
-   * configured parameters.
-   *
    * @throws BucketNotFoundError If this bucket or the bucket in which this
    * object container resides no longer exists.
    *
@@ -710,11 +657,7 @@ interface ObjectContainer {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  @Throws(
-    InvalidRequestConfigError::class,
-    BucketNotFoundError::class,
-    S34KError::class,
-  )
+  @Throws(BucketNotFoundError::class, S34KError::class)
   fun touch(path: String, params: ObjectTouchParams): S3Object
 
   // endregion Touch
@@ -775,8 +718,8 @@ interface ObjectContainer {
    *
    * @return An [S3Object] instance handle on the target object.
    *
-   * @throws InvalidRequestConfigError If either the `path` value or `stream`
-   * value is not set on the configured parameters.
+   * @throws InvalidRequestConfigError If the `stream` value is not set on the
+   * configured parameters.
    *
    * @throws BucketNotFoundError If this bucket or the bucket in which this
    * object container resides no longer exists.
@@ -800,8 +743,8 @@ interface ObjectContainer {
    *
    * @return An [S3Object] instance handle on the target object.
    *
-   * @throws InvalidRequestConfigError If either the `path` value or `stream`
-   * value is not set on the configured parameters.
+   * @throws InvalidRequestConfigError If the `stream` value is not set on the
+   * configured parameters.
    *
    * @throws BucketNotFoundError If this bucket or the bucket in which this
    * object container resides no longer exists.
@@ -885,8 +828,8 @@ interface ObjectContainer {
    *
    * @return An [S3Object] instance handle on the target object.
    *
-   * @throws InvalidRequestConfigError If either the `path` value or `localFile`
-   * value is not set on the configured parameters.
+   * @throws InvalidRequestConfigError If the `localFile` value is not set on
+   * the configured parameters.
    *
    * @throws FileNotFoundException If the configured local file does not exist.
    *
@@ -913,8 +856,8 @@ interface ObjectContainer {
    *
    * @return An [S3Object] instance handle on the target object.
    *
-   * @throws InvalidRequestConfigError If either the `path` value or `localFile`
-   * value is not set on the configured parameters.
+   * @throws InvalidRequestConfigError If the `localFile` value is not set on
+   * the configured parameters.
    *
    * @throws FileNotFoundException If the configured local file does not exist.
    *
@@ -967,9 +910,6 @@ interface ObjectContainer {
    *
    * @param action Action used to configure the backing S3 operation.
    *
-   * @throws InvalidRequestConfigError If the `path` value  is not set on the
-   * configured parameters.
-   *
    * @throws BucketNotFoundError If this bucket or the bucket in which this
    * object container resides no longer exists.
    *
@@ -977,11 +917,7 @@ interface ObjectContainer {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  @Throws(
-    InvalidRequestConfigError::class,
-    BucketNotFoundError::class,
-    S34KError::class,
-  )
+  @Throws(BucketNotFoundError::class, S34KError::class)
   fun delete(path: String, action: DeleteParams.() -> Unit)
 
   /**
@@ -989,9 +925,6 @@ interface ObjectContainer {
    *
    * @param params Parameters for the backing S3 operation.
    *
-   * @throws InvalidRequestConfigError If the `path` value  is not set on the
-   * configured parameters.
-   *
    * @throws BucketNotFoundError If this bucket or the bucket in which this
    * object container resides no longer exists.
    *
@@ -999,11 +932,7 @@ interface ObjectContainer {
    * The implementation specific exception will be set to the thrown exception's
    * 'cause' value.
    */
-  @Throws(
-    InvalidRequestConfigError::class,
-    BucketNotFoundError::class,
-    S34KError::class,
-  )
+  @Throws(BucketNotFoundError::class, S34KError::class)
   fun delete(path: String, params: DeleteParams)
 
   // endregion Delete Object
@@ -1018,7 +947,9 @@ interface ObjectContainer {
    * @param paths Target paths to delete.
    *
    * @throws MultiObjectDeleteError If one or more of the object deletes in this
-   * operation could not be deleted.
+   * operation could not be deleted.  This does not include errors resulting in
+   * the target objects already having been deleted at the time of this method
+   * call.
    *
    * @throws BucketNotFoundError If this bucket or the bucket in which this
    * object container resides no longer exists.
@@ -1039,7 +970,9 @@ interface ObjectContainer {
    * @param paths Target paths to delete.
    *
    * @throws MultiObjectDeleteError If one or more of the object deletes in this
-   * operation could not be deleted.
+   * operation could not be deleted.  This does not include errors resulting in
+   * the target objects already having been deleted at the time of this method
+   * call.
    *
    * @throws BucketNotFoundError If this bucket or the bucket in which this
    * object container resides no longer exists.
@@ -1060,7 +993,9 @@ interface ObjectContainer {
    * @param action Action used to configure the backing S3 operation.
    *
    * @throws MultiObjectDeleteError If one or more of the object deletes in this
-   * operation could not be deleted.
+   * operation could not be deleted.  This does not include errors resulting in
+   * the target objects already having been deleted at the time of this method
+   * call.
    *
    * @throws BucketNotFoundError If this bucket or the bucket in which this
    * object container resides no longer exists.
@@ -1081,7 +1016,9 @@ interface ObjectContainer {
    * @param params Parameters for the backing S3 operation.
    *
    * @throws MultiObjectDeleteError If one or more of the object deletes in this
-   * operation could not be deleted.
+   * operation could not be deleted.  This does not include errors resulting in
+   * the target objects already having been deleted at the time of this method
+   * call.
    *
    * @throws BucketNotFoundError If this bucket or the bucket in which this
    * object container resides no longer exists.
