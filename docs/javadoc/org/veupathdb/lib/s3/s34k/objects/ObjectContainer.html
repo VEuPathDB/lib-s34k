@@ -1,0 +1,1836 @@
+<!DOCTYPE HTML>
+<!-- NewPage -->
+<html lang="en"><head>
+    <title>ObjectContainer 0.7.0 API </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="dc.created" content="2020-03-25">
+    <link rel="stylesheet" type="text/css" href="../../../../../../stylesheet.css" title="Style">
+    <link rel="stylesheet" type="text/css" href="../../../../../../dokka-javadoc-stylesheet.css" title="Style">
+    <link rel="stylesheet" type="text/css" href="../../../../../../jquery/jquery-ui.css" title="Style">
+    <script type="text/javascript" src="../../../../../../jquery/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="../../../../../../jquery/jquery-migrate-3.0.1.js"></script>
+    <script type="text/javascript" src="../../../../../../jquery/jquery-ui.js"></script>
+
+    <script type="text/javascript" src="../../../../../../search.js"></script>
+    <script async type="text/javascript" src="../../../../../../module-search-index.js"></script>
+    <script async type="text/javascript" src="../../../../../../package-search-index.js"></script>
+    <script async type="text/javascript" src="../../../../../../type-search-index.js"></script>
+    <script async type="text/javascript" src="../../../../../../member-search-index.js"></script>
+    <script async type="text/javascript" src="../../../../../../tag-search-index.js"></script>
+</head><body>
+<script type="text/javascript">
+var pathtoroot = "../../../../../../";
+</script>
+<noscript>
+    <div>JavaScript is disabled on your browser.</div>
+</noscript><header role="banner">
+    <nav role="navigation">
+        <div class="fixedNav">
+            <!-- ========= START OF TOP NAVBAR ======= -->
+            <div class="topNav"><a id="navbar.top">
+                <!--   -->
+            </a>
+                <div class="skipNav"><a href="#skip.navbar.top" title="Skip navigation links">Skip navigation links</a>
+                </div>
+                <a id="navbar.top.firstrow">
+                    <!--   -->
+                </a>
+                <ul class="navList" title="Navigation">
+    <li><a href="../../../../../../index.html">Overview</a></li>
+    
+    <li><a href="package-summary.html">Package</a></li>
+    
+    <li>Class</li>
+    
+    <li><a href="package-tree.html">Tree</a></li>
+    
+    <li><a href="../../../../../../deprecated.html">Deprecated</a></li>
+    <li><a href="../../../../../../index-files/index-1.html">Index</a></li>
+    <li>Help</li>
+</ul></div>
+            <div class="subNav">
+<ul class="navList" id="allclasses_navbar_top" style="display: block;">
+    <li><a href="../../../../../../allclasses.html">All&nbsp;Classes</a></li>
+</ul>
+
+<ul class="navListSearch">
+<li><label for="search">SEARCH:</label>
+<input type="text" id="search" value="search" class="ui-autocomplete-input" autocomplete="off" placeholder="Search">
+<input type="reset" id="reset" value="reset">
+</li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+</div>
+<a id="skip.navbar.top">
+<!--   -->
+</a></div><!-- ========= END OF TOP NAVBAR ========= -->
+        </div>
+        <div class="navPadding">&nbsp;</div>
+        <script type="text/javascript"><!--
+        $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
+        //-->
+        </script>
+    </nav>
+</header>
+
+<main role="main">
+    <div class="header">
+        <div class="subTitle"><span class="packageLabelInType">Package</span>&nbsp;<a href="package-summary.html"></a></div>
+        <h2 title="Interface ObjectContainer" class="title">Interface ObjectContainer</h2>
+    </div>
+    <div class="contentContainer">
+        <!-- <ul class="inheritance">
+            <li>java.lang.Object</li>
+            <li>
+                <ul class="inheritance">
+                    <li>adaptation.Adaptation</li>
+                </ul>
+            </li>
+        </ul> TODO inheritance tree -->
+        <div class="description">
+            <ul class="blockList">
+                <li class="blockList">
+                    
+                    <dl>
+                        <dt>All Implemented Interfaces:</dt>
+                        <dd>
+                            
+                        </dd>
+                    </dl>
+                    
+                    <hr>
+                    <pre class="wrap-overflow">
+
+public interface <span class="typeNameLabel"><a href=ObjectContainer.html>ObjectContainer</a></span>
+
+                    </pre>
+                    <div class="block"><p>Represents a segment of an S3 store that may contain objects.  This could either be a bucket or a 'directory'.</p><p>All paths for all methods defined in this type are treated as relative to the root of the container.  In the case of a bucket, all paths are absolute paths to the bucket root.  In the case of a 'directory', all paths are relative to the directory prefix.  The exception to this is paths starting with a leading '<code>/</code>' character which will be treated as absolute paths in all cases.</p><p>This interface does not define any methods for managing object tags.  To work with object tags use one of the object access methods contained in this type, such as <a href=ObjectContainer.html#withObject(String,Function1)>withObject</a> or <a href=ObjectContainer.html#get(String)>get</a> which will give access to an <a href=S3Object.html>S3Object</a> instance without opening a stream over that object's contents.</p><p>Example:</p><pre><code>container.withObject("my/object") {
+  tags.put("something", "something else")
+}
+
+container["my/object"].tags.put("something", "something else")</code></pre><p>TODO: Handle delete markers TODO: Version IDs TODO: Governance Mode</p></div>
+                </li>
+            </ul>
+        </div>
+        <div class="summary">
+            <ul class="blockList">
+                <li class="blockList">
+                <!-- ======== NESTED CLASS SUMMARY ======== -->
+                    
+                    <section role="region">
+                        <ul class="blockList">
+                            <li class="blockList"><a id="nested.class.summary">
+                                <!--   -->
+                            </a>
+                                <h3>Nested Class Summary</h3>
+                                <div class="memberSummary">
+                                    <table>
+                                        <caption><span>Nested Classes</span><span class="tabEnd">&nbsp;</span></caption>
+                                        <tr>
+                                            <th class="colFirst" scope="col">Modifier and Type</th>
+                                            <th class="colSecond" scope="col">Class</th>
+                                            <th class="colLast" scope="col">Description</th>
+                                        </tr>
+                                        
+                                    </table>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+                    
+                    <!-- =========== FIELD SUMMARY =========== -->
+                    
+                    <section role="region">
+                        <ul class="blockList">
+                            <li class="blockList"><a id="field.summary">
+                                <!--   -->
+                            </a>
+                                <h3>Field Summary</h3>
+                                <div class="memberSummary">
+                                    <table>
+                                        <caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
+                                        <tr>
+                                            <th class="colFirst" scope="col">Modifier and Type</th>
+                                            <th class="colSecond" scope="col">Field</th>
+                                            <th class="colLast" scope="col">Description</th>
+                                        </tr>
+                                        
+                                    </table>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+                    
+                    <!-- ======== CONSTRUCTOR SUMMARY ======== -->
+                    
+                    <section role="region">
+                        <ul class="blockList">
+                            <li class="blockList"><a id="constructor.summary">
+                                <!--   -->
+                            </a>
+                                <h3>Constructor Summary</h3>
+                                <div class="memberSummary">
+                                    <table>
+                                        <caption><span>Constructors</span><span class="tabEnd">&nbsp;</span></caption>
+                                        <tbody>
+                                        <tr>
+                                            <th class="colFirst" scope="col">Constructor</th>
+                                            <th class="colLast" scope="col">Description</th>
+                                        </tr>
+
+                                        
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+                    
+                    <!-- =========== ENUM CONSTANT SUMMARY =========== -->
+                    
+                    <section role="region">
+                        <ul class="blockList">
+                            <li class="blockList"><a id="enum.constant.summary">
+                                <!--   -->
+                            </a>
+                                <h3>Enum Constant Summary</h3>
+                                <table class="memberSummary">
+                                    <caption><span>Enum Constants</span><span class="tabEnd">&nbsp;</span></caption>
+                                    <tr>
+                                        <th class="colFirst" scope="col">Enum Constant</th>
+                                        <th class="colLast" scope="col">Description</th>
+                                    </tr>
+                                    
+                                </table>
+                            </li>
+                        </ul>
+                    </section>
+                    
+                    <!-- ========== METHOD SUMMARY =========== -->
+                    
+                    <section role="region">
+                        <ul class="blockList">
+                            <li class="blockList"><a id="method.summary">
+                                <!--   -->
+                            </a>
+                                <h3>Method Summary</h3>
+                                <div class="memberSummary">
+                                    <div role="tablist" aria-orientation="horizontal">
+                                        <button role="tab" aria-selected="true" aria-controls="memberSummary_tabpanel" tabindex="0" onkeydown="switchTab(event)" id="t0" class="activeTableTab">All Methods</button>
+                                        <!-- TODO: Instance and Concrete Methods #1118 -->
+                                    </div>
+                                    <div id="memberSummary_tabpanel" role="tabpanel">
+                                    <table aria-labelledby="t0">
+                                        <tr>
+                                            <th class="colFirst" scope="col">Modifier and Type</th>
+                                            <th class="colSecond" scope="col">Method</th>
+                                            <th class="colLast" scope="col">Description</th>
+                                        </tr>
+                                        
+                                        <tr id="i0" class="altColor">
+                                            <td class="colFirst"><code>abstract &lt;R extends <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html>Any</a>&gt; <a href=ObjectContainer.html#withObject(String,Function1)>R</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ObjectContainer.html#withObject(String,Function1)>withObject</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, Function1&lt;<a href=S3Object.html>S3Object</a>, <a href=ObjectContainer.html#withObject(String,Function1)>R</a>&gt; action) </code>
+                                            </th>
+                                            <td class="colLast">Executes the given action on the target object.</td>
+                                        </tr>
+                                        
+                                        <tr id="i1" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ObjectContainer.html#contains(String)>contains</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path) </code>
+                                            </th>
+                                            <td class="colLast">Tests whether this object container contains an object at the given <a href=ObjectContainer.html#contains(String)>path</a>.</td>
+                                        </tr>
+                                        
+                                        <tr id="i2" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ObjectContainer.html#contains(String,Function1)>contains</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, Function1&lt;<a href=../params/object/ObjectExistsParams.html>ObjectExistsParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action) </code>
+                                            </th>
+                                            <td class="colLast">Tests whether this object container contains an object at the configured target path.</td>
+                                        </tr>
+                                        
+                                        <tr id="i3" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ObjectContainer.html#contains(String,ObjectExistsParams)>contains</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, <a href=../params/object/ObjectExistsParams.html>ObjectExistsParams</a> params) </code>
+                                            </th>
+                                            <td class="colLast">Tests whether this object container contains an object at the configured target path.</td>
+                                        </tr>
+                                        
+                                        <tr id="i4" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-u-int/index.html>UInt</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ObjectContainer.html#countAll(String)>countAll</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> pathPrefix) </code>
+                                            </th>
+                                            <td class="colLast">Returns a count of all the objects in this object container, optionally filtered by a given path prefix.</td>
+                                        </tr>
+                                        
+                                        <tr id="i5" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-u-int/index.html>UInt</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ObjectContainer.html#countAll(Function1)>countAll</a>(Function1&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a>&gt; filter) </code>
+                                            </th>
+                                            <td class="colLast">Returns a count of all the objects in this object container, filtered by the given predicate function.</td>
+                                        </tr>
+                                        
+                                        <tr id="i6" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-u-int/index.html>UInt</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ObjectContainer.html#countSubDirs(String)>countSubDirs</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> parent) </code>
+                                            </th>
+                                            <td class="colLast">Returns a count of first level subdirectories directly under the given <a href=ObjectContainer.html#countSubDirs(String)>parent</a> directory name.</td>
+                                        </tr>
+                                        
+                                        <tr id="i7" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=S3Object.html>S3Object</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ObjectContainer.html#get(String)>get</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path) </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i8" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=S3Object.html>S3Object</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ObjectContainer.html#get(String,Function1)>get</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, Function1&lt;<a href=../params/object/ObjectGetParams.html>ObjectGetParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action) </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i9" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=S3Object.html>S3Object</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ObjectContainer.html#get(String,ObjectGetParams)>get</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, <a href=../params/object/ObjectGetParams.html>ObjectGetParams</a> params) </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i10" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=StreamObject.html>StreamObject</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ObjectContainer.html#open(String)>open</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path) </code>
+                                            </th>
+                                            <td class="colLast">Fetches the object at the target path and returns a handle on it which can be used to stream out the target object's contents.</td>
+                                        </tr>
+                                        
+                                        <tr id="i11" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=StreamObject.html>StreamObject</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ObjectContainer.html#open(String,Function1)>open</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, Function1&lt;<a href=../params/object/ObjectOpenParams.html>ObjectOpenParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action) </code>
+                                            </th>
+                                            <td class="colLast">Fetches the configured target object and returns a handle on it which can be used to stream out the target object's contents.</td>
+                                        </tr>
+                                        
+                                        <tr id="i12" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=StreamObject.html>StreamObject</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ObjectContainer.html#open(String,ObjectOpenParams)>open</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, <a href=../params/object/ObjectOpenParams.html>ObjectOpenParams</a> params) </code>
+                                            </th>
+                                            <td class="colLast">Fetches the configured target object and returns a handle on it which can be used to stream out the target object's contents.</td>
+                                        </tr>
+                                        
+                                        <tr id="i13" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=FileObject.html>FileObject</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ObjectContainer.html#download(String,File)>download</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, <a href=https://docs.oracle.com/javase/8/docs/api/java/io/File.html>File</a> localFile) </code>
+                                            </th>
+                                            <td class="colLast">Fetches the object at the target path and downloads it into the specified local file.</td>
+                                        </tr>
+                                        
+                                        <tr id="i14" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=FileObject.html>FileObject</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ObjectContainer.html#download(String,Function1)>download</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, Function1&lt;<a href=../params/object/ObjectDownloadParams.html>ObjectDownloadParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action) </code>
+                                            </th>
+                                            <td class="colLast">Fetches the object at the configured path and downloads it into the target local file.</td>
+                                        </tr>
+                                        
+                                        <tr id="i15" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=FileObject.html>FileObject</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ObjectContainer.html#download(String,ObjectDownloadParams)>download</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, <a href=../params/object/ObjectDownloadParams.html>ObjectDownloadParams</a> params) </code>
+                                            </th>
+                                            <td class="colLast">Fetches the object at the configured path and downloads it into the target local file.</td>
+                                        </tr>
+                                        
+                                        <tr id="i16" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=ObjectMeta.html>ObjectMeta</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ObjectContainer.html#stat(String)>stat</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path) </code>
+                                            </th>
+                                            <td class="colLast">Fetches metadata for the object at the target path.</td>
+                                        </tr>
+                                        
+                                        <tr id="i17" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=ObjectMeta.html>ObjectMeta</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ObjectContainer.html#stat(String,Function1)>stat</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, Function1&lt;<a href=../params/object/ObjectStatParams.html>ObjectStatParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action) </code>
+                                            </th>
+                                            <td class="colLast">Fetches metadata for the object at the target path.</td>
+                                        </tr>
+                                        
+                                        <tr id="i18" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=ObjectMeta.html>ObjectMeta</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ObjectContainer.html#stat(String,ObjectStatParams)>stat</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, <a href=../params/object/ObjectStatParams.html>ObjectStatParams</a> params) </code>
+                                            </th>
+                                            <td class="colLast">Fetches metadata for the object at the target path.</td>
+                                        </tr>
+                                        
+                                        <tr id="i19" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=ObjectList.html>ObjectList</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ObjectContainer.html#listAll()>listAll</a>() </code>
+                                            </th>
+                                            <td class="colLast">Fetches a list of all the objects in this container.</td>
+                                        </tr>
+                                        
+                                        <tr id="i20" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=ObjectList.html>ObjectList</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ObjectContainer.html#listAll(Function1)>listAll</a>(Function1&lt;<a href=../params/object/ObjectListAllParams.html>ObjectListAllParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action) </code>
+                                            </th>
+                                            <td class="colLast">Fetches a list of all the objects in this container.</td>
+                                        </tr>
+                                        
+                                        <tr id="i21" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=ObjectList.html>ObjectList</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ObjectContainer.html#listAll(ObjectListAllParams)>listAll</a>(<a href=../params/object/ObjectListAllParams.html>ObjectListAllParams</a> params) </code>
+                                            </th>
+                                            <td class="colLast">Fetches a list of all the objects in this container.</td>
+                                        </tr>
+                                        
+                                        <tr id="i22" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=ObjectList.html>ObjectList</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ObjectContainer.html#list(String)>list</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> prefix) </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i23" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=ObjectList.html>ObjectList</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ObjectContainer.html#list(Function1)>list</a>(Function1&lt;<a href=../params/object/ObjectListParams.html>ObjectListParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action) </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i24" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=ObjectList.html>ObjectList</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ObjectContainer.html#list(ObjectListParams)>list</a>(<a href=../params/object/ObjectListParams.html>ObjectListParams</a> params) </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i25" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=S3Object.html>S3Object</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ObjectContainer.html#touch(String)>touch</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path) </code>
+                                            </th>
+                                            <td class="colLast">Creates an empty object at the specified path if one does not already exist.</td>
+                                        </tr>
+                                        
+                                        <tr id="i26" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=S3Object.html>S3Object</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ObjectContainer.html#touch(String,Function1)>touch</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, Function1&lt;<a href=../params/object/touch/ObjectTouchParams.html>ObjectTouchParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action) </code>
+                                            </th>
+                                            <td class="colLast">Creates an empty object at the specified path if one does not already exist.</td>
+                                        </tr>
+                                        
+                                        <tr id="i27" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=S3Object.html>S3Object</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ObjectContainer.html#touch(String,ObjectTouchParams)>touch</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, <a href=../params/object/touch/ObjectTouchParams.html>ObjectTouchParams</a> params) </code>
+                                            </th>
+                                            <td class="colLast">Creates an empty object at the specified path if one does not already exist.</td>
+                                        </tr>
+                                        
+                                        <tr id="i28" class="altColor">
+                                            <td class="colFirst"><code><a href=S3Object.html>S3Object</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ObjectContainer.html#set(String,InputStream)>set</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, <a href=https://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html>InputStream</a> stream) </code>
+                                            </th>
+                                            <td class="colLast">Creates or overwrites an object at the specified path with its contents uploaded from the given stream.</td>
+                                        </tr>
+                                        
+                                        <tr id="i29" class="rowColor">
+                                            <td class="colFirst"><code><a href=S3Object.html>S3Object</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ObjectContainer.html#set(String,File)>set</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, <a href=https://docs.oracle.com/javase/8/docs/api/java/io/File.html>File</a> file) </code>
+                                            </th>
+                                            <td class="colLast">Uploads the specified file to this container at the given path, overwriting any object presently at that path.</td>
+                                        </tr>
+                                        
+                                        <tr id="i30" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=S3Object.html>S3Object</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ObjectContainer.html#put(String,InputStream)>put</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, <a href=https://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html>InputStream</a> stream) </code>
+                                            </th>
+                                            <td class="colLast">Creates or overwrites an object at the specified path with its contents uploaded from the given stream.</td>
+                                        </tr>
+                                        
+                                        <tr id="i31" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=S3Object.html>S3Object</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ObjectContainer.html#put(String,Function1)>put</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, Function1&lt;<a href=../params/object/StreamingObjectPutParams.html>StreamingObjectPutParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action) </code>
+                                            </th>
+                                            <td class="colLast">Creates or overwrites an object at the configured path with its contents uploaded from the configured stream.</td>
+                                        </tr>
+                                        
+                                        <tr id="i32" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=S3Object.html>S3Object</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ObjectContainer.html#put(String,StreamingObjectPutParams)>put</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, <a href=../params/object/StreamingObjectPutParams.html>StreamingObjectPutParams</a> params) </code>
+                                            </th>
+                                            <td class="colLast">Creates or overwrites an object at the configured path with its contents uploaded from the configured stream.</td>
+                                        </tr>
+                                        
+                                        <tr id="i33" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=S3Object.html>S3Object</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ObjectContainer.html#upload(String,File)>upload</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, <a href=https://docs.oracle.com/javase/8/docs/api/java/io/File.html>File</a> file) </code>
+                                            </th>
+                                            <td class="colLast">Uploads the specified file to this container at the given path, overwriting any object presently at that path.</td>
+                                        </tr>
+                                        
+                                        <tr id="i34" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=S3Object.html>S3Object</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ObjectContainer.html#upload(String,Function1)>upload</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, Function1&lt;<a href=../params/object/FileUploadParams.html>FileUploadParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action) </code>
+                                            </th>
+                                            <td class="colLast">Uploads the configured file to this container at the configured path, overwriting any object presently at that path.</td>
+                                        </tr>
+                                        
+                                        <tr id="i35" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=S3Object.html>S3Object</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ObjectContainer.html#upload(String,FileUploadParams)>upload</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, <a href=../params/object/FileUploadParams.html>FileUploadParams</a> params) </code>
+                                            </th>
+                                            <td class="colLast">Uploads the configured file to this container at the configured path, overwriting any object presently at that path.</td>
+                                        </tr>
+                                        
+                                        <tr id="i36" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ObjectContainer.html#delete(String)>delete</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path) </code>
+                                            </th>
+                                            <td class="colLast">Deletes the object at the target path from this container.</td>
+                                        </tr>
+                                        
+                                        <tr id="i37" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ObjectContainer.html#delete(String,Function1)>delete</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, Function1&lt;<a href=../params/DeleteParams.html>DeleteParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action) </code>
+                                            </th>
+                                            <td class="colLast">Deletes the object at the target path from this container.</td>
+                                        </tr>
+                                        
+                                        <tr id="i38" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ObjectContainer.html#delete(String,DeleteParams)>delete</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, <a href=../params/DeleteParams.html>DeleteParams</a> params) </code>
+                                            </th>
+                                            <td class="colLast">Deletes the object at the target path from this container.</td>
+                                        </tr>
+                                        
+                                        <tr id="i39" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ObjectContainer.html#deleteAll(String)>deleteAll</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> paths) </code>
+                                            </th>
+                                            <td class="colLast">Deletes all the given target objects from this container.</td>
+                                        </tr>
+                                        
+                                        <tr id="i40" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ObjectContainer.html#deleteAll(Iterable)>deleteAll</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html>Iterable</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>&gt; paths) </code>
+                                            </th>
+                                            <td class="colLast">Deletes all the given target objects from this container.</td>
+                                        </tr>
+                                        
+                                        <tr id="i41" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ObjectContainer.html#deleteAll(Function1)>deleteAll</a>(Function1&lt;<a href=../params/object/multi/MultiObjectDeleteParams.html>MultiObjectDeleteParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action) </code>
+                                            </th>
+                                            <td class="colLast">Deletes all the given target objects from this container.</td>
+                                        </tr>
+                                        
+                                        <tr id="i42" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ObjectContainer.html#deleteAll(MultiObjectDeleteParams)>deleteAll</a>(<a href=../params/object/multi/MultiObjectDeleteParams.html>MultiObjectDeleteParams</a> params) </code>
+                                            </th>
+                                            <td class="colLast">Deletes all the given target objects from this container.</td>
+                                        </tr>
+                                        
+                                        <tr id="i43" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ObjectContainer.html#rmdir(String)>rmdir</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path) </code>
+                                            </th>
+                                            <td class="colLast">Recursively removes all contents in the target directory.</td>
+                                        </tr>
+                                        
+                                        <tr id="i44" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ObjectContainer.html#rmdir(String,Function1)>rmdir</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, Function1&lt;<a href=../params/object/directory/DirectoryDeleteParams.html>DirectoryDeleteParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action) </code>
+                                            </th>
+                                            <td class="colLast">Recursively removes all contents in the target directory.</td>
+                                        </tr>
+                                        
+                                        <tr id="i45" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ObjectContainer.html#rmdir(String,DirectoryDeleteParams)>rmdir</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, <a href=../params/object/directory/DirectoryDeleteParams.html>DirectoryDeleteParams</a> params) </code>
+                                            </th>
+                                            <td class="colLast">Recursively removes all contents in the target directory.</td>
+                                        </tr>
+                                        
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <ul class="blockList">
+                                
+                                    <li class="blockList"><a id="methods.inherited.from.class.java.lang.Object">
+                                        <!--   -->
+                                    </a>
+                                        <h3>Methods inherited from class&nbsp;java.lang.Object</h3>
+                                        <code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, toString,
+                                            wait, wait, wait</code></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+                    
+                </li>
+            </ul>
+        </div>
+        <div class="details">
+            <ul class="blockList">
+                <li class="blockList">
+                    <!-- ========= CONSTRUCTOR DETAIL ======== -->
+                    
+                    <section role="region">
+                        <ul class="blockList">
+                            <li class="blockList"><a id="constructor.detail">
+                                <!--   -->
+                            </a>
+                                <h3>Constructor Detail</h3>
+                                
+                            </li>
+                        </ul>
+                    </section>
+                    
+                    <!-- ============ METHOD DETAIL ========== -->
+                    
+                    <section role="region">
+                        <ul class="blockList">
+                            <li class="blockList"><a id="method.detail">
+                                <!--   -->
+                            </a>
+                                <h3>Method Detail</h3>
+                                
+                                <a id="withObject(String,Function1)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>withObject</h4>
+                                        <pre class="methodSignature"> abstract &lt;R extends <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html>Any</a>&gt; <a href=ObjectContainer.html#withObject(String,Function1)>R</a> <a href=ObjectContainer.html#withObject(String,Function1)>withObject</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, Function1&lt;<a href=S3Object.html>S3Object</a>, <a href=ObjectContainer.html#withObject(String,Function1)>R</a>&gt; action)</pre>
+                                        <div class="block"><p>Executes the given action on the target object.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>path</code> - Path/key to the target object.</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>action</code> - Action that will be called on the <a href=S3Object.html>S3Object</a> handle on the target object.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="contains(String)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>contains</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a> <a href=ObjectContainer.html#contains(String)>contains</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path)</pre>
+                                        <div class="block"><p>Tests whether this object container contains an object at the given <a href=ObjectContainer.html#contains(String)>path</a>.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>path</code> - Path to the object to test for.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="contains(String,Function1)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>contains</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a> <a href=ObjectContainer.html#contains(String,Function1)>contains</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, Function1&lt;<a href=../params/object/ObjectExistsParams.html>ObjectExistsParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action)</pre>
+                                        <div class="block"><p>Tests whether this object container contains an object at the configured target path.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            
+                                            
+                                            <dd><code>action</code> - Action used to configure the backing S3 operation.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="contains(String,ObjectExistsParams)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>contains</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a> <a href=ObjectContainer.html#contains(String,ObjectExistsParams)>contains</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, <a href=../params/object/ObjectExistsParams.html>ObjectExistsParams</a> params)</pre>
+                                        <div class="block"><p>Tests whether this object container contains an object at the configured target path.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            
+                                            
+                                            <dd><code>params</code> - Parameters for the backing S3 operation.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="countAll(String)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>countAll</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-u-int/index.html>UInt</a> <a href=ObjectContainer.html#countAll(String)>countAll</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> pathPrefix)</pre>
+                                        <div class="block"><p>Returns a count of all the objects in this object container, optionally filtered by a given path prefix.</p><p>If no path prefix is provided, all paths in this object container will be counted regardless of nested directory depth.</p><p>If a path prefix is provided, only paths in this object container whose path name begins with <a href=ObjectContainer.html#countAll(String)>pathPrefix</a> will be counted.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>pathPrefix</code> - Optional filtering prefix.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="countAll(Function1)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>countAll</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-u-int/index.html>UInt</a> <a href=ObjectContainer.html#countAll(Function1)>countAll</a>(Function1&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a>&gt; filter)</pre>
+                                        <div class="block"><p>Returns a count of all the objects in this object container, filtered by the given predicate function.</p><p>The given predicate function will be given each path individually, only those paths on which the predicate returns <code>true</code> will be counted.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>filter</code> - Predicate that will be used to determine which paths to count and which not to.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="countSubDirs(String)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>countSubDirs</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-u-int/index.html>UInt</a> <a href=ObjectContainer.html#countSubDirs(String)>countSubDirs</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> parent)</pre>
+                                        <div class="block"><p>Returns a count of first level subdirectories directly under the given <a href=ObjectContainer.html#countSubDirs(String)>parent</a> directory name.</p><p>Examples</p><p>For these examples our object container is a bucket named "my-bucket".</p><p>Given contents of "my-bucket":</p><pre><code>/foo/bar.txt
+/bazz.txt
+/fizz/buzz/flamingo.txt
+/fizz/buzz/grapes.png</code></pre><p>If we run the command:</p><pre><code>container.countSubDirs()</code></pre><p>The result will be <code>2</code>, as at the root of the container the direct subdirectories are <code>my-bucket/foo/</code> and <code>my-bucket/fizz/</code>.</p><p>If we run the command:</p><pre><code>container.countSubDirs("foo")</code></pre><p>The result will be <code>0</code> as the path <code>my-bucket/foo/</code> contains no direct subdirectories.</p><p>If we run the command:</p><pre><code>container.countSubDirs("fizz")</code></pre><p>The result will be <code>1</code> as the path <code>my-bucket/fizz/</code> contains the direct subdirectory <code>./buzz/</code></p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>parent</code> - Name of the parent directory under which the subdirectories will be listed.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="get(String)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>get</h4>
+                                        <pre class="methodSignature"> abstract <a href=S3Object.html>S3Object</a> <a href=ObjectContainer.html#get(String)>get</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path)</pre>
+                                        <div class="block"></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="get(String,Function1)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>get</h4>
+                                        <pre class="methodSignature"> abstract <a href=S3Object.html>S3Object</a> <a href=ObjectContainer.html#get(String,Function1)>get</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, Function1&lt;<a href=../params/object/ObjectGetParams.html>ObjectGetParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action)</pre>
+                                        <div class="block"></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="get(String,ObjectGetParams)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>get</h4>
+                                        <pre class="methodSignature"> abstract <a href=S3Object.html>S3Object</a> <a href=ObjectContainer.html#get(String,ObjectGetParams)>get</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, <a href=../params/object/ObjectGetParams.html>ObjectGetParams</a> params)</pre>
+                                        <div class="block"></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="open(String)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>open</h4>
+                                        <pre class="methodSignature"> abstract <a href=StreamObject.html>StreamObject</a> <a href=ObjectContainer.html#open(String)>open</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path)</pre>
+                                        <div class="block"><p>Fetches the object at the target path and returns a handle on it which can be used to stream out the target object's contents.</p><p>If the target path does not exist, or is a directory, <code>null</code> will be returned.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>path</code> - Path to the target object.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="open(String,Function1)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>open</h4>
+                                        <pre class="methodSignature"> abstract <a href=StreamObject.html>StreamObject</a> <a href=ObjectContainer.html#open(String,Function1)>open</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, Function1&lt;<a href=../params/object/ObjectOpenParams.html>ObjectOpenParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action)</pre>
+                                        <div class="block"><p>Fetches the configured target object and returns a handle on it which can be used to stream out the target object's contents.</p><p>If the target path does not exist, or is a directory, <code>null</code> will be returned.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            
+                                            
+                                            <dd><code>action</code> - Action used to configure the backing S3 operation.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="open(String,ObjectOpenParams)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>open</h4>
+                                        <pre class="methodSignature"> abstract <a href=StreamObject.html>StreamObject</a> <a href=ObjectContainer.html#open(String,ObjectOpenParams)>open</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, <a href=../params/object/ObjectOpenParams.html>ObjectOpenParams</a> params)</pre>
+                                        <div class="block"><p>Fetches the configured target object and returns a handle on it which can be used to stream out the target object's contents.</p><p>If the target path does not exist, or is a directory, <code>null</code> will be returned.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            
+                                            
+                                            <dd><code>params</code> - Parameters for the backing S3 operation.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="download(String,File)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>download</h4>
+                                        <pre class="methodSignature"> abstract <a href=FileObject.html>FileObject</a> <a href=ObjectContainer.html#download(String,File)>download</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, <a href=https://docs.oracle.com/javase/8/docs/api/java/io/File.html>File</a> localFile)</pre>
+                                        <div class="block"><p>Fetches the object at the target path and downloads it into the specified local file.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>path</code> - Path to the target object to download.</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>localFile</code> - Target local file into which the object's content will be downloaded.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="download(String,Function1)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>download</h4>
+                                        <pre class="methodSignature"> abstract <a href=FileObject.html>FileObject</a> <a href=ObjectContainer.html#download(String,Function1)>download</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, Function1&lt;<a href=../params/object/ObjectDownloadParams.html>ObjectDownloadParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action)</pre>
+                                        <div class="block"><p>Fetches the object at the configured path and downloads it into the target local file.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            
+                                            
+                                            <dd><code>action</code> - Action used to configure the backing S3 operation.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="download(String,ObjectDownloadParams)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>download</h4>
+                                        <pre class="methodSignature"> abstract <a href=FileObject.html>FileObject</a> <a href=ObjectContainer.html#download(String,ObjectDownloadParams)>download</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, <a href=../params/object/ObjectDownloadParams.html>ObjectDownloadParams</a> params)</pre>
+                                        <div class="block"><p>Fetches the object at the configured path and downloads it into the target local file.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            
+                                            
+                                            <dd><code>params</code> - Parameters for the backing S3 operation.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="stat(String)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>stat</h4>
+                                        <pre class="methodSignature"> abstract <a href=ObjectMeta.html>ObjectMeta</a> <a href=ObjectContainer.html#stat(String)>stat</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path)</pre>
+                                        <div class="block"><p>Fetches metadata for the object at the target path.</p><p>If the target object does not exist, <code>null</code> will be returned.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>path</code> - Path to the target object whose metadata should be returned.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="stat(String,Function1)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>stat</h4>
+                                        <pre class="methodSignature"> abstract <a href=ObjectMeta.html>ObjectMeta</a> <a href=ObjectContainer.html#stat(String,Function1)>stat</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, Function1&lt;<a href=../params/object/ObjectStatParams.html>ObjectStatParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action)</pre>
+                                        <div class="block"><p>Fetches metadata for the object at the target path.</p><p>If the target object does not exist, <code>null</code> will be returned.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>path</code> - Path to the target object whose metadata should be returned.</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>action</code> - Action used to configure the backing S3 operation.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="stat(String,ObjectStatParams)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>stat</h4>
+                                        <pre class="methodSignature"> abstract <a href=ObjectMeta.html>ObjectMeta</a> <a href=ObjectContainer.html#stat(String,ObjectStatParams)>stat</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, <a href=../params/object/ObjectStatParams.html>ObjectStatParams</a> params)</pre>
+                                        <div class="block"><p>Fetches metadata for the object at the target path.</p><p>If the target object does not exist, <code>null</code> will be returned.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>path</code> - Path to the target object whose metadata should be returned.</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>params</code> - Parameters for the backing S3 operation.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="listAll()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>listAll</h4>
+                                        <pre class="methodSignature"> abstract <a href=ObjectList.html>ObjectList</a> <a href=ObjectContainer.html#listAll()>listAll</a>()</pre>
+                                        <div class="block"><p>Fetches a list of all the objects in this container.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="listAll(Function1)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>listAll</h4>
+                                        <pre class="methodSignature"> abstract <a href=ObjectList.html>ObjectList</a> <a href=ObjectContainer.html#listAll(Function1)>listAll</a>(Function1&lt;<a href=../params/object/ObjectListAllParams.html>ObjectListAllParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action)</pre>
+                                        <div class="block"><p>Fetches a list of all the objects in this container.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>action</code> - Action used to configure the backing S3 operation.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="listAll(ObjectListAllParams)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>listAll</h4>
+                                        <pre class="methodSignature"> abstract <a href=ObjectList.html>ObjectList</a> <a href=ObjectContainer.html#listAll(ObjectListAllParams)>listAll</a>(<a href=../params/object/ObjectListAllParams.html>ObjectListAllParams</a> params)</pre>
+                                        <div class="block"><p>Fetches a list of all the objects in this container.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>params</code> - Parameters for the backing S3 operation.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="list(String)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>list</h4>
+                                        <pre class="methodSignature"> abstract <a href=ObjectList.html>ObjectList</a> <a href=ObjectContainer.html#list(String)>list</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> prefix)</pre>
+                                        <div class="block"></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="list(Function1)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>list</h4>
+                                        <pre class="methodSignature"> abstract <a href=ObjectList.html>ObjectList</a> <a href=ObjectContainer.html#list(Function1)>list</a>(Function1&lt;<a href=../params/object/ObjectListParams.html>ObjectListParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action)</pre>
+                                        <div class="block"></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="list(ObjectListParams)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>list</h4>
+                                        <pre class="methodSignature"> abstract <a href=ObjectList.html>ObjectList</a> <a href=ObjectContainer.html#list(ObjectListParams)>list</a>(<a href=../params/object/ObjectListParams.html>ObjectListParams</a> params)</pre>
+                                        <div class="block"></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="touch(String)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>touch</h4>
+                                        <pre class="methodSignature"> abstract <a href=S3Object.html>S3Object</a> <a href=ObjectContainer.html#touch(String)>touch</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path)</pre>
+                                        <div class="block"><p>Creates an empty object at the specified path if one does not already exist.</p><p>Unlike the other object put methods, if an object already exists at the given path it will not be overwritten, in that case this method will do nothing.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>path</code> - Path/key for the empty object to create.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="touch(String,Function1)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>touch</h4>
+                                        <pre class="methodSignature"> abstract <a href=S3Object.html>S3Object</a> <a href=ObjectContainer.html#touch(String,Function1)>touch</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, Function1&lt;<a href=../params/object/touch/ObjectTouchParams.html>ObjectTouchParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action)</pre>
+                                        <div class="block"><p>Creates an empty object at the specified path if one does not already exist.</p><p>Unlike the other object put methods, if an object already exists at the given path it will not be overwritten, in that case this method will do nothing.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            
+                                            
+                                            <dd><code>action</code> - Action used to configure the backing S3 operation.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="touch(String,ObjectTouchParams)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>touch</h4>
+                                        <pre class="methodSignature"> abstract <a href=S3Object.html>S3Object</a> <a href=ObjectContainer.html#touch(String,ObjectTouchParams)>touch</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, <a href=../params/object/touch/ObjectTouchParams.html>ObjectTouchParams</a> params)</pre>
+                                        <div class="block"><p>Creates an empty object at the specified path if one does not already exist.</p><p>Unlike the other object put methods, if an object already exists at the given path it will not be overwritten, in that case this method will do nothing.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            
+                                            
+                                            <dd><code>params</code> - Parameters for the backing S3 operation.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="set(String,InputStream)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>set</h4>
+                                        <pre class="methodSignature"> <a href=S3Object.html>S3Object</a> <a href=ObjectContainer.html#set(String,InputStream)>set</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, <a href=https://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html>InputStream</a> stream)</pre>
+                                        <div class="block"><p>Creates or overwrites an object at the specified path with its contents uploaded from the given stream.</p><p>This method is a Kotlin syntax extra that is an alias for <a href=ObjectContainer.html#put(String,InputStream)>put</a>.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>path</code> - Path to the new object to create.</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>stream</code> - Stream whose contents will be written to the object in the store at the given path.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="set(String,File)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>set</h4>
+                                        <pre class="methodSignature"> <a href=S3Object.html>S3Object</a> <a href=ObjectContainer.html#set(String,File)>set</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, <a href=https://docs.oracle.com/javase/8/docs/api/java/io/File.html>File</a> file)</pre>
+                                        <div class="block"><p>Uploads the specified file to this container at the given path, overwriting any object presently at that path.</p><p>This method is a Kotlin syntax extra that is an alias for <a href=ObjectContainer.html#upload(String,File)>upload</a>.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>path</code> - Path to the object to create/overwrite in this container.</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>file</code> - Local file to upload.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="put(String,InputStream)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>put</h4>
+                                        <pre class="methodSignature"> abstract <a href=S3Object.html>S3Object</a> <a href=ObjectContainer.html#put(String,InputStream)>put</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, <a href=https://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html>InputStream</a> stream)</pre>
+                                        <div class="block"><p>Creates or overwrites an object at the specified path with its contents uploaded from the given stream.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>path</code> - Path to the new object to create.</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>stream</code> - Stream whose contents will be written to the object in the store at the given path.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="put(String,Function1)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>put</h4>
+                                        <pre class="methodSignature"> abstract <a href=S3Object.html>S3Object</a> <a href=ObjectContainer.html#put(String,Function1)>put</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, Function1&lt;<a href=../params/object/StreamingObjectPutParams.html>StreamingObjectPutParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action)</pre>
+                                        <div class="block"><p>Creates or overwrites an object at the configured path with its contents uploaded from the configured stream.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            
+                                            
+                                            <dd><code>action</code> - Action used to configure the backing S3 operation.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="put(String,StreamingObjectPutParams)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>put</h4>
+                                        <pre class="methodSignature"> abstract <a href=S3Object.html>S3Object</a> <a href=ObjectContainer.html#put(String,StreamingObjectPutParams)>put</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, <a href=../params/object/StreamingObjectPutParams.html>StreamingObjectPutParams</a> params)</pre>
+                                        <div class="block"><p>Creates or overwrites an object at the configured path with its contents uploaded from the configured stream.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            
+                                            
+                                            <dd><code>params</code> - Parameters for the backing S3 operation.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="upload(String,File)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>upload</h4>
+                                        <pre class="methodSignature"> abstract <a href=S3Object.html>S3Object</a> <a href=ObjectContainer.html#upload(String,File)>upload</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, <a href=https://docs.oracle.com/javase/8/docs/api/java/io/File.html>File</a> file)</pre>
+                                        <div class="block"><p>Uploads the specified file to this container at the given path, overwriting any object presently at that path.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>path</code> - Path to the object to create/overwrite in this container.</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>file</code> - Local file to upload.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="upload(String,Function1)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>upload</h4>
+                                        <pre class="methodSignature"> abstract <a href=S3Object.html>S3Object</a> <a href=ObjectContainer.html#upload(String,Function1)>upload</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, Function1&lt;<a href=../params/object/FileUploadParams.html>FileUploadParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action)</pre>
+                                        <div class="block"><p>Uploads the configured file to this container at the configured path, overwriting any object presently at that path.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            
+                                            
+                                            <dd><code>action</code> - Action used to configure the backing S3 operation.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="upload(String,FileUploadParams)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>upload</h4>
+                                        <pre class="methodSignature"> abstract <a href=S3Object.html>S3Object</a> <a href=ObjectContainer.html#upload(String,FileUploadParams)>upload</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, <a href=../params/object/FileUploadParams.html>FileUploadParams</a> params)</pre>
+                                        <div class="block"><p>Uploads the configured file to this container at the configured path, overwriting any object presently at that path.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            
+                                            
+                                            <dd><code>params</code> - Parameters for the backing S3 operation.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="delete(String)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>delete</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=ObjectContainer.html#delete(String)>delete</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path)</pre>
+                                        <div class="block"><p>Deletes the object at the target path from this container.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>path</code> - Path to the target object to delete.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="delete(String,Function1)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>delete</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=ObjectContainer.html#delete(String,Function1)>delete</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, Function1&lt;<a href=../params/DeleteParams.html>DeleteParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action)</pre>
+                                        <div class="block"><p>Deletes the object at the target path from this container.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            
+                                            
+                                            <dd><code>action</code> - Action used to configure the backing S3 operation.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="delete(String,DeleteParams)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>delete</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=ObjectContainer.html#delete(String,DeleteParams)>delete</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, <a href=../params/DeleteParams.html>DeleteParams</a> params)</pre>
+                                        <div class="block"><p>Deletes the object at the target path from this container.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            
+                                            
+                                            <dd><code>params</code> - Parameters for the backing S3 operation.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="deleteAll(String)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>deleteAll</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=ObjectContainer.html#deleteAll(String)>deleteAll</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> paths)</pre>
+                                        <div class="block"><p>Deletes all the given target objects from this container.</p><p>If the target paths set is empty, this method does nothing.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>paths</code> - Target paths to delete.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="deleteAll(Iterable)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>deleteAll</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=ObjectContainer.html#deleteAll(Iterable)>deleteAll</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html>Iterable</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>&gt; paths)</pre>
+                                        <div class="block"><p>Deletes all the given target objects from this container.</p><p>If the target paths set is empty, this method does nothing.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>paths</code> - Target paths to delete.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="deleteAll(Function1)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>deleteAll</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=ObjectContainer.html#deleteAll(Function1)>deleteAll</a>(Function1&lt;<a href=../params/object/multi/MultiObjectDeleteParams.html>MultiObjectDeleteParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action)</pre>
+                                        <div class="block"><p>Deletes all the given target objects from this container.</p><p>If the target paths set is empty, this method does nothing.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>action</code> - Action used to configure the backing S3 operation.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="deleteAll(MultiObjectDeleteParams)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>deleteAll</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=ObjectContainer.html#deleteAll(MultiObjectDeleteParams)>deleteAll</a>(<a href=../params/object/multi/MultiObjectDeleteParams.html>MultiObjectDeleteParams</a> params)</pre>
+                                        <div class="block"><p>Deletes all the given target objects from this container.</p><p>If the target paths set is empty, this method does nothing.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>params</code> - Parameters for the backing S3 operation.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="rmdir(String)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>rmdir</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=ObjectContainer.html#rmdir(String)>rmdir</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path)</pre>
+                                        <div class="block"><p>Recursively removes all contents in the target directory.</p><p>Example</p><p>Given the container state:</p><pre><code>foo/bar/bazz.txt
+foo/bar/fizz.txt
+foo/buzz.txt
+food/world.png</code></pre><p>The operation:</p><pre><code>container.rmdir("foo")</code></pre><p>Will result in the state:</p><pre><code>food/world.png</code></pre></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>path</code> - Path to the target directory that will be removed.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="rmdir(String,Function1)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>rmdir</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=ObjectContainer.html#rmdir(String,Function1)>rmdir</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, Function1&lt;<a href=../params/object/directory/DirectoryDeleteParams.html>DirectoryDeleteParams</a>, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a>&gt; action)</pre>
+                                        <div class="block"><p>Recursively removes all contents in the target directory.</p><p>Example</p><p>Given the container state:</p><pre><code>foo/bar/bazz.txt
+foo/bar/fizz.txt
+foo/buzz.txt
+food/world.png</code></pre><p>The operation:</p><pre><code>container.rmdir("foo")</code></pre><p>Will result in the state:</p><pre><code>food/world.png</code></pre></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            
+                                            
+                                            <dd><code>action</code> - Action used to configure the backing S3 operation.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="rmdir(String,DirectoryDeleteParams)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockListLast"
+                                          >
+                                    <li class="blockList">
+                                        <h4>rmdir</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=ObjectContainer.html#rmdir(String,DirectoryDeleteParams)>rmdir</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> path, <a href=../params/object/directory/DirectoryDeleteParams.html>DirectoryDeleteParams</a> params)</pre>
+                                        <div class="block"><p>Recursively removes all contents in the target directory.</p><p>Example</p><p>Given the container state:</p><pre><code>foo/bar/bazz.txt
+foo/bar/fizz.txt
+foo/buzz.txt
+food/world.png</code></pre><p>The operation:</p><pre><code>container.rmdir("foo")</code></pre><p>Will result in the state:</p><pre><code>food/world.png</code></pre></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            
+                                            
+                                            <dd><code>params</code> - Parameters for the backing S3 operation.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                            </li>
+                        </ul>
+                    </section>
+                    
+                </li>
+            </ul>
+        </div>
+    </div>
+</main>
+<footer role="contentinfo">
+    <nav role="navigation">
+        <!-- ======= START OF BOTTOM NAVBAR ====== -->
+        <div class="bottomNav"><a id="navbar.bottom">
+            <!--   -->
+        </a>
+            <div class="skipNav"><a href="#skip.navbar.bottom" title="Skip navigation links">Skip navigation links</a>
+            </div>
+            <a id="navbar.bottom.firstrow">
+                <!--   -->
+            </a>
+            <ul class="navList" title="Navigation">
+    <li><a href="../../../../../../index.html">Overview</a></li>
+    
+    <li><a href="package-summary.html">Package</a></li>
+    
+    <li>Class</li>
+    
+    <li><a href="package-tree.html">Tree</a></li>
+    
+    <li><a href="../../../../../../deprecated.html">Deprecated</a></li>
+    <li><a href="../../../../../../index-files/index-1.html">Index</a></li>
+    <li>Help</li>
+</ul></div>
+        <a id="skip.navbar.bottom">
+            <!--   -->
+        </a>
+        <div class="subNav">
+<ul class="navList" id="allclasses_navbar_top" style="display: block;">
+    <li><a href="../../../../../../allclasses.html">All&nbsp;Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+</div>
+<a id="skip.navbar.top">
+<!--   -->
+</a></div><!-- ======== END OF BOTTOM NAVBAR ======= -->
+    </nav>
+</footer><ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-1" tabindex="0"
+    style="display: none;"></ul>
+<span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span>
+</body>
+</html>
