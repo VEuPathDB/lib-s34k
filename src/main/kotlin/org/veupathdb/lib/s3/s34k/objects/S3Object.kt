@@ -8,10 +8,21 @@ import java.time.OffsetDateTime
 // TODO: Document me
 interface S3Object : ObjectResponse {
 
-  val lastModified: OffsetDateTime
+  /**
+   * Object last modified/created timestamp.
+   *
+   * This value will not be present on responses from object puts.
+   */
+  val lastModified: OffsetDateTime?
 
-  val eTag: String?
+  /**
+   * Object ETag value.
+   */
+  val eTag: String
 
+  /**
+   * Object tag management container.
+   */
   val tags: ObjectTagContainer
 
   // region Exists
