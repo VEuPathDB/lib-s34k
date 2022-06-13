@@ -47,7 +47,7 @@ https://github.com/VEuPathDB/lib-s34k-minio[S34K-Minio]).
 .*Adding to project*:
 [source, kotlin]
 ----
-    implementation("org.veupathdb.lib.s3:s34k:0.4.0")
+    implementation("org.veupathdb.lib.s3:s34k:0.7.0")
 ----
 
 === Examples
