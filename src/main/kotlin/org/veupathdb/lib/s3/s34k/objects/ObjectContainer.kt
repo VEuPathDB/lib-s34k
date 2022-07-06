@@ -778,6 +778,9 @@ interface ObjectContainer {
    *
    * @throws FileNotFoundException If the given local file does not exist.
    *
+   * @throws IllegalArgumentException If the given local file handle points to a
+   * directory.
+   *
    * @throws BucketNotFoundError If this bucket or the bucket in which this
    * object container resides no longer exists.
    *
@@ -788,6 +791,7 @@ interface ObjectContainer {
    * @see upload
    */
   @Throws(
+    IllegalArgumentException::class,
     FileNotFoundException::class,
     BucketNotFoundError::class,
     S34KError::class,
@@ -806,6 +810,9 @@ interface ObjectContainer {
    *
    * @throws FileNotFoundException If the given local file does not exist.
    *
+   * @throws IllegalArgumentException If the given local file handle points to a
+   * directory.
+   *
    * @throws BucketNotFoundError If this bucket or the bucket in which this
    * object container resides no longer exists.
    *
@@ -814,6 +821,7 @@ interface ObjectContainer {
    * 'cause' value.
    */
   @Throws(
+    IllegalArgumentException::class,
     FileNotFoundException::class,
     BucketNotFoundError::class,
     S34KError::class,
@@ -829,7 +837,7 @@ interface ObjectContainer {
    * @return An [S3Object] instance handle on the target object.
    *
    * @throws InvalidRequestConfigError If the `localFile` value is not set on
-   * the configured parameters.
+   * the configured parameters, or if the localFile value points to a directory.
    *
    * @throws FileNotFoundException If the configured local file does not exist.
    *
@@ -857,7 +865,7 @@ interface ObjectContainer {
    * @return An [S3Object] instance handle on the target object.
    *
    * @throws InvalidRequestConfigError If the `localFile` value is not set on
-   * the configured parameters.
+   * the configured parameters, or if the localFile value points to a directory.
    *
    * @throws FileNotFoundException If the configured local file does not exist.
    *
